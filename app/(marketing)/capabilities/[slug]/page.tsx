@@ -25,6 +25,13 @@ import {
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/structured-data";
 
+/*
+ * Only slugs returned by generateStaticParams are valid routes. Anything else is
+ * a 404 at the routing layer, which returns a genuine 404 status rather than
+ * rendering the not found body with a 200.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return capabilitySlugs().map((slug) => ({ slug }));
 }

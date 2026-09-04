@@ -16,10 +16,15 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
 /**
- * Only case studies with published evidence generate a route. Records awaiting
- * customer permission are never reachable, even by guessing a URL, because they
- * are excluded from both `generateStaticParams` and the lookup below.
+ * Only case studies with published evidence generate a route.
+ *
+ * Records awaiting customer permission are unreachable even by guessing a URL:
+ * they are excluded from `generateStaticParams`, and `dynamicParams = false`
+ * means any slug outside that list is a 404 at the routing layer with a genuine
+ * 404 status.
  */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return publishedCaseStudySlugs().map((slug) => ({ slug }));
 }

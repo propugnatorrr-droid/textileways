@@ -14,6 +14,13 @@ import { formatDate } from "@/lib/utilities/format";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo/structured-data";
 
+/*
+ * Only slugs returned by generateStaticParams are valid routes. Anything else is
+ * a 404 at the routing layer, which returns a genuine 404 status rather than
+ * rendering the not found body with a 200.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return articleSlugs().map((slug) => ({ slug }));
 }

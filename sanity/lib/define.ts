@@ -18,6 +18,12 @@
  */
 
 export interface FieldDefinition {
+  /**
+   * Studio specific options such as `rows`, `layout` and `filterField` vary by
+   * field type, so unknown keys are permitted rather than enumerated. Sanity
+   * itself validates them at Studio start up.
+   */
+  [key: string]: unknown;
   name: string;
   title?: string;
   type: string;
@@ -32,9 +38,11 @@ export interface FieldDefinition {
   hidden?: unknown;
   group?: string;
   fieldset?: string;
+  rows?: number;
 }
 
 export interface TypeDefinition {
+  [key: string]: unknown;
   name: string;
   title?: string;
   type: string;

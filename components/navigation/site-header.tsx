@@ -154,13 +154,21 @@ export function SiteHeader() {
 
   return (
     <header
+      /*
+       * The background is solid rather than translucent with a blur.
+       *
+       * Two reasons: the design rules prohibit glassmorphism, and a
+       * backdrop-filter on this element would make the header a containing block
+       * for fixed position descendants, which collapses the fixed mobile
+       * navigation panel to the height of the header.
+       */
       className={cn(
-        "sticky top-0 z-40 border-b transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        solid ? "border-line bg-paper/97 backdrop-blur-sm" : "border-transparent bg-paper",
+        "sticky top-0 z-40 border-b bg-paper transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
+        solid ? "border-line" : "border-transparent",
       )}
     >
       <div className="tw-container">
-        <div className="flex h-[68px] items-center justify-between gap-6 lg:h-[80px]">
+        <div className="flex h-[68px] items-center justify-between gap-4 lg:h-[80px]">
           <Link
             href="/"
             className="shrink-0"
@@ -170,7 +178,7 @@ export function SiteHeader() {
             <Wordmark className="h-[26px] w-auto text-ink lg:h-[30px]" />
           </Link>
 
-          <div ref={navRef} className="hidden lg:flex lg:items-center lg:gap-1">
+          <div ref={navRef} className="hidden xl:flex xl:items-center xl:gap-1">
             <nav aria-label="Primary">
               <ul className="flex items-center gap-1">
                 {primaryNavigation.map((item) => (
@@ -216,7 +224,7 @@ export function SiteHeader() {
             <button
               ref={mobileTriggerRef}
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] border border-line-strong text-ink lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] border border-line-strong text-ink xl:hidden"
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
               onClick={() => setMobileOpen((open) => !open)}
@@ -358,7 +366,7 @@ function MobileNavigation({
     <div
       id="mobile-navigation"
       ref={panelRef}
-      className="fixed inset-x-0 bottom-0 top-[68px] z-40 overflow-y-auto border-t border-line bg-paper lg:hidden"
+      className="fixed inset-x-0 bottom-0 top-[68px] z-40 overflow-y-auto border-t border-line bg-paper xl:hidden"
     >
       <nav aria-label="Primary mobile" className="tw-container py-6">
         <ul className="divide-y divide-line border-y border-line">

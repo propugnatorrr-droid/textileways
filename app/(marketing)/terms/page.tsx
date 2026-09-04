@@ -8,6 +8,8 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Terms of use for the Textileways website, covering indicative values, quotations, compliance responsibility and intellectual property.",
   path: "/terms",
+  /* Excluded from the sitemap, so it is marked noindex to match. */
+  noIndex: true,
 });
 
 export default function TermsOfUsePage() {

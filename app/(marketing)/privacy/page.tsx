@@ -8,6 +8,8 @@ export const metadata: Metadata = buildMetadata({
   description:
     "How Textileways handles the personal information submitted through this website, what is never sent to analytics, how long information is kept and how to exercise your rights.",
   path: "/privacy",
+  /* Excluded from the sitemap, so it is marked noindex to match. */
+  noIndex: true,
 });
 
 export default function PrivacyPage() {

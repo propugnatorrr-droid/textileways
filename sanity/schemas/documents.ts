@@ -34,7 +34,7 @@ const seoFields = [
     group: "seo",
     description: "Up to about 158 characters. Falls back to the summary.",
     validation: (Rule: ValidationRule) => Rule.max(180),
-  } as never),
+  }),
 ];
 
 const publicationField = defineField({
