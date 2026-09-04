@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Textileways design tokens
+   Tactile editorial minimalism: warm paper grounds, ink text, forest accent.
+   Square containers, hairline borders, restrained motion.
+   ========================================================================== */
+
+@theme {
+  /* Palette */
+  --color-cotton: #f5f1e8;
+  --color-paper: #fcfaf5;
+  --color-ink: #17201d;
+  --color-forest: #29473c;
+  --color-forest-deep: #1d332b;
+  --color-clay: #a65f43;
+  --color-clay-deep: #8a4c33;
+  --color-stone: #cbc5ba;
+  --color-mist: #e7e4dd;
+  --color-blue: #607786;
+  --color-white: #ffffff;
+  --color-error: #a33a32;
+  --color-success: #35634a;
+
+  /* Muted text that still clears WCAG AA on paper and cotton */
+  --color-ink-muted: #4c5854;
+  --color-ink-subtle: #66716c;
+  --color-line: #ddd8cf;
+  --color-line-strong: #c6c0b5;
+
+  /* Typography families, bound to next/font variables in the root layout */
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, "Times New Roman",
+    serif;
+
+  /* Fluid editorial type scale */
+  --text-display-xl: clamp(3.2rem, 8vw, 7.5rem);
+  --text-display-xl--line-height: 0.94;
+  --text-display-xl--letter-spacing: -0.03em;
+
+  --text-display-l: clamp(2.8rem, 6vw, 5.8rem);
+  --text-display-l--line-height: 0.98;
+  --text-display-l--letter-spacing: -0.025em;
+
+  --text-h1: clamp(2.4rem, 5vw, 4.6rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.025em;
+
+  --text-h2: clamp(2rem, 4vw, 3.5rem);
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.02em;
+
+  --text-h3: clamp(1.4rem, 2.2vw, 2.1rem);
+  --text-h3--line-height: 1.16;
+  --text-h3--letter-spacing: -0.015em;
+
+  --text-body-l: clamp(1.1rem, 1.3vw, 1.35rem);
+  --text-body-l--line-height: 1.6;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.6;
+
+  --text-label: 0.78125rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.09em;
+
+  /* Content widths */
+  --container-page: 1440px;
+  --container-content: 1280px;
+  --container-reading: 760px;
+
+  /* Radii stay square to near square */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-precise: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, high contrast focus for keyboard users */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  ::selection {
+    background-color: var(--color-forest);
+    color: var(--color-paper);
+  }
+
+  /* Rectangular form controls by default */
+  input,
+  select,
+  textarea {
+    border-radius: var(--radius-xs);
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
+
+@layer components {
+  .tw-container {
+    width: 100%;
+    max-width: var(--container-content);
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .tw-container {
+      padding-inline: 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tw-container {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .tw-container {
+      padding-inline: 72px;
+    }
+  }
+
+  /* Section rhythm: 72-96 mobile, 96-128 tablet, 120-176 desktop */
+  .tw-section {
+    padding-block: 80px;
+  }
+
+  @media (min-width: 768px) {
+    .tw-section {
+      padding-block: 112px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .tw-section {
+      padding-block: 144px;
+    }
+  }
+
+  .tw-section-tight {
+    padding-block: 64px;
+  }
+
+  @media (min-width: 768px) {
+    .tw-section-tight {
+      padding-block: 88px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .tw-section-tight {
+      padding-block: 112px;
+    }
+  }
+
+  .tw-prose {
+    max-width: var(--container-reading);
+  }
+
+  .tw-prose > * + * {
+    margin-top: 1.15em;
+  }
+
+  .tw-prose h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    line-height: 1.16;
+    letter-spacing: -0.015em;
+    margin-top: 2em;
+  }
+
+  .tw-prose h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-top: 1.75em;
+  }
+
+  .tw-prose ul,
+  .tw-prose ol {
+    padding-left: 1.15rem;
+  }
+
+  .tw-prose ul {
+    list-style: square;
+  }
+
+  .tw-prose ol {
+    list-style: decimal;
+  }
+
+  .tw-prose li + li {
+    margin-top: 0.4em;
+  }
+
+  .tw-prose a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  /* Hairline rule used to separate editorial blocks */
+  .tw-rule {
+    border-top: 1px solid var(--color-line);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Motion, always opt out under prefers-reduced-motion
+   -------------------------------------------------------------------------- */
+
+@layer utilities {
+  .tw-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 700ms var(--ease-editorial),
+      transform 700ms var(--ease-editorial);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .tw-reveal[data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .tw-underline-grow {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 320ms var(--ease-editorial);
+  }
+
+  .tw-underline-grow:hover,
+  .tw-underline-grow:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .tw-media-zoom img {
+    transition: transform 700ms var(--ease-editorial);
+  }
+
+  .tw-media-zoom:hover img {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .tw-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
