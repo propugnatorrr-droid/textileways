@@ -20,7 +20,7 @@ import { outstandingMediaSlots, allMediaSlots } from "@/content/fallback/media";
 import { classifyQuantity, quantityBandLabel } from "@/lib/utilities/quantity";
 import { slugify, isValidSlug } from "@/lib/utilities/slug";
 import { truncate, formatDate, formatQuantity } from "@/lib/utilities/format";
-import { absoluteUrl } from "@/content/configuration/site";
+import { absoluteUrl, pickSiteUrl } from "@/content/configuration/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { sanitizeContext } from "@/lib/analytics/track";
 import { whatsappMessage, labelForPath, whatsappNumber } from "@/lib/utilities/whatsapp";
@@ -356,6 +356,70 @@ describe("quantity classification", () => {
   it("produces a readable band label", () => {
     expect(quantityBandLabel(500)).toBe("250 to 999 pieces");
     expect(quantityBandLabel(0)).toBeNull();
+  });
+});
+
+describe("site url resolution", () => {
+  const FALLBACK = "https://www.textileways.com";
+
+  it("uses a configured absolute URL", () => {
+    expect(pickSiteUrl(["https://www.example.com"])).toBe("https://www.example.com");
+  });
+
+  it("falls back when the value is an empty string", () => {
+    /* A platform can define a variable with no value. This is what broke the
+       first Vercel build, because ?? does not treat "" as missing. */
+    expect(pickSiteUrl([""])).toBe(FALLBACK);
+  });
+
+  it("falls back when the value is only whitespace", () => {
+    expect(pickSiteUrl(["   "])).toBe(FALLBACK);
+  });
+
+  it("falls back when the value is undefined", () => {
+    expect(pickSiteUrl([undefined])).toBe(FALLBACK);
+  });
+
+  it("falls back when nothing is supplied at all", () => {
+    expect(pickSiteUrl([])).toBe(FALLBACK);
+  });
+
+  it("falls back when the value is not a URL", () => {
+    expect(pickSiteUrl(["not a url at all"])).toBe(FALLBACK);
+  });
+
+  it("adds a scheme to a bare host, as Vercel supplies", () => {
+    expect(pickSiteUrl([undefined, "textileways.vercel.app"])).toBe(
+      "https://textileways.vercel.app",
+    );
+  });
+
+  it("strips a trailing slash", () => {
+    expect(pickSiteUrl(["https://www.example.com/"])).toBe("https://www.example.com");
+  });
+
+  it("strips a path, keeping only the origin", () => {
+    expect(pickSiteUrl(["https://www.example.com/some/path"])).toBe("https://www.example.com");
+  });
+
+  it("skips an empty first candidate and uses the next", () => {
+    expect(pickSiteUrl(["", "https://preview.example.com"])).toBe("https://preview.example.com");
+  });
+
+  it("skips a malformed candidate and uses the next", () => {
+    expect(pickSiteUrl(["http://", "https://preview.example.com"])).toBe(
+      "https://preview.example.com",
+    );
+  });
+
+  it("preserves a non standard port", () => {
+    expect(pickSiteUrl(["http://localhost:3000"])).toBe("http://localhost:3000");
+  });
+
+  it("never returns a value that breaks new URL", () => {
+    for (const candidate of ["", "   ", undefined, "nonsense", "http://", "//", "https://x.dev"]) {
+      expect(() => new URL(pickSiteUrl([candidate]))).not.toThrow();
+    }
   });
 });
 
