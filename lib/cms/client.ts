@@ -19,17 +19,30 @@ export interface CmsConfig {
   token?: string;
 }
 
+/**
+ * Reads an environment variable, treating empty and whitespace only values as
+ * absent.
+ *
+ * A platform can define a variable without giving it a value, so `??` is not
+ * enough: it only falls back on undefined, and an empty string would be passed
+ * straight through to the client as a real setting.
+ */
+function envValue(raw: string | undefined): string | undefined {
+  const trimmed = raw?.trim();
+  return trimmed && trimmed.length > 0 ? trimmed : undefined;
+}
+
 export function cmsConfig(): CmsConfig | null {
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+  const projectId = envValue(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+  const dataset = envValue(process.env.NEXT_PUBLIC_SANITY_DATASET);
 
   if (!projectId || !dataset) return null;
 
   return {
     projectId,
     dataset,
-    apiVersion: process.env.SANITY_API_VERSION ?? "2024-10-01",
-    token: process.env.SANITY_API_READ_TOKEN,
+    apiVersion: envValue(process.env.SANITY_API_VERSION) ?? "2024-10-01",
+    token: envValue(process.env.SANITY_API_READ_TOKEN),
   };
 }
 
