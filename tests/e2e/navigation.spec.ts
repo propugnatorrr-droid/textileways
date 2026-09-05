@@ -140,7 +140,7 @@ test.describe("mobile navigation", () => {
 });
 
 test.describe("responsive layout", () => {
-  const widths = [360, 390, 430, 768, 1024, 1280, 1440, 1920];
+  const widths = [320, 360, 375, 390, 430, 768, 1024, 1280, 1440, 1920];
 
   for (const width of widths) {
     test(`has no horizontal overflow at ${width}px`, async ({ page }) => {
