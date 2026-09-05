@@ -67,7 +67,7 @@ export default function ContactPage() {
         lede="Whatever you send reaches the team directly rather than a general inbox. Specific questions get specific answers, so include the product, the quantity and the market if you can."
         breadcrumbs={breadcrumbs}
         aside={
-          <div className="border border-line bg-cotton/50 p-6">
+          <div className="rounded-[20px] border border-line bg-cotton p-6">
             <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
               Direct channels
             </p>
@@ -101,14 +101,14 @@ export default function ContactPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <h2 className="mb-8 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
             Where to send what
           </h2>
-          <ul className="grid gap-px bg-line lg:grid-cols-2 xl:grid-cols-4">
+          <ul className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
             {routes.map((route) => (
-              <li key={route.label} className="flex flex-col bg-paper p-7">
+              <li key={route.label} className="flex flex-col bg-white p-7">
                 <h3 className="text-body font-semibold text-ink">{route.label}</h3>
                 <p className="mt-3 flex-1 text-small leading-relaxed text-ink-muted">
                   {route.description}
@@ -138,7 +138,7 @@ export default function ContactPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-20">
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <h2 className="font-serif text-h3">Send a message</h2>
+              <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">Send a message</h2>
               <p className="mt-4 max-w-[42ch] text-small leading-relaxed text-ink-muted">
                 You will receive a confirmation with a reference number. Nothing you type here
                 is sent to analytics.

@@ -42,7 +42,7 @@ export default function FaqPage() {
           </>
         }
         aside={
-          <nav aria-label="Question categories" className="border border-line bg-cotton/50 p-6">
+          <nav aria-label="Question categories" className="rounded-[20px] border border-line bg-cotton p-6">
             <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
               {faqs.length} questions in {categories.length} categories
             </p>
@@ -67,7 +67,7 @@ export default function FaqPage() {
           <div className="max-w-[80ch] space-y-16">
             {categories.map((category) => (
               <section key={category} id={category.toLowerCase().replace(/\s+/g, "-")}>
-                <h2 className="mb-6 font-serif text-h3">{category}</h2>
+                <h2 className="mb-6 font-sans text-h3 font-semibold tracking-[-0.032em]">{category}</h2>
                 <FaqAccordion items={faqs.filter((faq) => faq.category === category)} />
               </section>
             ))}

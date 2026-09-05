@@ -75,7 +75,7 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
         size="h1"
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <Media
             asset={article.hero}
@@ -97,7 +97,7 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
           <article className="mt-14">
             {article.sections.map((section) => (
               <section key={section.heading} className="tw-prose mt-12 first:mt-0">
-                <h2 className="font-serif text-h3">{section.heading}</h2>
+                <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph.slice(0, 48)} className="text-body-l leading-relaxed text-ink-muted">
                     {paragraph}
@@ -113,9 +113,9 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
       </Section>
 
       {faqs.length > 0 ? (
-        <Section tight className="border-b border-line bg-cotton">
+        <Section tight className="bg-cotton">
           <Container>
-            <h2 className="mb-8 font-serif text-h3">Related questions</h2>
+            <h2 className="mb-8 font-sans text-h3 font-semibold tracking-[-0.032em]">Related questions</h2>
             <div className="max-w-[76ch]">
               <FaqAccordion items={faqs} />
             </div>
@@ -123,7 +123,7 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
         </Section>
       ) : null}
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <div className="grid gap-14 lg:grid-cols-3">
             <RelatedGrid

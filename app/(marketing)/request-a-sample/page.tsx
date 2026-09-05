@@ -30,7 +30,7 @@ export default function RequestASamplePage() {
         lede="Fabric handfeel is the one thing a specification sheet cannot communicate. A swatch or a physical sample settles in seconds what an email thread cannot settle at all."
         breadcrumbs={breadcrumbs}
         aside={
-          <div className="border border-line bg-cotton/50 p-6">
+          <div className="rounded-[20px] border border-line bg-cotton p-6">
             <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
               Three kinds of sample
             </p>

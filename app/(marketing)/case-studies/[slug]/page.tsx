@@ -88,7 +88,7 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
         <MarkerList items={study.challenge} className="text-body" />
       </SplitSection>
 
-      <SplitSection eyebrow="Solution" title="What was produced" className="bg-cotton">
+      <SplitSection eyebrow="Solution" title="What was produced" className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
         <MarkerList items={study.solution} className="text-body" />
       </SplitSection>
 
@@ -100,13 +100,13 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
         eyebrow="Results"
         title="Outcome"
         intro="Every figure quoted here is evidenced and published with the customer's permission."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <MarkerList items={study.results} className="text-body" />
 
         {study.testimonial ? (
           <figure className="mt-12 border-l-2 border-forest pl-6">
-            <blockquote className="font-serif text-h3 leading-snug text-ink">
+            <blockquote className="font-sans text-h3 font-semibold leading-snug tracking-[-0.032em] text-ink">
               {study.testimonial.quote}
             </blockquote>
             <figcaption className="mt-4 text-small text-ink-subtle">
@@ -120,7 +120,7 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
         </div>
       </SplitSection>
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

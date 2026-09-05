@@ -55,12 +55,12 @@ export default function InsightsPage() {
               action={<ButtonLink href="/faq">Read the FAQ</ButtonLink>}
             />
           ) : (
-            <ul className="grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((article, index) => (
-                <Reveal key={article.slug} as="li" delay={(index % 3) * 60} className="bg-paper">
+                <Reveal key={article.slug} as="li" delay={(index % 3) * 60} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                   <Link
                     href={`/insights/${article.slug}`}
-                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
                   >
                     <Media
                       asset={article.hero}

@@ -163,19 +163,21 @@ export function SiteHeader() {
        * navigation panel to the height of the header.
        */
       className={cn(
-        "sticky top-0 z-40 border-b bg-paper transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        solid ? "border-line" : "border-transparent",
+        "sticky top-0 z-40 border-b bg-white transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        solid
+          ? "border-line shadow-[0_8px_30px_rgba(11,15,13,0.055)]"
+          : "border-transparent",
       )}
     >
       <div className="tw-container">
-        <div className="flex h-[68px] items-center justify-between gap-4 lg:h-[80px]">
+        <div className="flex h-[72px] items-center justify-between gap-4 lg:h-[84px]">
           <Link
             href="/"
             className="shrink-0"
             aria-label={`${siteConfig.name} home`}
             onClick={() => setOpenMenu(null)}
           >
-            <Wordmark className="h-[26px] w-auto text-ink lg:h-[30px]" />
+            <Wordmark className="text-[20px] text-ink lg:text-[23px]" />
           </Link>
 
           <div ref={navRef} className="hidden xl:flex xl:items-center xl:gap-1">
@@ -206,7 +208,7 @@ export function SiteHeader() {
                 onClick={() =>
                   track("whatsapp_click", { cta_location: "header", page: pathname })
                 }
-                className="hidden h-11 w-11 items-center justify-center rounded-[3px] border border-line-strong text-forest transition-colors duration-200 hover:border-forest hover:bg-forest/5 sm:inline-flex"
+                className="hidden h-11 w-11 items-center justify-center rounded-[14px] border border-line-strong text-forest transition-all duration-300 hover:-translate-y-0.5 hover:border-forest hover:bg-forest-soft sm:inline-flex"
               >
                 <span className="sr-only">Message us on WhatsApp</span>
                 <WhatsappGlyph className="h-[19px] w-[19px]" />
@@ -216,7 +218,7 @@ export function SiteHeader() {
             <Link
               href="/request-a-quote"
               onClick={() => onQuoteClick("header")}
-              className="hidden rounded-[3px] border border-forest bg-forest px-5 py-2.5 text-small font-medium text-paper transition-colors duration-200 hover:bg-forest-deep sm:inline-flex"
+              className="hidden min-h-11 items-center rounded-[14px] border border-forest bg-forest px-5 text-small font-semibold text-white shadow-[0_8px_24px_rgba(8,122,85,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:border-forest-deep hover:bg-forest-deep hover:shadow-[0_14px_30px_rgba(8,122,85,0.22)] sm:inline-flex"
             >
               Request a Quote
             </Link>
@@ -224,7 +226,7 @@ export function SiteHeader() {
             <button
               ref={mobileTriggerRef}
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] border border-line-strong text-ink xl:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-line-strong text-ink transition-colors duration-200 hover:bg-cotton xl:hidden"
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
               onClick={() => setMobileOpen((open) => !open)}
@@ -272,8 +274,8 @@ function DesktopNavItem({
         <Link
           href={item.href}
           className={cn(
-            "inline-flex items-center rounded-[3px] px-3 py-2 text-small font-medium transition-colors duration-200",
-            active ? "text-forest" : "text-ink hover:text-forest",
+            "inline-flex min-h-10 items-center rounded-[12px] px-3.5 text-small font-semibold transition-colors duration-200",
+            active ? "bg-forest-soft text-forest-deep" : "text-ink hover:bg-cotton",
           )}
         >
           {item.label}
@@ -290,8 +292,8 @@ function DesktopNavItem({
         aria-controls={panelId}
         onClick={onToggle}
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-[3px] px-3 py-2 text-small font-medium transition-colors duration-200",
-          active || open ? "text-forest" : "text-ink hover:text-forest",
+          "inline-flex min-h-10 items-center gap-1.5 rounded-[12px] px-3.5 text-small font-semibold transition-colors duration-200",
+          active || open ? "bg-forest-soft text-forest-deep" : "text-ink hover:bg-cotton",
         )}
       >
         {item.label}
@@ -301,11 +303,11 @@ function DesktopNavItem({
       <div
         id={panelId}
         hidden={!open}
-        className="absolute inset-x-0 top-full border-y border-line bg-paper shadow-[0_18px_40px_-32px_rgba(23,32,29,0.5)]"
+        className="absolute left-1/2 top-full w-[min(calc(100vw-32px),1360px)] -translate-x-1/2 pt-3"
       >
-        <div className="tw-container py-10">
+        <div className="overflow-hidden rounded-[24px] border border-line bg-white p-8 shadow-[0_28px_80px_rgba(11,15,13,0.14)] lg:p-10">
           {item.intro ? (
-            <p className="mb-8 max-w-[58ch] text-small text-ink-subtle">{item.intro}</p>
+            <p className="mb-8 max-w-[64ch] text-small text-ink-subtle">{item.intro}</p>
           ) : null}
           <div
             className={cn(
@@ -315,20 +317,20 @@ function DesktopNavItem({
           >
             {item.columns.map((column) => (
               <div key={column.title}>
-                <p className="mb-4 border-b border-line pb-2.5 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+                <p className="mb-4 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
                   {column.title}
                 </p>
-                <ul className="space-y-3">
+                <ul className="-mx-3 space-y-0.5">
                   {column.links.map((link) => (
                     <li key={link.href + link.label}>
                       <Link
                         href={link.href}
                         onClick={onClose}
-                        className="group block text-small font-medium text-ink transition-colors duration-200 hover:text-forest"
+                        className="group block rounded-[12px] px-3 py-2.5 text-small font-semibold text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
                       >
                         {link.label}
                         {link.description ? (
-                          <span className="mt-0.5 block text-small font-normal leading-snug text-ink-subtle">
+                          <span className="mt-1 block text-small font-normal leading-snug text-ink-subtle">
                             {link.description}
                           </span>
                         ) : null}
@@ -366,10 +368,10 @@ function MobileNavigation({
     <div
       id="mobile-navigation"
       ref={panelRef}
-      className="fixed inset-x-0 bottom-0 top-[68px] z-40 overflow-y-auto border-t border-line bg-paper xl:hidden"
+      className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto border-t border-line bg-white xl:hidden"
     >
       <nav aria-label="Primary mobile" className="tw-container py-6">
-        <ul className="divide-y divide-line border-y border-line">
+        <ul className="divide-y divide-line">
           {primaryNavigation.map((item) => {
             const open = expanded === item.label;
 
@@ -379,7 +381,7 @@ function MobileNavigation({
                   <Link
                     href={item.href}
                     onClick={onNavigate}
-                    className="flex min-h-[52px] items-center text-body font-medium text-ink"
+                    className="flex min-h-[52px] items-center text-body font-semibold text-ink"
                   >
                     {item.label}
                   </Link>
@@ -393,7 +395,7 @@ function MobileNavigation({
                   type="button"
                   aria-expanded={open}
                   onClick={() => setExpanded(open ? null : item.label)}
-                  className="flex min-h-[52px] w-full items-center justify-between gap-4 text-left text-body font-medium text-ink"
+                  className="flex min-h-[52px] w-full items-center justify-between gap-4 text-left text-body font-semibold text-ink"
                 >
                   {item.label}
                   <PlusIcon open={open} />
@@ -402,16 +404,16 @@ function MobileNavigation({
                 <div hidden={!open} className="pb-5">
                   {item.columns.map((column) => (
                     <div key={column.title} className="mt-4 first:mt-0">
-                      <p className="mb-2.5 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+                      <p className="mb-2 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
                         {column.title}
                       </p>
-                      <ul className="space-y-1">
+                      <ul className="-mx-3 space-y-0.5">
                         {column.links.map((link) => (
                           <li key={link.href + link.label}>
                             <Link
                               href={link.href}
                               onClick={onNavigate}
-                              className="flex min-h-[44px] items-center text-small text-ink-muted"
+                              className="flex min-h-[48px] items-center rounded-[12px] px-3 text-small text-ink-muted transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
                             >
                               {link.label}
                             </Link>
@@ -433,7 +435,7 @@ function MobileNavigation({
               onQuoteClick();
               onNavigate();
             }}
-            className="flex min-h-[52px] w-full items-center justify-center rounded-[3px] border border-forest bg-forest px-6 text-small font-medium text-paper"
+            className="flex min-h-[52px] w-full items-center justify-center rounded-[14px] border border-forest bg-forest px-6 text-small font-semibold text-white shadow-[0_8px_24px_rgba(8,122,85,0.16)]"
           >
             Request a Quote
           </Link>
@@ -446,7 +448,7 @@ function MobileNavigation({
                 track("whatsapp_click", { cta_location: "mobile_menu", page: pathname });
                 onNavigate();
               }}
-              className="flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-[3px] border border-line-strong px-6 text-small font-medium text-ink"
+              className="flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-line-strong px-6 text-small font-semibold text-ink"
             >
               <WhatsappGlyph className="h-[18px] w-[18px] shrink-0 text-forest" />
               Message us on WhatsApp
@@ -455,7 +457,7 @@ function MobileNavigation({
           <Link
             href="/request-a-sample"
             onClick={onNavigate}
-            className="flex min-h-[52px] w-full items-center justify-center rounded-[3px] border border-line-strong px-6 text-small font-medium text-ink"
+            className="flex min-h-[52px] w-full items-center justify-center rounded-[14px] border border-line-strong px-6 text-small font-semibold text-ink"
           >
             Request a Sample
           </Link>

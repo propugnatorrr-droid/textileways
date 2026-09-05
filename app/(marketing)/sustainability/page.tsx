@@ -60,7 +60,7 @@ export default function SustainabilityPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <Notice tone="info" title="Why there are no percentages on this page" className="max-w-[74ch]">
             <p>
@@ -83,9 +83,9 @@ export default function SustainabilityPage() {
         title="Eight areas, described honestly"
         intro="Each area states what we do and, separately, what would be required before an outcome could be claimed."
       >
-        <ul className="grid gap-px bg-line sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {sustainabilityApproach.map((item, index) => (
-            <Reveal key={item.title} as="li" delay={(index % 2) * 55} className="bg-paper p-7">
+            <Reveal key={item.title} as="li" delay={(index % 2) * 55} className="tw-card tw-card-interactive rounded-[22px] p-7">
               <h3 className="text-body font-semibold text-ink">{item.title}</h3>
               <p className="mt-3 text-small leading-relaxed text-ink-muted">
                 {item.description}
@@ -102,12 +102,12 @@ export default function SustainabilityPage() {
         eyebrow="Standard of proof"
         title="What a measurable claim requires"
         intro="This is the test any environmental figure has to pass before it appears anywhere on this site."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
-        <ol className="divide-y divide-line border-y border-line">
+        <ol className="divide-y divide-line">
           {claimRequirements.map((requirement, index) => (
             <li key={requirement.label} className="grid gap-2 py-5 sm:grid-cols-[3rem_minmax(0,10rem)_1fr] sm:gap-6">
-              <span aria-hidden="true" className="font-serif text-h3 leading-none text-stone">
+              <span aria-hidden="true" className="font-sans text-h3 font-semibold leading-none tracking-[-0.04em] text-stone">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="text-small font-semibold text-ink">{requirement.label}</h3>

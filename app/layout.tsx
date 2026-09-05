@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
 import { siteConfig } from "@/content/configuration/site";
@@ -15,20 +15,15 @@ import {
 } from "@/lib/seo/structured-data";
 
 /**
- * Display serif for headings and precise sans for body and interface text.
- * Both are self hosted by next/font, so there is no external font request.
+ * One sans family across the whole site, self hosted by next/font so there is no
+ * external font request. The weight range covers body text through to the
+ * display headings, which carry tight negative tracking.
  */
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-instrument-serif",
-});
-
 const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -47,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fcfaf5",
+  themeColor: "#ffffff",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -55,11 +50,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${instrumentSerif.variable} ${manrope.variable}`}>
-      <body className="min-h-dvh bg-paper text-ink antialiased">
+    <html lang="en" className={manrope.variable}>
+      <body className="min-h-dvh bg-white text-ink antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-[3px] focus:border focus:border-forest focus:bg-paper focus:px-5 focus:py-3 focus:text-small focus:font-medium focus:text-forest"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-[12px] focus:border focus:border-forest focus:bg-white focus:px-5 focus:py-3 focus:text-small focus:font-semibold focus:text-forest focus:shadow-xl"
         >
           Skip to main content
         </a>

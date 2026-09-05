@@ -39,7 +39,7 @@ export function PageHeader({
   size?: "display-l" | "h1" | "h2";
 }) {
   return (
-    <Section tight className="border-b border-line">
+    <Section tight className="">
       <Container>
         {breadcrumbs && breadcrumbs.length > 0 ? (
           <div className="mb-10">
@@ -159,12 +159,12 @@ export function RelatedGrid({
       <h2 className="mb-6 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
         {title}
       </h2>
-      <ul className={cn("grid gap-px bg-line", columnClass)}>
+      <ul className={cn("grid gap-4", columnClass)}>
         {items.map((item, index) => (
-          <Reveal key={item.href + item.label} as="li" delay={(index % 4) * 55} className="bg-paper">
+          <Reveal key={item.href + item.label} as="li" delay={(index % 4) * 55} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
             <Link
               href={item.href}
-              className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+              className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
             >
               <span className="text-small font-semibold text-ink transition-colors duration-200 group-hover:text-forest">
                 {item.label}
@@ -195,7 +195,7 @@ export function ProcessList({
           key={stage.title}
           className="grid gap-2 border-b border-line py-6 sm:grid-cols-[3rem_minmax(0,14rem)_1fr] sm:gap-6"
         >
-          <span aria-hidden="true" className="font-serif text-h3 leading-none text-stone">
+          <span aria-hidden="true" className="font-sans text-h3 font-semibold leading-none tracking-[-0.04em] text-stone">
             {String(index + 1).padStart(2, "0")}
           </span>
           <h3 className="text-small font-semibold text-ink">{stage.title}</h3>
@@ -224,14 +224,14 @@ export function PageCta({
   whatsapp?: { pageLabel: string; path: string; detail?: string };
 }) {
   return (
-    <Section tight className="bg-forest text-cotton">
+    <Section tight className="bg-forest text-white">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-20">
-          <DisplayHeading level={2} size="h3" className="max-w-[22ch] text-cotton">
+          <DisplayHeading level={2} size="h3" className="max-w-[22ch] text-white">
             {title}
           </DisplayHeading>
           <div>
-            <p className="max-w-[52ch] text-body leading-relaxed text-cotton/80">
+            <p className="max-w-[52ch] text-body leading-relaxed text-white/80">
               {description}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -247,7 +247,7 @@ export function PageCta({
               ) : null}
               <Link
                 href="/contact"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-[3px] border border-cotton/40 px-6 text-small font-medium text-cotton transition-colors duration-200 hover:border-cotton hover:bg-cotton/10"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-[14px] border border-white/35 px-6 text-small font-medium text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
               >
                 Ask a question
               </Link>

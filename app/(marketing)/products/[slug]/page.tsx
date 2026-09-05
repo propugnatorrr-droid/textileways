@@ -112,7 +112,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={family.introduction} />
         </Container>
@@ -123,7 +123,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         title="What sits inside this family"
         intro="Representative products we manufacture in this category. Anything not listed can still be assessed on technical review."
       >
-        <ul className="divide-y divide-line border-y border-line">
+        <ul className="divide-y divide-line">
           {family.productTypes.map((type) => (
             <li key={type.name} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,18rem)_1fr] sm:gap-8">
               <h3 className="text-small font-semibold text-ink">{type.name}</h3>
@@ -133,7 +133,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         </ul>
       </SplitSection>
 
-      <Section tight className="border-b border-line bg-cotton">
+      <Section tight className="bg-cotton">
         <Container>
           <h2 className="mb-8 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
             Gallery
@@ -179,12 +179,12 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         title="How this category is branded"
         intro="Decoration is matched to the fabric and the artwork rather than applied by default. Each method links to its own page with limits stated."
       >
-        <ul className="grid gap-px bg-line sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {decoration.map((capability) => (
-            <li key={capability.slug} className="bg-paper">
+            <li key={capability.slug} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
               <Link
                 href={`/capabilities/${capability.slug}`}
-                className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+                className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
               >
                 <span className="text-small font-semibold text-ink transition-colors duration-200 group-hover:text-forest">
                   {capability.name}
@@ -203,7 +203,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         title="What this category is usually made from"
         intro="Composition, weight guidance and decoration compatibility for each fabric are on its own page."
       >
-        <ul className="divide-y divide-line border-y border-line">
+        <ul className="divide-y divide-line">
           {materials.map((material) => (
             <li key={material.slug} className="py-5">
               <Link
@@ -269,7 +269,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         </SplitSection>
       ) : null}
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

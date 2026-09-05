@@ -121,8 +121,8 @@ export function FileUpload({
           addFiles(event.dataTransfer.files);
         }}
         className={cn(
-          "border border-dashed px-6 py-8 text-center transition-colors duration-200 rounded-[3px]",
-          dragging ? "border-forest bg-forest/5" : "border-line-strong bg-cotton/40",
+          "rounded-[18px] border border-dashed px-6 py-8 text-center transition-colors duration-200",
+          dragging ? "border-forest bg-forest/5" : "border-line-strong bg-cotton",
         )}
       >
         <input
@@ -142,7 +142,7 @@ export function FileUpload({
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="inline-flex min-h-[48px] items-center rounded-[3px] border border-line-strong bg-white px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
+          className="inline-flex min-h-[48px] items-center rounded-[14px] border border-line-strong bg-white px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
         >
           Choose files
         </button>
@@ -165,7 +165,7 @@ export function FileUpload({
             {files.length} {files.length === 1 ? "file" : "files"} attached,{" "}
             {formatBytes(totalBytes)} in total
           </p>
-          <ul className="divide-y divide-line border-y border-line">
+          <ul className="divide-y divide-line">
             {files.map((item) => (
               <li key={item.id} className="flex items-center justify-between gap-4 py-3">
                 <span className="min-w-0 flex-1">
@@ -179,7 +179,7 @@ export function FileUpload({
                 <button
                   type="button"
                   onClick={() => removeFile(item.id)}
-                  className="min-h-[40px] shrink-0 rounded-[3px] border border-line-strong px-3 text-small text-ink-muted transition-colors duration-200 hover:border-error hover:text-error"
+                  className="min-h-[40px] shrink-0 rounded-[14px] border border-line-strong px-3 text-small text-ink-muted transition-colors duration-200 hover:border-error hover:text-error"
                 >
                   Remove
                   <span className="sr-only"> {item.file.name}</span>

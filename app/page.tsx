@@ -9,8 +9,6 @@ import {
   FactorySection,
   QualitySection,
   MarketsSection,
-  ProjectProcessSection,
-  ResponsibilitySection,
   InsightsSection,
   FinalCtaSection,
 } from "@/components/sections/home-sections";
@@ -31,13 +29,11 @@ export default function HomePage() {
       <ProductionScaleSection />
       <ProductUniverseSection />
       <PositioningSection />
-      <HowItWorksSection />
       <CapabilitiesSection />
       <FactorySection />
+      <HowItWorksSection />
       <QualitySection />
       <MarketsSection />
-      <ProjectProcessSection />
-      <ResponsibilitySection />
       <InsightsSection />
       <FinalCtaSection />
     </>

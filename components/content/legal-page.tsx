@@ -70,7 +70,7 @@ export function LegalPage({
             <div className="mt-14 space-y-12">
               {sections.map((section) => (
                 <section key={section.heading} id={sectionId(section.heading)}>
-                  <h2 className="font-serif text-h3">{section.heading}</h2>
+                  <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">{section.heading}</h2>
                   <div className="mt-5 space-y-4">
                     {section.paragraphs.map((paragraph) => (
                       <p

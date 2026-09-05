@@ -106,7 +106,7 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={capability.introduction} />
 
@@ -133,7 +133,7 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
         eyebrow="Suitability"
         title="What this suits"
         intro="Where this capability is the right choice, and the materials it is compatible with."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <div className="grid gap-10 sm:grid-cols-2">
           <div>
@@ -169,7 +169,7 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
           title="Compatible materials"
           intro="Composition, weight guidance and decoration behaviour for each fabric are on its own page."
         >
-          <ul className="divide-y divide-line border-y border-line">
+          <ul className="divide-y divide-line">
             {materials.map((material) => (
               <li key={material.slug} className="py-5">
                 <Link
@@ -196,7 +196,7 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
       ) : null}
 
       {relatedProducts.length > 0 ? (
-        <Section tight className="border-b border-line">
+        <Section tight className="">
           <Container>
             <RelatedGrid
               title="Product families using this capability"

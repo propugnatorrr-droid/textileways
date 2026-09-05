@@ -68,16 +68,16 @@ export default async function MaterialsPage(props: PageProps<"/materials">) {
       <Section>
         <Container>
           <nav aria-label="Material groups" className="mb-12">
-            <ul className="flex flex-wrap gap-px border border-line bg-line">
+            <ul className="flex flex-wrap gap-2">
               <li>
                 <Link
                   href="/materials"
                   aria-current={activeGroup === null ? "page" : undefined}
                   className={cn(
-                    "flex min-h-[46px] items-center px-5 text-small font-medium transition-colors duration-200",
+                    "flex min-h-[46px] items-center rounded-[14px] border px-5 text-small font-semibold transition-colors duration-200",
                     activeGroup === null
-                      ? "bg-forest text-paper"
-                      : "bg-paper text-ink-muted hover:bg-cotton",
+                      ? "border-forest bg-forest text-white"
+                      : "border-line-strong bg-white text-ink-muted hover:border-ink/25 hover:bg-cotton",
                   )}
                 >
                   All materials
@@ -89,10 +89,10 @@ export default async function MaterialsPage(props: PageProps<"/materials">) {
                     href={`/materials?group=${group}`}
                     aria-current={activeGroup === group ? "page" : undefined}
                     className={cn(
-                      "flex min-h-[46px] items-center px-5 text-small font-medium transition-colors duration-200",
+                      "flex min-h-[46px] items-center rounded-[14px] border px-5 text-small font-semibold transition-colors duration-200",
                       activeGroup === group
-                        ? "bg-forest text-paper"
-                        : "bg-paper text-ink-muted hover:bg-cotton",
+                        ? "border-forest bg-forest text-white"
+                        : "border-line-strong bg-white text-ink-muted hover:border-ink/25 hover:bg-cotton",
                     )}
                   >
                     {materialGroupLabels[group]}
@@ -119,22 +119,22 @@ export default async function MaterialsPage(props: PageProps<"/materials">) {
               }
             />
           ) : (
-            <ul className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {visible.map((material, index) => (
                 <Reveal
                   key={material.slug}
                   as="li"
                   delay={(index % 3) * 55}
-                  className="bg-paper"
+                  className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
                 >
                   <Link
                     href={`/materials/${material.slug}`}
-                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
                   >
                     <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
                       {materialGroupLabels[material.group]}
                     </p>
-                    <h2 className="mt-3 font-serif text-h3 transition-colors duration-200 group-hover:text-forest">
+                    <h2 className="mt-3 font-sans text-h3 font-semibold tracking-[-0.032em] transition-colors duration-200 group-hover:text-forest">
                       {material.name}
                     </h2>
                     <p className="mt-3 flex-1 text-small leading-relaxed text-ink-muted">

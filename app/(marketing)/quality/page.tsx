@@ -131,19 +131,19 @@ export default function QualityPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <h2 className="max-w-[18ch] font-serif text-h2">Eight production checkpoints</h2>
+            <h2 className="max-w-[18ch] font-sans text-h2 font-semibold tracking-[-0.045em]">Eight production checkpoints</h2>
             <p className="max-w-[42ch] text-small text-ink-subtle">
               Each one exists to catch a specific class of problem while correction is still
               cheap.
             </p>
           </div>
 
-          <ol className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {qualityCheckpoints.map((checkpoint, index) => (
-              <Reveal key={checkpoint.title} as="li" delay={(index % 4) * 55} className="bg-paper p-6">
+              <Reveal key={checkpoint.title} as="li" delay={(index % 4) * 55} className="tw-card tw-card-interactive rounded-[22px] p-6">
                 <p className="text-label uppercase tracking-[0.09em] text-stone">
                   {String(index + 1).padStart(2, "0")}
                 </p>
@@ -161,9 +161,9 @@ export default function QualityPage() {
         eyebrow="Controls"
         title="What is actually controlled"
         intro="Fourteen controls that run across a project. Each is a procedure rather than a promise, and each is agreed for your order."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
-        <ul className="divide-y divide-line border-y border-line">
+        <ul className="divide-y divide-line">
           {controls.map((control) => (
             <li key={control.title} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,17rem)_1fr] sm:gap-8">
               <h3 className="text-small font-semibold text-ink">{control.title}</h3>
@@ -221,7 +221,7 @@ export default function QualityPage() {
       </SplitSection>
 
       {faqs.length > 0 ? (
-        <SplitSection eyebrow="Questions" title="Frequently asked" className="bg-cotton">
+        <SplitSection eyebrow="Questions" title="Frequently asked" className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
           <FaqAccordion items={faqs} />
         </SplitSection>
       ) : null}

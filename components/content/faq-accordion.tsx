@@ -31,7 +31,7 @@ export function FaqAccordion({
         const buttonId = `${baseId}-${item.id}-button`;
 
         return (
-          <div key={item.id} className="border-b border-line">
+          <div key={item.id} className="">
             <Heading>
               <button
                 id={buttonId}

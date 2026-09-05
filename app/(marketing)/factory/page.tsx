@@ -60,7 +60,7 @@ export default function FactoryPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={factoryNarrative.intro} />
 
@@ -80,10 +80,10 @@ export default function FactoryPage() {
         </Container>
       </Section>
 
-      <Section tight className="border-b border-line bg-cotton">
+      <Section tight className="bg-cotton">
         <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <h2 className="max-w-[16ch] font-serif text-h2">Twelve views of the facility</h2>
+            <h2 className="max-w-[16ch] font-sans text-h2 font-semibold tracking-[-0.045em]">Twelve views of the facility</h2>
             <p className="max-w-[42ch] text-small text-ink-subtle">
               Each panel below is a reserved slot with a written brief for the photograph
               required. No image of another factory is used as a substitute.
@@ -131,7 +131,7 @@ export default function FactoryPage() {
         eyebrow="Visiting"
         title="Audits and factory visits"
         intro="Verification beats description. If you are placing a significant programme, come and look."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <ul className="divide-y divide-line border-y border-line text-small text-ink-muted">
           <li className="py-5">

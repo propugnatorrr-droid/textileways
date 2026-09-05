@@ -38,7 +38,7 @@ export default function ManufacturingProcessPage() {
           </>
         }
         aside={
-          <div className="border border-line bg-cotton/50 p-6">
+          <div className="rounded-[20px] border border-line bg-cotton p-6">
             <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
               The short version
             </p>
@@ -56,7 +56,7 @@ export default function ManufacturingProcessPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <Notice tone="info" title="On timelines" className="max-w-[74ch]">
             No fixed timeline is published for these stages. Duration depends on fabric
@@ -75,18 +75,18 @@ export default function ManufacturingProcessPage() {
                 key={stage.number}
                 as="li"
                 delay={(index % 4) * 40}
-                className="bg-paper p-6 lg:p-8"
+                className="tw-card rounded-[24px] p-6 lg:p-8"
               >
                 <div className="grid gap-6 lg:grid-cols-[4rem_minmax(0,18rem)_1fr] lg:gap-10">
                   <span
                     aria-hidden="true"
-                    className="font-serif text-h2 leading-none text-stone"
+                    className="font-sans text-h2 font-semibold leading-none tracking-[-0.045em] text-stone"
                   >
                     {String(stage.number).padStart(2, "0")}
                   </span>
 
                   <div>
-                    <h2 className="font-serif text-h3">{stage.title}</h2>
+                    <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">{stage.title}</h2>
                   </div>
 
                   <div className="grid gap-6 sm:grid-cols-2">

@@ -10,7 +10,7 @@ export function CookieSettingsButton() {
     <button
       type="button"
       onClick={reopen}
-      className="tw-underline-grow text-small text-ink-subtle transition-colors duration-200 hover:text-forest"
+      className="tw-underline-grow text-small transition-colors duration-200 hover:text-white"
     >
       Cookie settings
     </button>

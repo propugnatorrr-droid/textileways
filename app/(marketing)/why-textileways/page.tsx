@@ -44,9 +44,9 @@ export default function WhyTextilewaysPage() {
         title="Six reasons buyers work with us"
         intro="Written as claims a buyer can test in the first conversation rather than as slogans."
       >
-        <ul className="grid gap-px bg-line sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {whyTextilewaysReasons.map((reason, index) => (
-            <Reveal key={reason.title} as="li" delay={(index % 2) * 55} className="bg-paper p-7">
+            <Reveal key={reason.title} as="li" delay={(index % 2) * 55} className="tw-card tw-card-interactive rounded-[22px] p-7">
               <span aria-hidden="true" className="block h-px w-8 bg-clay" />
               <h2 className="mt-6 text-body font-semibold text-ink">{reason.title}</h2>
               <p className="mt-3 text-small leading-relaxed text-ink-muted">
@@ -57,13 +57,13 @@ export default function WhyTextilewaysPage() {
         </ul>
       </SplitSection>
 
-      <Section tight className="border-b border-line bg-cotton">
+      <Section tight className="bg-cotton">
         <Container>
-          <h2 className="max-w-[18ch] font-serif text-h2">The range, stated plainly</h2>
-          <ol className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
+          <h2 className="max-w-[18ch] font-sans text-h2 font-semibold tracking-[-0.045em]">The range, stated plainly</h2>
+          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {productionScaleSteps.map((step, index) => (
-              <Reveal key={step.title} as="li" delay={index * 60} className="bg-cotton p-6">
-                <p className="font-serif text-h3 text-forest">{step.quantity}</p>
+              <Reveal key={step.title} as="li" delay={index * 60} className="tw-card tw-card-interactive rounded-[22px] p-6">
+                <p className="font-sans text-h3 text-forest">{step.quantity}</p>
                 <p className="mt-0.5 text-label uppercase tracking-[0.09em] text-ink-subtle">
                   {step.unit}
                 </p>

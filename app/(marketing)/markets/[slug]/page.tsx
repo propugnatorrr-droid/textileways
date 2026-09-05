@@ -77,7 +77,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={market.introduction} />
         </Container>
@@ -94,7 +94,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
         eyebrow="Documentation"
         title="Shipping documents"
         intro="The document set is confirmed against your destination and your importer's requirements before dispatch."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <MarkerList items={market.documentation} columns={2} className="text-body" />
       </SplitSection>
@@ -112,7 +112,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
         </Notice>
       </SplitSection>
 
-      <SplitSection eyebrow="Logistics" title="Getting goods there" className="bg-cotton">
+      <SplitSection eyebrow="Logistics" title="Getting goods there" className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
         <MarkerList items={market.logisticsNotes} className="text-body" />
       </SplitSection>
 
@@ -122,7 +122,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
         </SplitSection>
       ) : null}
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <RelatedGrid
             title="Other markets"

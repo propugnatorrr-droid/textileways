@@ -27,7 +27,7 @@ export function QuoteCta({
   productFamily?: string;
 }) {
   const styles = {
-    primary: "bg-forest text-paper border-forest hover:bg-forest-deep hover:border-forest-deep",
+    primary: "bg-forest text-white border-forest hover:bg-forest-deep hover:border-forest-deep",
     secondary: "bg-transparent text-ink border-line-strong hover:border-ink hover:bg-mist/50",
     inverse: "bg-cotton text-ink border-cotton hover:bg-white hover:border-white",
   }[variant];
@@ -42,7 +42,7 @@ export function QuoteCta({
         })
       }
       className={cn(
-        "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[3px] border px-6 py-3.5 text-small font-medium transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
+        "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[14px] border px-6 py-3.5 text-small font-medium transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
         styles,
         className,
       )}

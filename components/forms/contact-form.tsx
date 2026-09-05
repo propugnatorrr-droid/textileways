@@ -156,14 +156,14 @@ export function ContactForm() {
   if (state.status === "success") {
     return (
       <div className="max-w-[60ch]">
-        <h2 ref={successRef} tabIndex={-1} className="font-serif text-h3 outline-none">
+        <h2 ref={successRef} tabIndex={-1} className="font-sans text-h3 font-semibold tracking-[-0.032em] outline-none">
           Thank you. Your message has been sent.
         </h2>
-        <div className="mt-6 border border-line bg-cotton/50 p-6">
+        <div className="mt-6 rounded-[20px] border border-line bg-cotton p-6">
           <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
             Your reference
           </p>
-          <p className="mt-2 font-serif text-h3 text-forest">{state.reference}</p>
+          <p className="mt-2 font-sans text-h3 font-semibold tracking-[-0.032em] text-forest">{state.reference}</p>
         </div>
         <p className="mt-6 text-small text-ink-muted">
           A confirmation has been sent to the email address you gave. Someone will reply
@@ -171,7 +171,7 @@ export function ContactForm() {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-flex min-h-[48px] items-center rounded-[3px] border border-line-strong px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
+          className="mt-8 inline-flex min-h-[48px] items-center rounded-[14px] border border-line-strong px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
         >
           Return to the homepage
         </Link>

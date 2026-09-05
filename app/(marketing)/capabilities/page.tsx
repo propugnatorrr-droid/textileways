@@ -43,7 +43,7 @@ export default function CapabilitiesPage() {
           </>
         }
         aside={
-          <div className="border border-line bg-cotton/50 p-6">
+          <div className="rounded-[20px] border border-line bg-cotton p-6">
             <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
               Verification status
             </p>
@@ -63,27 +63,27 @@ export default function CapabilitiesPage() {
       />
 
       {groups.map((group) => (
-        <Section key={group.group} tight className="border-b border-line">
+        <Section key={group.group} tight className="">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
               <div className="lg:sticky lg:top-28 lg:self-start">
-                <h2 className="font-serif text-h3">{capabilityGroupLabels[group.group]}</h2>
+                <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">{capabilityGroupLabels[group.group]}</h2>
                 <p className="mt-3 text-small text-ink-subtle">
                   {group.items.length} capabilities
                 </p>
               </div>
 
-              <ul className="grid gap-px bg-line sm:grid-cols-2">
+              <ul className="grid gap-4 sm:grid-cols-2">
                 {group.items.map((capability, index) => (
                   <Reveal
                     key={capability.slug}
                     as="li"
                     delay={(index % 2) * 55}
-                    className="bg-paper"
+                    className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
                   >
                     <Link
                       href={`/capabilities/${capability.slug}`}
-                      className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+                      className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
                     >
                       <h3 className="text-body font-semibold transition-colors duration-200 group-hover:text-forest">
                         {capability.name}

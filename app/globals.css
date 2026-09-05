@@ -1,88 +1,92 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   Textileways design tokens
-   Tactile editorial minimalism: warm paper grounds, ink text, forest accent.
-   Square containers, hairline borders, restrained motion.
+   Textileways design system, 2026
+   White first, modern sans, image led, generous radii.
    ========================================================================== */
 
 @theme {
-  /* Palette */
-  --color-cotton: #f5f1e8;
-  --color-paper: #fcfaf5;
-  --color-ink: #17201d;
-  --color-forest: #29473c;
-  --color-forest-deep: #1d332b;
-  --color-clay: #a65f43;
-  --color-clay-deep: #8a4c33;
-  --color-stone: #cbc5ba;
-  --color-mist: #e7e4dd;
-  --color-blue: #607786;
   --color-white: #ffffff;
-  --color-error: #a33a32;
-  --color-success: #35634a;
+  --color-paper: #ffffff;
+  --color-cotton: #f5f7f6;
+  --color-mist: #eef2f0;
+  --color-surface: #f7f9f8;
+  --color-surface-strong: #edf2ef;
 
-  /* Muted text that still clears WCAG AA on paper and cotton */
-  --color-ink-muted: #4c5854;
-  --color-ink-subtle: #66716c;
-  --color-line: #ddd8cf;
-  --color-line-strong: #c6c0b5;
+  --color-ink: #0b0f0d;
+  --color-ink-muted: #505955;
+  --color-ink-subtle: #737c78;
 
-  /* Typography families, bound to next/font variables in the root layout */
+  --color-forest: #087a55;
+  --color-forest-deep: #056141;
+  --color-forest-soft: #e8f6f0;
+
+  --color-clay: #ff6846;
+  --color-clay-deep: #dc4d30;
+
+  --color-blue: #2457f5;
+  --color-blue-soft: #edf1ff;
+
+  --color-stone: #a9b1ad;
+  --color-line: #e8ecea;
+  --color-line-strong: #d8dedb;
+
+  --color-error: #c43333;
+  --color-success: #087a55;
+
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, "Times New Roman",
-    serif;
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Fluid editorial type scale */
-  --text-display-xl: clamp(3.2rem, 8vw, 7.5rem);
-  --text-display-xl--line-height: 0.94;
-  --text-display-xl--letter-spacing: -0.03em;
+  /* Aliased to the sans stack so existing font-serif utilities do not break. */
+  --font-serif: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --text-display-l: clamp(2.8rem, 6vw, 5.8rem);
-  --text-display-l--line-height: 0.98;
-  --text-display-l--letter-spacing: -0.025em;
+  --text-display-xl: clamp(3.6rem, 8.5vw, 8.4rem);
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: -0.065em;
 
-  --text-h1: clamp(2.4rem, 5vw, 4.6rem);
-  --text-h1--line-height: 1.02;
-  --text-h1--letter-spacing: -0.025em;
+  --text-display-l: clamp(3rem, 6.4vw, 6.5rem);
+  --text-display-l--line-height: 0.94;
+  --text-display-l--letter-spacing: -0.055em;
 
-  --text-h2: clamp(2rem, 4vw, 3.5rem);
-  --text-h2--line-height: 1.06;
-  --text-h2--letter-spacing: -0.02em;
+  --text-h1: clamp(2.8rem, 5.2vw, 5.2rem);
+  --text-h1--line-height: 0.98;
+  --text-h1--letter-spacing: -0.05em;
 
-  --text-h3: clamp(1.4rem, 2.2vw, 2.1rem);
-  --text-h3--line-height: 1.16;
-  --text-h3--letter-spacing: -0.015em;
+  --text-h2: clamp(2.25rem, 4vw, 4.25rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.045em;
 
-  --text-body-l: clamp(1.1rem, 1.3vw, 1.35rem);
-  --text-body-l--line-height: 1.6;
+  --text-h3: clamp(1.45rem, 2.2vw, 2.25rem);
+  --text-h3--line-height: 1.08;
+  --text-h3--letter-spacing: -0.032em;
+
+  --text-body-l: clamp(1.08rem, 1.3vw, 1.3rem);
+  --text-body-l--line-height: 1.55;
 
   --text-body: 1rem;
   --text-body--line-height: 1.65;
 
   --text-small: 0.875rem;
-  --text-small--line-height: 1.6;
+  --text-small--line-height: 1.55;
 
-  --text-label: 0.78125rem;
+  --text-label: 0.75rem;
   --text-label--line-height: 1.3;
-  --text-label--letter-spacing: 0.09em;
+  --text-label--letter-spacing: 0.07em;
 
-  /* Content widths */
-  --container-page: 1440px;
-  --container-content: 1280px;
+  --container-page: 1600px;
+  --container-content: 1440px;
   --container-reading: 760px;
 
-  /* Radii stay square to near square */
-  --radius-xs: 2px;
-  --radius-sm: 3px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
 
-  /* Motion */
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-precise: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-precise: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* --------------------------------------------------------------------------
@@ -99,19 +103,23 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    background: var(--color-white);
   }
 
   body {
-    background-color: var(--color-paper);
+    margin: 0;
+    overflow-x: clip;
+    background: var(--color-white);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
+    font-weight: 450;
     line-height: 1.65;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: clip;
   }
 
   h1,
@@ -120,6 +128,8 @@
   h4,
   h5,
   h6 {
+    font-family: var(--font-sans);
+    font-weight: 650;
     text-wrap: balance;
   }
 
@@ -127,23 +137,26 @@
     text-wrap: pretty;
   }
 
-  /* Visible, high contrast focus for keyboard users */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-    outline: 2px solid var(--color-forest);
-    outline-offset: 2px;
-    border-radius: 1px;
+    outline: 3px solid color-mix(in srgb, var(--color-blue) 60%, transparent);
+    outline-offset: 3px;
   }
 
   ::selection {
-    background-color: var(--color-forest);
-    color: var(--color-paper);
+    background: var(--color-blue);
+    color: var(--color-white);
   }
 
-  /* Rectangular form controls by default */
   input,
   select,
   textarea {
-    border-radius: var(--radius-xs);
+    border-radius: 14px;
+    background: var(--color-white);
   }
 
   [hidden] {
@@ -177,13 +190,12 @@
 
   @media (min-width: 1440px) {
     .tw-container {
-      padding-inline: 72px;
+      padding-inline: 64px;
     }
   }
 
-  /* Section rhythm: 72-96 mobile, 96-128 tablet, 120-176 desktop */
   .tw-section {
-    padding-block: 80px;
+    padding-block: 88px;
   }
 
   @media (min-width: 768px) {
@@ -216,6 +228,7 @@
 
   .tw-prose {
     max-width: var(--container-reading);
+    color: var(--color-ink-muted);
   }
 
   .tw-prose > * + * {
@@ -223,23 +236,26 @@
   }
 
   .tw-prose h2 {
-    font-family: var(--font-serif);
+    margin-top: 2.1em;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
     font-size: var(--text-h3);
-    line-height: 1.16;
-    letter-spacing: -0.015em;
-    margin-top: 2em;
+    font-weight: 650;
+    line-height: 1.08;
+    letter-spacing: -0.032em;
   }
 
   .tw-prose h3 {
+    margin-top: 1.8em;
+    color: var(--color-ink);
     font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-top: 1.75em;
+    font-weight: 650;
+    letter-spacing: -0.02em;
   }
 
   .tw-prose ul,
   .tw-prose ol {
-    padding-left: 1.15rem;
+    padding-left: 1.2rem;
   }
 
   .tw-prose ul {
@@ -251,32 +267,75 @@
   }
 
   .tw-prose li + li {
-    margin-top: 0.4em;
+    margin-top: 0.45em;
   }
 
   .tw-prose a {
+    color: var(--color-forest);
+    font-weight: 600;
     text-decoration: underline;
-    text-underline-offset: 3px;
     text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
   }
 
-  /* Hairline rule used to separate editorial blocks */
   .tw-rule {
     border-top: 1px solid var(--color-line);
+  }
+
+  .tw-card {
+    border: 1px solid var(--color-line);
+    border-radius: 24px;
+    background: var(--color-white);
+    box-shadow:
+      0 1px 2px rgb(11 15 13 / 0.03),
+      0 18px 50px rgb(11 15 13 / 0.06);
+  }
+
+  .tw-card-interactive {
+    transition:
+      transform 420ms var(--ease-editorial),
+      box-shadow 420ms var(--ease-editorial),
+      border-color 420ms var(--ease-editorial);
+  }
+
+  .tw-card-interactive:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--color-forest) 22%, var(--color-line));
+    box-shadow:
+      0 2px 4px rgb(11 15 13 / 0.04),
+      0 26px 70px rgb(11 15 13 / 0.11);
+  }
+
+  .tw-surface {
+    border-radius: 32px;
+    background: var(--color-cotton);
+  }
+
+  .tw-section-header {
+    display: grid;
+    gap: 24px;
+  }
+
+  @media (min-width: 900px) {
+    .tw-section-header {
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.58fr);
+      align-items: end;
+      gap: 64px;
+    }
   }
 }
 
 /* --------------------------------------------------------------------------
-   Motion, always opt out under prefers-reduced-motion
+   Utilities
    -------------------------------------------------------------------------- */
 
 @layer utilities {
   .tw-reveal {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(22px);
     transition:
-      opacity 700ms var(--ease-editorial),
-      transform 700ms var(--ease-editorial);
+      opacity 720ms var(--ease-editorial),
+      transform 720ms var(--ease-editorial);
     transition-delay: var(--reveal-delay, 0ms);
     will-change: opacity, transform;
   }
@@ -290,8 +349,8 @@
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
     background-position: 0 100%;
-    background-size: 0% 1px;
-    transition: background-size 320ms var(--ease-editorial);
+    background-size: 0 1px;
+    transition: background-size 300ms var(--ease-editorial);
   }
 
   .tw-underline-grow:hover,
@@ -300,22 +359,25 @@
   }
 
   .tw-media-zoom img {
-    transition: transform 700ms var(--ease-editorial);
+    transition: transform 800ms var(--ease-editorial);
   }
 
   .tw-media-zoom:hover img {
-    transform: scale(1.03);
+    transform: scale(1.045);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
   }
 
   .tw-reveal {

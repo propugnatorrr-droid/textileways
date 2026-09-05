@@ -13,7 +13,7 @@ import { cn } from "@/lib/utilities/cn";
  */
 
 const controlClasses =
-  "w-full min-h-[48px] border border-line-strong bg-white px-4 py-3 text-body text-ink rounded-[2px] transition-colors duration-200 placeholder:text-ink-subtle/70 focus-visible:border-forest disabled:cursor-not-allowed disabled:bg-mist/40";
+  "w-full min-h-[48px] border border-line-strong bg-white px-4 py-3 text-body text-ink rounded-[10px] transition-colors duration-200 placeholder:text-ink-subtle/70 focus-visible:border-forest disabled:cursor-not-allowed disabled:bg-mist/40";
 
 const errorClasses = "border-error focus-visible:border-error";
 
@@ -402,7 +402,7 @@ export function ErrorSummary({
     <div
       role="alert"
       tabIndex={-1}
-      className="border-l-2 border-error border-y border-r border-error/40 bg-error/5 px-5 py-4 rounded-[3px]"
+      className="border-l-2 border-error border-y border-r border-error/40 bg-error/5 px-5 py-4 rounded-[14px]"
       data-error-summary
     >
       <p className="text-small font-semibold text-ink">

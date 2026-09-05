@@ -93,7 +93,7 @@ export default async function MaterialPage(props: PageProps<"/materials/[slug]">
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={material.introduction} />
         </Container>
@@ -116,7 +116,7 @@ export default async function MaterialPage(props: PageProps<"/materials/[slug]">
       <SplitSection
         eyebrow="Applications"
         title="Where this material is used"
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <div className="grid gap-10 sm:grid-cols-2">
           <div>
@@ -145,7 +145,7 @@ export default async function MaterialPage(props: PageProps<"/materials/[slug]">
         </div>
       </SplitSection>
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

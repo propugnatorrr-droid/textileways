@@ -51,14 +51,14 @@ export default function MarketsPage() {
 
       <Section>
         <Container>
-          <ul className="grid gap-px bg-line lg:grid-cols-3">
+          <ul className="grid gap-4 lg:grid-cols-3">
             {markets.map((market, index) => (
-              <Reveal key={market.slug} as="li" delay={index * 70} className="bg-paper">
+              <Reveal key={market.slug} as="li" delay={index * 70} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
                   href={`/markets/${market.slug}`}
-                  className="group flex h-full flex-col p-8 transition-colors duration-300 hover:bg-cotton/60"
+                  className="group flex h-full flex-col p-8 transition-colors duration-300 hover:bg-cotton"
                 >
-                  <h2 className="font-serif text-h2 transition-colors duration-200 group-hover:text-forest">
+                  <h2 className="font-sans text-h2 font-semibold tracking-[-0.045em] transition-colors duration-200 group-hover:text-forest">
                     {market.name}
                   </h2>
                   <p className="mt-4 flex-1 text-small leading-relaxed text-ink-muted">

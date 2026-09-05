@@ -48,7 +48,7 @@ export default function TraceabilityPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={traceabilityNarrative.intro} />
         </Container>
@@ -65,7 +65,7 @@ export default function TraceabilityPage() {
               key={level.title}
               className="grid gap-2 border-b border-line py-6 sm:grid-cols-[3rem_minmax(0,14rem)_1fr] sm:gap-6"
             >
-              <span aria-hidden="true" className="font-serif text-h3 leading-none text-stone">
+              <span aria-hidden="true" className="font-sans text-h3 font-semibold leading-none tracking-[-0.04em] text-stone">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h2 className="text-small font-semibold text-ink">{level.title}</h2>
@@ -79,7 +79,7 @@ export default function TraceabilityPage() {
         eyebrow="Disclosure"
         title="How every product family is produced"
         intro="Published on each product page and collected here. Nothing on this site implies that every category runs under one roof."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <div className="space-y-10">
           {Object.entries(byStatus).map(([status, names], index) => (

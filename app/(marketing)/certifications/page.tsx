@@ -69,8 +69,8 @@ export default function CertificationsPage() {
               {certificates.map((certificate) => {
                 const status = resolveCertificateStatus(certificate);
                 return (
-                  <li key={certificate.id} className="border border-line p-7">
-                    <h2 className="font-serif text-h3">{certificate.name}</h2>
+                  <li key={certificate.id} className="rounded-[22px] border border-line p-7">
+                    <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">{certificate.name}</h2>
                     <SpecList
                       className="mt-6"
                       items={[
@@ -105,7 +105,7 @@ export default function CertificationsPage() {
         eyebrow="How this works"
         title="What gets published here"
         intro="The rules the registry enforces, so a lapsed certificate cannot quietly remain on display."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <ul className="divide-y divide-line border-y border-line text-small text-ink-muted">
           <li className="py-5">

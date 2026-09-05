@@ -383,7 +383,7 @@ export function RfqForm() {
         <h2
           ref={headingRef}
           tabIndex={-1}
-          className="font-serif text-h3 outline-none"
+          className="font-sans text-h3 font-semibold tracking-[-0.032em] outline-none"
         >
           Step {step + 1} of {TOTAL_STEPS}: {rfqStepTitles[step]}
         </h2>
@@ -487,7 +487,7 @@ function StepNavigation({
 }) {
   return (
     <nav aria-label="Quote request steps" className="lg:sticky lg:top-28 lg:self-start">
-      <ol className="divide-y divide-line border-y border-line">
+      <ol className="divide-y divide-line">
         {rfqStepTitles.map((title, index) => {
           const isCurrent = index === current;
           const isComplete = index < current;
@@ -510,7 +510,7 @@ function StepNavigation({
                   className={cn(
                     "flex h-6 w-6 shrink-0 items-center justify-center border text-label",
                     isCurrent
-                      ? "border-forest bg-forest text-paper"
+                      ? "border-forest bg-forest text-white"
                       : isComplete
                         ? "border-forest text-forest"
                         : "border-line-strong text-ink-subtle",
@@ -1113,16 +1113,16 @@ function RfqSuccess({ reference, warning }: { reference: string; warning?: strin
       <h2
         ref={headingRef}
         tabIndex={-1}
-        className="mt-6 font-serif text-h2 outline-none"
+        className="mt-6 font-sans text-h2 font-semibold tracking-[-0.045em] outline-none"
       >
         Thank you. Your quote request has been received.
       </h2>
 
-      <div className="mt-8 border border-line bg-cotton/50 p-6">
+      <div className="mt-8 rounded-[20px] border border-line bg-cotton p-6">
         <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
           Your reference
         </p>
-        <p className="mt-2 font-serif text-h3 text-forest">{reference}</p>
+        <p className="mt-2 font-sans text-h3 font-semibold tracking-[-0.032em] text-forest">{reference}</p>
         <p className="mt-3 text-small text-ink-muted">
           Keep this reference for any follow up. A confirmation has been sent to the email
           address you provided.
@@ -1164,13 +1164,13 @@ function RfqSuccess({ reference, warning }: { reference: string; warning?: strin
       <div className="mt-10 flex flex-wrap gap-3">
         <Link
           href="/products"
-          className="inline-flex min-h-[48px] items-center rounded-[3px] border border-line-strong px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
+          className="inline-flex min-h-[48px] items-center rounded-[14px] border border-line-strong px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
         >
           Browse product families
         </Link>
         <Link
           href="/manufacturing-process"
-          className="inline-flex min-h-[48px] items-center rounded-[3px] border border-line-strong px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
+          className="inline-flex min-h-[48px] items-center rounded-[14px] border border-line-strong px-6 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
         >
           See what happens next in detail
         </Link>

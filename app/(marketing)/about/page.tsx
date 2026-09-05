@@ -52,7 +52,7 @@ export default function AboutPage() {
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={aboutNarrative.intro} />
         </Container>
@@ -63,9 +63,9 @@ export default function AboutPage() {
         title="How we work"
         intro="Four habits that decide whether a manufacturing relationship works over years rather than for a single order."
       >
-        <ul className="grid gap-px bg-line sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {aboutNarrative.approach.map((item, index) => (
-            <Reveal key={item.title} as="li" delay={(index % 2) * 60} className="bg-paper p-7">
+            <Reveal key={item.title} as="li" delay={(index % 2) * 60} className="tw-card tw-card-interactive rounded-[22px] p-7">
               <h3 className="text-body font-semibold text-ink">{item.title}</h3>
               <p className="mt-3 text-small leading-relaxed text-ink-muted">
                 {item.description}
@@ -79,7 +79,7 @@ export default function AboutPage() {
         eyebrow="Company facts"
         title="What we can state as fact"
         intro="Everything published about the business is held in one register with a verification status. Anything unconfirmed is absent rather than estimated."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <SpecList items={facts.map((fact) => ({ label: fact.label, value: fact.value }))} />
 

@@ -94,7 +94,7 @@ function ConsentBanner({ onGrant, onDeny }: { onGrant: () => void; onDeny: () =>
       role="dialog"
       aria-modal="false"
       aria-labelledby="cookie-consent-title"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-paper"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-white"
     >
       <div className="tw-container flex flex-col gap-5 py-5 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <div className="max-w-[62ch]">
@@ -115,14 +115,14 @@ function ConsentBanner({ onGrant, onDeny }: { onGrant: () => void; onDeny: () =>
           <button
             type="button"
             onClick={onDeny}
-            className="min-h-[44px] rounded-[3px] border border-line-strong px-5 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
+            className="min-h-[44px] rounded-[14px] border border-line-strong px-5 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
           >
             Decline
           </button>
           <button
             type="button"
             onClick={onGrant}
-            className="min-h-[44px] rounded-[3px] border border-forest bg-forest px-5 text-small font-medium text-paper transition-colors duration-200 hover:bg-forest-deep"
+            className="min-h-[44px] rounded-[14px] border border-forest bg-forest px-5 text-small font-medium text-white transition-colors duration-200 hover:bg-forest-deep"
           >
             Accept
           </button>

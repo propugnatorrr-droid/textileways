@@ -45,10 +45,7 @@ export function Section({
 /* Typography                                                                  */
 /* -------------------------------------------------------------------------- */
 
-/**
- * Small uppercase label used above headings. Rendered as a plain block with a
- * leading rule rather than a pill, which the design rules prohibit.
- */
+/** Small uppercase label sitting above a heading. */
 export function Eyebrow({
   children,
   className,
@@ -61,18 +58,11 @@ export function Eyebrow({
   return (
     <p
       className={cn(
-        "flex items-center gap-3 text-label font-medium uppercase tracking-[0.09em]",
-        tone === "inverse" ? "text-cotton/75" : "text-ink-subtle",
+        "text-label font-semibold uppercase tracking-[0.12em]",
+        tone === "inverse" ? "text-white/72" : "text-forest",
         className,
       )}
     >
-      <span
-        aria-hidden="true"
-        className={cn(
-          "h-px w-6 shrink-0",
-          tone === "inverse" ? "bg-cotton/40" : "bg-line-strong",
-        )}
-      />
       {children}
     </p>
   );
@@ -99,13 +89,17 @@ export function DisplayHeading({
   }[size];
 
   return (
-    <Tag className={cn("font-serif font-normal", sizeClass, className)}>{children}</Tag>
+    <Tag className={cn("font-sans font-semibold tracking-[-0.045em]", sizeClass, className)}>
+      {children}
+    </Tag>
   );
 }
 
 export function Lede({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn("text-body-l text-ink-muted max-w-[62ch]", className)}>{children}</p>
+    <p className={cn("max-w-[58ch] text-body-l leading-relaxed text-ink-muted", className)}>
+      {children}
+    </p>
   );
 }
 
@@ -116,13 +110,16 @@ export function Lede({ children, className }: { children: ReactNode; className?:
 type ButtonVariant = "primary" | "secondary" | "quiet" | "inverse";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 border text-small font-medium tracking-[0.01em] px-6 py-3.5 min-h-[48px] rounded-[3px] transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] disabled:opacity-55 disabled:cursor-not-allowed";
+  "inline-flex min-h-[50px] items-center justify-center gap-2 rounded-[14px] border px-6 py-3.5 text-small font-semibold tracking-[-0.01em] shadow-[0_1px_2px_rgba(11,15,13,0.05)] transition-[background-color,border-color,color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-50";
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  primary: "bg-forest text-paper border-forest hover:bg-forest-deep hover:border-forest-deep",
-  secondary: "bg-transparent text-ink border-line-strong hover:border-ink hover:bg-mist/50",
-  quiet: "bg-transparent text-ink border-transparent hover:bg-mist/60 px-4",
-  inverse: "bg-cotton text-ink border-cotton hover:bg-white hover:border-white",
+  primary:
+    "border-forest bg-forest text-white hover:border-forest-deep hover:bg-forest-deep hover:shadow-[0_14px_30px_rgba(8,122,85,0.2)]",
+  secondary:
+    "border-line-strong bg-white text-ink hover:border-ink/25 hover:bg-cotton hover:shadow-[0_12px_30px_rgba(11,15,13,0.08)]",
+  quiet: "border-transparent bg-transparent px-4 text-ink hover:bg-cotton",
+  inverse:
+    "border-white bg-white text-ink hover:border-white hover:bg-cotton hover:shadow-[0_14px_30px_rgba(0,0,0,0.14)]",
 };
 
 export function ButtonLink({
@@ -181,13 +178,13 @@ export function TextLink({
     <Link
       href={href}
       className={cn(
-        "tw-underline-grow inline-flex items-center gap-1.5 font-medium text-ink",
+        "tw-underline-grow inline-flex items-center gap-1.5 font-semibold text-ink",
         className,
       )}
     >
       {children}
       {withArrow ? (
-        <span aria-hidden="true" className="text-ink-subtle">
+        <span aria-hidden="true" className="text-forest">
           &rarr;
         </span>
       ) : null}
@@ -199,10 +196,6 @@ export function TextLink({
 /* Status and metadata                                                         */
 /* -------------------------------------------------------------------------- */
 
-/**
- * Square status marker. Deliberately not a pill: the shape system requires
- * rectangular tags with a hairline border.
- */
 export function StatusTag({
   children,
   tone = "neutral",
@@ -213,16 +206,16 @@ export function StatusTag({
   className?: string;
 }) {
   const tones = {
-    neutral: "border-line-strong text-ink-muted bg-white",
-    forest: "border-forest/35 text-forest bg-forest/5",
-    clay: "border-clay/35 text-clay-deep bg-clay/5",
-    muted: "border-line text-ink-subtle bg-mist/50",
+    neutral: "border-line-strong bg-white text-ink-muted",
+    forest: "border-forest/20 bg-forest-soft text-forest-deep",
+    clay: "border-clay/25 bg-clay/10 text-clay-deep",
+    muted: "border-line bg-cotton text-ink-subtle",
   }[tone];
 
   return (
     <span
       className={cn(
-        "inline-block border px-2.5 py-1 text-label font-medium uppercase tracking-[0.09em] rounded-[2px]",
+        "inline-block rounded-[10px] border px-3 py-1.5 text-label font-semibold uppercase tracking-[0.08em]",
         tones,
         className,
       )}
@@ -243,10 +236,13 @@ export function SpecList({
   if (items.length === 0) return null;
 
   return (
-    <dl className={cn("divide-y divide-line border-y border-line", className)}>
+    <dl className={cn("divide-y divide-line overflow-hidden rounded-[20px] border border-line bg-white", className)}>
       {items.map((item) => (
-        <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[minmax(0,14rem)_1fr] sm:gap-6">
-          <dt className="text-small font-medium text-ink">{item.label}</dt>
+        <div
+          key={item.label}
+          className="grid gap-1 px-5 py-4 sm:grid-cols-[minmax(0,14rem)_1fr] sm:gap-6 sm:px-6"
+        >
+          <dt className="text-small font-semibold text-ink">{item.label}</dt>
           <dd className="text-small text-ink-muted">
             {item.value}
             {item.note ? (
@@ -259,7 +255,7 @@ export function SpecList({
   );
 }
 
-/** Simple bulleted list with square markers, matching the editorial grid. */
+/** Bulleted list with a small forest marker. */
 export function MarkerList({
   items,
   className,
@@ -275,13 +271,16 @@ export function MarkerList({
     <ul
       className={cn(
         "text-small text-ink-muted",
-        columns === 2 ? "grid gap-x-10 gap-y-2.5 sm:grid-cols-2" : "space-y-2.5",
+        columns === 2 ? "grid gap-x-10 gap-y-3 sm:grid-cols-2" : "space-y-3",
         className,
       )}
     >
       {items.map((item) => (
         <li key={item} className="flex gap-3">
-          <span aria-hidden="true" className="mt-[0.6em] h-1 w-1 shrink-0 bg-clay" />
+          <span
+            aria-hidden="true"
+            className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-forest"
+          />
           <span>{item}</span>
         </li>
       ))}
@@ -307,12 +306,12 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        "border border-line bg-cotton/50 px-6 py-14 text-center rounded-[4px]",
+        "rounded-[24px] border border-line bg-cotton px-6 py-14 text-center",
         className,
       )}
     >
-      <p className="font-serif text-h3">{title}</p>
-      <p className="mx-auto mt-3 max-w-[46ch] text-small text-ink-muted">{description}</p>
+      <p className="font-sans text-h3 font-semibold tracking-[-0.032em] text-ink">{title}</p>
+      <p className="mx-auto mt-3 max-w-[52ch] text-small text-ink-muted">{description}</p>
       {action ? <div className="mt-7 flex justify-center">{action}</div> : null}
     </div>
   );
@@ -333,17 +332,14 @@ export function Notice({
   role?: "alert" | "status";
 }) {
   const tones = {
-    info: "border-blue/30 bg-blue/5 text-ink",
-    error: "border-error/40 bg-error/5 text-ink",
-    success: "border-success/35 bg-success/5 text-ink",
+    info: "border-blue/20 bg-blue-soft",
+    error: "border-error/25 bg-error/5",
+    success: "border-forest/20 bg-forest-soft",
   }[tone];
 
   return (
-    <div
-      role={role}
-      className={cn("border-l-2 border-y border-r px-5 py-4 rounded-[3px]", tones, className)}
-    >
-      {title ? <p className="text-small font-semibold">{title}</p> : null}
+    <div role={role} className={cn("rounded-[16px] border px-5 py-4", tones, className)}>
+      {title ? <p className="text-small font-semibold text-ink">{title}</p> : null}
       <div className={cn("text-small text-ink-muted", title ? "mt-1.5" : undefined)}>
         {children}
       </div>

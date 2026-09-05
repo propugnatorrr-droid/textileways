@@ -6,10 +6,10 @@ import { cn } from "@/lib/utilities/cn";
  * Media abstraction.
  *
  * When an asset is marked as a placeholder, no image request is made at all.
- * Instead a woven pattern panel is drawn inline, built from the brand palette
- * and derived deterministically from the asset path so that different slots do
- * not all look identical. This keeps the site free of remote stock imagery while
- * still giving every media slot a considered visual treatment.
+ * Instead a restrained cool grey panel is drawn with a faint thread grid, varied
+ * deterministically from the asset path so different slots are not identical.
+ * This keeps the site free of remote stock imagery while every media slot still
+ * reads as a considered surface rather than a broken image.
  *
  * Once a real photograph is dropped into `public/images` and `isPlaceholder` is
  * removed from the record, the same component renders it through `next/image`
@@ -31,7 +31,7 @@ interface MediaProps {
   zoomOnHover?: boolean;
 }
 
-/** Deterministic small integer from a string, used to vary the weave pattern. */
+/** Deterministic small integer from a string, used to vary the placeholder. */
 function hash(value: string): number {
   let total = 0;
   for (let index = 0; index < value.length; index += 1) {
@@ -40,29 +40,23 @@ function hash(value: string): number {
   return total;
 }
 
-const weaveGrounds = [
-  { ground: "var(--color-cotton)", warp: "var(--color-stone)", weft: "var(--color-mist)" },
-  { ground: "var(--color-mist)", warp: "var(--color-stone)", weft: "var(--color-paper)" },
-  { ground: "#e9e5db", warp: "var(--color-blue)", weft: "var(--color-cotton)" },
-  { ground: "var(--color-cotton)", warp: "var(--color-clay)", weft: "var(--color-paper)" },
-] as const;
-
 /**
- * Placeholder panel drawn as an inline SVG weave. Marked decorative, because the
+ * Placeholder panel.
+ *
+ * A cool grey field with a faint thread grid, marked decorative because the
  * information it stands in for is not present yet and announcing a pattern to a
  * screen reader would be noise.
  */
-function WeavePanel({ asset, className }: { asset: MediaAsset; className?: string }) {
+function PlaceholderPanel({ asset, className }: { asset: MediaAsset; className?: string }) {
   const seed = hash(asset.src);
-  const palette = weaveGrounds[seed % weaveGrounds.length];
-  const cell = 12 + (seed % 5) * 4;
-  const stroke = 1 + (seed % 2);
+  const cell = 26 + (seed % 4) * 10;
   const rotation = seed % 2 === 0 ? 0 : 90;
-  const patternId = `weave-${seed}`;
+  const gradientId = `ph-grad-${seed}`;
+  const patternId = `ph-grid-${seed}`;
 
   return (
     <div
-      className={cn("relative h-full w-full overflow-hidden bg-cotton", className)}
+      className={cn("relative h-full w-full overflow-hidden", className)}
       data-media-placeholder="true"
     >
       <svg
@@ -73,6 +67,10 @@ function WeavePanel({ asset, className }: { asset: MediaAsset; className?: strin
         viewBox="0 0 400 300"
       >
         <defs>
+          <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#f8faf9" />
+            <stop offset="100%" stopColor="#edf3f0" />
+          </linearGradient>
           <pattern
             id={patternId}
             width={cell}
@@ -80,18 +78,18 @@ function WeavePanel({ asset, className }: { asset: MediaAsset; className?: strin
             patternUnits="userSpaceOnUse"
             patternTransform={`rotate(${rotation})`}
           >
-            <rect width={cell} height={cell} fill={palette.ground} />
-            <rect width={cell / 2} height={cell} fill={palette.weft} opacity="0.55" />
-            <rect width={cell} height={stroke} y={cell / 2} fill={palette.warp} opacity="0.4" />
+            <path
+              d={`M 0 0 L 0 ${cell} M 0 0 L ${cell} 0`}
+              stroke="#0b0f0d"
+              strokeWidth="1"
+              opacity="0.05"
+              fill="none"
+            />
           </pattern>
         </defs>
+        <rect width="400" height="300" fill={`url(#${gradientId})`} />
         <rect width="400" height="300" fill={`url(#${patternId})`} />
-        <rect width="400" height="300" fill="var(--color-paper)" opacity="0.35" />
       </svg>
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 border border-line"
-      />
     </div>
   );
 }
@@ -105,14 +103,13 @@ export function Media({
   showCaption = false,
   zoomOnHover = false,
 }: MediaProps) {
-  const ratioStyle = aspect
-    ? undefined
-    : { aspectRatio: `${asset.width} / ${asset.height}` };
+  const ratioStyle = aspect ? undefined : { aspectRatio: `${asset.width} / ${asset.height}` };
 
   const frame = (
     <div
+      data-media-frame="true"
       className={cn(
-        "relative overflow-hidden bg-mist rounded-[3px]",
+        "relative overflow-hidden rounded-[24px] bg-cotton shadow-[0_1px_2px_rgba(11,15,13,0.04),0_20px_60px_rgba(11,15,13,0.08)]",
         aspect,
         zoomOnHover ? "tw-media-zoom" : undefined,
         className,
@@ -120,7 +117,7 @@ export function Media({
       style={ratioStyle}
     >
       {asset.isPlaceholder ? (
-        <WeavePanel asset={asset} />
+        <PlaceholderPanel asset={asset} />
       ) : (
         <Image
           src={asset.src}
@@ -143,7 +140,7 @@ export function Media({
       <figcaption className="text-small text-ink-subtle">
         {asset.isPlaceholder ? (
           <>
-            <span className="font-medium text-ink-muted">Photography required. </span>
+            <span className="font-semibold text-ink-muted">Photography required. </span>
             {asset.caption}
           </>
         ) : (

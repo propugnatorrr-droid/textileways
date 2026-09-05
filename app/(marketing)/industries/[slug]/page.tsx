@@ -80,7 +80,7 @@ export default async function IndustryPage(props: PageProps<"/industries/[slug]"
         }
       />
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <ProseBlock paragraphs={industry.introduction} />
         </Container>
@@ -98,7 +98,7 @@ export default async function IndustryPage(props: PageProps<"/industries/[slug]"
         eyebrow="Compliance"
         title="Requirements to confirm"
         intro="Regulatory responsibility for a product sits with the organisation placing it on the market. These are the points we raise before production."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <MarkerList items={industry.complianceNotes} className="text-body" />
       </SplitSection>
@@ -109,7 +109,7 @@ export default async function IndustryPage(props: PageProps<"/industries/[slug]"
         </SplitSection>
       ) : null}
 
-      <Section tight className="border-b border-line">
+      <Section tight className="">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

@@ -58,9 +58,9 @@ export default function ResponsibilityPage() {
         title="Four rules this website follows"
         intro="Applied to every page, including the ones where following them makes the site look less impressive."
       >
-        <ul className="grid gap-px bg-line sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {responsibilityPrinciples.map((principle, index) => (
-            <Reveal key={principle.title} as="li" delay={(index % 2) * 55} className="bg-paper p-7">
+            <Reveal key={principle.title} as="li" delay={(index % 2) * 55} className="tw-card tw-card-interactive rounded-[22px] p-7">
               <span aria-hidden="true" className="block h-px w-8 bg-clay" />
               <h2 className="mt-6 text-body font-semibold text-ink">{principle.title}</h2>
               <p className="mt-3 text-small leading-relaxed text-ink-muted">
@@ -75,9 +75,9 @@ export default function ResponsibilityPage() {
         eyebrow="Withheld"
         title="Figures a competitor would probably publish"
         intro="These are all held in the company fact register with a status of do not publish. They stay unpublished until they are measured with a stated method and a reporting period."
-        className="bg-cotton"
+        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
-        <ul className="divide-y divide-line border-y border-line">
+        <ul className="divide-y divide-line">
           {withheld.map((fact) => (
             <li key={fact.id} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,16rem)_1fr] sm:gap-8">
               <h3 className="text-small font-semibold text-ink">{fact.label}</h3>
@@ -119,17 +119,17 @@ export default function ResponsibilityPage() {
         />
       </SplitSection>
 
-      <Section tight className="border-b border-line bg-cotton">
+      <Section tight className="bg-cotton">
         <Container>
           <h2 className="mb-8 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
             Related pages
           </h2>
-          <ul className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {relatedPages.map((page, index) => (
-              <Reveal key={page.href} as="li" delay={(index % 3) * 55} className="bg-cotton">
+              <Reveal key={page.href} as="li" delay={(index % 3) * 55} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
                   href={page.href}
-                  className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-paper"
+                  className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-white"
                 >
                   <span className="text-body font-semibold text-ink transition-colors duration-200 group-hover:text-forest">
                     {page.label}

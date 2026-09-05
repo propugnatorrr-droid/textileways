@@ -12,7 +12,7 @@ test.describe("homepage", () => {
 
     await expect(page).toHaveTitle(/Textileways/);
     await expect(
-      page.getByRole("heading", { level: 1, name: /Every textile possibility/i }),
+      page.getByRole("heading", { level: 1, name: /Made for your first launch/i }),
     ).toBeVisible();
 
     const h1Count = await page.locator("h1").count();
@@ -22,7 +22,7 @@ test.describe("homepage", () => {
   test("shows both primary hero actions", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("link", { name: /Request a Manufacturing Quote/i }),
+      page.getByRole("link", { name: /Start a Manufacturing Project/i }),
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /^Explore Products$/i })).toBeVisible();
   });
@@ -34,10 +34,11 @@ test.describe("homepage", () => {
       /Thirteen product families/i,
       /Startup flexibility/i,
       /Eight stages from inquiry to delivery/i,
+      /Everything a product needs, in one place/i,
       /Where your product would be made/i,
       /Eight checkpoints/i,
       /Built around USA and European buyers/i,
-      /From your first sample to your largest production run/i,
+      /Bring us the idea/i,
     ]) {
       await expect(page.getByRole("heading", { name: heading })).toBeVisible();
     }

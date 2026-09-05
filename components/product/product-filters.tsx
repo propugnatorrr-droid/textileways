@@ -156,7 +156,7 @@ export function ProductFilters({
         type="button"
         onClick={reset}
         disabled={activeCount === 0}
-        className="min-h-[44px] w-full rounded-[3px] border border-line-strong px-4 text-small font-medium text-ink transition-colors duration-200 hover:border-ink disabled:cursor-not-allowed disabled:opacity-50"
+        className="min-h-[44px] w-full rounded-[14px] border border-line-strong px-4 text-small font-medium text-ink transition-colors duration-200 hover:border-ink disabled:cursor-not-allowed disabled:opacity-50"
       >
         Reset filters
       </button>
@@ -171,7 +171,7 @@ export function ProductFilters({
           aria-expanded={drawerOpen}
           aria-controls="product-filter-drawer"
           onClick={() => setDrawerOpen((open) => !open)}
-          className="flex min-h-[48px] w-full items-center justify-between rounded-[3px] border border-line-strong px-5 text-small font-medium text-ink"
+          className="flex min-h-[48px] w-full items-center justify-between rounded-[14px] border border-line-strong px-5 text-small font-medium text-ink"
         >
           <span>Filter products</span>
           <span className="text-ink-subtle">
@@ -181,7 +181,7 @@ export function ProductFilters({
         <div
           id="product-filter-drawer"
           hidden={!drawerOpen}
-          className="mt-6 border border-line bg-cotton/40 p-5"
+          className="mt-6 rounded-[20px] border border-line bg-cotton p-5"
         >
           {filterPanel}
         </div>
@@ -207,7 +207,7 @@ export function ProductFilters({
                 <button
                   type="button"
                   onClick={reset}
-                  className="inline-flex min-h-[48px] items-center rounded-[3px] border border-forest bg-forest px-6 text-small font-medium text-paper"
+                  className="inline-flex min-h-[48px] items-center rounded-[14px] border border-forest bg-forest px-6 text-small font-medium text-white"
                 >
                   Reset filters
                 </button>
@@ -218,12 +218,12 @@ export function ProductFilters({
             }
           />
         ) : (
-          <ul className="grid gap-px bg-line sm:grid-cols-2">
+          <ul className="grid gap-4 sm:grid-cols-2">
             {visible.map((family) => (
-              <li key={family.slug} className="bg-paper">
+              <li key={family.slug} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
                   href={`/products/${family.slug}`}
-                  className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+                  className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
                 >
                   <Media
                     asset={family.hero}

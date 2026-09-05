@@ -37,12 +37,12 @@ export default function CaseStudiesPage() {
         />
         <Section>
           <Container>
-            <ul className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {studies.map((study, index) => (
-                <Reveal key={study.slug} as="li" delay={(index % 3) * 60} className="bg-paper">
+                <Reveal key={study.slug} as="li" delay={(index % 3) * 60} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                   <Link
                     href={`/case-studies/${study.slug}`}
-                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton/60"
+                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
                   >
                     <Media asset={study.hero} aspect="aspect-[16/10]" sizes="(min-width: 1024px) 30vw, 92vw" zoomOnHover />
                     <p className="mt-6 text-label uppercase tracking-[0.09em] text-ink-subtle">
@@ -102,13 +102,13 @@ export default function CaseStudiesPage() {
 
       <Section>
         <Container>
-          <ol className="grid gap-px bg-line lg:grid-cols-2">
+          <ol className="grid gap-4 lg:grid-cols-2">
             {projectProcessNarrative.phases.map((phase, index) => (
-              <Reveal key={phase.title} as="li" delay={(index % 2) * 60} className="bg-paper p-7 lg:p-9">
+              <Reveal key={phase.title} as="li" delay={(index % 2) * 60} className="bg-white p-7 lg:p-9">
                 <p className="text-label uppercase tracking-[0.09em] text-stone">
                   Stage {String(index + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-4 font-serif text-h3">{phase.title}</h2>
+                <h2 className="mt-4 font-sans text-h3 font-semibold tracking-[-0.032em]">{phase.title}</h2>
                 <p className="mt-4 text-small leading-relaxed text-ink-muted">
                   {phase.buyerView}
                 </p>

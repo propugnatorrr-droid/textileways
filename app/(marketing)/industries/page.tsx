@@ -42,18 +42,18 @@ export default function IndustriesPage() {
 
       <Section>
         <Container>
-          <ul className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (
-              <Reveal key={industry.slug} as="li" delay={(index % 3) * 55} className="bg-paper">
+              <Reveal key={industry.slug} as="li" delay={(index % 3) * 55} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
                   href={`/industries/${industry.slug}`}
-                  className="group flex h-full flex-col p-7 transition-colors duration-300 hover:bg-cotton/60"
+                  className="group flex h-full flex-col p-7 transition-colors duration-300 hover:bg-cotton"
                 >
                   <span
                     aria-hidden="true"
                     className="h-px w-8 bg-clay transition-[width] duration-300 group-hover:w-14"
                   />
-                  <h2 className="mt-6 font-serif text-h3 transition-colors duration-200 group-hover:text-forest">
+                  <h2 className="mt-6 font-sans text-h3 font-semibold tracking-[-0.032em] transition-colors duration-200 group-hover:text-forest">
                     {industry.name}
                   </h2>
                   <p className="mt-3 flex-1 text-small leading-relaxed text-ink-muted">
