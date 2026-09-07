@@ -37,9 +37,8 @@ export function SiteFooter() {
               </p>
 
               <p className="mt-5 max-w-[44ch] text-[15px] leading-relaxed text-white/65">
-                Textile and apparel manufacturing for brands and organisations across the
-                USA, Europe, the UK and Australia. Start with 50 pieces and scale beyond
-                100,000.
+                Pakistan-based textile and apparel manufacturing for international brands
+                and organisations, from development quantities to larger repeat production.
               </p>
 
               {whatsappEnabled() ? (
@@ -142,7 +141,9 @@ export function SiteFooter() {
 
         <div className="border-t border-white/10 px-6 py-7 sm:px-10 lg:px-16">
           <div className="flex flex-col gap-4 text-small text-white/55 sm:flex-row sm:items-center sm:justify-between">
-            <p>{`© ${year} ${legalName}. All rights reserved.`}</p>
+            <p>
+              &copy; {year} {legalName}. All rights reserved.
+            </p>
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {legalNavigation.map((link) => (
                 <li key={link.href}>
