@@ -8,16 +8,29 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { publishedCaseStudies, projectProcessNarrative } from "@/content/fallback/case-studies";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
+const studies = publishedCaseStudies();
 
-export const metadata: Metadata = buildMetadata({
-  title: "Case studies",
-  description:
-    "How a manufacturing project runs from the buyer's side, stage by stage. We do not publish customer stories without written permission and evidence for every figure quoted.",
-  path: "/case-studies",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: studies.length > 0 ? "Case studies" : "Manufacturing project walkthrough",
+    description:
+      studies.length > 0
+        ? "Documented Textileways manufacturing projects, including product requirements, production decisions and verified outcomes."
+        : "Follow a textile manufacturing project from the initial brief through specification, sampling, production, inspection, packing and reorder.",
+    path: "/case-studies",
+  }),
+  ...(studies.length === 0
+    ? {
+        robots: {
+          index: false,
+          follow: true,
+        },
+      }
+    : {}),
+};
+
 
 export default function CaseStudiesPage() {
-  const studies = publishedCaseStudies();
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
@@ -85,16 +98,14 @@ export default function CaseStudiesPage() {
           </>
         }
         aside={
-          <Notice tone="info" title="Why this page has no customer stories">
+          <Notice tone="info" title="Built around the buyer">
             <p>
-              A case study is only useful if it is true. Publishing one requires the
-              customer&apos;s written permission to be named, and evidence for every quantity,
-              timescale and result quoted.
+              This walkthrough shows the decisions, approvals and information exchanged
+              during a manufacturing project—from the first brief to repeat production.
             </p>
             <p className="mt-3">
-              Neither has been recorded yet, so this page describes how a project actually
-              runs instead. The content model and page template for real case studies are
-              already built, and one can be published without a code change.
+              Use it to understand what you will need to provide, what Textileways reviews
+              and where approval is required before production moves forward.
             </p>
           </Notice>
         }
@@ -123,7 +134,7 @@ export default function CaseStudiesPage() {
       </Section>
 
       <PageCta
-        title="Start a project of your own"
+        title="Ready to turn your brief into a production plan?"
         description="Share your product details, target quantity and delivery requirements. Our team will review the technical and commercial requirements before quoting."
         location="case_studies_process"
         whatsapp={{ pageLabel: "Case studies", path: "/case-studies" }}
