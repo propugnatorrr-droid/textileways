@@ -22,7 +22,7 @@
   /* --- Type -------------------------------------------------------------- */
   --color-ink: #0b0f0d;
   --color-ink-muted: #56605b;
-  --color-ink-subtle: #7a847f;
+  --color-ink-subtle: #626c67;
 
   /* --- Accent ------------------------------------------------------------ */
   --color-forest: #087a55;
@@ -38,6 +38,7 @@
   --color-stone: #a9b1ad;
   --color-line: rgba(11, 15, 13, 0.09);
   --color-line-strong: rgba(11, 15, 13, 0.16);
+--color-control-border: #7a847f;
 
   --color-error: #c43333;
   --color-success: #087a55;
@@ -426,11 +427,11 @@
 
   /* --- Form controls ----------------------------------------------------- */
 
-  .tw-field {
-    width: 100%;
-    min-height: 54px;
-    padding: 14px 16px;
-    border: 1px solid var(--color-line-strong);
+.tw-field {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-control-border);
     border-radius: 14px;
     background: var(--color-white);
     color: var(--color-ink);
@@ -447,9 +448,9 @@
     color: var(--color-ink-subtle);
   }
 
-  .tw-field:hover:not(:disabled):not(:focus) {
-    border-color: rgb(11 15 13 / 0.26);
-  }
+.tw-field:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-ink-muted);
+}
 
   .tw-field:focus {
     border-color: var(--color-forest);
@@ -515,12 +516,12 @@
     outline-offset: 2px;
   }
 
-  .tw-checkbox {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    border: 1px solid var(--color-line-strong);
+.tw-checkbox {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  border: 1px solid var(--color-control-border);
     border-radius: 6px;
     accent-color: var(--color-forest);
     cursor: pointer;
