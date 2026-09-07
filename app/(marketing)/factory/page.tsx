@@ -90,6 +90,13 @@ export default function FactoryPage() {
             </p>
           </div>
 
+          <Notice tone="info" title="About the imagery on this page" className="mt-8 max-w-[74ch]">
+            Selected imagery is representative while verified facility photography is being
+            prepared. Where a photograph is in place, it illustrates the process or environment
+            described rather than documenting this specific facility, staff, machinery or
+            production run. It is not evidence of capacity, certification or output.
+          </Notice>
+
           <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {gallery.map((item, index) => (
               <Reveal key={item.label} as="li" delay={(index % 3) * 55}>

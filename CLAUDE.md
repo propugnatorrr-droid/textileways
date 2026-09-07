@@ -2,7 +2,7 @@
 
 ## 1. Mission
 
-Design and build a production grade B2B manufacturing website for Textileways, a Pakistan based textile and apparel manufacturer serving primarily USA and European buyers.
+Design and build a production grade B2B manufacturing website for Textileways, a Pakistan based textile and apparel manufacturer serving international buyers, including the United States, the European Union, the United Kingdom and Australia (Australia added 2026-09-07; the United States and Europe remain the two largest markets by volume, and nothing on the site should suggest otherwise).
 
 Textileways supports:
 
@@ -17,7 +17,13 @@ Textileways supports:
 
 The website must position Textileways as:
 
-> Startup flexibility. Enterprise manufacturing discipline.
+> Sampling flexibility. Production discipline.
+
+(Superseded 2026-09-07: the original wording here, "Startup flexibility.
+Enterprise manufacturing discipline.", read as software company language
+rather than manufacturing language and has been replaced sitewide, in
+`content/configuration/site.ts`, `components/sections/home-sections.tsx` and
+`app/(marketing)/why-textileways/page.tsx`.)
 
 Primary commercial message:
 
@@ -675,7 +681,12 @@ Seed:
 /markets/usa
 /markets/europe
 /markets/uk
+/markets/australia
 ```
+
+(`/markets/australia` added 2026-09-07. Australia is a fourth, equally
+weighted market, not a replacement for or a promotion above the original
+three; see `content/fallback/markets.ts`.)
 
 The content should explain buyer support and market awareness without making blanket legal guarantees.
 
@@ -756,7 +767,11 @@ Each item must link to its category page.
 
 Headline:
 
-> Startup flexibility. Enterprise manufacturing discipline.
+> Sampling flexibility. Production discipline.
+
+(Superseded 2026-09-07, see section 1: the original headline here read as
+software company language. See `components/sections/home-sections.tsx`,
+`PositioningSection`, for the shipped copy.)
 
 Explain that buyers should not need to replace their manufacturer every time they grow.
 
@@ -1797,6 +1812,18 @@ Prepare image slots for:
 9. Sustainability
 
 Document exact required photographs in `docs/CONTENT_REQUIREMENTS.md`.
+
+**Added 2026-09-07.** 35 media slots are declared in `content/fallback/media.ts`,
+indexed with routes, aspect ratios and crop-safe requirements in
+`content/configuration/image-manifest.ts`. A paste-ready batch prompt for
+generating temporary representative campaign imagery for all 35 is
+`docs/GPT_IMAGE_2_MASTER_PROMPT.md`; the installation checklist is
+`docs/IMAGE_MANIFEST.md`. As of this update, image generation and installation
+are pending: every slot remains a documented placeholder, and no files have
+been generated or installed. Any photograph installed from that batch is
+representative campaign imagery, not documentary proof of this specific
+facility, staff, machinery, customers or output, and the factory and about
+pages carry a standing disclosure to that effect.
 
 ---
 

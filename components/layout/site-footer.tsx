@@ -38,7 +38,8 @@ export function SiteFooter() {
 
               <p className="mt-5 max-w-[44ch] text-[15px] leading-relaxed text-white/65">
                 Textile and apparel manufacturing for brands and organisations across the
-                USA and Europe. Start with 50 pieces and scale beyond 100,000.
+                USA, Europe, the UK and Australia. Start with 50 pieces and scale beyond
+                100,000.
               </p>
 
               {whatsappEnabled() ? (

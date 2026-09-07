@@ -93,7 +93,7 @@ export default async function OpengraphImage() {
           </div>
 
           <div style={{ display: "flex", fontSize: 24, color: "#66716c" }}>
-            Manufacturing for the USA and Europe
+            Pakistan based manufacturing for international buyers
           </div>
         </div>
       </div>

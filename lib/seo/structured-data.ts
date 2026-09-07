@@ -66,7 +66,7 @@ export function manufacturerSchema(): JsonLd {
     parentOrganization: { "@id": ORGANIZATION_ID },
     description:
       "Textile and apparel manufacturing including product development, material sourcing, sampling, cut and sew production, decoration, private labelling, quality assurance and export.",
-    ...(country ? { areaServed: ["US", "GB", "EU"], location: { "@type": "Place", address: { "@type": "PostalAddress", addressCountry: country } } } : {}),
+    ...(country ? { areaServed: ["US", "GB", "EU", "AU"], location: { "@type": "Place", address: { "@type": "PostalAddress", addressCountry: country } } } : {}),
   };
 }
 
@@ -133,7 +133,7 @@ export function serviceSchema(capability: Capability): JsonLd {
     url: absoluteUrl(`/capabilities/${capability.slug}`),
     provider: { "@id": ORGANIZATION_ID },
     serviceType: capability.name,
-    areaServed: ["US", "GB", "EU"],
+    areaServed: ["US", "GB", "EU", "AU"],
   };
 }
 

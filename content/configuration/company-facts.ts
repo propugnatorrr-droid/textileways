@@ -60,8 +60,8 @@ export const companyFacts = [
   },
   {
     id: "primary-markets",
-    label: "Primary export markets",
-    value: "United States and Europe",
+    label: "Export markets",
+    value: "United States, European Union, United Kingdom and Australia",
     status: "verified",
     source: "Client brief",
   },

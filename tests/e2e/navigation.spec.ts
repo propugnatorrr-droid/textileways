@@ -32,12 +32,12 @@ test.describe("homepage", () => {
     for (const heading of [
       /Start at 50\. Scale beyond 100,000\./i,
       /Thirteen product families/i,
-      /Startup flexibility/i,
+      /Sampling flexibility/i,
       /Eight stages from inquiry to delivery/i,
       /Everything a product needs, in one place/i,
       /Where your product would be made/i,
       /Eight checkpoints/i,
-      /Built around USA and European buyers/i,
+      /Manufacturing across international markets/i,
       /Bring us the idea/i,
     ]) {
       await expect(page.getByRole("heading", { name: heading })).toBeVisible();

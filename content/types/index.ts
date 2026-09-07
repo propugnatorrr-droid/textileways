@@ -217,6 +217,12 @@ export interface Industry {
 export interface Market {
   slug: string;
   name: string;
+  /**
+   * The market name with whatever article reads correctly in front of it, for
+   * copy templates like "Manufacturing for {withArticle}". "United States" needs
+   * "the", "Australia" does not, so this is data rather than a rule.
+   */
+  withArticle: string;
   summary: string;
   introduction: string[];
   buyerSupport: string[];

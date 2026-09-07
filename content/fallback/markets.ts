@@ -11,6 +11,7 @@ export const markets: Market[] = [
   {
     slug: "usa",
     name: "United States",
+    withArticle: "the United States",
     summary:
       "Support for USA based brands, retailers and organisations importing apparel and textile products.",
     introduction: [
@@ -53,6 +54,7 @@ export const markets: Market[] = [
   {
     slug: "europe",
     name: "European Union",
+    withArticle: "the European Union",
     summary:
       "Support for brands, retailers and organisations importing into European Union member states.",
     introduction: [
@@ -96,6 +98,7 @@ export const markets: Market[] = [
   {
     slug: "uk",
     name: "United Kingdom",
+    withArticle: "the United Kingdom",
     summary:
       "Support for United Kingdom brands, retailers and organisations importing apparel and textile products.",
     introduction: [
@@ -133,6 +136,49 @@ export const markets: Market[] = [
       title: "Apparel manufacturing for United Kingdom buyers",
       description:
         "Manufacturing support for United Kingdom brands and retailers, covering sizing, labelling, documentation and lower minimum quantities.",
+    },
+  },
+  {
+    slug: "australia",
+    name: "Australia",
+    withArticle: "Australia",
+    summary:
+      "Pakistan based manufacturing for Australian brands, retailers, importers and organisations, working to the sizing, labelling and packaging specification you confirm.",
+    introduction: [
+      "Textileways manufactures in Pakistan. We are not an Australian company and do not operate an office or facility in Australia. What we offer Australian buyers is the same specification discipline described throughout this site, applied to a destination you confirm rather than assumed from experience with other markets.",
+      "Australian buyers typically source at a wider range of quantities than large European retail programmes, from a first validation run through to repeat wholesale orders, which suits our lower minimum quantities as much as it suits an established importer scaling an existing range.",
+      "Sizing, care labelling and country of origin wording are confirmed with you before cutting starts. We apply exactly what you specify rather than assuming an Australian standard on your behalf.",
+    ],
+    buyerSupport: [
+      "Production built to the sizing specification you confirm, rather than an assumed Australian standard",
+      "Care and content labelling applied exactly as you provide the wording",
+      "Country of origin marking applied accurately to what was actually manufactured and where",
+      "Carton, pallet and packaging specifications built to your confirmed requirements",
+      "Quotations against recognised Incoterms for Australian destinations",
+    ],
+    documentation: [
+      "Commercial invoice",
+      "Packing list with carton dimensions and weights",
+      "Certificate of origin where required",
+      "Bill of lading or air waybill",
+      "Test reports where your buyer or product category requires them",
+    ],
+    regulatoryAwareness: [
+      "Product safety, labelling and children's nightwear flammability requirements are applied exactly as you specify them. We do not certify compliance with Australian consumer law, and confirming which requirements apply to your product remains your responsibility as the importer or brand owner.",
+      "Country of origin claims such as \"Made in\" wording are applied accurately to reflect Pakistan as the country of manufacture. We do not apply an Australian Made mark or any claim implying local production.",
+      "Where a shipment includes solid wood packaging materials, such as pallets or dunnage, Australian biosecurity requirements for treatment and certification are the importer's responsibility to confirm and arrange.",
+      "We are not aware of a preferential trade arrangement between Pakistan and Australia and do not assume one applies. Duty and tariff treatment should be confirmed with your customs broker.",
+    ],
+    logisticsNotes: [
+      "Ocean freight to Australian east and west coast ports is the standard route for volume shipments, with transit times that should be planned into the production schedule.",
+      "Air freight is available for smaller quantities or fixed dates, at materially higher cost.",
+      "Customs clearance, duties and biosecurity inspection in Australia are the importer's responsibility and follow the agreed Incoterm.",
+    ],
+    faqIds: ["compliance", "shipping-terms", "lead-time", "minimum-order"],
+    seo: {
+      title: "Apparel manufacturing for Australian buyers",
+      description:
+        "Pakistan based manufacturing support for Australian brands and importers, covering specification, labelling, packaging and freight planning.",
     },
   },
 ];

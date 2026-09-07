@@ -42,8 +42,8 @@ export function HomeHero() {
 
             <p className="mt-6 max-w-[52ch] text-body-l text-ink-muted">
               Custom apparel, uniforms, sportswear, home textiles and specialist products
-              for buyers across the USA and Europe. Start at 50 pieces and scale beyond
-              100,000.
+              for buyers across the USA, Europe, the UK and Australia. Start at 50 pieces
+              and scale beyond 100,000.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">

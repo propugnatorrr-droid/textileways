@@ -19,7 +19,7 @@ export const faqs: FaqItem[] = [
     category: "Ordering",
     question: "Can the same supplier handle both a 50 piece test and a 100,000 piece programme?",
     answer:
-      "Yes. That is the reason Textileways exists in its current form. A validation run and an enterprise programme use the same specification discipline, the same approved sample and the same inspection points. The difference is material procurement, line planning and shipping method, not the standard applied to the product.",
+      "Yes. That is the reason Textileways exists in its current form. A validation run and a full scale production programme use the same specification discipline, the same approved sample and the same inspection points. The difference is material procurement, line planning and shipping method, not the standard applied to the product.",
   },
   {
     id: "lead-time",
@@ -73,7 +73,7 @@ export const faqs: FaqItem[] = [
   {
     id: "compliance",
     category: "Compliance",
-    question: "Do you handle labelling requirements for the USA and Europe?",
+    question: "Do you handle labelling requirements for my market?",
     answer:
       "We build labelling into the specification and apply exactly what you approve, including fibre content, care symbols, country of origin and identification details. Responsibility for confirming what your market and your product category legally require stays with you as the brand owner. We flag anything that looks inconsistent before production.",
   },

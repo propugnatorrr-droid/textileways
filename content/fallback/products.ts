@@ -81,7 +81,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale", "promotional-products", "education"],
       materialTypes: ["natural-fibers", "knitted-fabrics", "recycled-and-lower-impact"],
       decoration: ["screen-printing", "dtg-printing", "dtf-printing", "embroidery"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -155,7 +155,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["streetwear-brands", "fashion-brands", "retail-and-wholesale"],
       materialTypes: ["knitted-fabrics", "woven-fabrics", "natural-fibers"],
       decoration: ["screen-printing", "dtf-printing", "embroidery", "patches-and-badges"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -228,7 +228,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["sports-clubs-and-teams", "education", "fashion-brands", "retail-and-wholesale"],
       materialTypes: ["synthetic-and-performance", "knitted-fabrics", "recycled-and-lower-impact"],
       decoration: ["sublimation", "heat-transfer", "dtf-printing", "embroidery"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -301,7 +301,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale", "construction-and-industrial"],
       materialTypes: ["synthetic-and-performance", "recycled-and-lower-impact", "woven-fabrics"],
       decoration: ["heat-transfer", "patches-and-badges", "embroidery"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -377,7 +377,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["corporate-uniforms", "hospitality", "healthcare", "construction-and-industrial", "education"],
       materialTypes: ["knitted-fabrics", "woven-fabrics", "natural-fibers"],
       decoration: ["embroidery", "screen-printing", "heat-transfer", "patches-and-badges"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -451,7 +451,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale", "hospitality"],
       materialTypes: ["natural-fibers", "knitted-fabrics", "woven-fabrics"],
       decoration: ["screen-printing", "dtg-printing", "embroidery"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -523,7 +523,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale", "education"],
       materialTypes: ["natural-fibers", "knitted-fabrics", "recycled-and-lower-impact"],
       decoration: ["screen-printing", "dtg-printing", "embroidery", "applique"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -596,7 +596,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale", "hospitality"],
       materialTypes: ["synthetic-and-performance", "woven-fabrics", "recycled-and-lower-impact"],
       decoration: ["sublimation", "screen-printing", "heat-transfer"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -669,7 +669,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale", "corporate-uniforms"],
       materialTypes: ["woven-fabrics", "natural-fibers"],
       decoration: ["embroidery", "patches-and-badges", "screen-printing"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -742,7 +742,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["fashion-brands", "retail-and-wholesale"],
       materialTypes: ["woven-fabrics", "natural-fibers", "synthetic-and-performance"],
       decoration: ["embroidery", "screen-printing", "dtf-printing"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -814,7 +814,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["sports-clubs-and-teams", "education", "promotional-products"],
       materialTypes: ["synthetic-and-performance", "woven-fabrics", "recycled-and-lower-impact"],
       decoration: ["screen-printing", "embroidery", "sublimation", "patches-and-badges"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -887,7 +887,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["hospitality", "retail-and-wholesale", "healthcare"],
       materialTypes: ["natural-fibers", "woven-fabrics", "recycled-and-lower-impact"],
       decoration: ["embroidery", "screen-printing", "sublimation"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
   {
@@ -960,7 +960,7 @@ export const productFamilies: ProductFamily[] = [
       industries: ["promotional-products", "retail-and-wholesale", "hospitality", "corporate-uniforms"],
       materialTypes: ["woven-fabrics", "natural-fibers", "recycled-and-lower-impact"],
       decoration: ["screen-printing", "embroidery", "dtf-printing", "patches-and-badges"],
-      markets: ["usa", "europe", "uk"],
+      markets: ["usa", "europe", "uk", "australia"],
     },
   },
 ];

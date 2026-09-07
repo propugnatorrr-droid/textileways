@@ -18,7 +18,7 @@ import { siteConfig } from "@/content/configuration/site";
 export const metadata: Metadata = buildMetadata({
   title: `${siteConfig.name} | ${siteConfig.tagline}`,
   description:
-    "Textile and apparel manufacturing in Pakistan for brands across the USA and Europe. Custom apparel, uniforms, home textiles and specialist products from approximately 50 pieces, scaling beyond 100,000.",
+    "Textile and apparel manufacturing in Pakistan for international brands. Custom apparel, uniforms, home textiles and specialist products from approximately 50 pieces, scaling beyond 100,000.",
   path: "/",
 });
 

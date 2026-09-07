@@ -14,7 +14,8 @@ verified. Everything unticked needs a person, a credential or an asset.
 | 1.1 | Company facts verified | Partial. **Blocker** | Five facts verified from the brief plus the WhatsApp number. Legal name, registration number, address, sales email and telephone are outstanding. See `docs/CONTENT_REQUIREMENTS.md` section 5. |
 | 1.2 | Contact details verified | Outstanding. **Blocker** | WhatsApp is live. Sales email and telephone are not published rather than being placeholders. |
 | 1.3 | Certificates verified | Outstanding | Registry is empty and says so. Nothing false is published, so this is not a blocker unless a certification is being claimed commercially. |
-| 1.4 | Images replaced | Outstanding | 35 placeholder slots, each with a written brief. `editorial/home-hero` matters most. |
+| 1.4 | Images replaced | Outstanding | 35 placeholder slots, each with a written brief, indexed in `docs/IMAGE_MANIFEST.md`. `editorial/home-hero` matters most. A paste-ready batch prompt for temporary representative campaign imagery is `docs/GPT_IMAGE_2_MASTER_PROMPT.md`; no images have been generated or installed yet. |
+| 1.4b | Australia added as a fourth market | Done | `content/fallback/markets.ts`, `/markets/australia`. Equally weighted with the USA, EU and UK; not primary, not Textileways' location. |
 | 1.5 | Alt text reviewed | Done | Every slot has alt text written for the intended photograph. Re-read it after real images land. |
 | 1.6 | Legal pages approved | Outstanding. **Blocker** | Drafts describe what this site actually does. They are labelled as pending review on the page. A qualified adviser must approve them. |
 | 1.7 | No demo case studies published | Done | None exist. Enforced by `evidenceStatus`, by `generateStaticParams` and by unit tests. |
@@ -44,11 +45,11 @@ verified. Everything unticked needs a person, a credential or an asset.
 
 | # | Item | Status | Note |
 | --- | --- | --- | --- |
-| 3.1 | Build passing | Done | `npm run build`, 103 routes generated. |
+| 3.1 | Build passing | Done | `npm run build`, 104 routes generated. |
 | 3.2 | Lint passing | Done | `npm run lint`, no errors, no warnings, nothing suppressed. |
 | 3.3 | Type check passing | Done | `npm run typecheck` clean under strict mode. |
-| 3.4 | Unit tests passing | Done | 132 tests. |
-| 3.5 | Browser tests passing | Done | 120 tests across desktop and mobile projects. |
+| 3.4 | Unit tests passing | Done | 153 tests. |
+| 3.5 | Browser tests passing | Done | 160 tests across desktop and mobile projects, 9 correctly skipped. |
 | 3.6 | Forms delivering | Outstanding. **Blocker** | Verify on the live site after 2.3. Submit the contact form and confirm both emails arrive. |
 | 3.7 | Uploads working | Outstanding | Verify after 2.5 by attaching a PDF to a real RFQ and opening the link in the notification. |
 | 3.8 | Spam protection working | Partial | Honeypot, timing, rate limit and validation are live and tested. Turnstile activates with 2.4. |
@@ -72,7 +73,7 @@ verified. Everything unticked needs a person, a credential or an asset.
 
 | # | Item | Status | Note |
 | --- | --- | --- | --- |
-| 4.1 | Mobile tested | Done | Playwright mobile project plus overflow assertions at 360, 390, 430, 768, 1024, 1280, 1440 and 1920. |
+| 4.1 | Mobile tested | Done | Playwright mobile project plus overflow assertions at 320, 360, 375, 390, 430, 768, 1024, 1280, 1440 and 1920. |
 | 4.2 | No horizontal overflow | Done | Asserted at all eight widths. |
 | 4.3 | Keyboard tested | Done | Skip link, focus outlines, mega menu Escape and outside click, mobile focus trap, keyboard operable filters. |
 | 4.4 | Accessibility reviewed | Partial | Semantic markup, labelled controls, error summaries, reduced motion support and announced status messages are built and partly asserted. Run an automated audit against the live site and, ideally, a screen reader pass. |

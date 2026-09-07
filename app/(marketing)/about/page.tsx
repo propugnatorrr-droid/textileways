@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container, Section, ButtonLink, SpecList, Notice } from "@/components/ui";
 import { PageHeader, ProseBlock, SplitSection, PageCta } from "@/components/sections/page-shell";
 import { Media } from "@/components/content/media";
@@ -13,7 +14,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "About Textileways",
   description:
-    "Textileways is a Pakistan based textile and apparel manufacturer with more than 20 years of experience, producing for brands and organisations across the USA and Europe.",
+    "Textileways is a Pakistan based textile and apparel manufacturer with more than 20 years of experience, producing for brands and organisations across international markets including the USA, Europe, the UK and Australia.",
   path: "/about",
 });
 
@@ -55,6 +56,14 @@ export default function AboutPage() {
       <Section size="tight">
         <Container>
           <ProseBlock paragraphs={aboutNarrative.intro} />
+          <p className="mt-8 max-w-[70ch] text-small text-ink-subtle">
+            Selected imagery on this site is representative while verified facility
+            photography is being prepared. See{" "}
+            <Link href="/factory" className="tw-underline-grow text-ink-muted">
+              the factory page
+            </Link>{" "}
+            for what that means and what is still outstanding.
+          </p>
         </Container>
       </Section>
 

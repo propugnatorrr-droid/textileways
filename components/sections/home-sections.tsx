@@ -226,7 +226,7 @@ export function PositioningSection() {
         <div className="mx-auto max-w-[900px] text-center">
           <Eyebrow>Positioning</Eyebrow>
           <DisplayHeading level={2} size="h2" className="mx-auto mt-4 max-w-[20ch]">
-            Startup flexibility. Enterprise manufacturing discipline.
+            Sampling flexibility. Production discipline.
           </DisplayHeading>
         </div>
 
@@ -255,7 +255,7 @@ export function PositioningSection() {
               100,000+
             </p>
             <p className="mt-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
-              Pieces, enterprise programme
+              Pieces, scaled production run
             </p>
             <p className="mt-4 text-small text-ink-muted md:max-w-[38ch]">
               Committed material planning, scheduled shipments and inspection regimes
@@ -552,7 +552,7 @@ export function MarketsSection() {
       <Container>
         <SectionHeading
           eyebrow="Markets"
-          title="Built around USA and European buyers"
+          title="Manufacturing across international markets"
           lede="Sizing conventions, labelling requirements and documentation differ by destination. They are confirmed with you rather than assumed."
           action={
             <ButtonLink href="/markets" variant="secondary">

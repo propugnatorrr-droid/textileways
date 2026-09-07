@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Container, Section, Notice } from "@/components/ui";
-import { PageHeader, HeaderAside } from "@/components/sections/page-shell";
+import { Container, Section, Notice, MarkerList } from "@/components/ui";
+import { PageHeader, HeaderAside, SplitSection, ProcessList } from "@/components/sections/page-shell";
 import { RfqForm } from "@/components/forms/rfq-form";
 import { JsonLd } from "@/components/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -46,6 +46,59 @@ export default function RequestAQuotePage() {
           </HeaderAside>
         }
       />
+
+      <SplitSection
+        eyebrow="Before you start"
+        title="What helps us quote faster"
+        intro="None of this is required to start. Anything you do not have yet is confirmed with you during technical review instead."
+        tight
+      >
+        <div className="grid gap-10 sm:grid-cols-2">
+          <div>
+            <p className="text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+              Useful to have ready
+            </p>
+            <MarkerList
+              className="mt-5"
+              items={[
+                "A product reference, sketch or existing garment",
+                "Estimated quantity and number of styles or colourways",
+                "Target market and delivery destination",
+                "A target delivery date, even an approximate one",
+                "Material or performance requirements, if known",
+                "Artwork or a tech pack, if you have one",
+              ]}
+            />
+          </div>
+          <div>
+            <p className="text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+              What happens after you submit
+            </p>
+            <div className="mt-5">
+              <ProcessList
+                stages={[
+                  {
+                    title: "Technical review",
+                    description: "We check the specification against material and construction feasibility.",
+                  },
+                  {
+                    title: "Clarifying questions",
+                    description: "Anything unclear or missing is confirmed with you before a price is quoted.",
+                  },
+                  {
+                    title: "Sampling recommendation",
+                    description: "We propose the sample stage that suits your product and quantity.",
+                  },
+                  {
+                    title: "Written quotation",
+                    description: "A price against the agreed specification, with every assumption stated.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+      </SplitSection>
 
       <Section>
         <Container>

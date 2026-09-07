@@ -37,7 +37,7 @@ export const productionScaleSteps = [
   {
     quantity: "100,000+",
     unit: "pieces",
-    title: "Enterprise programmes",
+    title: "Large scale production",
     description:
       "Committed material planning, scheduled shipments and inspection regimes agreed in advance.",
   },
@@ -486,7 +486,7 @@ export const whyTextilewaysReasons = [
       "Specifications, measurement charts, inspection records and export documentation are maintained as part of the job rather than assembled on request.",
   },
   {
-    title: "Export experience into the USA and Europe",
+    title: "Export experience into major international markets",
     description:
       "Labelling conventions, sizing expectations and documentation requirements differ by market, and are confirmed with you rather than assumed.",
   },

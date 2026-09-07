@@ -1,7 +1,8 @@
 # Textileways
 
 Production website for Textileways, a Pakistan based textile and apparel
-manufacturer serving buyers in the USA and Europe.
+manufacturer serving international buyers, including the USA, the European
+Union, the United Kingdom and Australia.
 
 > One manufacturing partner. Every textile possibility.
 > Start at 50. Scale beyond 100,000.
@@ -77,9 +78,16 @@ than a broken page. Adding a product family means adding one entry; navigation,
 the sitemap, filters and related content all pick it up.
 
 **Photography.** Every media slot is declared in `content/fallback/media.ts` with
-the shot it needs. Save the image as `public/images/<id>.jpg`, remove
-`isPlaceholder: true`, and it switches to an optimised image automatically. Until
-then a woven pattern panel renders with the brief printed beneath it.
+the shot it needs, and indexed with its routes, aspect ratios and crop-safe
+requirements in `content/configuration/image-manifest.ts`. Save the image as
+`public/images/<id>.jpg`, remove `isPlaceholder: true`, and it switches to an
+optimised image automatically. Until then a woven pattern panel renders with
+the brief printed beneath it. There are 35 slots as of this document; see
+[docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) for the full checklist and
+[docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) for a
+paste-ready batch prompt covering all of them. Any installed photograph is
+representative campaign imagery, not documentary proof of this specific
+facility, staff or output, and the factory and about pages say so.
 
 ---
 
@@ -109,6 +117,8 @@ copy contains an em dash or en dash.
 | [docs/CONTENT_REQUIREMENTS.md](docs/CONTENT_REQUIREMENTS.md) | You are gathering assets and facts from the business |
 | [docs/LAUNCH_CHECKLIST.md](docs/LAUNCH_CHECKLIST.md) | You are preparing to go live |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | You are deploying, or changing DNS |
+| [docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) | You are installing generated or commissioned photography |
+| [docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) | You are generating the photography batch |
 
 If you are changing DNS, read section 9 of the deployment guide first. Pointing
 the website at Vercel does not require changing MX records, and changing them

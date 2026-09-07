@@ -26,7 +26,7 @@ export default function WhyTextilewaysPage() {
 
       <PageHeader
         eyebrow="Why Textileways"
-        title="Startup flexibility. Enterprise manufacturing discipline."
+        title="Sampling flexibility. Production discipline."
         lede="You should not have to replace your manufacturer every time you grow. Every supplier change costs a season in re establishing fit, fabric, colour and trust."
         breadcrumbs={breadcrumbs}
         actions={

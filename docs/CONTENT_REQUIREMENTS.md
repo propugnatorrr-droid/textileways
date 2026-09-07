@@ -67,7 +67,10 @@ recomputed from the expiry date on every render.
 
 35 media slots are declared. Each renders a woven pattern panel with the brief
 for the shot printed beneath it, so nothing looks broken and nobody has to guess
-what is needed.
+what is needed. The full checklist, with routes, aspect ratios and crop-safe
+requirements per slot, is `docs/IMAGE_MANIFEST.md`. A paste-ready batch prompt
+for generating temporary representative campaign imagery, as a bridge until
+real photography is commissioned, is `docs/GPT_IMAGE_2_MASTER_PROMPT.md`.
 
 **How to supply.** Save as `public/images/<id>.jpg`, then remove
 `isPlaceholder: true` from that entry in `content/fallback/media.ts`. The slot
@@ -77,6 +80,12 @@ the photograph differs from the brief.
 **General direction.** Real working environments, natural light where possible,
 warm and slightly desaturated. Not a studio model shoot. Written consent is
 required from anyone identifiable.
+
+**If a generated image is installed instead of a commissioned photograph,**
+it is representative campaign imagery, not documentary proof of this specific
+facility, staff, machinery or output, and it must not be captioned or
+described anywhere on the site as such. The factory and about pages carry a
+standing disclosure to that effect.
 
 ### 4.1 Factory, 12 shots
 
@@ -158,7 +167,7 @@ or withholds a claim across the whole site.
 | Years of experience | More than 20 years | Client brief |
 | Indicative minimum quantity | From approximately 50 pieces | Client brief |
 | Indicative upper scale | Beyond 100,000 pieces | Client brief |
-| Primary markets | United States and Europe | Client brief |
+| Export markets | United States, European Union, United Kingdom and Australia | Client brief |
 | WhatsApp number | +92 336 260 5238 | Business owner, 2026-09-04 |
 
 ### 5.2 Outstanding

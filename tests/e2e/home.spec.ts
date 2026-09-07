@@ -122,12 +122,12 @@ test.describe("homepage composition", () => {
 
     expect(joined).toContain("Start at 50");
     expect(joined).toContain("Thirteen product families");
-    expect(joined).toContain("Startup flexibility");
+    expect(joined).toContain("Sampling flexibility");
     expect(joined).toContain("Everything a product needs");
     expect(joined).toContain("Where your product would be made");
     expect(joined).toContain("Eight stages from inquiry to delivery");
     expect(joined).toContain("Eight checkpoints");
-    expect(joined).toContain("Built around USA and European buyers");
+    expect(joined).toContain("Manufacturing across international markets");
     expect(joined).toContain("Bring us the idea");
   });
 

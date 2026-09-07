@@ -32,14 +32,14 @@ Verification commands and their current results are in section 9.
 | Framework | Next.js 16.3, App Router, Turbopack | Server Components by default |
 | Language | TypeScript, strict | No `any` in application code |
 | Styling | Tailwind CSS v4 | CSS first configuration in `app/globals.css` |
-| Fonts | Instrument Serif, Manrope, via `next/font` | Self hosted, no external font request |
+| Fonts | Manrope only, via `next/font` | Self hosted, no external font request. No serif; superseded the original Instrument Serif pairing in the 2026-09-07 redesign |
 | Validation | Zod | Same schemas on client and server |
 | CMS | Sanity, optional | Falls back to typed repository content |
 | Email | Resend | Degrades to server logging when unconfigured |
 | Storage | Vercel Blob, behind an adapter interface | Swappable without touching route handlers |
 | Spam | Cloudflare Turnstile, honeypot, timing, rate limit | Four independent layers |
-| Unit tests | Vitest | 132 tests |
-| Browser tests | Playwright, desktop and mobile projects | 120 tests |
+| Unit tests | Vitest | 153 tests |
+| Browser tests | Playwright, desktop and mobile projects | 160 tests, 9 correctly skipped (desktop-only checks on the mobile project) |
 
 React Hook Form is listed in the brief. The forms use a small typed state layer
 instead, and the package was removed rather than left installed and unused. The
@@ -134,23 +134,34 @@ dash or en dash, which the brief prohibits.
 ## 5. Design system
 
 Tokens live in `app/globals.css` under Tailwind v4's `@theme`, so they are both
-CSS variables and Tailwind utilities.
+CSS variables and Tailwind utilities. The system described here is the one
+actually shipped after the 2026-09-07 redesign; it supersedes the original
+brief's warm paper, serif and 2 to 8px radius direction, and `CLAUDE.md`
+section 3 has been updated to match.
 
-- Warm paper and cotton grounds, ink text, forest as the accent, clay used
-  sparingly. No pure black.
-- Radii between 2px and 8px. No pill shapes anywhere, including tags, which are
-  square with a hairline border.
-- Fluid type with `clamp()` on the scale from the brief.
-- Section rhythm 80px mobile, 112px tablet, 144px desktop.
+- Cool cotton and mist grounds (`--color-cotton`, `--color-mist`,
+  `--color-surface`), ink text, forest as the sole brand accent, clay reserved
+  for a status or attention accent used sparingly. No pure black; `ink` is a
+  near black. No warm paper tone anywhere.
+- Manrope only, for both display and body type. No serif anywhere on the site.
+- A soft radius scale from 10px on small controls up to 24 to 28px on page
+  level panels and the footer. No pill shapes anywhere, including tags.
+- Fluid type with `clamp()`, defined in full in `app/globals.css` and in
+  `CLAUDE.md` section 3.5.
+- Three section rhythms via the `Section` component's `size` prop: `"tight"`
+  (48/60/72px), `"default"` (64/80/96px), `"large"` (80/104/128px), not one
+  fixed value.
 - Motion is limited to reveals, underline growth, menu transitions and a small
   image scale on hover, all disabled under `prefers-reduced-motion`.
 
 Three design taste skills were installed into the repository partway through the
 build. Their craft guidance was adopted: macro whitespace, custom easing curves,
 `IntersectionObserver` reveals, GPU safe animation, no emoji, no lorem, no AI
-copywriting clichés. Where they conflicted with the brief they were overruled,
-because the brief is the specification: no pill shaped CTAs, no glassmorphism, no
-`rounded-[2rem]` cards, no mesh gradients, no dark theme.
+copywriting clichés. Where they conflicted with the brief they were overruled at
+the time, because the brief was then the specification: no pill shaped CTAs, no
+glassmorphism, no mesh gradients, no dark theme. Those prohibitions still hold
+under the shipped redesign; only the palette, radius scale and section rhythm
+changed.
 
 ---
 
@@ -255,7 +266,7 @@ Latest results:
 | `npm run lint` | Clean, no errors, no warnings |
 | `npm run typecheck` | Clean |
 | `npm run test` | 132 passed |
-| `npm run build` | 103 routes generated |
+| `npm run build` | 104 routes generated |
 | `npm run test:e2e` | 120 passed, 8 skipped by project |
 
 The eight skips are the project specific guards: desktop only tests skipped on

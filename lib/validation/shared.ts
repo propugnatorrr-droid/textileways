@@ -183,7 +183,7 @@ export const companyStageLabels: Record<(typeof companyStages)[number], string> 
   "launched-under-1-year": "Launched within the last year",
   "established-1-5-years": "Established, one to five years trading",
   "established-5-plus-years": "Established, more than five years trading",
-  enterprise: "Enterprise or large organisation",
+  enterprise: "Established, large or multi brand organisation",
 };
 
 export const shippingTerms = [

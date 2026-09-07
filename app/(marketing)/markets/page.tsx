@@ -13,7 +13,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Markets",
   description:
-    "How Textileways supports buyers importing into the United States, the European Union and the United Kingdom, covering sizing, labelling, documentation and freight planning.",
+    "How Textileways supports buyers importing into the United States, the European Union, the United Kingdom and Australia, covering sizing, labelling, documentation and freight planning.",
   path: "/markets",
 });
 
@@ -29,7 +29,7 @@ export default function MarketsPage() {
 
       <PageHeader
         eyebrow="Markets"
-        title="Built around USA and European buyers"
+        title="Built around international buyers"
         lede="Sizing conventions, labelling requirements and import documentation differ by destination. These pages set out what we prepare for each market, and what stays your responsibility as the brand placing a product on it."
         breadcrumbs={breadcrumbs}
         actions={
@@ -51,7 +51,7 @@ export default function MarketsPage() {
 
       <Section>
         <Container>
-          <ul className="grid gap-4 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2">
             {markets.map((market, index) => (
               <Reveal key={market.slug} as="li" delay={index * 70} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
@@ -73,7 +73,7 @@ export default function MarketsPage() {
           </ul>
 
           <Notice tone="info" title="Other international markets" className="mt-12 max-w-[74ch]">
-            We ship beyond these three markets. Documentation is prepared for the destination
+            We ship beyond these four markets. Documentation is prepared for the destination
             you confirm, and any requirement specific to that market is raised before
             production rather than after shipping. Tell us the destination in your inquiry.
           </Notice>

@@ -51,7 +51,9 @@ describe("content integrity: verification status filtering", () => {
     expect(verifiedFactValue("experience-years")).toBe("More than 20 years");
     expect(verifiedFactValue("moq-minimum")).toBe("From approximately 50 pieces");
     expect(verifiedFactValue("capacity-ceiling")).toBe("Beyond 100,000 pieces");
-    expect(verifiedFactValue("primary-markets")).toBe("United States and Europe");
+    expect(verifiedFactValue("primary-markets")).toBe(
+      "United States, European Union, United Kingdom and Australia",
+    );
   });
 
   it("reports the WhatsApp number supplied by the business", () => {
@@ -143,8 +145,8 @@ describe("seed content completeness", () => {
     expect(industries).toHaveLength(10);
   });
 
-  it("has the three required markets", () => {
-    expect(markets.map((market) => market.slug)).toEqual(["usa", "europe", "uk"]);
+  it("has the four required markets", () => {
+    expect(markets.map((market) => market.slug)).toEqual(["usa", "europe", "uk", "australia"]);
   });
 
   it("has at least ten FAQs", () => {

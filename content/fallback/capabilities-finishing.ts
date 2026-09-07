@@ -522,7 +522,7 @@ export const finishingCapabilities: Capability[] = [
     seo: {
       title: "Export logistics and shipping documentation",
       description:
-        "Incoterm based quotation, forwarder coordination and accurate export documentation for shipments to the USA, UK and Europe.",
+        "Incoterm based quotation, forwarder coordination and accurate export documentation for shipments to the USA, UK, Europe and Australia.",
     },
   },
 ];

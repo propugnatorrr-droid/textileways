@@ -137,7 +137,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
       </Section>
 
       <PageCta
-        title={`Manufacturing for the ${market.name}`}
+        title={`Manufacturing for ${market.withArticle}`}
         description="Tell us your destination city and country in the quote request. Sizing, labelling and documentation are then prepared for this market from the start."
         location="market_detail"
         whatsapp={{
