@@ -96,7 +96,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         }}
         actions={
           <>
-            <ButtonLink href="/request-a-quote">Request a Quote</ButtonLink>
+            <ButtonLink href="/request-a-quote">Quote This Product</ButtonLink>
             <ButtonLink href="/request-a-sample" variant="secondary">
               Request a Sample
             </ButtonLink>
