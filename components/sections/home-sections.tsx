@@ -540,30 +540,27 @@ const marketMedia = {
   usa: editorialMedia.logistics,
   europe: editorialMedia.scale,
   uk: editorialMedia.materials,
+  australia: factoryMedia.packing,
 } as const;
 
 export function MarketsSection() {
-  const featured = markets.filter(
-    (market) => market.slug === "usa" || market.slug === "europe",
-  );
-
   return (
     <Section className="bg-white">
       <Container>
         <SectionHeading
           eyebrow="Markets"
-          title="Manufacturing across international markets"
-          lede="Sizing conventions, labelling requirements and documentation differ by destination. They are confirmed with you rather than assumed."
+          title="Prepared for your destination market"
+          lede="Sizing, labelling, packing and documentation requirements differ by destination. We build the requirements you confirm into the specification before production begins."
           action={
             <ButtonLink href="/markets" variant="secondary">
-              All markets
+              View all market guidance
             </ButtonLink>
           }
         />
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          {featured.map((market, index) => (
-            <Reveal key={market.slug} delay={index * 90} className="h-full">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {markets.map((market, index) => (
+            <Reveal key={market.slug} delay={(index % 2) * 80} className="h-full">
               <Link
                 href={`/markets/${market.slug}`}
                 className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_18px_50px_rgba(11,15,13,0.09)]"
@@ -571,16 +568,20 @@ export function MarketsSection() {
                 <Media
                   asset={marketMedia[market.slug as keyof typeof marketMedia]}
                   aspect="aspect-[16/8]"
-                  sizes="(min-width: 1024px) 46vw, 100vw"
+                  sizes="(min-width: 768px) 46vw, 100vw"
                   compact
                   className="rounded-none"
                   zoomOnHover
                 />
+
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
                   <h3 className="font-sans text-h3 font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep">
                     {market.name}
                   </h3>
-                  <p className="mt-3 text-small text-ink-muted">{market.summary}</p>
+
+                  <p className="mt-3 text-small leading-relaxed text-ink-muted">
+                    {market.summary}
+                  </p>
 
                   <ul className="mt-6 grid flex-1 gap-3">
                     {market.buyerSupport.slice(0, 3).map((item) => (
@@ -592,7 +593,7 @@ export function MarketsSection() {
                   </ul>
 
                   <span className="mt-7 inline-flex items-center gap-1.5 text-small font-semibold text-forest">
-                    Market guidance
+                    View market guidance
                     <span
                       aria-hidden="true"
                       className="transition-transform duration-200 group-hover:translate-x-1"
@@ -609,6 +610,7 @@ export function MarketsSection() {
     </Section>
   );
 }
+
 
 /* ==========================================================================
    Insights
