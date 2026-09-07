@@ -111,9 +111,9 @@ export function ProductUniverseSection() {
     <Section className="bg-white">
       <Container>
         <SectionHeading
-          eyebrow="Product universe"
-          title="Thirteen product families"
-          lede="Every family states how it is produced, what it is typically made from, and where its minimum quantity really comes from."
+          eyebrow="What we manufacture"
+          title="One partner across thirteen product families"
+          lede="Explore apparel, uniforms, sportswear, specialist products and home textiles, with practical guidance on construction, materials, decoration and order quantities."
           action={
             <div className="flex flex-wrap gap-3">
               <ButtonLink href="/products" variant="secondary">
