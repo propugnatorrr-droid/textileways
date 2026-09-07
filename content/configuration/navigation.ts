@@ -4,6 +4,8 @@ import { capabilityGroupLabels, materialGroupLabels } from "@/content/types";
 import { industries } from "@/content/fallback/industries";
 import { markets } from "@/content/fallback/markets";
 import { materials } from "@/content/fallback/materials";
+import { publicCertificates } from "@/content/fallback/certificates";
+import { publishedCaseStudies } from "@/content/fallback/case-studies";
 
 export interface NavLink {
   label: string;
@@ -25,6 +27,8 @@ export interface NavItem {
   /** Short line shown at the head of the mega menu panel. */
   intro?: string;
 }
+const hasPublicCertificates = publicCertificates().length > 0;
+const hasPublishedCaseStudies = publishedCaseStudies().length > 0;
 
 /** Primary navigation. Order matches the brief. */
 export const primaryNavigation: NavItem[] = [
@@ -191,11 +195,15 @@ export const primaryNavigation: NavItem[] = [
             href: "/traceability",
             description: "Where materials and production come from.",
           },
-          {
-            label: "Certifications",
-            href: "/certifications",
-            description: "A verifiable certificate registry rather than a wall of logos.",
-          },
+                   ...(hasPublicCertificates
+            ? [
+                {
+                  label: "Certifications",
+                  href: "/certifications",
+                  description: "Current, verifiable certification records.",
+                },
+              ]
+            : []),
         ],
       },
     ],
@@ -237,11 +245,15 @@ export const primaryNavigation: NavItem[] = [
             href: "/insights",
             description: "How manufacturing decisions actually work.",
           },
-          {
-            label: "Case studies",
-            href: "/case-studies",
-            description: "How a project runs, from the buyer's side.",
-          },
+                   ...(hasPublishedCaseStudies
+            ? [
+                {
+                  label: "Case studies",
+                  href: "/case-studies",
+                  description: "Documented manufacturing projects and outcomes.",
+                },
+              ]
+            : []),
           {
             label: "Frequently asked questions",
             href: "/faq",
@@ -295,7 +307,9 @@ export const footerNavigation: NavColumn[] = [
       { label: "Our position", href: "/responsibility" },
       { label: "Sustainability", href: "/sustainability" },
       { label: "Traceability", href: "/traceability" },
-      { label: "Certifications", href: "/certifications" },
+      ...(hasPublicCertificates
+        ? [{ label: "Certifications", href: "/certifications" }]
+        : []),
     ],
   },
   {
@@ -311,7 +325,9 @@ export const footerNavigation: NavColumn[] = [
     title: "Resources",
     links: [
       { label: "Insights", href: "/insights" },
-      { label: "Case studies", href: "/case-studies" },
+      ...(hasPublishedCaseStudies
+        ? [{ label: "Case studies", href: "/case-studies" }]
+        : []),
       { label: "Frequently asked questions", href: "/faq" },
       { label: "Request a quote", href: "/request-a-quote" },
       { label: "Request a sample", href: "/request-a-sample" },
