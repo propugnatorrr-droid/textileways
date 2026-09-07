@@ -293,9 +293,9 @@ export function CapabilitiesSection() {
         <Panel tone="ink">
           <SectionHeading
             tone="inverse"
-            eyebrow="Capabilities"
-            title="Everything a product needs, in one place"
-            lede="Thirty capabilities across development, materials, manufacturing, decoration, finishing and assurance. Each page states what the process cannot do as well as what it can."
+            eyebrow="Manufacturing capabilities"
+            title="From product development to packed production"
+            lede="Thirty capabilities across development, materials, sampling, manufacturing, decoration, finishing, quality assurance and export preparation."
             action={
               <ButtonLink href="/capabilities" variant="inverse">
                 All 30 capabilities
@@ -368,9 +368,9 @@ export function FactorySection() {
               Where your product would be made
             </DisplayHeading>
             <Lede className="mt-6">
-              Buyers are entitled to see the environment their product comes from. Every
-              product family also states whether it is made in house or through an audited
-              partner facility.
+              See the working environment behind sampling, cutting, sewing, decoration,
+              inspection and packing—and understand which production route applies to your
+              product.
             </Lede>
 
             <div className="mt-8 flex flex-wrap gap-3">
