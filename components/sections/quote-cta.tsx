@@ -27,10 +27,14 @@ export function QuoteCta({
   productFamily?: string;
 }) {
   const styles = {
-    primary: "bg-forest text-white border-forest hover:bg-forest-deep hover:border-forest-deep",
-    secondary: "bg-transparent text-ink border-line-strong hover:border-ink hover:bg-mist/50",
-    inverse: "bg-cotton text-ink border-cotton hover:bg-white hover:border-white",
+    primary:
+      "border-forest bg-forest text-white shadow-[0_1px_2px_rgba(11,15,13,0.06)] hover:border-forest-deep hover:bg-forest-deep hover:shadow-[0_12px_28px_rgba(8,122,85,0.24)]",
+    secondary:
+      "border-line-strong bg-white text-ink hover:border-ink/30 hover:bg-cotton",
+    inverse:
+      "border-white bg-white text-ink hover:bg-cotton hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]",
   }[variant];
+
 
   return (
     <Link
@@ -42,7 +46,7 @@ export function QuoteCta({
         })
       }
       className={cn(
-        "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[14px] border px-6 py-3.5 text-small font-medium transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
+        "inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[14px] border px-6 text-small font-semibold transition-[background-color,border-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 active:translate-y-0",
         styles,
         className,
       )}
