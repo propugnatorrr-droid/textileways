@@ -6,13 +6,29 @@ import { publicCertificates, resolveCertificateStatus } from "@/content/fallback
 import { formatDate } from "@/lib/utilities/format";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
+const certificates = publicCertificates();
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title:
+      certificates.length > 0
+        ? "Certifications"
+        : "Certification requirements",
+    description:
+      certificates.length > 0
+        ? "Current Textileways certification records, including issuing organisation, scope, facility and validity."
+        : "Discuss certification, testing and documentation requirements for your textile or apparel programme before development begins.",
+    path: "/certifications",
+  }),
+  ...(certificates.length === 0
+    ? {
+        robots: {
+          index: false,
+          follow: true,
+        },
+      }
+    : {}),
+};
 
-export const metadata: Metadata = buildMetadata({
-  title: "Certifications",
-  description:
-    "A verifiable certificate registry. Textileways publishes only active certificates with a certificate number, an issuing organisation and a verification route, rather than a wall of logos.",
-  path: "/certifications",
-});
 
 const statusLabels = {
   active: "Active",
@@ -23,7 +39,6 @@ const statusLabels = {
 } as const;
 
 export default function CertificationsPage() {
-  const certificates = publicCertificates();
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
@@ -53,13 +68,15 @@ export default function CertificationsPage() {
         <Container>
           {certificates.length === 0 ? (
             <EmptyState
-              title="No certificates are published yet"
-              description="No certificate documents, numbers or issuing organisations have been supplied for publication. Rather than displaying certification logos without records behind them, this page stays empty until real certificates exist. If a certification matters to your sourcing decision, ask for it directly and we will tell you what is genuinely held."
+              title="Confirm your required standard before development"
+              description="Certification and testing requirements vary by product, material, destination and buyer programme. Tell us which standard applies so the production route, material documentation and any third-party testing can be reviewed before sampling begins."
               action={
                 <div className="flex flex-wrap justify-center gap-3">
-                  <ButtonLink href="/contact">Ask about certification</ButtonLink>
-                  <ButtonLink href="/responsibility" variant="secondary">
-                    Our position on claims
+                  <ButtonLink href="/contact">
+                    Discuss a Requirement
+                  </ButtonLink>
+                  <ButtonLink href="/quality" variant="secondary">
+                    Review Quality Control
                   </ButtonLink>
                 </div>
               }
@@ -102,48 +119,49 @@ export default function CertificationsPage() {
       </Section>
 
       <SplitSection
-        eyebrow="How this works"
-        title="What gets published here"
-        intro="The rules the registry enforces, so a lapsed certificate cannot quietly remain on display."
-        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
+        eyebrow="Plan requirements early"
+        title="Certification affects the production route"
+        intro="A required standard can influence material sourcing, factory selection, testing, documentation, minimum quantities and lead time. It should be identified before the first sample is developed."
+        className="tw-card overflow-hidden rounded-[22px]"
       >
         <ul className="divide-y divide-line border-y border-line text-small text-ink-muted">
           <li className="py-5">
-            <span className="font-semibold text-ink">A certificate number is required</span>
+            <span className="font-semibold text-ink">Name the required standard</span>
             <p className="mt-2">
-              A record with no certificate number cannot be verified by a buyer, so it is not
-              displayed.
+              Share the exact certification, retailer protocol or testing requirement rather
+              than asking generally whether a product is compliant.
             </p>
           </li>
+
           <li className="py-5">
-            <span className="font-semibold text-ink">Status is computed from the expiry date</span>
+            <span className="font-semibold text-ink">Confirm the required scope</span>
             <p className="mt-2">
-              Status is recalculated on every page render rather than read from a stored
-              field, so an expired certificate cannot appear as active because nobody updated
-              the record.
+              Requirements can apply to a facility, production process, material supplier or
+              individual order. Those are not interchangeable.
             </p>
           </li>
+
           <li className="py-5">
-            <span className="font-semibold text-ink">Scope is named explicitly</span>
+            <span className="font-semibold text-ink">Review the evidence before ordering</span>
             <p className="mt-2">
-              A certification covers a specific facility and a specific scope. Publishing one
-              without saying what it covers invites a buyer to assume it covers everything.
+              Where documentation is required, its issuing organisation, validity, scope and
+              relationship to your product should be reviewed before production is approved.
             </p>
           </li>
+
           <li className="py-5">
-            <span className="font-semibold text-ink">Material claims need a chain, not a logo</span>
+            <span className="font-semibold text-ink">Allow for testing and documentation</span>
             <p className="mt-2">
-              An organic or recycled claim on a garment label requires certified operators at
-              every step and valid transaction certificates for your specific order. Where
-              that chain cannot be evidenced, the claim is not made.
+              Third-party testing, transaction certificates and buyer-specific reports can
+              affect the schedule and cost. Include them in the original brief.
             </p>
           </li>
         </ul>
 
         <Notice tone="info" className="mt-10 max-w-[70ch]">
-          If your buyer requires a specific certification, tell us at the inquiry stage. It is
-          better to know at the start that a requirement cannot be met than to discover it
-          after samples are approved.
+          Textileways does not treat one certification as proof that every product, material
+          or production route is covered. Requirements are reviewed against the specific
+          order.
         </Notice>
       </SplitSection>
 
