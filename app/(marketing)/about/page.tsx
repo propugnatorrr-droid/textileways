@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, Section, ButtonLink, SpecList, Notice } from "@/components/ui";
+import { Container, Section, ButtonLink, SpecList } from "@/components/ui";
 import { PageHeader, ProseBlock, SplitSection, PageCta } from "@/components/sections/page-shell";
 import { Media } from "@/components/content/media";
 import { Reveal } from "@/components/content/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { aboutNarrative } from "@/content/fallback/company";
-import { publicFacts, outstandingFacts } from "@/content/configuration/company-facts";
+import { publicFacts } from "@/content/configuration/company-facts";
 import { editorialMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
@@ -20,7 +20,6 @@ export const metadata: Metadata = buildMetadata({
 
 export default function AboutPage() {
   const facts = publicFacts();
-  const outstanding = outstandingFacts().length;
 
   const breadcrumbs = [
     { name: "Home", path: "/" },
@@ -86,29 +85,36 @@ export default function AboutPage() {
 
       <SplitSection
         eyebrow="Company facts"
-        title="What we can state as fact"
-        intro="Everything published about the business is held in one register with a verification status. Anything unconfirmed is absent rather than estimated."
-        className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
+        title="A manufacturing partner built for different stages of growth"
+        intro="The essentials buyers need when deciding whether a supplier fits their product, quantity and destination."
+        className="tw-card overflow-hidden rounded-[22px]"
       >
-        <SpecList items={facts.map((fact) => ({ label: fact.label, value: fact.value }))} />
+        <SpecList
+          items={facts.map((fact) => ({
+            label: fact.label,
+            value: fact.value,
+          }))}
+        />
 
-        <Notice tone="info" title="What is deliberately missing" className="mt-10 max-w-[70ch]">
-          <p>
-            {outstanding} further items, including production capacity, employee numbers,
-            delivery performance and defect rates, are recorded in the register as unverified
-            and are therefore not published anywhere on this site.
+        <div className="mt-10 max-w-[70ch] rounded-[20px] border border-line bg-cotton p-6 sm:p-7">
+          <h3 className="text-body font-semibold text-ink">
+            Preparing a supplier review?
+          </h3>
+          <p className="mt-3 text-small leading-relaxed text-ink-muted">
+            Tell us which company, facility, production, testing or documentation details
+            your sourcing process requires. Available information can be reviewed in the
+            context of your proposed product and production route.
           </p>
-          <p className="mt-3">
-            A capacity figure without a measurement method and a reporting period is not
-            information, and buyers making sourcing decisions deserve better than a number
-            that cannot be checked.
-          </p>
-        </Notice>
+          <ButtonLink href="/contact" variant="secondary" className="mt-6">
+            Request Company Information
+          </ButtonLink>
+        </div>
       </SplitSection>
 
+
       <PageCta
-        title="Start with a conversation rather than a commitment"
-        description="Tell us what you want to make, roughly how many, and where it is going. We will tell you honestly whether it is something we should be quoting for."
+        title="See whether Textileways fits your next product"
+        description="Share the product, estimated quantity and destination. We will review the requirements and explain the most practical route into sampling and production."
         location="about_page"
         whatsapp={{ pageLabel: "About", path: "/about" }}
       />
