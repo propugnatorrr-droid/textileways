@@ -36,7 +36,7 @@ export const primaryNavigation: NavItem[] = [
     label: "Products",
     href: "/products",
     intro:
-      "Thirteen product families, each with construction options, indicative weights and truthful capability status.",
+      "Explore thirteen product families with practical guidance on construction, materials, decoration and order quantities.",
     columns: [
       {
         title: "Apparel",
@@ -99,7 +99,7 @@ export const primaryNavigation: NavItem[] = [
     label: "Capabilities",
     href: "/capabilities",
     intro:
-      "Thirty capabilities across development, materials, manufacturing, decoration, finishing and assurance.",
+      "Product development, sourcing, sampling, manufacturing, decoration, finishing, quality control and export preparation.",
     columns: [
       ...capabilitiesByGroup()
         .slice(0, 3)
@@ -133,7 +133,7 @@ export const primaryNavigation: NavItem[] = [
           {
             label: "Manufacturing process",
             href: "/manufacturing-process",
-            description: "Twenty one stages from brief to reorder, with responsibilities on both sides.",
+            description: "Twenty-one stages from the first brief through sampling, production, delivery and reorder.",
           },
           {
             label: "Quality",
@@ -143,7 +143,7 @@ export const primaryNavigation: NavItem[] = [
           {
             label: "The factory",
             href: "/factory",
-            description: "The working environment your product would be made in.",
+            description: "Sampling, cutting, sewing, decoration, inspection and packing.",
           },
         ],
       },
@@ -183,12 +183,12 @@ export const primaryNavigation: NavItem[] = [
           {
             label: "Our position",
             href: "/responsibility",
-            description: "What we publish, what we withhold and why.",
+            description: "Responsible sourcing, buyer due diligence and evidence-led claims.",
           },
           {
             label: "Sustainability",
             href: "/sustainability",
-            description: "Approach described without invented metrics.",
+            description: "Material, packaging, waste and shipping choices available by order.",
           },
           {
             label: "Traceability",
@@ -257,7 +257,7 @@ export const primaryNavigation: NavItem[] = [
           {
             label: "Frequently asked questions",
             href: "/faq",
-            description: "Answers without commercial promises.",
+            description: "Clear answers about quantities, sampling, pricing, lead time and shipping.",
           },
           {
             label: "Request a sample",
