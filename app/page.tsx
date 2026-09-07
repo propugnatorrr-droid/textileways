@@ -3,7 +3,6 @@ import { HomeHero } from "@/components/sections/home-hero";
 import {
   ProductionScaleSection,
   ProductUniverseSection,
-  PositioningSection,
   HowItWorksSection,
   CapabilitiesSection,
   FactorySection,
@@ -28,7 +27,6 @@ export default function HomePage() {
       <HomeHero />
       <ProductionScaleSection />
       <ProductUniverseSection />
-      <PositioningSection />
       <CapabilitiesSection />
       <FactorySection />
       <HowItWorksSection />
