@@ -40,14 +40,16 @@ export function HomeHero() {
               <span className="mt-1 block text-forest">Built for your largest.</span>
             </h1>
 
-            <p className="mt-6 max-w-[52ch] text-body-l text-ink-muted">
+            <p className="mt-6 max-w-[54ch] text-body-l text-ink-muted">
               Custom apparel, uniforms, sportswear, home textiles and specialist products
-              for buyers across the USA, Europe, the UK and Australia. Start at 50 pieces
-              and scale beyond 100,000.
+              manufactured in Pakistan for international brands and organisations. Start
+              from approximately 50 pieces after technical review and build toward larger
+              repeat production.
             </p>
 
+
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <QuoteCta location="home_hero">Start a Manufacturing Project</QuoteCta>
+              <QuoteCta location="home_hero">Request a Manufacturing Quote</QuoteCta>
 
               <ButtonLink href="/products" variant="secondary">
                 Explore Products
