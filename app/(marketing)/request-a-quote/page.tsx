@@ -27,17 +27,18 @@ export default function RequestAQuotePage() {
       <PageHeader
         eyebrow="Request a quote"
         title="Tell us what you need to make"
-        lede="Seven short steps. Only the first two are strictly required to start a conversation, and everything you enter is kept in this browser as you go, so you can leave and come back."
+        lede="Share what you know in seven short steps. Only the first two are required to begin, and your progress is saved in this browser so you can return without starting again."
         breadcrumbs={breadcrumbs}
         aside={
           <HeaderAside title="What to expect">
             <p>
-              We reply with technical questions before a price. A quotation given before the
-              questions are answered is a guess.
+              We review the product, construction, material, quantity and destination before
+              quoting so the price is tied to a clear specification.
             </p>
             <p>
-              No minimum quantity is refused on principle. Projects can begin from
-              approximately 50 pieces per style following technical review.
+              Projects can begin from approximately 50 pieces per style following technical
+              review. Practical minimums depend on the fabric, colourways, construction,
+              decoration and packaging.
             </p>
             <p>
               Files you submit are used only to quote, sample and produce your order. A non
