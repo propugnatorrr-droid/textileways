@@ -8,6 +8,7 @@ import { industrySlugs } from "@/content/fallback/industries";
 import { marketSlugs } from "@/content/fallback/markets";
 import { articles } from "@/content/fallback/articles";
 import { publishedCaseStudies } from "@/content/fallback/case-studies";
+import { publicCertificates } from "@/content/fallback/certificates";
 
 /**
  * Sitemap.
@@ -18,7 +19,13 @@ import { publishedCaseStudies } from "@/content/fallback/case-studies";
  * route.
  */
 
-const excludedFromSitemap = new Set(["/privacy", "/terms", "/cookie-policy"]);
+const excludedFromSitemap = new Set([
+  "/privacy",
+  "/terms",
+  "/cookie-policy",
+  ...(publicCertificates().length === 0 ? ["/certifications"] : []),
+  ...(publishedCaseStudies().length === 0 ? ["/case-studies"] : []),
+]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
