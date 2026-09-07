@@ -131,7 +131,7 @@ export default function QualityPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-[18ch] font-sans text-h2 font-semibold tracking-[-0.045em]">Eight production checkpoints</h2>

@@ -106,7 +106,7 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={capability.introduction} />
 
@@ -196,7 +196,7 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
       ) : null}
 
       {relatedProducts.length > 0 ? (
-        <Section tight className="">
+        <Section size="tight">
           <Container>
             <RelatedGrid
               title="Product families using this capability"

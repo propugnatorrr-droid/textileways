@@ -93,7 +93,7 @@ export default async function MaterialPage(props: PageProps<"/materials/[slug]">
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={material.introduction} />
         </Container>
@@ -145,7 +145,7 @@ export default async function MaterialPage(props: PageProps<"/materials/[slug]">
         </div>
       </SplitSection>
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

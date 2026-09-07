@@ -16,12 +16,12 @@ import { cn } from "@/lib/utilities/cn";
  *
  * Design decisions, all within the project's shape and motion rules:
  *
- * - a square cornered panel with a hairline border, not a circular pill
+ * - a rounded rectangle panel with a hairline border, not a circular pill
  * - it opens as a small labelled card on first sight so the visitor understands
  *   what it is, then collapses to a compact action once they have seen it
  * - the label is dismissible, and the dismissal is remembered for the session
- * - it sits above the footer rather than over it, and it moves out of the way of
- *   the cookie banner when that is showing
+ * - it withdraws once the closing call to action or the footer scrolls into
+ *   view, so it never sits over the footer links or the primary conversion
  * - the prefilled message names the page the visitor is on, so the first thing
  *   the sales team sees is the context of the enquiry
  */
@@ -32,6 +32,7 @@ export function WhatsappFloatingButton() {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [atFooter, setAtFooter] = useState(false);
   const timerRef = useRef<number | null>(null);
 
   /* Reveal after a short delay so it never competes with the hero on arrival. */
@@ -46,6 +47,27 @@ export function WhatsappFloatingButton() {
       if (timerRef.current !== null) window.clearTimeout(timerRef.current);
     };
   }, []);
+
+  /*
+   * Withdraw the control while the footer is on screen. Watching the footer
+   * rather than the scroll position keeps this correct on short pages, where
+   * the footer is visible immediately and the control would otherwise cover it.
+   */
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry) setAtFooter(entry.isIntersecting);
+      },
+      { rootMargin: "0px 0px -24px 0px" },
+    );
+
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   const collapse = useCallback(() => {
     setExpanded(false);
@@ -69,7 +91,9 @@ export function WhatsappFloatingButton() {
     <div
       className={cn(
         "fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:bottom-7 sm:right-7",
-        mounted ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0",
+        mounted && !atFooter
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-3 opacity-0",
       )}
     >
       {expanded ? (
@@ -135,7 +159,7 @@ export function WhatsappInlineLink({
   context: WhatsappContext;
   location: string;
   children?: React.ReactNode;
-  variant?: "primary" | "secondary" | "inverse";
+  variant?: "primary" | "secondary" | "quiet" | "inverse" | "inverse-outline";
   className?: string;
 }) {
   const href = whatsappHref(context);
@@ -144,7 +168,10 @@ export function WhatsappInlineLink({
   const styles = {
     primary: "bg-forest text-white border-forest hover:bg-forest-deep",
     secondary: "bg-transparent text-ink border-line-strong hover:border-ink hover:bg-mist/50",
+    quiet: "min-h-0 border-transparent bg-transparent px-0 py-0 text-ink underline decoration-line-strong underline-offset-4 hover:text-forest-deep hover:decoration-forest",
     inverse: "bg-transparent text-white border-white/35 hover:border-white hover:bg-white/10",
+    "inverse-outline":
+      "bg-transparent text-white border-white/30 hover:border-white/60 hover:bg-white/10",
   }[variant];
 
   return (

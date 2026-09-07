@@ -112,7 +112,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={family.introduction} />
         </Container>
@@ -123,19 +123,21 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         title="What sits inside this family"
         intro="Representative products we manufacture in this category. Anything not listed can still be assessed on technical review."
       >
-        <ul className="divide-y divide-line">
+        <ul className="grid gap-px overflow-hidden rounded-[18px] bg-line sm:grid-cols-2">
           {family.productTypes.map((type) => (
-            <li key={type.name} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,18rem)_1fr] sm:gap-8">
+            <li key={type.name} className="bg-white p-5">
               <h3 className="text-small font-semibold text-ink">{type.name}</h3>
-              <p className="text-small leading-relaxed text-ink-muted">{type.description}</p>
+              <p className="mt-1.5 text-small leading-relaxed text-ink-muted">
+                {type.description}
+              </p>
             </li>
           ))}
         </ul>
       </SplitSection>
 
-      <Section tight className="bg-cotton">
+      <Section size="tight" className="bg-cotton">
         <Container>
-          <h2 className="mb-8 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+          <h2 className="mb-8 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
             Gallery
           </h2>
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -203,17 +205,23 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         title="What this category is usually made from"
         intro="Composition, weight guidance and decoration compatibility for each fabric are on its own page."
       >
-        <ul className="divide-y divide-line">
+        <ul className="grid gap-px overflow-hidden rounded-[18px] bg-line sm:grid-cols-2">
           {materials.map((material) => (
-            <li key={material.slug} className="py-5">
+            <li key={material.slug} className="bg-white">
               <Link
                 href={`/materials/${material.slug}`}
-                className="group grid gap-2 sm:grid-cols-[minmax(0,16rem)_1fr] sm:gap-8"
+                className="group flex h-full flex-col p-5 transition-colors duration-200 hover:bg-cotton"
               >
-                <span className="text-small font-semibold text-ink transition-colors duration-200 group-hover:text-forest">
+                <span className="inline-flex items-start justify-between gap-3 text-small font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep">
                   {material.name}
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 text-ink-subtle transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-forest"
+                  >
+                    &rarr;
+                  </span>
                 </span>
-                <span className="text-small leading-relaxed text-ink-muted">
+                <span className="mt-1.5 text-small leading-relaxed text-ink-muted">
                   {material.summary}
                 </span>
               </Link>
@@ -228,17 +236,19 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         intro="Neither figure is published as a universal number, because neither one is true across every specification."
       >
         <div className="space-y-10">
-          <div>
-            <StatusTag tone="muted">Minimum order quantity</StatusTag>
-            <p className="mt-4 max-w-[70ch] text-body leading-relaxed text-ink-muted">
-              {family.moqGuidance}
-            </p>
-          </div>
-          <div>
-            <StatusTag tone="muted">Sampling</StatusTag>
-            <p className="mt-4 max-w-[70ch] text-body leading-relaxed text-ink-muted">
-              {family.samplingGuidance}
-            </p>
+          <div className="grid gap-px overflow-hidden rounded-[18px] bg-line sm:grid-cols-2">
+            <div className="bg-white p-6">
+              <StatusTag tone="muted">Minimum order quantity</StatusTag>
+              <p className="mt-4 text-small leading-relaxed text-ink-muted">
+                {family.moqGuidance}
+              </p>
+            </div>
+            <div className="bg-white p-6">
+              <StatusTag tone="muted">Sampling</StatusTag>
+              <p className="mt-4 text-small leading-relaxed text-ink-muted">
+                {family.samplingGuidance}
+              </p>
+            </div>
           </div>
           <div>
             <h3 className="mb-4 text-small font-semibold text-ink">Quality considerations</h3>
@@ -269,7 +279,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
         </SplitSection>
       ) : null}
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

@@ -60,7 +60,7 @@ export default function FactoryPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={factoryNarrative.intro} />
 
@@ -80,7 +80,7 @@ export default function FactoryPage() {
         </Container>
       </Section>
 
-      <Section tight className="bg-cotton">
+      <Section size="tight" className="bg-cotton">
         <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-[16ch] font-sans text-h2 font-semibold tracking-[-0.045em]">Twelve views of the facility</h2>

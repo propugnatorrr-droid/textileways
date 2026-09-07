@@ -121,30 +121,41 @@ export function ProductFilters({
     });
   }, [families, groups, selected]);
 
+  /** Flat list of active selections, used to render removable chips. */
+  const activeChips = useMemo(() => {
+    const chips: { groupId: string; value: string; label: string }[] = [];
+    for (const group of groups) {
+      for (const value of selected[group.id] ?? []) {
+        const option = group.options.find((candidate) => candidate.value === value);
+        chips.push({ groupId: group.id, value, label: option?.label ?? value });
+      }
+    }
+    return chips;
+  }, [groups, selected]);
+
   const filterPanel = (
-    <div className="space-y-8">
+    <div className="space-y-7">
       {groups.map((group) => (
         <fieldset key={group.id}>
-          <legend className="mb-3 w-full border-b border-line pb-2.5 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+          <legend className="mb-3 w-full text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
             {group.legend}
           </legend>
-          <div className="space-y-2.5">
+          <div className="space-y-2">
             {group.options.map((option) => {
               const checked = (selected[group.id] ?? []).includes(option.value);
               return (
-                <label
-                  key={option.value}
-                  className="flex min-h-[28px] cursor-pointer items-start gap-3 text-small text-ink-muted"
-                >
+                <label key={option.value} className="tw-option">
                   <input
                     type="checkbox"
                     checked={checked}
                     onChange={(event) =>
                       updateFilter(group.id, option.value, event.target.checked)
                     }
-                    className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer border border-line-strong accent-[var(--color-forest)]"
+                    className="tw-checkbox"
                   />
-                  <span className={checked ? "text-ink" : undefined}>{option.label}</span>
+                  <span className={cn("text-small", checked ? "font-medium text-ink" : "text-ink-muted")}>
+                    {option.label}
+                  </span>
                 </label>
               );
             })}
@@ -156,7 +167,7 @@ export function ProductFilters({
         type="button"
         onClick={reset}
         disabled={activeCount === 0}
-        className="min-h-[44px] w-full rounded-[14px] border border-line-strong px-4 text-small font-medium text-ink transition-colors duration-200 hover:border-ink disabled:cursor-not-allowed disabled:opacity-50"
+        className="min-h-[48px] w-full rounded-[14px] border border-line-strong px-4 text-small font-semibold text-ink transition-colors duration-200 hover:border-ink disabled:cursor-not-allowed disabled:opacity-50"
       >
         Reset filters
       </button>
@@ -164,24 +175,29 @@ export function ProductFilters({
   );
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,16rem)_1fr] lg:gap-16">
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,17rem)_1fr] lg:gap-16">
       <div className="lg:hidden">
         <button
           type="button"
           aria-expanded={drawerOpen}
           aria-controls="product-filter-drawer"
           onClick={() => setDrawerOpen((open) => !open)}
-          className="flex min-h-[48px] w-full items-center justify-between rounded-[14px] border border-line-strong px-5 text-small font-medium text-ink"
+          className="flex min-h-[52px] w-full items-center justify-between rounded-[14px] border border-line-strong px-5 text-small font-semibold text-ink"
         >
           <span>Filter products</span>
-          <span className="text-ink-subtle">
+          <span
+            className={cn(
+              "rounded-[8px] px-2.5 py-1 text-label font-semibold uppercase tracking-[0.06em]",
+              activeCount > 0 ? "bg-forest-soft text-forest-deep" : "text-ink-subtle",
+            )}
+          >
             {activeCount > 0 ? `${activeCount} active` : "None active"}
           </span>
         </button>
         <div
           id="product-filter-drawer"
           hidden={!drawerOpen}
-          className="mt-6 rounded-[20px] border border-line bg-cotton p-5"
+          className="mt-4 rounded-[20px] bg-cotton p-5"
         >
           {filterPanel}
         </div>
@@ -192,11 +208,33 @@ export function ProductFilters({
       </aside>
 
       <div>
-        <p role="status" className="mb-6 text-small text-ink-subtle">
-          {visible.length === families.length
-            ? `Showing all ${families.length} product families`
-            : `Showing ${visible.length} of ${families.length} product families`}
-        </p>
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-line pb-5">
+          <p role="status" className="text-body font-semibold text-ink">
+            {visible.length === families.length
+              ? `Showing all ${families.length} product families`
+              : `Showing ${visible.length} of ${families.length} product families`}
+          </p>
+
+          {activeChips.length > 0 ? (
+            <ul className="flex flex-wrap gap-2">
+              {activeChips.map((chip) => (
+                <li key={`${chip.groupId}-${chip.value}`}>
+                  <button
+                    type="button"
+                    onClick={() => updateFilter(chip.groupId, chip.value, false)}
+                    className="inline-flex min-h-[36px] items-center gap-2 rounded-[10px] border border-line-strong bg-white px-3 text-small font-medium text-ink transition-colors duration-200 hover:border-ink"
+                  >
+                    {chip.label}
+                    <span aria-hidden="true" className="text-ink-subtle">
+                      &times;
+                    </span>
+                    <span className="sr-only">Remove {chip.label} filter</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
 
         {visible.length === 0 ? (
           <EmptyState

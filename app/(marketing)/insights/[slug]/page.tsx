@@ -75,7 +75,7 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
         size="h1"
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <Media
             asset={article.hero}
@@ -113,7 +113,7 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
       </Section>
 
       {faqs.length > 0 ? (
-        <Section tight className="bg-cotton">
+        <Section size="tight" className="bg-cotton">
           <Container>
             <h2 className="mb-8 font-sans text-h3 font-semibold tracking-[-0.032em]">Related questions</h2>
             <div className="max-w-[76ch]">
@@ -123,7 +123,7 @@ export default async function ArticlePage(props: PageProps<"/insights/[slug]">) 
         </Section>
       ) : null}
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <div className="grid gap-14 lg:grid-cols-3">
             <RelatedGrid

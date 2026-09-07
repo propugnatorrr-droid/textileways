@@ -48,7 +48,7 @@ export default function TraceabilityPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={traceabilityNarrative.intro} />
         </Container>

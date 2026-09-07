@@ -80,7 +80,7 @@ export default async function IndustryPage(props: PageProps<"/industries/[slug]"
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={industry.introduction} />
         </Container>
@@ -109,7 +109,7 @@ export default async function IndustryPage(props: PageProps<"/industries/[slug]"
         </SplitSection>
       ) : null}
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

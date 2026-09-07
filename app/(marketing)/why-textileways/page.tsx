@@ -57,7 +57,7 @@ export default function WhyTextilewaysPage() {
         </ul>
       </SplitSection>
 
-      <Section tight className="bg-cotton">
+      <Section size="tight" className="bg-cotton">
         <Container>
           <h2 className="max-w-[18ch] font-sans text-h2 font-semibold tracking-[-0.045em]">The range, stated plainly</h2>
           <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">

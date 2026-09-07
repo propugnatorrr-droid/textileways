@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Container, Section, Notice } from "@/components/ui";
-import { PageHeader } from "@/components/sections/page-shell";
+import { PageHeader, HeaderAside } from "@/components/sections/page-shell";
 import { RfqForm } from "@/components/forms/rfq-form";
 import { JsonLd } from "@/components/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -30,25 +30,20 @@ export default function RequestAQuotePage() {
         lede="Seven short steps. Only the first two are strictly required to start a conversation, and everything you enter is kept in this browser as you go, so you can leave and come back."
         breadcrumbs={breadcrumbs}
         aside={
-          <div className="rounded-[20px] border border-line bg-cotton p-6">
-            <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
-              What to expect
+          <HeaderAside title="What to expect">
+            <p>
+              We reply with technical questions before a price. A quotation given before the
+              questions are answered is a guess.
             </p>
-            <ul className="mt-5 space-y-3 text-small leading-relaxed text-ink-muted">
-              <li>
-                We reply with technical questions before a price. A quotation given before the
-                questions are answered is a guess.
-              </li>
-              <li>
-                No minimum quantity is refused on principle. Projects can begin from
-                approximately 50 pieces per style following technical review.
-              </li>
-              <li>
-                Files you submit are used only to quote, sample and produce your order. A non
-                disclosure agreement can be signed before you share original designs.
-              </li>
-            </ul>
-          </div>
+            <p>
+              No minimum quantity is refused on principle. Projects can begin from
+              approximately 50 pieces per style following technical review.
+            </p>
+            <p>
+              Files you submit are used only to quote, sample and produce your order. A non
+              disclosure agreement can be signed before you share original designs.
+            </p>
+          </HeaderAside>
         }
       />
 

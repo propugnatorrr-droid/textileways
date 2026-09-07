@@ -63,7 +63,7 @@ export default function CapabilitiesPage() {
       />
 
       {groups.map((group) => (
-        <Section key={group.group} tight className="">
+        <Section key={group.group} size="tight">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
               <div className="lg:sticky lg:top-28 lg:self-start">

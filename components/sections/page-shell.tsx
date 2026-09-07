@@ -6,6 +6,7 @@ import {
   Eyebrow,
   Lede,
   Section,
+  Panel,
   StatusTag,
 } from "@/components/ui";
 import { Breadcrumbs } from "@/components/content/breadcrumbs";
@@ -16,9 +17,17 @@ import type { BreadcrumbEntry } from "@/lib/seo/structured-data";
 import { cn } from "@/lib/utilities/cn";
 
 /**
- * Standard page opening: breadcrumbs, eyebrow, heading, lede and optional
- * status. Used by every interior route so page starts are consistent.
+ * Shared interior page system.
+ *
+ * Every public route builds from these pieces, so a change here reaches the
+ * whole site rather than one template. They use the same tokens and surfaces as
+ * the homepage, which is what keeps interior pages at the same visual quality.
  */
+
+/* -------------------------------------------------------------------------- */
+/* Page hero                                                                   */
+/* -------------------------------------------------------------------------- */
+
 export function PageHeader({
   eyebrow,
   title,
@@ -39,10 +48,10 @@ export function PageHeader({
   size?: "display-l" | "h1" | "h2";
 }) {
   return (
-    <Section tight className="">
+    <Section size="tight" className="bg-white pt-6 md:pt-8">
       <Container>
         {breadcrumbs && breadcrumbs.length > 0 ? (
-          <div className="mb-10">
+          <div className="mb-8">
             <Breadcrumbs entries={breadcrumbs} />
           </div>
         ) : null}
@@ -50,36 +59,54 @@ export function PageHeader({
         <div
           className={cn(
             "grid gap-10",
-            aside ? "lg:grid-cols-[1.25fr_1fr] lg:gap-20" : undefined,
+            aside
+              ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-16"
+              : undefined,
           )}
         >
           <div>
             <Eyebrow>{eyebrow}</Eyebrow>
-            <DisplayHeading level={1} size={size} className="mt-6 max-w-[20ch]">
+            <DisplayHeading level={1} size={size} className="mt-4 max-w-[18ch]">
               {title}
             </DisplayHeading>
 
+            {lede ? <Lede className="mt-6">{lede}</Lede> : null}
+
             {status ? (
-              <div className="mt-7">
+              <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
                 <StatusTag tone={status.tone ?? "forest"}>{status.label}</StatusTag>
                 {status.note ? (
-                  <p className="mt-3 max-w-[58ch] text-small text-ink-subtle">{status.note}</p>
+                  <span className="max-w-[52ch] text-small text-ink-subtle">{status.note}</span>
                 ) : null}
               </div>
             ) : null}
 
-            {lede ? <Lede className="mt-7">{lede}</Lede> : null}
-            {actions ? <div className="mt-9 flex flex-wrap gap-3">{actions}</div> : null}
+            {actions ? <div className="mt-8 flex flex-wrap gap-3">{actions}</div> : null}
           </div>
 
-          {aside ? <div className="lg:pt-2">{aside}</div> : null}
+          {aside ? <div>{aside}</div> : null}
         </div>
       </Container>
     </Section>
   );
 }
 
-/** Editorial prose block constrained to a comfortable reading width. */
+/** Compact aside used beside a page hero for supporting notes. */
+export function HeaderAside({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="rounded-[20px] bg-cotton p-6 sm:p-8">
+      <p className="text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+        {title}
+      </p>
+      <div className="mt-5 space-y-3 text-small text-ink-muted">{children}</div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Long form content                                                           */
+/* -------------------------------------------------------------------------- */
+
 export function ProseBlock({
   paragraphs,
   className,
@@ -88,7 +115,7 @@ export function ProseBlock({
   className?: string;
 }) {
   return (
-    <div className={cn("tw-prose text-body-l leading-relaxed text-ink-muted", className)}>
+    <div className={cn("tw-prose", className)}>
       {paragraphs.map((paragraph) => (
         <p key={paragraph.slice(0, 48)}>{paragraph}</p>
       ))}
@@ -96,7 +123,15 @@ export function ProseBlock({
   );
 }
 
-/** Two column section with a sticky heading beside detailed content. */
+/* -------------------------------------------------------------------------- */
+/* Split section                                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Heading on the left, content on the right. The heading column is wide enough
+ * that a long title does not wrap into a narrow ribbon, and the content column
+ * takes the rest of the width so nothing is stranded on a wide screen.
+ */
 export function SplitSection({
   eyebrow,
   title,
@@ -105,6 +140,7 @@ export function SplitSection({
   className,
   id,
   tight = false,
+  tone = "default",
 }: {
   eyebrow?: string;
   title: string;
@@ -113,30 +149,32 @@ export function SplitSection({
   className?: string;
   id?: string;
   tight?: boolean;
+  tone?: "default" | "panel";
 }) {
+  const body = (
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
+      <div className="lg:sticky lg:top-28 lg:self-start">
+        {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
+        <DisplayHeading level={2} size="h3" className={cn("max-w-[18ch]", eyebrow && "mt-4")}>
+          {title}
+        </DisplayHeading>
+        {intro ? <p className="mt-4 max-w-[46ch] text-small text-ink-muted">{intro}</p> : null}
+      </div>
+      <div>{children}</div>
+    </div>
+  );
+
   return (
-    <Section id={id} tight={tight} className={cn("border-b border-line", className)}>
-      <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,24rem)_1fr] lg:gap-20">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-            <DisplayHeading level={2} size="h3" className={eyebrow ? "mt-5" : undefined}>
-              {title}
-            </DisplayHeading>
-            {intro ? (
-              <p className="mt-4 max-w-[46ch] text-small leading-relaxed text-ink-muted">
-                {intro}
-              </p>
-            ) : null}
-          </div>
-          <div>{children}</div>
-        </div>
-      </Container>
+    <Section id={id} size={tight ? "tight" : "default"} className={cn("bg-white", className)}>
+      <Container>{tone === "panel" ? <Panel>{body}</Panel> : body}</Container>
     </Section>
   );
 }
 
-/** Card grid of related content, used at the foot of detail pages. */
+/* -------------------------------------------------------------------------- */
+/* Related content                                                             */
+/* -------------------------------------------------------------------------- */
+
 export function RelatedGrid({
   title,
   items,
@@ -156,23 +194,27 @@ export function RelatedGrid({
 
   return (
     <div>
-      <h2 className="mb-6 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+      <h2 className="text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
         {title}
       </h2>
-      <ul className={cn("grid gap-4", columnClass)}>
+      <ul className={cn("mt-6 grid gap-4", columnClass)}>
         {items.map((item, index) => (
-          <Reveal key={item.href + item.label} as="li" delay={(index % 4) * 55} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
+          <Reveal key={item.href + item.label} as="li" delay={(index % 4) * 55} className="h-full">
             <Link
               href={item.href}
-              className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
+              className="tw-card tw-card-interactive group flex h-full flex-col p-5"
             >
-              <span className="text-small font-semibold text-ink transition-colors duration-200 group-hover:text-forest">
+              <span className="inline-flex items-start justify-between gap-3 text-small font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep">
                 {item.label}
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 text-ink-subtle transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-forest"
+                >
+                  &rarr;
+                </span>
               </span>
               {item.description ? (
-                <span className="mt-2 text-small leading-relaxed text-ink-muted">
-                  {item.description}
-                </span>
+                <span className="mt-2 text-small text-ink-muted">{item.description}</span>
               ) : null}
             </Link>
           </Reveal>
@@ -182,31 +224,44 @@ export function RelatedGrid({
   );
 }
 
-/** Numbered process list used on capability and process pages. */
+/* -------------------------------------------------------------------------- */
+/* Process track                                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Numbered stages joined by a rule down the left. Reads as a sequence rather
+ * than a stack of identical cards.
+ */
 export function ProcessList({
   stages,
 }: {
   stages: readonly { title: string; description: string }[];
 }) {
   return (
-    <ol className="border-t border-line">
+    <ol className="relative">
+      <span aria-hidden="true" className="absolute bottom-6 left-[15px] top-6 w-px bg-line" />
       {stages.map((stage, index) => (
-        <li
-          key={stage.title}
-          className="grid gap-2 border-b border-line py-6 sm:grid-cols-[3rem_minmax(0,14rem)_1fr] sm:gap-6"
-        >
-          <span aria-hidden="true" className="font-sans text-h3 font-semibold leading-none tracking-[-0.04em] text-stone">
+        <li key={stage.title} className="relative flex gap-5 py-5 first:pt-0 last:pb-0">
+          <span
+            aria-hidden="true"
+            className="tw-tnum relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-soft text-label font-semibold text-forest-deep"
+          >
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h3 className="text-small font-semibold text-ink">{stage.title}</h3>
-          <p className="text-small leading-relaxed text-ink-muted">{stage.description}</p>
+          <div className="pt-1">
+            <h3 className="text-body font-semibold text-ink">{stage.title}</h3>
+            <p className="mt-1.5 max-w-[62ch] text-small text-ink-muted">{stage.description}</p>
+          </div>
         </li>
       ))}
     </ol>
   );
 }
 
-/** Closing conversion band used at the end of interior pages. */
+/* -------------------------------------------------------------------------- */
+/* Closing call to action                                                      */
+/* -------------------------------------------------------------------------- */
+
 export function PageCta({
   title,
   description,
@@ -224,36 +279,40 @@ export function PageCta({
   whatsapp?: { pageLabel: string; path: string; detail?: string };
 }) {
   return (
-    <Section tight className="bg-forest text-white">
+    <Section size="large" className="bg-white">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-20">
-          <DisplayHeading level={2} size="h3" className="max-w-[22ch] text-white">
-            {title}
-          </DisplayHeading>
-          <div>
-            <p className="max-w-[52ch] text-body leading-relaxed text-white/80">
-              {description}
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <QuoteCta location={location} productFamily={productFamily} variant="inverse">
-                {primaryLabel}
-              </QuoteCta>
-              {whatsapp ? (
-                <WhatsappInlineLink
-                  context={whatsapp}
-                  location={location}
-                  variant="inverse"
-                />
-              ) : null}
-              <Link
-                href="/contact"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-[14px] border border-white/35 px-6 text-small font-medium text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
-              >
-                Ask a question
-              </Link>
+        <Panel tone="ink">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
+            <DisplayHeading level={2} size="h3" className="max-w-[20ch] text-white">
+              {title}
+            </DisplayHeading>
+
+            <div>
+              <p className="max-w-[52ch] text-body text-white/75">{description}</p>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <QuoteCta location={location} productFamily={productFamily} variant="inverse">
+                  {primaryLabel}
+                </QuoteCta>
+
+                {whatsapp ? (
+                  <WhatsappInlineLink
+                    context={whatsapp}
+                    location={location}
+                    variant="inverse-outline"
+                  />
+                ) : null}
+
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-[14px] border border-white/30 px-6 text-small font-semibold text-white transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10"
+                >
+                  Ask a question
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Panel>
       </Container>
     </Section>
   );

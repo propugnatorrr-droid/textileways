@@ -26,17 +26,17 @@ export function SiteFooter() {
 
   return (
     <footer className="bg-white px-3 pb-3 sm:px-5 sm:pb-5">
-      <div className="overflow-hidden rounded-[28px] bg-ink text-white md:rounded-[36px]">
-        <div className="px-6 py-14 sm:px-10 lg:px-16 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-20">
+      <div className="overflow-hidden rounded-[24px] bg-ink text-white md:rounded-[32px]">
+        <div className="px-5 py-12 sm:px-9 lg:px-14 lg:py-16">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-16">
             <div>
-              <Wordmark className="text-[24px] text-white [&>span]:text-white/55" />
+              <Wordmark className="text-[21px] text-white [&>span]:text-white/55" />
 
-              <p className="mt-8 max-w-[18ch] font-sans text-h3 font-semibold leading-[1.1] tracking-[-0.035em] text-white">
+              <p className="mt-7 max-w-[20ch] font-sans text-[clamp(1.35rem,1.5vw+0.6rem,1.8rem)] font-semibold leading-[1.12] tracking-[-0.032em] text-white">
                 One manufacturing partner from first sample to scaled production.
               </p>
 
-              <p className="mt-6 max-w-[42ch] text-small leading-relaxed text-white/65">
+              <p className="mt-5 max-w-[44ch] text-[15px] leading-relaxed text-white/65">
                 Textile and apparel manufacturing for brands and organisations across the
                 USA and Europe. Start with 50 pieces and scale beyond 100,000.
               </p>
@@ -46,13 +46,13 @@ export function SiteFooter() {
                   context={{ pageLabel: "Footer", path: "/" }}
                   location="footer"
                   variant="inverse"
-                  className="mt-9"
+                  className="mt-7"
                 >
                   Message us on WhatsApp
                 </WhatsappInlineLink>
               ) : null}
 
-              <dl className="mt-10 grid gap-4 text-small sm:grid-cols-2">
+              <dl className="mt-9 grid gap-5 text-[15px] sm:grid-cols-2">
                 {country ? (
                   <div>
                     <dt className="text-label font-semibold uppercase tracking-[0.1em] text-white/45">
@@ -114,18 +114,18 @@ export function SiteFooter() {
             </div>
 
             <nav aria-label="Footer">
-              <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
                 {footerNavigation.map((column) => (
                   <div key={column.title}>
                     <h2 className="text-label font-semibold uppercase tracking-[0.1em] text-white/45">
                       {column.title}
                     </h2>
-                    <ul className="mt-5 space-y-3">
+                    <ul className="mt-4 space-y-2.5">
                       {column.links.map((link) => (
                         <li key={link.href + link.label}>
                           <Link
                             href={link.href}
-                            className="text-small text-white/75 transition-colors duration-200 hover:text-white"
+                            className="text-[15px] text-white/75 transition-colors duration-200 hover:text-white"
                           >
                             {link.label}
                           </Link>

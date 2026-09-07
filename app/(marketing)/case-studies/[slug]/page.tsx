@@ -120,7 +120,7 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
         </div>
       </SplitSection>
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2">
             <RelatedGrid

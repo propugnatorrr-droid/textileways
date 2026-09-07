@@ -52,7 +52,7 @@ export default function AboutPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={aboutNarrative.intro} />
         </Container>

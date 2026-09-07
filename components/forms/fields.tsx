@@ -12,10 +12,7 @@ import { cn } from "@/lib/utilities/cn";
  * system requires.
  */
 
-const controlClasses =
-  "w-full min-h-[48px] border border-line-strong bg-white px-4 py-3 text-body text-ink rounded-[10px] transition-colors duration-200 placeholder:text-ink-subtle/70 focus-visible:border-forest disabled:cursor-not-allowed disabled:bg-mist/40";
-
-const errorClasses = "border-error focus-visible:border-error";
+const controlClasses = "tw-field";
 
 function FieldShell({
   id,
@@ -99,7 +96,7 @@ export function TextField({
         required={required}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy(id, hint, error)}
-        className={cn(controlClasses, error && errorClasses)}
+        className={controlClasses}
       />
     </FieldShell>
   );
@@ -138,7 +135,7 @@ export function TextAreaField({
         required={required}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy(id, hint, error)}
-        className={cn(controlClasses, "min-h-[8rem] leading-relaxed", error && errorClasses)}
+        className={cn(controlClasses, "min-h-[8rem] leading-relaxed")}
       />
     </FieldShell>
   );
@@ -179,7 +176,7 @@ export function SelectField({
         required={required}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy(id, hint, error)}
-        className={cn(controlClasses, "appearance-none bg-white pr-10", error && errorClasses)}
+        className={cn(controlClasses, "appearance-none pr-10")}
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M1 3l4 4 4-4' stroke='%234c5854' stroke-width='1.3'/%3E%3C/svg%3E\")",
@@ -222,7 +219,7 @@ export function CheckboxField({
           id={id}
           aria-invalid={error ? true : undefined}
           aria-describedby={describedBy(id, hint, error)}
-          className="mt-1 h-[18px] w-[18px] shrink-0 cursor-pointer border border-line-strong accent-[var(--color-forest)]"
+          className="tw-checkbox mt-0.5"
         />
         <label htmlFor={id} className="cursor-pointer text-small leading-relaxed text-ink-muted">
           {label}
@@ -271,21 +268,20 @@ export function CheckboxGroup({
           {hint}
         </p>
       ) : null}
-      <div className={cn("mt-4 grid gap-x-8 gap-y-3", columnClass)}>
+      <div className={cn("mt-4 grid gap-2.5", columnClass)}>
         {options.map((option) => {
           const checked = values.includes(option.value);
           return (
-            <label
-              key={option.value}
-              className="flex min-h-[28px] cursor-pointer items-start gap-3 text-small text-ink-muted"
-            >
+            <label key={option.value} className="tw-option">
               <input
                 type="checkbox"
                 checked={checked}
                 onChange={(event) => onToggle(option.value, event.target.checked)}
-                className="mt-0.5 h-[18px] w-[18px] shrink-0 cursor-pointer border border-line-strong accent-[var(--color-forest)]"
+                className="tw-checkbox"
               />
-              <span className={checked ? "text-ink" : undefined}>{option.label}</span>
+              <span className={cn("text-small", checked ? "font-medium text-ink" : "text-ink-muted")}>
+                {option.label}
+              </span>
             </label>
           );
         })}
@@ -327,21 +323,25 @@ export function RadioGroup({
           {hint}
         </p>
       ) : null}
-      <div className="mt-4 space-y-3">
+      <div className="mt-4 space-y-2.5">
         {options.map((option) => (
-          <label
-            key={option.value}
-            className="flex min-h-[28px] cursor-pointer items-start gap-3 text-small text-ink-muted"
-          >
+          <label key={option.value} className="tw-option">
             <input
               type="radio"
               name={name}
               value={option.value}
               checked={value === option.value}
               onChange={() => onChange(option.value)}
-              className="mt-0.5 h-[18px] w-[18px] shrink-0 cursor-pointer accent-[var(--color-forest)]"
+              className="tw-radio"
             />
-            <span className={value === option.value ? "text-ink" : undefined}>{option.label}</span>
+            <span
+              className={cn(
+                "text-small",
+                value === option.value ? "font-medium text-ink" : "text-ink-muted",
+              )}
+            >
+              {option.label}
+            </span>
           </label>
         ))}
       </div>

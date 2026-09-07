@@ -108,154 +108,129 @@ Do not spend tokens narrating routine coding decisions. Use short status summari
 
 # 3. Non Negotiable Design Rules
 
+Superseded 2026-09-07: the site was redesigned as an image-led, modern 2026 B2B
+manufacturing platform (references: Apple, Linear, Vercel, Framer, Ray-Ban,
+Awwwards "clean" business sites). The subsections below describe the design
+system actually shipped in `app/globals.css` and `components/ui/index.tsx`.
+Treat this section, not the original brief, as the source of truth for new
+work; do not reintroduce the beige paper palette, serif display type, or
+0 to 8 pixel radius rule this replaces.
+
 ## 3.1 Visual direction
 
-Use tactile editorial minimalism.
+The visual language combines:
 
-The visual language must combine:
-
-1. Premium editorial typography
-2. Industrial precision
-3. Textile material detail
-4. Warm light backgrounds
-5. Authentic manufacturing imagery
-6. Structured technical information
-7. Restrained motion
-8. Generous spacing
-9. Clear conversion paths
+1. Confident, technical sans serif typography (no serif anywhere)
+2. Industrial precision and structured technical information
+3. Cool, light neutral backgrounds (cotton and mist, not warm paper)
+4. Authentic manufacturing imagery where available, art directed placeholders elsewhere
+5. Restrained motion that respects `prefers-reduced-motion`
+6. Generous, rhythmic spacing driven by three section scales, not one fixed value
+7. Clear, hierarchical conversion paths, never more than one dominant CTA per section
 
 ## 3.2 Prohibited design patterns
 
 Do not use:
 
 1. Dark theme as the main theme
-2. Glow effects
-3. Neon gradients
-4. Glowing dots
-5. Decorative floating dots
-6. Pill shaped buttons
-7. Pill shaped tags
-8. Excessively rounded cards
-9. Glassmorphism
-10. Neumorphism
-11. Generic startup gradients
-12. Animated globes
-13. Floating particle effects
-14. Marquee overload
-15. Fake dashboards
-16. Fake statistics
-17. Stock crypto style graphics
-18. Excessive shadows
-19. Autoplay audio
-20. Cursor replacement
-21. Horizontal scrolling on mobile
-22. Em dashes or en dashes in public website copy
-
-Use commas, periods, colons, parentheses, or separate sentences instead.
+2. Glow effects, neon gradients, glowing or decorative floating dots
+3. Pill shaped buttons or pill shaped tags
+4. Glassmorphism (a `backdrop-filter` also breaks the fixed mobile nav, see `components/navigation/site-header.tsx`)
+5. Neumorphism, generic startup gradients, animated globes, floating particle effects
+6. Marquee overload, fake dashboards, fake statistics, stock crypto style graphics
+7. Excessive shadows (use the `--shadow-quiet/raised/float/panel` tokens, not ad hoc box shadows)
+8. Autoplay audio, cursor replacement, horizontal scrolling on mobile
+9. Em dashes or en dashes in public website copy (use commas, periods, colons, parentheses, or separate sentences)
+10. Card-on-card nesting: a `.tw-card` sits on white, a `.tw-panel` groups content, the two are never nested inside one another
 
 ## 3.3 Shape system
 
 Use:
 
-1. Mostly square containers
-2. Border radius between 0 and 8 pixels
-3. Button radius between 2 and 6 pixels
-4. Thin neutral borders
-5. Full bleed photography
-6. Structured editorial grids
-7. Clear section boundaries
-8. Rectangular inputs and controls
+1. A soft, consistent radius scale from 10px (small controls) to 24 to 28px (page level panels and the footer), not the original 0 to 8 pixel rule
+2. Thin neutral borders (`--color-line` / `--color-line-strong`), not heavy strokes
+3. Full bleed photography where photography exists
+4. Structured, varied section layouts rather than a repeated identical grid
+5. Clear section boundaries via background and spacing, not just rules
 
-Cards should exist only when they improve hierarchy.
+Cards should exist only when they improve hierarchy. Prefer `.tw-panel` (flat, tinted, borderless) to group content, and `.tw-card` (bordered, on white) for a genuinely separate, clickable item.
 
 ## 3.4 Color system
 
-Create semantic CSS variables.
-
-Suggested starting palette:
+Semantic CSS variables defined in `app/globals.css`:
 
 ```css
---color-cotton: #f5f1e8;
---color-paper: #fcfaf5;
---color-ink: #17201d;
---color-forest: #29473c;
---color-clay: #a65f43;
---color-stone: #cbc5ba;
---color-mist: #e7e4dd;
---color-blue: #607786;
 --color-white: #ffffff;
---color-error: #a33a32;
---color-success: #35634a;
+--color-cotton: #f5f7f6;
+--color-mist: #eef1f0;
+--color-surface: #f7f9f8;
+--color-surface-strong: #edf1ef;
+--color-ink: #0b0f0d;
+--color-ink-muted: #56605b;
+--color-ink-subtle: #7a847f;
+--color-forest: #087a55;
+--color-forest-deep: #056044;
+--color-forest-soft: #eaf7f1;
+--color-blue: #2457f5;
+--color-blue-soft: #eef2ff;
+--color-clay: #c2410c;
+--color-line: rgba(11, 15, 13, 0.09);
+--color-line-strong: rgba(11, 15, 13, 0.16);
+--color-error: #c43333;
+--color-success: #087a55;
 ```
 
 Requirements:
 
-1. Main background should be paper or cotton.
-2. Main text should be ink.
-3. Forest should be the main brand accent.
-4. Clay may be used sparingly.
+1. Main background is cotton, surface or white, never the old warm paper tone.
+2. Main text is ink, with ink-muted and ink-subtle for secondary and tertiary copy.
+3. Forest is the sole brand accent for primary actions and emphasis.
+4. Clay is reserved for a status or attention accent, used sparingly.
 5. Maintain WCAG AA color contrast.
-6. Do not use pure black unless technically necessary.
-7. Do not use large dark sections repeatedly.
+6. Do not use pure black unless technically necessary; ink is a near black, not `#000`.
+7. `Panel tone="ink"` is the only large near-black surface, and it never repeats twice in direct succession.
 
 ## 3.5 Typography
 
-Use:
+Manrope only (`next/font`, weights 400 to 800, variable `--font-manrope`), used for both display and body. There is no serif anywhere on the site.
 
-1. A premium editorial serif for major display headings
-2. A precise sans serif for body text, interfaces, and technical content
-
-Prefer open source or properly licensed fonts.
-
-Suggested pairing:
-
-1. Instrument Serif for display
-2. Inter or Manrope for body and UI
-
-Use `next/font`.
-
-Typography should be fluid using `clamp()`.
-
-Suggested scale:
+Fluid scale via `clamp()`, defined in `app/globals.css`:
 
 ```text
-Display XL: clamp(3.2rem, 8vw, 7.5rem)
-Display L: clamp(2.8rem, 6vw, 5.8rem)
-Heading 1: clamp(2.4rem, 5vw, 4.6rem)
-Heading 2: clamp(2rem, 4vw, 3.5rem)
-Heading 3: clamp(1.4rem, 2.2vw, 2.1rem)
-Body L: clamp(1.1rem, 1.3vw, 1.35rem)
-Body: 1rem
-Small: 0.875rem
-Label: 0.75rem to 0.8125rem
+Display XL: clamp(2.75rem, 4.2vw + 1.2rem, 5.75rem)   /* ~44px at 390, ~80px at 1440 */
+H2: clamp(1.9rem, 2.6vw + 0.8rem, 4rem)
+H3: clamp(1.3rem, 0.9vw + 0.85rem, 2.25rem)
+Body: 1.0625rem
+Small: 0.9375rem
+Label: 0.75rem
 ```
 
 Maintain readable line lengths:
 
-1. Body copy maximum width around 65 to 75 characters
-2. Large heading maximum width around 12 to 16 words
-3. Technical tables may use the full content width
+1. Body copy maximum width around 65 to 75 characters (`--container-reading`, 68ch).
+2. Large heading maximum width capped by an explicit `max-w-[Nch]` utility, not left to wrap freely.
+3. Technical tables and spec lists may use the full content width.
 
 ## 3.6 Spacing
 
-Use a consistent spacing scale based primarily on 4 and 8 pixels.
-
-Suggested section spacing:
-
-1. Mobile: 72 to 96 pixels
-2. Tablet: 96 to 128 pixels
-3. Desktop: 120 to 176 pixels
-
-Suggested content width:
+Three section rhythms, applied with the `Section` component's `size` prop, not a single fixed spacing value:
 
 ```text
-Maximum page width: 1440px
-Primary content width: 1280px
-Reading width: 760px
-Horizontal mobile padding: 20px
-Horizontal tablet padding: 32px
-Horizontal desktop padding: 48px to 72px
+size="tight"   .tw-section-tight   48 / 60 / 72px (mobile / tablet / desktop)
+size="default" .tw-section         64 / 80 / 96px
+size="large"   .tw-section-lg      80 / 104 / 128px
 ```
+
+Content width:
+
+```text
+Maximum page width: 1440px (--container-content)
+Reading width: 68ch (--container-reading)
+Horizontal mobile padding: 20px
+Horizontal desktop padding: 48px to 72px, via .tw-container
+```
+
+`html { scroll-padding-top: 96px; }` keeps the sticky header clear of anchor targets.
 
 ## 3.7 Motion
 
@@ -263,17 +238,15 @@ Motion must be subtle and respect `prefers-reduced-motion`.
 
 Allowed:
 
-1. Small image reveals
-2. Underline transitions
-3. Controlled menu transitions
-4. Process line animation
+1. Small image reveals (`.tw-reveal`, driven by an IntersectionObserver in `components/content/reveal.tsx`)
+2. Underline transitions (`.tw-underline-grow`)
+3. Controlled menu and mega menu transitions
+4. Process and progress line animation
 5. Gentle number appearance
-6. Small image scale on hover
+6. Small image scale on hover (`.tw-media-zoom`, targets both `img` and placeholder art)
 7. Page transition only if it does not delay navigation
 
-Do not animate every element.
-
-Use CSS where possible. Add a motion library only if it materially improves the result.
+Do not animate every element. Use CSS where possible; a motion library is not part of the shipped stack.
 
 ---
 

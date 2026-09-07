@@ -60,7 +60,7 @@ export default function SustainabilityPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <Notice tone="info" title="Why there are no percentages on this page" className="max-w-[74ch]">
             <p>

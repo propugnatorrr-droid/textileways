@@ -31,7 +31,7 @@ export function FaqAccordion({
         const buttonId = `${baseId}-${item.id}-button`;
 
         return (
-          <div key={item.id} className="">
+          <div key={item.id} className="border-b border-line">
             <Heading>
               <button
                 id={buttonId}
@@ -39,12 +39,14 @@ export function FaqAccordion({
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 onClick={() => setOpen(expanded ? null : item.id)}
-                className="flex w-full items-start justify-between gap-6 py-5 text-left"
+                className="flex min-h-[64px] w-full items-center justify-between gap-6 py-5 text-left transition-colors duration-200 hover:text-forest-deep"
               >
-                <span className="text-body font-medium text-ink">{item.question}</span>
+                <span className="text-body font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep">
+                  {item.question}
+                </span>
                 <span
                   aria-hidden="true"
-                  className="relative mt-1.5 h-3 w-3 shrink-0 text-ink-subtle"
+                  className="relative h-3 w-3 shrink-0 text-ink-subtle"
                 >
                   <span className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-current" />
                   <span

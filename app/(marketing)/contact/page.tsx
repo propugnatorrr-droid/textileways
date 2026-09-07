@@ -101,9 +101,9 @@ export default function ContactPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
-          <h2 className="mb-8 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+          <h2 className="mb-8 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
             Where to send what
           </h2>
           <ul className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">

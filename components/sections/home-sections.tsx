@@ -1,5 +1,18 @@
 import Link from "next/link";
-import { Container, DisplayHeading, Eyebrow, Lede, Section, ButtonLink, StatusTag } from "@/components/ui";
+import {
+  Container,
+  DisplayHeading,
+  Eyebrow,
+  Lede,
+  Section,
+  SectionHeading,
+  Panel,
+  ButtonLink,
+  StatusTag,
+  CheckMark,
+  Footnote,
+  MarkerList,
+} from "@/components/ui";
 import { Media } from "@/components/content/media";
 import { Reveal } from "@/components/content/reveal";
 import { QuoteCta } from "@/components/sections/quote-cta";
@@ -17,112 +30,90 @@ import { factoryMedia, editorialMedia } from "@/content/fallback/media";
 import { capabilityStatusLabels } from "@/content/types";
 import { formatDate } from "@/lib/utilities/format";
 
-/* -------------------------------------------------------------------------- */
-/* Shared section header                                                       */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Production scale
 
-function SectionHeader({
-  eyebrow,
-  title,
-  lede,
-  action,
-  tone = "default",
-}: {
-  eyebrow: string;
-  title: string;
-  lede?: string;
-  action?: React.ReactNode;
-  tone?: "default" | "inverse";
-}) {
-  return (
-    <div className="tw-section-header">
-      <div>
-        <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
-        <DisplayHeading
-          level={2}
-          size="h2"
-          className={tone === "inverse" ? "mt-5 max-w-[16ch] text-white" : "mt-5 max-w-[16ch] text-ink"}
-        >
-          {title}
-        </DisplayHeading>
-      </div>
-      {lede || action ? (
-        <div className="flex flex-col items-start gap-6">
-          {lede ? (
-            <p
-              className={
-                tone === "inverse"
-                  ? "max-w-[52ch] text-body-l leading-relaxed text-white/75"
-                  : "max-w-[52ch] text-body-l leading-relaxed text-ink-muted"
-              }
-            >
-              {lede}
-            </p>
-          ) : null}
-          {action}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Production scale                                                            */
-/* -------------------------------------------------------------------------- */
+   A horizontal progression on desktop and a vertical one on mobile, drawn on a
+   single tinted field with a connecting rule. Not five floating cards.
+   ========================================================================== */
 
 export function ProductionScaleSection() {
   return (
-    <Section className="bg-white">
+    <Section size="tight" className="bg-white">
       <Container>
-        <div className="tw-surface p-6 sm:p-10 lg:p-14">
-          <SectionHeader
+        <Panel>
+          <SectionHeading
             eyebrow="Production scale"
             title="Start at 50. Scale beyond 100,000."
             lede="The same specification discipline applies at every quantity. What changes is material planning, line scheduling and how goods are shipped."
           />
 
-          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <ol className="relative mt-12 grid gap-8 lg:mt-14 lg:grid-cols-5 lg:gap-6">
+            {/* Connecting rule, desktop only. */}
+            <span
+              aria-hidden="true"
+              className="absolute left-0 right-0 top-[7px] hidden h-px bg-line-strong lg:block"
+            />
+
             {productionScaleSteps.map((step, index) => (
               <Reveal
                 key={step.title}
                 as="li"
                 delay={index * 70}
-                className="tw-card tw-card-interactive flex flex-col rounded-[22px] p-6"
+                className="relative flex gap-5 lg:block"
               >
-                <p className="font-sans text-[2rem] font-semibold leading-none tracking-[-0.05em] text-forest">
-                  {step.quantity}
-                </p>
-                <p className="mt-2 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
-                  {step.unit}
-                </p>
-                <p className="mt-6 text-small font-semibold text-ink">{step.title}</p>
-                <p className="mt-2 text-small leading-relaxed text-ink-muted">
-                  {step.description}
-                </p>
+                <span
+                  aria-hidden="true"
+                  className={
+                    "relative z-10 mt-1 block h-[15px] w-[15px] shrink-0 rounded-full border-[3px] border-cotton lg:mt-0 " +
+                    (index === productionScaleSteps.length - 1 ? "bg-forest" : "bg-stone")
+                  }
+                />
+                <div className="lg:mt-6">
+                  <p
+                    className={
+                      "tw-tnum font-sans text-[clamp(1.7rem,2.1vw,2.35rem)] font-semibold leading-none tracking-[-0.035em] " +
+                      (index === productionScaleSteps.length - 1 ? "text-forest" : "text-ink")
+                    }
+                  >
+                    {step.quantity}
+                  </p>
+                  <p className="mt-2 text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+                    {step.unit}
+                  </p>
+                  <p className="mt-4 text-small font-semibold text-ink">{step.title}</p>
+                  <p className="mt-1.5 max-w-[34ch] text-small text-ink-muted">
+                    {step.description}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </ol>
-        </div>
+        </Panel>
       </Container>
     </Section>
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Product universe                                                            */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Product universe
+
+   One large featured family beside a two column stack, then a wider row of
+   supporting tiles. Deliberately not a uniform card grid.
+   ========================================================================== */
 
 export function ProductUniverseSection() {
   const [lead, ...rest] = productFamilies;
-  const featured = rest.slice(0, 8);
+  const stacked = rest.slice(0, 2);
+  const row = rest.slice(2, 6);
 
   return (
     <Section className="bg-white">
       <Container>
-        <SectionHeader
+        <SectionHeading
           eyebrow="Product universe"
           title="Thirteen product families"
-          lede="Each family states how it is produced, what it is typically made from, and where its minimum quantity really comes from."
+          lede="Every family states how it is produced, what it is typically made from, and where its minimum quantity really comes from."
           action={
             <div className="flex flex-wrap gap-3">
               <ButtonLink href="/products" variant="secondary">
@@ -135,13 +126,24 @@ export function ProductUniverseSection() {
           }
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <Reveal className="sm:col-span-2">
-            <ProductCard family={lead} featured />
+        <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+          <Reveal className="h-full">
+            <ProductTile family={lead} scale="lead" />
           </Reveal>
-          {featured.map((family, index) => (
-            <Reveal key={family.slug} delay={(index % 3) * 60}>
-              <ProductCard family={family} />
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+            {stacked.map((family, index) => (
+              <Reveal key={family.slug} delay={(index + 1) * 70} className="h-full">
+                <ProductTile family={family} scale="stacked" />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {row.map((family, index) => (
+            <Reveal key={family.slug} delay={(index % 4) * 60} className="h-full">
+              <ProductTile family={family} scale="row" />
             </Reveal>
           ))}
         </div>
@@ -150,39 +152,52 @@ export function ProductUniverseSection() {
   );
 }
 
-function ProductCard({
+function ProductTile({
   family,
-  featured = false,
+  scale,
 }: {
   family: (typeof productFamilies)[number];
-  featured?: boolean;
+  scale: "lead" | "stacked" | "row";
 }) {
+  const aspect = {
+    lead: "aspect-[16/11]",
+    stacked: "aspect-[16/10]",
+    row: "aspect-[4/3]",
+  }[scale];
+
+  const sizes = {
+    lead: "(min-width: 1024px) 52vw, 100vw",
+    stacked: "(min-width: 1024px) 34vw, (min-width: 640px) 46vw, 100vw",
+    row: "(min-width: 1024px) 22vw, (min-width: 640px) 46vw, 100vw",
+  }[scale];
+
   return (
     <Link
       href={`/products/${family.slug}`}
-      className="tw-card tw-card-interactive group flex h-full flex-col overflow-hidden rounded-[26px] p-3"
+      className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_18px_50px_rgba(11,15,13,0.09)]"
     >
       <Media
         asset={family.hero}
-        aspect={featured ? "aspect-[16/9]" : "aspect-[4/3]"}
-        sizes={featured ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 30vw, 50vw"}
-        className="rounded-[18px] shadow-none"
+        aspect={aspect}
+        sizes={sizes}
+        compact={scale === "row"}
+        className="rounded-none"
         zoomOnHover
       />
-      <div className="flex flex-1 flex-col p-4 pt-5 sm:p-5 sm:pt-6">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
         <h3
           className={
-            featured
-              ? "font-sans text-h3 font-semibold tracking-[-0.032em] text-ink transition-colors duration-200 group-hover:text-forest-deep"
-              : "text-lg font-semibold tracking-[-0.03em] text-ink transition-colors duration-200 group-hover:text-forest-deep"
+            scale === "lead"
+              ? "font-sans text-h3 font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep"
+              : "text-[1.0625rem] font-semibold tracking-[-0.015em] text-ink transition-colors duration-200 group-hover:text-forest-deep"
           }
         >
           {family.name}
         </h3>
-        <p className="mt-2.5 flex-1 text-small leading-relaxed text-ink-muted">
-          {family.summary}
+        <p className="mt-2 flex-1 text-small text-ink-muted">
+          {scale === "row" ? truncate(family.summary, 88) : family.summary}
         </p>
-        <p className="mt-5 text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+        <p className="mt-5 text-label font-semibold uppercase tracking-[0.08em] text-ink-subtle">
           {capabilityStatusLabels[family.capabilityStatus]}
         </p>
       </div>
@@ -190,78 +205,93 @@ function ProductCard({
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Positioning                                                                 */
-/* -------------------------------------------------------------------------- */
+/** Trims a summary on a word boundary so the shortest tiles stay balanced. */
+function truncate(value: string, max: number): string {
+  if (value.length <= max) return value;
+  const cut = value.slice(0, max);
+  return `${cut.slice(0, cut.lastIndexOf(" "))}...`;
+}
+
+/* ==========================================================================
+   Positioning
+
+   A typographic comparison rather than two bordered cards. The two quantities
+   sit either side of a connecting scale.
+   ========================================================================== */
 
 export function PositioningSection() {
   return (
     <Section className="bg-white">
       <Container>
-        <div className="overflow-hidden rounded-[32px] bg-ink px-6 py-14 text-white sm:px-10 lg:px-16 lg:py-20">
-          <Eyebrow tone="inverse">Positioning</Eyebrow>
-          <DisplayHeading level={2} size="h2" className="mt-5 max-w-[20ch] text-white">
+        <div className="mx-auto max-w-[900px] text-center">
+          <Eyebrow>Positioning</Eyebrow>
+          <DisplayHeading level={2} size="h2" className="mx-auto mt-4 max-w-[20ch]">
             Startup flexibility. Enterprise manufacturing discipline.
           </DisplayHeading>
+        </div>
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <Reveal className="rounded-[24px] border border-white/10 bg-white/[0.04] p-7 lg:p-9">
-              <p className="text-label font-semibold uppercase tracking-[0.12em] text-white/60">
-                Startup flexibility
-              </p>
-              <p className="mt-5 font-sans text-[2.75rem] font-semibold leading-none tracking-[-0.05em] text-white">
-                50 pieces
-              </p>
-              <p className="mt-5 text-body leading-relaxed text-white/75">
-                A validation run costs a few days and answers the questions a
-                specification cannot: whether the fit is right, whether the fabric feels
-                the way you expected, and whether anyone buys it.
-              </p>
-            </Reveal>
+        <div className="mt-12 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:gap-10">
+          <Reveal className="text-center md:text-right">
+            <p className="tw-tnum font-sans text-[clamp(2.75rem,5.5vw,4.5rem)] font-semibold leading-none tracking-[-0.04em] text-ink">
+              50
+            </p>
+            <p className="mt-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+              Pieces, first validation run
+            </p>
+            <p className="mt-4 text-small text-ink-muted md:ml-auto md:max-w-[38ch]">
+              Confirm fit, fabric and decoration before committing a season. The unit cost
+              is higher and the information is worth it.
+            </p>
+          </Reveal>
 
-            <Reveal delay={120} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-7 lg:p-9">
-              <p className="text-label font-semibold uppercase tracking-[0.12em] text-white/60">
-                Enterprise discipline
-              </p>
-              <p className="mt-5 font-sans text-[2.75rem] font-semibold leading-none tracking-[-0.05em] text-white">
-                100,000 plus
-              </p>
-              <p className="mt-5 text-body leading-relaxed text-white/75">
-                Committed material planning, scheduled shipments and inspection regimes
-                agreed in advance, against the same approved sample the first fifty
-                pieces were made from.
-              </p>
-            </Reveal>
-          </div>
+          {/* Connecting scale. Horizontal on desktop, vertical on mobile. */}
+          <div
+            aria-hidden="true"
+            className="mx-auto flex h-16 w-px items-center justify-center bg-gradient-to-b from-stone/20 via-forest to-forest/25 md:h-px md:w-32 md:bg-gradient-to-r lg:w-44"
+          />
 
-          <p className="mt-12 max-w-[62ch] text-body-l leading-relaxed text-white/80">
-            You should not have to replace your manufacturer every time you grow. Every
-            supplier change costs a season in re establishing fit, fabric and colour.
-          </p>
+          <Reveal delay={120} className="text-center md:text-left">
+            <p className="tw-tnum font-sans text-[clamp(2.75rem,5.5vw,4.5rem)] font-semibold leading-none tracking-[-0.04em] text-forest">
+              100,000+
+            </p>
+            <p className="mt-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+              Pieces, enterprise programme
+            </p>
+            <p className="mt-4 text-small text-ink-muted md:max-w-[38ch]">
+              Committed material planning, scheduled shipments and inspection regimes
+              agreed in advance, against the same approved sample.
+            </p>
+          </Reveal>
+        </div>
 
-          <div className="mt-9">
-            <QuoteCta location="home_positioning" variant="inverse">
-              Start a conversation
-            </QuoteCta>
-          </div>
+        <p className="mx-auto mt-12 max-w-[62ch] text-center text-body-l text-ink-muted">
+          You should not have to replace your manufacturer every time you grow. Every
+          supplier change costs a season in re establishing fit, fabric and colour.
+        </p>
+
+        <div className="mt-8 flex justify-center">
+          <QuoteCta location="home_positioning">Start a conversation</QuoteCta>
         </div>
       </Container>
     </Section>
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Capabilities                                                                */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Capabilities
+
+   A near black panel rather than a full emerald field, with emerald reserved
+   for the numerals and the action.
+   ========================================================================== */
 
 export function CapabilitiesSection() {
   const highlights = homeCapabilityHighlights.slice(0, 6);
 
   return (
-    <Section className="bg-white">
+    <Section size="large" className="bg-white">
       <Container>
-        <div className="overflow-hidden rounded-[32px] bg-forest px-6 py-14 text-white sm:px-10 lg:px-16 lg:py-20">
-          <SectionHeader
+        <Panel tone="ink">
+          <SectionHeading
             tone="inverse"
             eyebrow="Capabilities"
             title="Everything a product needs, in one place"
@@ -273,38 +303,39 @@ export function CapabilitiesSection() {
             }
           />
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+          <div className="mt-12 grid gap-10 lg:mt-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
             <Media
               asset={factoryMedia.sampling}
-              aspect="aspect-[4/3]"
-              sizes="(min-width: 1024px) 40vw, 92vw"
-              className="rounded-[24px] shadow-none"
+              aspect="aspect-[4/5]"
+              sizes="(min-width: 1024px) 34vw, 100vw"
+              large
+              className="bg-white/[0.04]"
             />
 
-            <ol className="divide-y divide-white/10">
+            <ol className="grid gap-1">
               {highlights.map((item, index) => (
-                <Reveal key={item.title} as="li" delay={index * 55}>
+                <Reveal key={item.title} as="li" delay={index * 50}>
                   <Link
                     href={item.href}
-                    className="group flex items-start gap-5 py-5 transition-opacity duration-200 hover:opacity-90"
+                    className="group grid grid-cols-[2.5rem_1fr_auto] items-start gap-4 rounded-[16px] px-4 py-4 transition-colors duration-200 hover:bg-white/[0.06]"
                   >
                     <span
                       aria-hidden="true"
-                      className="w-8 shrink-0 pt-0.5 text-small font-semibold tabular-nums text-white/45"
+                      className="tw-tnum pt-0.5 text-small font-semibold text-forest"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="flex-1">
+                    <span>
                       <span className="block text-body font-semibold text-white">
                         {item.title}
                       </span>
-                      <span className="mt-1.5 block text-small leading-relaxed text-white/70">
+                      <span className="mt-1.5 block text-small text-white/65">
                         {item.description}
                       </span>
                     </span>
                     <span
                       aria-hidden="true"
-                      className="shrink-0 pt-1 text-white/45 transition-transform duration-300 group-hover:translate-x-1"
+                      className="pt-1 text-white/35 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white/70"
                     >
                       &rarr;
                     </span>
@@ -313,44 +344,36 @@ export function CapabilitiesSection() {
               ))}
             </ol>
           </div>
-        </div>
+        </Panel>
       </Container>
     </Section>
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Factory                                                                     */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Factory
+
+   Asymmetric media composition. One dominant frame with two offset supporting
+   frames, and the disclosure reduced to a single quiet line.
+   ========================================================================== */
 
 export function FactorySection() {
-  const awaitingPhotography = factoryMedia.productionFloor.isPlaceholder === true;
-
   return (
     <Section className="bg-white">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
           <div>
             <Eyebrow>The factory</Eyebrow>
-            <DisplayHeading level={2} size="h2" className="mt-5 max-w-[14ch]">
+            <DisplayHeading level={2} size="h2" className="mt-4 max-w-[14ch]">
               Where your product would be made
             </DisplayHeading>
             <Lede className="mt-6">
               Buyers are entitled to see the environment their product comes from. Every
-              product family also states whether it is made in house or through an
-              audited partner facility.
+              product family also states whether it is made in house or through an audited
+              partner facility.
             </Lede>
 
-            {awaitingPhotography ? (
-              <p className="mt-7 max-w-[54ch] rounded-[16px] border border-line bg-cotton px-5 py-4 text-small leading-relaxed text-ink-muted">
-                These slots are reserved for photography of the Textileways facility.
-                Until the business supplies its own images, neutral panels stand in
-                rather than photographs of somewhere else, because a picture of another
-                factory would misrepresent the business.
-              </p>
-            ) : null}
-
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/factory" variant="secondary">
                 About the facility
               </ButtonLink>
@@ -358,32 +381,37 @@ export function FactorySection() {
                 How quality is controlled
               </ButtonLink>
             </div>
+
+            <Footnote className="mt-8">
+              Facility photography is reserved and not yet published. Placeholder frames
+              are shown in its place.
+            </Footnote>
           </div>
 
           <div className="grid gap-4">
             <Reveal>
               <Media
                 asset={factoryMedia.productionFloor}
-                aspect="aspect-[16/9]"
-                sizes="(min-width: 1024px) 58vw, 92vw"
-                className="rounded-[28px]"
+                aspect="aspect-[16/10]"
+                sizes="(min-width: 1024px) 54vw, 100vw"
+                large
               />
             </Reveal>
             <div className="grid grid-cols-2 gap-4">
-              <Reveal delay={90}>
+              <Reveal delay={90} className="sm:pt-6">
                 <Media
                   asset={factoryMedia.cutting}
-                  aspect="aspect-[4/3]"
-                  sizes="(min-width: 1024px) 29vw, 46vw"
-                  className="rounded-[22px]"
+                  aspect="aspect-square"
+                  sizes="(min-width: 1024px) 27vw, 46vw"
+                  compact
                 />
               </Reveal>
               <Reveal delay={160}>
                 <Media
                   asset={factoryMedia.inspection}
-                  aspect="aspect-[4/3]"
-                  sizes="(min-width: 1024px) 29vw, 46vw"
-                  className="rounded-[22px]"
+                  aspect="aspect-square"
+                  sizes="(min-width: 1024px) 27vw, 46vw"
+                  compact
                 />
               </Reveal>
             </div>
@@ -394,15 +422,17 @@ export function FactorySection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* How it works                                                                */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   How it works
+
+   A stepped track in two rows of four, with a rule joining the numerals.
+   ========================================================================== */
 
 export function HowItWorksSection() {
   return (
     <Section className="bg-white">
       <Container>
-        <SectionHeader
+        <SectionHeading
           eyebrow="How it works"
           title="Eight stages from inquiry to delivery"
           lede="Each stage has a decision attached to it. Nothing moves forward until the previous stage is approved in writing."
@@ -413,24 +443,17 @@ export function HowItWorksSection() {
           }
         />
 
-        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
           {howItWorksStages.map((stage, index) => (
-            <Reveal
-              key={stage.title}
-              as="li"
-              delay={(index % 4) * 60}
-              className="flex flex-col rounded-[22px] border border-line bg-cotton p-6 transition-colors duration-300 hover:bg-surface-strong"
-            >
-              <span
-                aria-hidden="true"
-                className="font-sans text-[2.5rem] font-semibold leading-none tracking-[-0.05em] text-stone"
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-6 text-body font-semibold text-ink">{stage.title}</h3>
-              <p className="mt-2.5 text-small leading-relaxed text-ink-muted">
-                {stage.description}
-              </p>
+            <Reveal key={stage.title} as="li" delay={(index % 4) * 55}>
+              <div className="flex items-center gap-3">
+                <span className="tw-tnum text-small font-semibold text-forest">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span aria-hidden="true" className="h-px flex-1 bg-line" />
+              </div>
+              <h3 className="mt-4 text-body font-semibold text-ink">{stage.title}</h3>
+              <p className="mt-2 text-small text-ink-muted">{stage.description}</p>
             </Reveal>
           ))}
         </ol>
@@ -439,63 +462,63 @@ export function HowItWorksSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Quality                                                                     */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Quality
+
+   Media and heading on one side, a structured checkpoint system on the other.
+   ========================================================================== */
 
 export function QualitySection() {
   return (
-    <Section className="bg-white">
+    <Section size="large" className="bg-white">
       <Container>
-        <div className="tw-surface p-6 sm:p-10 lg:p-14">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-start lg:gap-16">
+        <Panel>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)] lg:gap-16">
             <div>
               <Eyebrow>Quality</Eyebrow>
-              <DisplayHeading level={2} size="h2" className="mt-5 max-w-[16ch]">
+              <DisplayHeading level={2} size="h2" className="mt-4 max-w-[15ch]">
                 Eight checkpoints, not one final inspection
               </DisplayHeading>
               <Lede className="mt-6">
                 By the time a garment reaches final inspection, every decision that
-                determines its quality has already been made. These checkpoints exist to
-                catch problems at the stage that caused them.
+                determines its quality has already been made. These checkpoints catch
+                problems at the stage that caused them.
               </Lede>
 
-              <div className="mt-8">
-                <StatusTag tone="muted">Configurable per order</StatusTag>
-                <p className="mt-3 max-w-[48ch] text-small text-ink-subtle">
-                  Inspection standards and acceptance limits are agreed in writing for
-                  each order rather than published as a fixed company standard.
-                </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <StatusTag tone="forest">Configurable per order</StatusTag>
+                <span className="text-small text-ink-subtle">
+                  Standards agreed in writing, not published as fixed
+                </span>
               </div>
 
-              <div className="mt-9">
-                <Media
-                  asset={editorialMedia.quality}
-                  aspect="aspect-[16/10]"
-                  sizes="(min-width: 1024px) 44vw, 92vw"
-                  className="rounded-[24px]"
-                />
-              </div>
+              <Media
+                asset={editorialMedia.quality}
+                aspect="aspect-[16/10]"
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                large
+                className="mt-9"
+              />
 
-              <div className="mt-9">
-                <ButtonLink href="/quality" variant="secondary">
-                  How quality is controlled
-                </ButtonLink>
-              </div>
+              <ButtonLink href="/quality" variant="secondary" className="mt-8">
+                How quality is controlled
+              </ButtonLink>
             </div>
 
-            <ol className="grid gap-3">
+            <ol className="grid gap-px overflow-hidden rounded-[18px] bg-line">
               {qualityCheckpoints.map((checkpoint, index) => (
                 <Reveal
                   key={checkpoint.title}
                   as="li"
-                  delay={index * 45}
-                  className="flex gap-4 rounded-[18px] border border-line bg-white p-5"
+                  delay={index * 40}
+                  className="flex gap-4 bg-white p-5"
                 >
-                  <CheckMark />
+                  <span className="tw-tnum pt-0.5 text-small font-semibold text-ink-subtle">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <div>
                     <h3 className="text-small font-semibold text-ink">{checkpoint.title}</h3>
-                    <p className="mt-1.5 text-small leading-relaxed text-ink-muted">
+                    <p className="mt-1.5 text-small text-ink-muted">
                       {checkpoint.description}
                     </p>
                   </div>
@@ -503,35 +526,15 @@ export function QualitySection() {
               ))}
             </ol>
           </div>
-        </div>
+        </Panel>
       </Container>
     </Section>
   );
 }
 
-/** Minimal check mark, drawn inline so no icon library is required. */
-function CheckMark() {
-  return (
-    <span
-      aria-hidden="true"
-      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forest-soft"
-    >
-      <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-        <path
-          d="M1 5.2 4.2 8.4 11 1.6"
-          stroke="#087a55"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </span>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Markets                                                                     */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Markets
+   ========================================================================== */
 
 const marketMedia = {
   usa: editorialMedia.logistics,
@@ -540,12 +543,14 @@ const marketMedia = {
 } as const;
 
 export function MarketsSection() {
-  const featured = markets.filter((market) => market.slug === "usa" || market.slug === "europe");
+  const featured = markets.filter(
+    (market) => market.slug === "usa" || market.slug === "europe",
+  );
 
   return (
     <Section className="bg-white">
       <Container>
-        <SectionHeader
+        <SectionHeading
           eyebrow="Markets"
           title="Built around USA and European buyers"
           lede="Sizing conventions, labelling requirements and documentation differ by destination. They are confirmed with you rather than assumed."
@@ -558,26 +563,26 @@ export function MarketsSection() {
 
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           {featured.map((market, index) => (
-            <Reveal key={market.slug} delay={index * 90}>
+            <Reveal key={market.slug} delay={index * 90} className="h-full">
               <Link
                 href={`/markets/${market.slug}`}
-                className="tw-card tw-card-interactive group flex h-full flex-col overflow-hidden rounded-[28px] p-3"
+                className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_18px_50px_rgba(11,15,13,0.09)]"
               >
                 <Media
                   asset={marketMedia[market.slug as keyof typeof marketMedia]}
-                  aspect="aspect-[16/9]"
-                  sizes="(min-width: 1024px) 46vw, 92vw"
-                  className="rounded-[20px] shadow-none"
+                  aspect="aspect-[16/8]"
+                  sizes="(min-width: 1024px) 46vw, 100vw"
+                  compact
+                  className="rounded-none"
                   zoomOnHover
                 />
-                <div className="flex flex-1 flex-col p-5 pt-6 sm:p-7">
-                  <h3 className="font-sans text-h3 font-semibold tracking-[-0.032em] text-ink transition-colors duration-200 group-hover:text-forest-deep">
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <h3 className="font-sans text-h3 font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep">
                     {market.name}
                   </h3>
-                  <p className="mt-3 text-small leading-relaxed text-ink-muted">
-                    {market.summary}
-                  </p>
-                  <ul className="mt-6 grid gap-2.5">
+                  <p className="mt-3 text-small text-ink-muted">{market.summary}</p>
+
+                  <ul className="mt-6 grid flex-1 gap-3">
                     {market.buyerSupport.slice(0, 3).map((item) => (
                       <li key={item} className="flex gap-3 text-small text-ink-muted">
                         <CheckMark />
@@ -585,8 +590,15 @@ export function MarketsSection() {
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-7 text-label font-semibold uppercase tracking-[0.09em] text-forest">
+
+                  <span className="mt-7 inline-flex items-center gap-1.5 text-small font-semibold text-forest">
                     Market guidance
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform duration-200 group-hover:translate-x-1"
+                    >
+                      &rarr;
+                    </span>
                   </span>
                 </div>
               </Link>
@@ -598,82 +610,9 @@ export function MarketsSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Project process, retained for other routes                                  */
-/* -------------------------------------------------------------------------- */
-
-/**
- * Not rendered on the homepage. Kept because the case studies route and future
- * work may use it, and because removing it would lose the educational content
- * that stands in for fabricated customer stories.
- */
-export function ProjectProcessSection() {
-  return (
-    <Section className="bg-white">
-      <Container>
-        <div className="tw-surface p-6 sm:p-10 lg:p-14">
-          <SectionHeader
-            eyebrow="Project process"
-            title="No case studies, because none are evidenced yet"
-            lede="We do not publish customer stories without written permission from the customer and evidence for every figure quoted."
-            action={
-              <ButtonLink href="/case-studies" variant="secondary">
-                Read the full project walkthrough
-              </ButtonLink>
-            }
-          />
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Responsibility, retained for other routes                                   */
-/* -------------------------------------------------------------------------- */
-
-const responsibilityLinks = [
-  { label: "Sustainability", href: "/sustainability", description: "Approach described without invented metrics." },
-  { label: "Social responsibility", href: "/responsibility", description: "What we publish, what we withhold and why." },
-  { label: "Certifications", href: "/certifications", description: "A verifiable registry rather than a wall of logos." },
-  { label: "Traceability", href: "/traceability", description: "Where materials and production actually come from." },
-  { label: "Quality", href: "/quality", description: "Checkpoints from incoming material to packing." },
-];
-
-/** Not rendered on the homepage. Retained for other routes and future work. */
-export function ResponsibilitySection() {
-  return (
-    <Section className="bg-white">
-      <Container>
-        <SectionHeader
-          eyebrow="Responsibility"
-          title="Claims we can evidence, and nothing else"
-          lede="There are no capacity figures, employee counts or delivery percentages on this website, because none of them has been measured and verified for publication."
-        />
-
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {responsibilityLinks.map((item, index) => (
-            <Reveal key={item.href} as="li" delay={(index % 3) * 55}>
-              <Link
-                href={item.href}
-                className="tw-card tw-card-interactive flex h-full flex-col rounded-[22px] p-6"
-              >
-                <span className="text-body font-semibold text-ink">{item.label}</span>
-                <span className="mt-2 text-small leading-relaxed text-ink-muted">
-                  {item.description}
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </ul>
-      </Container>
-    </Section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Insights                                                                    */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Insights
+   ========================================================================== */
 
 export function InsightsSection() {
   const latest = articlesByDate().slice(0, 3);
@@ -682,7 +621,7 @@ export function InsightsSection() {
   return (
     <Section className="bg-white">
       <Container>
-        <SectionHeader
+        <SectionHeading
           eyebrow="Insights"
           title="How manufacturing decisions actually work"
           lede="Explanations rather than marketing, written for buyers who want to understand why a minimum quantity is what it is."
@@ -693,37 +632,35 @@ export function InsightsSection() {
           }
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
           {latest.map((article, index) => (
-            <Reveal key={article.slug} delay={index * 80}>
-              <Link
-                href={`/insights/${article.slug}`}
-                className="tw-card tw-card-interactive group flex h-full flex-col overflow-hidden rounded-[24px] p-3"
-              >
+            <Reveal key={article.slug} delay={index * 80} className="h-full">
+              <Link href={`/insights/${article.slug}`} className="group flex h-full flex-col">
                 <Media
                   asset={article.hero}
                   aspect="aspect-[16/10]"
-                  sizes="(min-width: 768px) 30vw, 92vw"
-                  className="rounded-[18px] shadow-none"
+                  sizes="(min-width: 768px) 30vw, 100vw"
+                  compact
                   zoomOnHover
                 />
-                <div className="flex flex-1 flex-col p-4 pt-5 sm:p-5">
-                  <p className="text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
-                    {article.category} &middot; {article.readingMinutes} minute read
-                  </p>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug tracking-[-0.03em] text-ink transition-colors duration-200 group-hover:text-forest-deep">
-                    {article.title}
-                  </h3>
-                  <p className="mt-2.5 flex-1 text-small leading-relaxed text-ink-muted">
-                    {article.summary}
-                  </p>
-                  <time
-                    dateTime={article.publishedAt}
-                    className="mt-6 text-small text-ink-subtle"
+                <p className="mt-5 flex items-center gap-2 text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+                  <span className="text-forest">{article.category}</span>
+                  <span aria-hidden="true">/</span>
+                  <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
+                </p>
+                <h3 className="mt-3 text-[1.15rem] font-semibold leading-snug tracking-[-0.02em] text-ink transition-colors duration-200 group-hover:text-forest-deep">
+                  {article.title}
+                </h3>
+                <p className="mt-2.5 flex-1 text-small text-ink-muted">{article.summary}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-small font-semibold text-forest">
+                  Read
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform duration-200 group-hover:translate-x-1"
                   >
-                    {formatDate(article.publishedAt)}
-                  </time>
-                </div>
+                    &rarr;
+                  </span>
+                </span>
               </Link>
             </Reveal>
           ))}
@@ -733,51 +670,140 @@ export function InsightsSection() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/* Final call to action                                                        */
-/* -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Final call to action
+   ========================================================================== */
 
 export function FinalCtaSection() {
   return (
+    <Section size="large" className="bg-white">
+      <Container>
+        <Panel tone="forest" className="relative overflow-hidden text-center">
+          <Eyebrow tone="inverse">Start at 50. Scale beyond 100,000.</Eyebrow>
+
+          <DisplayHeading
+            level={2}
+            size="h2"
+            className="mx-auto mt-5 max-w-[18ch] text-white"
+          >
+            Bring us the idea. Leave with a production plan.
+          </DisplayHeading>
+
+          <p className="mx-auto mt-6 max-w-[54ch] text-body-l text-white/80">
+            Share your product details, target quantity and delivery requirements. Our team
+            reviews the technical and commercial requirements before quoting.
+          </p>
+
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <QuoteCta location="home_final_cta" variant="inverse">
+              Request a Manufacturing Quote
+            </QuoteCta>
+
+            <WhatsappInlineLink
+              context={{ pageLabel: "Homepage", path: "/" }}
+              location="home_final_cta"
+              variant="inverse-outline"
+            >
+              Talk to Our Team
+            </WhatsappInlineLink>
+
+            <ButtonLink href="/request-a-sample" variant="inverse-outline">
+              Request a Sample
+            </ButtonLink>
+          </div>
+        </Panel>
+      </Container>
+    </Section>
+  );
+}
+
+/* ==========================================================================
+   Retained for other routes
+
+   Neither of these renders on the homepage. They are kept because the case
+   studies route and future work use them, and because the project process
+   content is what stands in for fabricated customer stories.
+   ========================================================================== */
+
+export function ProjectProcessSection() {
+  return (
     <Section className="bg-white">
       <Container>
-        <div className="overflow-hidden rounded-[32px] bg-forest px-6 py-16 text-white sm:px-10 lg:px-16 lg:py-24">
-          <div className="mx-auto max-w-[900px] text-center">
-            <Eyebrow tone="inverse" className="justify-center">
-              Start at 50. Scale beyond 100,000.
-            </Eyebrow>
+        <Panel>
+          <SectionHeading
+            eyebrow="Project process"
+            title="No case studies, because none are evidenced yet"
+            lede="We do not publish customer stories without written permission from the customer and evidence for every figure quoted."
+            action={
+              <ButtonLink href="/case-studies" variant="secondary">
+                Read the full project walkthrough
+              </ButtonLink>
+            }
+          />
+        </Panel>
+      </Container>
+    </Section>
+  );
+}
 
-            <DisplayHeading level={2} size="h2" className="mx-auto mt-6 max-w-[18ch] text-white">
-              Bring us the idea. Leave with a production plan.
-            </DisplayHeading>
+const responsibilityLinks = [
+  {
+    label: "Sustainability",
+    href: "/sustainability",
+    description: "Approach described without invented metrics.",
+  },
+  {
+    label: "Social responsibility",
+    href: "/responsibility",
+    description: "What we publish, what we withhold and why.",
+  },
+  {
+    label: "Certifications",
+    href: "/certifications",
+    description: "A verifiable registry rather than a wall of logos.",
+  },
+  {
+    label: "Traceability",
+    href: "/traceability",
+    description: "Where materials and production actually come from.",
+  },
+  {
+    label: "Quality",
+    href: "/quality",
+    description: "Checkpoints from incoming material to packing.",
+  },
+];
 
-            <p className="mx-auto mt-7 max-w-[58ch] text-body-l leading-relaxed text-white/80">
-              Share your product details, target quantity and delivery requirements. Our
-              team will review the technical and commercial requirements.
-            </p>
+export function ResponsibilitySection() {
+  return (
+    <Section className="bg-white">
+      <Container>
+        <SectionHeading
+          eyebrow="Responsibility"
+          title="Claims we can evidence, and nothing else"
+          lede="There are no capacity figures, employee counts or delivery percentages on this website, because none of them has been measured and verified for publication."
+        />
 
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-              <QuoteCta location="home_final_cta" variant="inverse">
-                Request a Manufacturing Quote
-              </QuoteCta>
-
-              <WhatsappInlineLink
-                context={{ pageLabel: "Homepage", path: "/" }}
-                location="home_final_cta"
-                variant="inverse"
-              >
-                Talk to Our Team
-              </WhatsappInlineLink>
-
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {responsibilityLinks.map((item, index) => (
+            <Reveal key={item.href} as="li" delay={(index % 3) * 55} className="h-full">
               <Link
-                href="/request-a-sample"
-                className="inline-flex min-h-[50px] items-center justify-center rounded-[14px] border border-white/35 px-6 text-small font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white/10"
+                href={item.href}
+                className="tw-card tw-card-interactive group flex h-full flex-col p-6"
               >
-                Request a Sample
+                <span className="text-body font-semibold text-ink transition-colors duration-200 group-hover:text-forest-deep">
+                  {item.label}
+                </span>
+                <span className="mt-2 text-small text-ink-muted">{item.description}</span>
               </Link>
-            </div>
-          </div>
-        </div>
+            </Reveal>
+          ))}
+        </ul>
+
+        <MarkerList
+          className="mt-10"
+          items={["Every product family states how it is produced."]}
+        />
       </Container>
     </Section>
   );

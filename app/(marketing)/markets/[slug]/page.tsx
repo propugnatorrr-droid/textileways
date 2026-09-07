@@ -77,7 +77,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <ProseBlock paragraphs={market.introduction} />
         </Container>
@@ -122,7 +122,7 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
         </SplitSection>
       ) : null}
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <RelatedGrid
             title="Other markets"

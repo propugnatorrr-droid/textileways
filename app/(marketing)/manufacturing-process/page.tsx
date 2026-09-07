@@ -56,7 +56,7 @@ export default function ManufacturingProcessPage() {
         }
       />
 
-      <Section tight className="">
+      <Section size="tight">
         <Container>
           <Notice tone="info" title="On timelines" className="max-w-[74ch]">
             No fixed timeline is published for these stages. Duration depends on fabric

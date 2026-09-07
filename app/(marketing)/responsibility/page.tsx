@@ -119,9 +119,9 @@ export default function ResponsibilityPage() {
         />
       </SplitSection>
 
-      <Section tight className="bg-cotton">
+      <Section size="tight" className="bg-cotton">
         <Container>
-          <h2 className="mb-8 border-b border-line pb-3 text-label font-medium uppercase tracking-[0.09em] text-ink-subtle">
+          <h2 className="mb-8 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
             Related pages
           </h2>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

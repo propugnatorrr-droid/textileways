@@ -376,10 +376,22 @@ export function RfqForm() {
   }
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,16rem)_1fr] lg:gap-16">
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,16rem)_1fr] lg:gap-16">
       <StepNavigation current={step} onSelect={goToStep} />
 
-      <div>
+      <div className="min-w-0 rounded-[24px] border border-line bg-white p-6 sm:p-8 lg:p-10">
+        <div aria-hidden="true" className="mb-5 flex gap-1.5 lg:hidden">
+          {rfqStepTitles.map((title, index) => (
+            <span
+              key={title}
+              className={cn(
+                "h-1 flex-1 rounded-full transition-colors duration-300",
+                index <= step ? "bg-forest" : "bg-line",
+              )}
+            />
+          ))}
+        </div>
+
         <h2
           ref={headingRef}
           tabIndex={-1}
@@ -486,34 +498,34 @@ function StepNavigation({
   onSelect: (index: number) => void;
 }) {
   return (
-    <nav aria-label="Quote request steps" className="lg:sticky lg:top-28 lg:self-start">
-      <ol className="divide-y divide-line">
+    <nav aria-label="Quote request steps" className="min-w-0 lg:sticky lg:top-28 lg:self-start">
+      <ol className="tw-scrollbar-none -mx-1 flex gap-1 overflow-x-auto px-1 pb-1 lg:mx-0 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:px-0 lg:pb-0">
         {rfqStepTitles.map((title, index) => {
           const isCurrent = index === current;
           const isComplete = index < current;
 
           return (
-            <li key={title}>
+            <li key={title} className="shrink-0 lg:shrink">
               <button
                 type="button"
                 onClick={() => onSelect(index)}
                 disabled={index > current}
                 aria-current={isCurrent ? "step" : undefined}
                 className={cn(
-                  "flex min-h-[52px] w-full items-center gap-4 text-left text-small transition-colors duration-200",
-                  isCurrent ? "font-semibold text-forest" : "text-ink-muted",
-                  index > current ? "cursor-not-allowed opacity-45" : "hover:text-forest",
+                  "flex min-h-[48px] w-full items-center gap-3.5 whitespace-nowrap rounded-[12px] px-3 text-left text-small transition-colors duration-200 lg:px-2",
+                  isCurrent ? "bg-forest-soft font-semibold text-forest-deep" : "text-ink-muted",
+                  index > current ? "cursor-not-allowed opacity-45" : "hover:text-forest-deep",
                 )}
               >
                 <span
                   aria-hidden="true"
                   className={cn(
-                    "flex h-6 w-6 shrink-0 items-center justify-center border text-label",
+                    "tw-tnum flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-label font-semibold",
                     isCurrent
-                      ? "border-forest bg-forest text-white"
+                      ? "bg-forest text-white"
                       : isComplete
-                        ? "border-forest text-forest"
-                        : "border-line-strong text-ink-subtle",
+                        ? "bg-forest-soft text-forest-deep"
+                        : "bg-cotton text-ink-subtle",
                   )}
                 >
                   {index + 1}

@@ -14,11 +14,13 @@ import { whatsappHref, labelForPath } from "@/lib/utilities/whatsapp";
 /**
  * Site header.
  *
- * Behaviour required by the brief:
- * - paper coloured over the hero, solid once the page scrolls
- * - keyboard accessible mega menus that close on Escape and on outside click
- * - mobile menu that traps focus and becomes an accordion
- * - no pill shaped navigation elements
+ * White and sticky, gaining a hairline and a soft shadow once the page scrolls.
+ * Mega menus open as contained rounded panels sized to their content rather
+ * than as full width dropdowns.
+ *
+ * Behaviour preserved from the original implementation: keyboard accessible
+ * menus, Escape to close, outside click and outside focus to close, a focus
+ * trap in the mobile panel, and menus that close on route change.
  */
 export function SiteHeader() {
   const pathname = usePathname();
@@ -155,12 +157,9 @@ export function SiteHeader() {
   return (
     <header
       /*
-       * The background is solid rather than translucent with a blur.
-       *
-       * Two reasons: the design rules prohibit glassmorphism, and a
-       * backdrop-filter on this element would make the header a containing block
-       * for fixed position descendants, which collapses the fixed mobile
-       * navigation panel to the height of the header.
+       * The background stays fully opaque. A backdrop-filter here would make the
+       * header a containing block for fixed position descendants, which collapses
+       * the fixed mobile navigation panel to the height of the header.
        */
       className={cn(
         "sticky top-0 z-40 border-b bg-white transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
@@ -170,19 +169,19 @@ export function SiteHeader() {
       )}
     >
       <div className="tw-container">
-        <div className="flex h-[72px] items-center justify-between gap-4 lg:h-[84px]">
+        <div className="flex h-[72px] items-center justify-between gap-6 lg:h-[76px]">
           <Link
             href="/"
             className="shrink-0"
             aria-label={`${siteConfig.name} home`}
             onClick={() => setOpenMenu(null)}
           >
-            <Wordmark className="text-[20px] text-ink lg:text-[23px]" />
+            <Wordmark className="text-[19px] text-ink lg:text-[21px]" />
           </Link>
 
-          <div ref={navRef} className="hidden xl:flex xl:items-center xl:gap-1">
+          <div ref={navRef} className="hidden flex-1 xl:flex xl:items-center xl:pl-6">
             <nav aria-label="Primary">
-              <ul className="flex items-center gap-1">
+              <ul className="flex items-center gap-0.5">
                 {primaryNavigation.map((item) => (
                   <DesktopNavItem
                     key={item.label}
@@ -208,7 +207,7 @@ export function SiteHeader() {
                 onClick={() =>
                   track("whatsapp_click", { cta_location: "header", page: pathname })
                 }
-                className="hidden h-11 w-11 items-center justify-center rounded-[14px] border border-line-strong text-forest transition-all duration-300 hover:-translate-y-0.5 hover:border-forest hover:bg-forest-soft sm:inline-flex"
+                className="hidden h-10 w-10 items-center justify-center rounded-[12px] border border-line-strong text-forest transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-forest/40 hover:bg-forest-soft sm:inline-flex"
               >
                 <span className="sr-only">Message us on WhatsApp</span>
                 <WhatsappGlyph className="h-[19px] w-[19px]" />
@@ -218,7 +217,7 @@ export function SiteHeader() {
             <Link
               href="/request-a-quote"
               onClick={() => onQuoteClick("header")}
-              className="hidden min-h-11 items-center rounded-[14px] border border-forest bg-forest px-5 text-small font-semibold text-white shadow-[0_8px_24px_rgba(8,122,85,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:border-forest-deep hover:bg-forest-deep hover:shadow-[0_14px_30px_rgba(8,122,85,0.22)] sm:inline-flex"
+              className="hidden min-h-10 items-center rounded-[12px] border border-forest bg-forest px-4.5 text-[15px] font-semibold text-white transition-[background-color,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-forest-deep hover:bg-forest-deep hover:shadow-[0_12px_26px_rgba(8,122,85,0.24)] sm:inline-flex"
             >
               Request a Quote
             </Link>
@@ -226,7 +225,7 @@ export function SiteHeader() {
             <button
               ref={mobileTriggerRef}
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-line-strong text-ink transition-colors duration-200 hover:bg-cotton xl:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-[12px] border border-line-strong text-ink transition-colors duration-200 hover:bg-cotton xl:hidden"
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
               onClick={() => setMobileOpen((open) => !open)}
@@ -274,8 +273,8 @@ function DesktopNavItem({
         <Link
           href={item.href}
           className={cn(
-            "inline-flex min-h-10 items-center rounded-[12px] px-3.5 text-small font-semibold transition-colors duration-200",
-            active ? "bg-forest-soft text-forest-deep" : "text-ink hover:bg-cotton",
+            "inline-flex min-h-[38px] items-center rounded-[10px] px-3 text-[15px] font-semibold tracking-[-0.006em] transition-colors duration-200",
+            active ? "text-forest-deep" : "text-ink hover:bg-cotton",
           )}
         >
           {item.label}
@@ -292,8 +291,8 @@ function DesktopNavItem({
         aria-controls={panelId}
         onClick={onToggle}
         className={cn(
-          "inline-flex min-h-10 items-center gap-1.5 rounded-[12px] px-3.5 text-small font-semibold transition-colors duration-200",
-          active || open ? "bg-forest-soft text-forest-deep" : "text-ink hover:bg-cotton",
+          "inline-flex min-h-[38px] items-center gap-1.5 rounded-[10px] px-3 text-[15px] font-semibold tracking-[-0.006em] transition-colors duration-200",
+          active || open ? "text-forest-deep" : "text-ink hover:bg-cotton",
         )}
       >
         {item.label}
@@ -303,21 +302,37 @@ function DesktopNavItem({
       <div
         id={panelId}
         hidden={!open}
-        className="absolute left-1/2 top-full w-[min(calc(100vw-32px),1360px)] -translate-x-1/2 pt-3"
+        className={cn(
+          "absolute left-1/2 top-full -translate-x-1/2 pt-2.5",
+          /* Width follows content. A single column menu stays narrow. */
+          item.columns.length >= 3
+            ? "w-[min(calc(100vw-32px),1180px)]"
+            : item.columns.length === 2
+              ? "w-[min(calc(100vw-32px),760px)]"
+              : "w-[min(calc(100vw-32px),420px)]",
+        )}
       >
-        <div className="overflow-hidden rounded-[24px] border border-line bg-white p-8 shadow-[0_28px_80px_rgba(11,15,13,0.14)] lg:p-10">
+        <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_24px_70px_rgba(11,15,13,0.13)]">
+          <span aria-hidden="true" className="block h-[3px] bg-forest" />
+          <div className="p-6 lg:p-7">
           {item.intro ? (
-            <p className="mb-8 max-w-[64ch] text-small text-ink-subtle">{item.intro}</p>
+            <p className="mb-6 max-w-[70ch] text-small text-ink-subtle">{item.intro}</p>
           ) : null}
           <div
             className={cn(
-              "grid gap-x-10 gap-y-8",
-              item.columns.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3",
+              "grid gap-x-8 gap-y-7",
+              item.columns.length >= 4
+                ? "lg:grid-cols-4"
+                : item.columns.length === 3
+                  ? "lg:grid-cols-3"
+                  : item.columns.length === 2
+                    ? "sm:grid-cols-2"
+                    : "grid-cols-1",
             )}
           >
             {item.columns.map((column) => (
               <div key={column.title}>
-                <p className="mb-4 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+                <p className="mb-3 px-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
                   {column.title}
                 </p>
                 <ul className="-mx-3 space-y-0.5">
@@ -326,11 +341,11 @@ function DesktopNavItem({
                       <Link
                         href={link.href}
                         onClick={onClose}
-                        className="group block rounded-[12px] px-3 py-2.5 text-small font-semibold text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
+                        className="group block rounded-[10px] px-3 py-2 text-[15px] font-semibold tracking-[-0.006em] text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
                       >
                         {link.label}
                         {link.description ? (
-                          <span className="mt-1 block text-small font-normal leading-snug text-ink-subtle">
+                          <span className="mt-0.5 block text-[13.5px] font-normal leading-snug text-ink-subtle">
                             {link.description}
                           </span>
                         ) : null}
@@ -340,6 +355,7 @@ function DesktopNavItem({
                 </ul>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
@@ -413,7 +429,7 @@ function MobileNavigation({
                             <Link
                               href={link.href}
                               onClick={onNavigate}
-                              className="flex min-h-[48px] items-center rounded-[12px] px-3 text-small text-ink-muted transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
+                              className="flex min-h-[48px] items-center rounded-[10px] px-3 text-[15px] text-ink-muted transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
                             >
                               {link.label}
                             </Link>
