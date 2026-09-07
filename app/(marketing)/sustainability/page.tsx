@@ -10,11 +10,12 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Sustainability",
+  title: "Responsible material and production choices",
   description:
-    "Textileways publishes its approach to materials, waste, packaging, water and energy without invented metrics. Measurable claims require a value, a method, a period and evidence.",
+    "Explore material sourcing, packaging, sampling and shipping choices that can be reviewed for a Textileways production programme.",
   path: "/sustainability",
 });
+
 
 const claimRequirements = [
   { label: "Value", detail: "The number itself, stated precisely rather than approximately." },
@@ -38,16 +39,16 @@ export default function SustainabilityPage() {
 
       <PageHeader
         eyebrow="Sustainability"
-        title="Approach published. Numbers withheld."
-        lede="Most textile sustainability pages consist of percentages nobody can trace back to a measurement. This page describes what we actually do, and says clearly where a figure would be required before a claim could be made."
+        title="Better decisions begin with the specification"
+        lede="Material, packaging, sampling and shipping choices are reviewed at order level, where their cost, availability, documentation and practical impact can be understood."
         breadcrumbs={breadcrumbs}
         actions={
           <>
             <ButtonLink href="/traceability" variant="secondary">
               Traceability
             </ButtonLink>
-            <ButtonLink href="/certifications" variant="secondary">
-              Certificate registry
+            <ButtonLink href="/materials" variant="secondary">
+              Explore Materials
             </ButtonLink>
           </>
         }
@@ -62,26 +63,28 @@ export default function SustainabilityPage() {
 
       <Section size="tight">
         <Container>
-          <Notice tone="info" title="Why there are no percentages on this page" className="max-w-[74ch]">
+          <Notice
+            tone="info"
+            title="Bring your material or sourcing policy into the brief"
+            className="max-w-[74ch]"
+          >
             <p>
-              No baseline has been independently established for water use, energy use, waste
-              or emissions at this facility. Publishing a reduction figure without a baseline
-              and a method would be a claim we could not defend if a buyer asked how it was
-              calculated.
+              If your programme has requirements for fibre origin, recycled content,
+              packaging, testing or documentation, share them before material sourcing
+              begins.
             </p>
             <p className="mt-3">
-              Buyers with a serious material policy generally prefer a supplier who says what
-              is not measured over one who publishes a number that dissolves under a single
-              question.
+              Options can then be assessed against availability, minimum quantity, production
+              route, evidence requirements, cost and delivery timing.
             </p>
           </Notice>
         </Container>
       </Section>
 
       <SplitSection
-        eyebrow="Approach"
-        title="Eight areas, described honestly"
-        intro="Each area states what we do and, separately, what would be required before an outcome could be claimed."
+        eyebrow="Order-level decisions"
+        title="Eight areas to review before production"
+        intro="Each area explains the available production choices and the evidence required before a measurable environmental claim can be made."
       >
         <ul className="grid gap-4 sm:grid-cols-2">
           {sustainabilityApproach.map((item, index) => (
@@ -99,9 +102,9 @@ export default function SustainabilityPage() {
       </SplitSection>
 
       <SplitSection
-        eyebrow="Standard of proof"
-        title="What a measurable claim requires"
-        intro="This is the test any environmental figure has to pass before it appears anywhere on this site."
+        eyebrow="Evidence"
+        title="What a measurable claim should include"
+        intro="A useful environmental figure needs enough context to be reviewed, compared and repeated."
         className="tw-card tw-card-interactive overflow-hidden rounded-[22px]"
       >
         <ol className="divide-y divide-line">
@@ -117,7 +120,9 @@ export default function SustainabilityPage() {
         </ol>
 
         <div className="mt-10">
-          <StatusTag tone="muted">No figures currently meet this test</StatusTag>
+          <StatusTag tone="muted">
+            Order-specific evidence is reviewed before a claim is approved
+          </StatusTag>
         </div>
       </SplitSection>
 
