@@ -15,7 +15,7 @@ export const markets: Market[] = [
     summary:
       "Support for USA based brands, retailers and organisations importing apparel and textile products.",
     introduction: [
-      "The United States is one of our two primary markets. Buyers here typically work to alpha sizing, expect labelling that follows domestic conventions, and plan around the lead time that ocean freight from Pakistan requires.",
+      "United States projects typically use alpha sizing, domestic labelling conventions and delivery plans built around the selected freight method from Pakistan.",
       "Practically, that means three things get confirmed early on any USA project: the size range and how it is graded, the exact wording that appears on the care and content label, and whether the schedule is built around sea or air freight.",
       "We prepare export documentation for shipments to the United States and work with your nominated customs broker or forwarder. Classification, duty and clearance follow the Incoterm agreed in the quotation.",
     ],
