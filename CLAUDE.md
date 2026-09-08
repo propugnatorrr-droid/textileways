@@ -1216,6 +1216,32 @@ Use:
 6. Sanitization
 7. Generic server error messages
 
+## Quick quote, and the sample match guarantee
+
+**Added 2026-09-08.** A conversion audit found the site offered only two paths:
+the full seven step RFQ, or WhatsApp. Nothing captured a visitor who was not
+yet ready to submit a complete specification, and nothing addressed the risk
+of committing to an unfamiliar overseas factory. Two additions, both built to
+the same content integrity rules as the rest of the site (no invented
+pricing, no invented lead times):
+
+`/quick-quote` pairs a free, no email required "project readiness check"
+(`components/content/readiness-and-quote.tsx`) with a five field quick quote
+form (`components/forms/quick-quote-form.tsx`, `app/api/quick-quote/route.ts`,
+reference prefix `EST`), reusing the same guard chain, email templates and
+security posture as the RFQ and contact endpoints. The readiness check only
+ever states things already published elsewhere (the production scale steps,
+the tech pack FAQ answer), so it cannot say anything the rest of the site
+does not already say.
+
+The Sample Match Guarantee states, as an explicit commitment, what the
+Quality page's existing Sample approval and Corrective action controls
+already describe as procedure: if the pre production sample does not match
+the approved specification, it is corrected and resent at no additional
+charge. It is scoped to the sample stage only, not to bulk production or a
+broader money back promise. See `content/fallback/faqs.ts` (id
+`sample-match-guarantee`) and `app/(marketing)/quality/page.tsx`.
+
 ---
 
 # 16. Contact and Sample Forms

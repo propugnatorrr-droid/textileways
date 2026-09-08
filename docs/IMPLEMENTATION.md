@@ -38,8 +38,8 @@ Verification commands and their current results are in section 9.
 | Email | Resend | Degrades to server logging when unconfigured |
 | Storage | Vercel Blob, behind an adapter interface | Swappable without touching route handlers |
 | Spam | Cloudflare Turnstile, honeypot, timing, rate limit | Four independent layers |
-| Unit tests | Vitest | 153 tests |
-| Browser tests | Playwright, desktop and mobile projects | 160 tests, 9 correctly skipped (desktop-only checks on the mobile project) |
+| Unit tests | Vitest | 160 tests |
+| Browser tests | Playwright, desktop and mobile projects | 166 tests, 9 correctly skipped (desktop-only checks on the mobile project) |
 
 React Hook Form is listed in the brief. The forms use a small typed state layer
 instead, and the package was removed rather than left installed and unused. The
@@ -266,7 +266,7 @@ Latest results:
 | `npm run lint` | Clean, no errors, no warnings |
 | `npm run typecheck` | Clean |
 | `npm run test` | 132 passed |
-| `npm run build` | 104 routes generated |
+| `npm run build` | 106 routes generated |
 | `npm run test:e2e` | 120 passed, 8 skipped by project |
 
 The eight skips are the project specific guards: desktop only tests skipped on

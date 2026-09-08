@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import { Container, Section, Notice, MarkerList } from "@/components/ui";
 import { PageHeader, HeaderAside, SplitSection, ProcessList } from "@/components/sections/page-shell";
@@ -29,6 +30,14 @@ export default function RequestAQuotePage() {
         title="Tell us what you need to make"
         lede="Share what you know in seven short steps. Only the first two are required to begin, and your progress is saved in this browser so you can return without starting again."
         breadcrumbs={breadcrumbs}
+        actions={
+          <Link
+            href="/quick-quote"
+            className="tw-underline-grow text-small font-semibold text-forest"
+          >
+            Not ready for the full form? Get a free readiness check instead
+          </Link>
+        }
         aside={
           <HeaderAside title="What to expect">
             <p>

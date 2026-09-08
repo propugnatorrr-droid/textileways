@@ -27,6 +27,12 @@ describe("submission references", () => {
   it("uses the correct prefix for each submission type", () => {
     expect(generateReference("SMP")).toMatch(/^SMP-/);
     expect(generateReference("MSG")).toMatch(/^MSG-/);
+    expect(generateReference("EST")).toMatch(/^EST-/);
+  });
+
+  it("accepts a valid EST reference", () => {
+    const reference = generateReference("EST", new Date("2026-09-08T00:00:00Z"));
+    expect(isValidReference(reference)).toBe(true);
   });
 
   it("omits visually ambiguous characters", () => {

@@ -260,6 +260,11 @@ export const primaryNavigation: NavItem[] = [
             description: "Clear answers about quantities, sampling, pricing, lead time and shipping.",
           },
           {
+            label: "Free project readiness check",
+            href: "/quick-quote",
+            description: "See where your project fits and send a quick estimate request.",
+          },
+          {
             label: "Request a sample",
             href: "/request-a-sample",
             description: "Start with a physical sample rather than a specification.",
@@ -329,6 +334,7 @@ export const footerNavigation: NavColumn[] = [
         ? [{ label: "Case studies", href: "/case-studies" }]
         : []),
       { label: "Frequently asked questions", href: "/faq" },
+      { label: "Free project readiness check", href: "/quick-quote" },
       { label: "Request a quote", href: "/request-a-quote" },
       { label: "Request a sample", href: "/request-a-sample" },
     ],
@@ -362,6 +368,7 @@ export const staticRoutes: string[] = [
   "/insights",
   "/faq",
   "/contact",
+  "/quick-quote",
   "/request-a-quote",
   "/request-a-sample",
   "/privacy",

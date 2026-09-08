@@ -3,8 +3,13 @@ import type { FaqItem } from "@/content/types";
 /**
  * Buyer questions answered without commercial promises.
  *
- * Nothing here states a fixed price, a fixed lead time or a guarantee. Where a
- * figure depends on the specification, the answer says so explicitly.
+ * Nothing here states a fixed price or a fixed lead time. Where a figure
+ * depends on the specification, the answer says so explicitly. One entry
+ * ("sample-match-guarantee") states an explicit guarantee, scoped narrowly to
+ * the pre production sample matching the specification the buyer approved,
+ * because it is a real standing commitment rather than a marketing claim: see
+ * `content/fallback/company.ts` for the underlying quality checkpoints it
+ * formalises.
  */
 export const faqs: FaqItem[] = [
   {
@@ -22,6 +27,13 @@ export const faqs: FaqItem[] = [
       "Yes. That is the reason Textileways exists in its current form. A validation run and a full scale production programme use the same specification discipline, the same approved sample and the same inspection points. The difference is material procurement, line planning and shipping method, not the standard applied to the product.",
   },
   {
+    id: "quick-estimate",
+    category: "Ordering",
+    question: "Do I have to complete the full quote form to hear back?",
+    answer:
+      "No. The free project readiness check gives an instant read on where your quantity fits before you share any contact details, and its quick estimate request needs only your product category and quantity to get a first reply from the team. The full request a quote form is for when you want a written quotation against a complete specification.",
+  },
+  {
     id: "lead-time",
     category: "Ordering",
     question: "How long does production take?",
@@ -34,6 +46,13 @@ export const faqs: FaqItem[] = [
     question: "How does sampling work?",
     answer:
       "Sampling normally runs in stages: a proto sample to confirm construction, a fit sample against your measurement chart, and a pre production sample that fixes fabric, colour, decoration, labelling and packaging. Each stage needs written approval before the next one starts. Sample charges and courier costs are quoted before work begins.",
+  },
+  {
+    id: "sample-match-guarantee",
+    category: "Sampling",
+    question: "What happens if the pre production sample does not match what we approved?",
+    answer:
+      "We correct it and send a revised sample at no additional charge. The pre production sample is checked against the written specification you approved before it is sent to you, and bulk production does not begin until that sample is approved, so this covers the one stage where a mismatch can happen before any material is committed to your order.",
   },
   {
     id: "tech-pack",

@@ -14,7 +14,7 @@ import { randomUUID, createHash } from "node:crypto";
 const ALPHABET = "23456789ABCDEFGHJKMNPQRSTVWXYZ";
 const RANDOM_LENGTH = 5;
 
-export type ReferencePrefix = "RFQ" | "SMP" | "MSG";
+export type ReferencePrefix = "RFQ" | "SMP" | "MSG" | "EST";
 
 export function generateReference(
   prefix: ReferencePrefix,
@@ -35,7 +35,7 @@ export function generateReference(
 
 /** True when a string has the shape this module produces. */
 export function isValidReference(value: string): boolean {
-  return new RegExp(`^(RFQ|SMP|MSG)-\\d{4}-[${ALPHABET}]{${RANDOM_LENGTH}}$`).test(value);
+  return new RegExp(`^(RFQ|SMP|MSG|EST)-\\d{4}-[${ALPHABET}]{${RANDOM_LENGTH}}$`).test(value);
 }
 
 /**

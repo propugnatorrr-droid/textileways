@@ -23,6 +23,7 @@ export type AnalyticsEvent =
   | "rfq_submit"
   | "sample_request_submit"
   | "contact_submit"
+  | "quick_quote_submit"
   | "file_upload_failure"
   | "download_click"
   | "whatsapp_click"

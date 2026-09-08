@@ -52,7 +52,7 @@ npm run test:e2e:install
 | Path | Contents |
 | --- | --- |
 | `app/(marketing)` | Every public page |
-| `app/api` | RFQ, sample request, contact and revalidation endpoints |
+| `app/api` | RFQ, sample request, contact, quick quote and revalidation endpoints |
 | `components` | UI, layout, navigation, sections, forms, content |
 | `content/configuration` | Site config, company facts, navigation |
 | `content/fallback` | All seeded content, used when no CMS is connected |

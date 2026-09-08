@@ -92,7 +92,7 @@ const controls = [
 ];
 
 export default function QualityPage() {
-  const faqs = getFaqsByIds(["aql", "inspection", "reorders", "compliance"]);
+  const faqs = getFaqsByIds(["sample-match-guarantee", "aql", "inspection", "reorders", "compliance"]);
   const faqLd = faqSchema(faqs.map((f) => ({ question: f.question, answer: f.answer })));
 
   const breadcrumbs = [
@@ -171,6 +171,36 @@ export default function QualityPage() {
             </li>
           ))}
         </ul>
+      </SplitSection>
+
+      <SplitSection
+        id="sample-match-guarantee"
+        eyebrow="Risk reversal"
+        title="The Sample Match Guarantee"
+        intro="A guarantee is only useful when it is specific about what it covers, so this one is scoped to a single stage rather than the whole order."
+        tone="panel"
+      >
+        <div className="tw-prose text-body leading-relaxed text-ink-muted">
+          <p>
+            Bulk production does not begin until you approve the pre production sample against
+            the written specification, exactly as described in the Sample approval control
+            above. If that pre production sample does not match what you approved, in
+            material, construction or measurements, we correct it and send a revised sample at
+            no additional charge.
+          </p>
+          <p>
+            This is a statement of what already happens under the Corrective action control:
+            a finding is recorded with its cause, the correction is applied, and the result is
+            re inspected before it goes to you. Stating it as a guarantee means you do not have
+            to take that on faith.
+          </p>
+          <p>
+            It covers the sample stage specifically, not a broader money back or delivery
+            promise, because that is the one point in a new relationship where a mismatch can
+            be corrected before any bulk material or production time is committed to your
+            order.
+          </p>
+        </div>
       </SplitSection>
 
       <SplitSection

@@ -530,6 +530,22 @@ export function QualitySection() {
               ))}
             </ol>
           </div>
+
+          <div className="mt-10 flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <p className="text-small font-semibold text-ink">Sample Match Guarantee</p>
+              <p className="mt-1.5 max-w-[58ch] text-small text-ink-muted">
+                If the pre production sample does not match the specification you approved, we
+                correct it and send a revised sample at no additional charge.
+              </p>
+            </div>
+            <Link
+              href="/quality#sample-match-guarantee"
+              className="tw-underline-grow shrink-0 text-small font-semibold text-forest"
+            >
+              How this fits into quality control
+            </Link>
+          </div>
         </Panel>
       </Container>
     </Section>
@@ -717,6 +733,13 @@ export function FinalCtaSection() {
               Request a Sample
             </ButtonLink>
           </div>
+
+          <Link
+            href="/quick-quote"
+            className="tw-underline-grow mt-6 inline-block text-small font-medium text-white/70"
+          >
+            Not ready for any of that? Get a free readiness check first
+          </Link>
         </Panel>
       </Container>
     </Section>

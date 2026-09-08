@@ -87,5 +87,6 @@ export const rateLimits = {
   rfq: { limit: 5, windowMs: 60 * 60 * 1000 },
   sample: { limit: 5, windowMs: 60 * 60 * 1000 },
   contact: { limit: 8, windowMs: 60 * 60 * 1000 },
+  quickQuote: { limit: 8, windowMs: 60 * 60 * 1000 },
   upload: { limit: 40, windowMs: 60 * 60 * 1000 },
 } as const;

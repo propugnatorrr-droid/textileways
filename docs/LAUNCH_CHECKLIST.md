@@ -45,11 +45,11 @@ verified. Everything unticked needs a person, a credential or an asset.
 
 | # | Item | Status | Note |
 | --- | --- | --- | --- |
-| 3.1 | Build passing | Done | `npm run build`, 104 routes generated. |
+| 3.1 | Build passing | Done | `npm run build`, 106 routes generated. |
 | 3.2 | Lint passing | Done | `npm run lint`, no errors, no warnings, nothing suppressed. |
 | 3.3 | Type check passing | Done | `npm run typecheck` clean under strict mode. |
-| 3.4 | Unit tests passing | Done | 153 tests. |
-| 3.5 | Browser tests passing | Done | 160 tests across desktop and mobile projects, 9 correctly skipped. |
+| 3.4 | Unit tests passing | Done | 160 tests. |
+| 3.5 | Browser tests passing | Done | 166 tests across desktop and mobile projects, 9 correctly skipped. |
 | 3.6 | Forms delivering | Outstanding. **Blocker** | Verify on the live site after 2.3. Submit the contact form and confirm both emails arrive. |
 | 3.7 | Uploads working | Outstanding | Verify after 2.5 by attaching a PDF to a real RFQ and opening the link in the notification. |
 | 3.8 | Spam protection working | Partial | Honeypot, timing, rate limit and validation are live and tested. Turnstile activates with 2.4. |

@@ -14,7 +14,7 @@ import { completedTooQuickly } from "@/lib/validation/shared";
 
 export interface GuardInput {
   headers: Headers;
-  endpoint: "rfq" | "sample" | "contact" | "upload";
+  endpoint: "rfq" | "sample" | "contact" | "quick-quote" | "upload";
   limit: number;
   windowMs: number;
   honeypotValue?: string;

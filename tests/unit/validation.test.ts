@@ -10,6 +10,7 @@ import {
 } from "@/lib/validation/shared";
 import { rfqFormSchema, rfqStepSchemas } from "@/lib/validation/rfq";
 import { contactFormSchema, sampleRequestFormSchema } from "@/lib/validation/contact";
+import { quickQuoteFormSchema } from "@/lib/validation/quick-quote";
 
 describe("text sanitisation", () => {
   it("collapses whitespace and trims", () => {
@@ -230,6 +231,52 @@ describe("contact schema", () => {
     expect(
       contactFormSchema.safeParse({ ...validContact, privacyConsent: false }).success,
     ).toBe(false);
+  });
+});
+
+describe("quick quote schema", () => {
+  const validQuickQuote = {
+    name: "Jordan Ellis",
+    email: "jordan@examplebrand.com",
+    company: "",
+    productFamily: "streetwear",
+    estimatedQuantity: 300,
+    notes: "",
+    privacyConsent: true as const,
+  };
+
+  it("accepts a valid request", () => {
+    expect(quickQuoteFormSchema.safeParse(validQuickQuote).success).toBe(true);
+  });
+
+  it("accepts a not listed product family", () => {
+    expect(
+      quickQuoteFormSchema.safeParse({ ...validQuickQuote, productFamily: "not-listed" }).success,
+    ).toBe(true);
+  });
+
+  it("rejects an unknown product family", () => {
+    expect(
+      quickQuoteFormSchema.safeParse({ ...validQuickQuote, productFamily: "made-up" }).success,
+    ).toBe(false);
+  });
+
+  it("rejects a quantity of zero", () => {
+    expect(
+      quickQuoteFormSchema.safeParse({ ...validQuickQuote, estimatedQuantity: 0 }).success,
+    ).toBe(false);
+  });
+
+  it("requires privacy consent", () => {
+    expect(
+      quickQuoteFormSchema.safeParse({ ...validQuickQuote, privacyConsent: false }).success,
+    ).toBe(false);
+  });
+
+  it("does not require a company", () => {
+    expect(
+      quickQuoteFormSchema.safeParse({ ...validQuickQuote, company: undefined }).success,
+    ).toBe(true);
   });
 });
 

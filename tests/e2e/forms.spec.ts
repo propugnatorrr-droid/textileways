@@ -272,3 +272,45 @@ test.describe("sample request form", () => {
     await expect(page.locator("#field-productFamily")).toHaveValue("home-textiles");
   });
 });
+
+test.describe("quick quote", () => {
+  test("the readiness check reflects a selected product and quantity", async ({ page }) => {
+    await page.goto("/quick-quote");
+    await page.locator("#readiness-product").selectOption("streetwear");
+    await page.locator("#readiness-quantity").fill("300");
+    await expect(page.getByText("250 to 999 pieces")).toBeVisible();
+    await expect(page.locator("#field-productFamily")).toHaveValue("streetwear");
+    await expect(page.locator("#field-estimatedQuantity")).toHaveValue("300");
+  });
+
+  test("validates before sending", async ({ page }) => {
+    await page.goto("/quick-quote");
+    await page.getByRole("button", { name: /^Get a quick estimate$/ }).click();
+    await expect(page.locator("[data-error-summary]")).toBeVisible();
+  });
+
+  test("sends successfully and shows a reference", async ({ page }) => {
+    await page.route("**/api/quick-quote", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ ok: true, reference: "EST-2609-7K4QD", duplicate: false }),
+      });
+    });
+
+    await page.goto("/quick-quote");
+
+    await page.locator("#field-name").fill("Alex Rivera");
+    await page.locator("#field-email").fill("alex@examplebrand.com");
+    await page.locator("#field-productFamily").selectOption("streetwear");
+    await page.locator("#field-estimatedQuantity").fill("300");
+    await page.locator("#field-privacyConsent").check();
+
+    await page.getByRole("button", { name: /^Get a quick estimate$/ }).click();
+
+    await expect(
+      page.getByRole("heading", { name: /Your request has been sent/i }),
+    ).toBeVisible();
+    await expect(page.getByText("EST-2609-7K4QD")).toBeVisible();
+  });
+});
