@@ -57,8 +57,13 @@ instead, keeping its numbered scene description unchanged.
 
 ## 3. Regeneration notes
 
-If only some images from a batch are approved, re-run the master prompt for
-the rejected numbers only, pasting their individual entries from
+**The 8 rejected from the first batch have improved, self-contained prompts
+ready in `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`**, each with the specific
+fix for why that entry failed. Use that document for this batch rather than
+re-deriving prompts from the original master prompt.
+
+For any future rejection not already covered there, re-run the master
+prompt for the rejected number only, pasting its individual entry from
 `docs/GPT_IMAGE_2_MASTER_PROMPT.md` along with the full "Global art direction"
 through "Anti-artifact" sections, so a partial re-generation still matches the
 rest of the installed set. Track rejected and regenerated IDs here as they

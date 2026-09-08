@@ -13,7 +13,10 @@ document against either one, so that step is manual).
 passed the checklist below and are installed; 8 were rejected**, mostly for
 readable fabricated label or logo text, and remain placeholders awaiting
 regeneration. See `docs/IMAGE_MANIFEST.md` section 3 for exactly which and
-why, and its section 5 for per-asset installed status.
+why, and its section 5 for per-asset installed status. Improved,
+self-contained regeneration prompts for those 8, each with the specific fix
+baked in, are ready in `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`; use that
+document for them rather than re-deriving prompts from this one.
 
 **Truthfulness.** The images this prompt requests are temporary representative
 campaign imagery, not documentary proof of Textileways' actual facility, staff,

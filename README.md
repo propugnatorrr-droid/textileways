@@ -119,6 +119,7 @@ copy contains an em dash or en dash.
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | You are deploying, or changing DNS |
 | [docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) | You are installing generated or commissioned photography |
 | [docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) | You are generating the photography batch |
+| [docs/GPT_IMAGE_2_REGENERATION_BATCH.md](docs/GPT_IMAGE_2_REGENERATION_BATCH.md) | You are regenerating a previously rejected image |
 
 If you are changing DNS, read section 9 of the deployment guide first. Pointing
 the website at Vercel does not require changing MX records, and changing them
