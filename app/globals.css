@@ -12,36 +12,39 @@
 
 @theme {
   /* --- Surfaces ---------------------------------------------------------- */
-  --color-white: #ffffff;
-  --color-paper: #ffffff;
-  --color-cotton: #f5f7f6;
-  --color-mist: #eef1f0;
-  --color-surface: #f7f9f8;
-  --color-surface-strong: #edf1ef;
+  --color-white: #f4f0e8;
+  --color-paper: #f4f0e8;
+  --color-cotton: #e9e3d8;
+  --color-mist: #ddd6ca;
+  --color-surface: #ebe5da;
+  --color-surface-strong: #d8d0c3;
 
   /* --- Type -------------------------------------------------------------- */
-  --color-ink: #0b0f0d;
-  --color-ink-muted: #56605b;
-  --color-ink-subtle: #626c67;
+  --color-ink: #101820;
+  --color-ink-muted: #46515a;
+  --color-ink-subtle: #667078;
 
-  /* --- Accent ------------------------------------------------------------ */
-  --color-forest: #087a55;
-  --color-forest-deep: #056044;
-  --color-forest-soft: #eaf7f1;
+  /*
+   * Existing token names are retained to avoid touching every component.
+   * They now resolve to the official Textileways copper system.
+   */
+  --color-forest: #b46f45;
+  --color-forest-deep: #8d4f2d;
+  --color-forest-soft: #eee0d5;
 
-  --color-clay: #c2410c;
-  --color-clay-deep: #9a3412;
+  --color-clay: #b46f45;
+  --color-clay-deep: #8d4f2d;
 
-  --color-blue: #2457f5;
-  --color-blue-soft: #eef2ff;
+  --color-blue: #215f91;
+  --color-blue-soft: #e6edf2;
 
-  --color-stone: #a9b1ad;
-  --color-line: rgba(11, 15, 13, 0.09);
-  --color-line-strong: rgba(11, 15, 13, 0.16);
---color-control-border: #7a847f;
+  --color-stone: #8e918d;
+  --color-line: rgba(16, 24, 32, 0.14);
+  --color-line-strong: rgba(16, 24, 32, 0.32);
+  --color-control-border: #697178;
 
-  --color-error: #c43333;
-  --color-success: #087a55;
+  --color-error: #a93232;
+  --color-success: #216b4a;
 
   /* --- Fonts ------------------------------------------------------------- */
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
@@ -97,21 +100,21 @@
   --container-content: 1440px;
   --container-reading: 68ch;
 
-  --radius-xs: 8px;
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-2xl: 36px;
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* --- Elevation --------------------------------------------------------- */
-  --shadow-quiet: 0 1px 2px rgb(11 15 13 / 0.04);
-  --shadow-raised: 0 1px 2px rgb(11 15 13 / 0.04), 0 10px 30px rgb(11 15 13 / 0.05);
-  --shadow-float: 0 2px 6px rgb(11 15 13 / 0.05), 0 22px 60px rgb(11 15 13 / 0.1);
-  --shadow-panel: 0 24px 70px rgb(11 15 13 / 0.13);
+  /* Industrial layouts use rules, contrast and material scale, not elevation. */
+  --shadow-quiet: none;
+  --shadow-raised: none;
+  --shadow-float: none;
+  --shadow-panel: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -137,7 +140,7 @@
   body {
     margin: 0;
     overflow-x: clip;
-    background: var(--color-white);
+    background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
@@ -148,6 +151,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
 
   h1,
   h2,
@@ -322,48 +326,45 @@
    * ----------------------------------------------------------------------- */
 
   .tw-card {
-    border: 1px solid var(--color-line);
-    border-radius: 20px;
-    background: var(--color-white);
-    box-shadow: var(--shadow-quiet);
+    border: 0;
+    border-top: 1px solid var(--color-line-strong);
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .tw-card-interactive {
     transition:
-      transform 300ms var(--ease-out-soft),
-      box-shadow 300ms var(--ease-out-soft),
-      border-color 300ms var(--ease-out-soft);
+      border-color 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease;
   }
 
   .tw-card-interactive:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-line-strong);
-    box-shadow: var(--shadow-raised);
+    transform: none;
+    border-top-color: var(--color-forest);
+    background: rgb(16 24 32 / 0.025);
+    box-shadow: none;
   }
 
-  /* Flat tinted field. No border, so it never reads as a card inside a card. */
+  /*
+   * Broad architectural fields rather than floating rounded cards.
+   * A strong top rule gives each field a technical catalogue character.
+   */
   .tw-panel {
-    border-radius: 28px;
+    border-top: 2px solid var(--color-ink);
+    border-radius: 0;
     background: var(--color-cotton);
   }
 
-  @media (min-width: 1024px) {
-    .tw-panel {
-      border-radius: 32px;
-    }
-  }
-
   .tw-panel-ink {
-    border-radius: 28px;
+    border-top: 3px solid var(--color-forest);
+    border-radius: 0;
     background: var(--color-ink);
     color: var(--color-white);
   }
 
-  @media (min-width: 1024px) {
-    .tw-panel-ink {
-      border-radius: 32px;
-    }
-  }
 
   .tw-panel-pad {
     padding: 28px 20px;
@@ -386,25 +387,14 @@
   .tw-media {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 0;
     background: var(--color-surface);
   }
 
-  @media (min-width: 768px) {
-    .tw-media {
-      border-radius: 24px;
-    }
-  }
-
   .tw-media-lg {
-    border-radius: 24px;
+    border-radius: 0;
   }
 
-  @media (min-width: 768px) {
-    .tw-media-lg {
-      border-radius: 32px;
-    }
-  }
 
   /* --- Section heading --------------------------------------------------- *
    * A heading block that fills the container instead of stranding a narrow
@@ -432,7 +422,7 @@
   min-height: 54px;
   padding: 14px 16px;
   border: 1px solid var(--color-control-border);
-    border-radius: 14px;
+    border-radius: 0;
     background: var(--color-white);
     color: var(--color-ink);
     font-family: inherit;
@@ -492,8 +482,8 @@
     align-items: flex-start;
     min-height: 52px;
     padding: 14px 16px;
-    border: 1px solid var(--color-line);
-    border-radius: 14px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 0;
     background: var(--color-white);
     cursor: pointer;
     transition:
@@ -522,7 +512,7 @@
   flex-shrink: 0;
   margin-top: 1px;
   border: 1px solid var(--color-control-border);
-    border-radius: 6px;
+    border-radius: 0;
     accent-color: var(--color-forest);
     cursor: pointer;
   }
@@ -587,7 +577,7 @@
 
   .tw-media-zoom:hover img,
   .tw-media-zoom:hover [data-media-art] {
-    transform: scale(1.04);
+    transform: scale(1.015);
   }
 
   /* Numerals that line up in columns, for scale figures and step numbers. */
@@ -611,6 +601,44 @@
 
   .tw-reveal {
     opacity: 1;
+    transform: none;
+  }
+}
+/* ==========================================================================
+   Industrial identity enforcement
+   Removes residual SaaS-style elevation and excessive rounding from shared
+   interactive surfaces while retaining accessible focus indicators.
+   ========================================================================== */
+
+@layer components {
+  .tw-industrial-rule {
+    border-top: 2px solid var(--color-ink);
+  }
+
+  .tw-industrial-rule-accent {
+    border-top: 2px solid var(--color-forest);
+  }
+
+  .tw-industrial-label {
+    font-size: var(--text-label);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tw-industrial-button {
+    min-height: 50px;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+  }
+
+  .tw-industrial-button:hover {
+    box-shadow: none;
     transform: none;
   }
 }
