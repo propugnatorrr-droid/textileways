@@ -159,7 +159,9 @@ test.describe("content integrity", () => {
 
   test("publishes no unverified certifications", async ({ page }) => {
     await page.goto("/certifications");
-    await expect(page.getByText(/No certificates are published yet/i)).toBeVisible();
+    await expect(
+      page.getByText(/Confirm your required standard before development/i),
+    ).toBeVisible();
   });
 
   test("withholds capacity and performance figures", async ({ page }) => {
@@ -173,7 +175,7 @@ test.describe("content integrity", () => {
   test("publishes no invented sustainability metrics", async ({ page }) => {
     await page.goto("/sustainability");
     await expect(
-      page.getByText(/Why there are no percentages on this page/i),
+      page.getByText(/percentages require a measurement method and reporting period/i),
     ).toBeVisible();
   });
 

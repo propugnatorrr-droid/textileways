@@ -57,10 +57,12 @@ describe("image manifest", () => {
     expect(getManifestEntry("not-a-real-id")).toBeUndefined();
   });
 
-  it("reports every entry as outstanding while no real photography is installed", () => {
-    // True today: every asset in content/fallback/media.ts is still a placeholder.
-    // Once a real file replaces one, `isPlaceholder` on that asset flips to false
-    // (or is removed) and this count drops, which is the point of the check.
-    expect(outstandingManifestEntries().length).toBe(imageManifest.length);
+  it("tracks outstanding entries against installed photography", () => {
+    // Updated 2026-09-07: 27 of 35 slots now carry an installed photograph;
+    // `isPlaceholder` is no longer set on those, so they drop out of this list.
+    // The remaining 8 failed the anti-artifact checklist and await regeneration
+    // (see docs/IMAGE_MANIFEST.md section 3).
+    expect(outstandingManifestEntries().length).toBe(8);
+    expect(imageManifest.length).toBe(35);
   });
 });

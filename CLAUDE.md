@@ -1818,12 +1818,14 @@ indexed with routes, aspect ratios and crop-safe requirements in
 `content/configuration/image-manifest.ts`. A paste-ready batch prompt for
 generating temporary representative campaign imagery for all 35 is
 `docs/GPT_IMAGE_2_MASTER_PROMPT.md`; the installation checklist is
-`docs/IMAGE_MANIFEST.md`. As of this update, image generation and installation
-are pending: every slot remains a documented placeholder, and no files have
-been generated or installed. Any photograph installed from that batch is
-representative campaign imagery, not documentary proof of this specific
-facility, staff, machinery, customers or output, and the factory and about
-pages carry a standing disclosure to that effect.
+`docs/IMAGE_MANIFEST.md`. The first generated batch was reviewed the same day:
+27 of 35 slots now carry an installed photograph, and 8 remain placeholders
+after failing the anti-artifact checklist (mostly readable fabricated label
+or logo text), queued for regeneration; see `docs/IMAGE_MANIFEST.md` section 3
+for exactly which and why. Every installed photograph is representative
+campaign imagery, not documentary proof of this specific facility, staff,
+machinery, customers or output, and the factory and about pages carry a
+standing disclosure to that effect.
 
 ---
 

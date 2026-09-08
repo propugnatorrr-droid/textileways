@@ -101,7 +101,7 @@ export default function CaseStudiesPage() {
           <Notice tone="info" title="Built around the buyer">
             <p>
               This walkthrough shows the decisions, approvals and information exchanged
-              during a manufacturing project—from the first brief to repeat production.
+              during a manufacturing project, from the first brief to repeat production.
             </p>
             <p className="mt-3">
               Use it to understand what you will need to provide, what Textileways reviews

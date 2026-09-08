@@ -5,10 +5,13 @@ Human readable companion to `content/configuration/image-manifest.ts` and
 generated photography, not a design brief: the full scene descriptions live
 in the master prompt document.
 
-**Status as of this document: 35 of 35 slots are placeholders. No image
-generation has run and no files have been installed.** Every route referenced
-below currently renders the woven-pattern placeholder art from
-`components/content/media.tsx`, not a photograph.
+**Status as of this document: 27 of 35 slots have an installed photograph.
+8 are still placeholders**, rejected from the first generated batch on
+2026-09-07 for failing the checklist in section 4 (mostly readable fabricated
+label or logo text) and queued for regeneration. See section 3 for exactly
+which and why. Every other route renders a real photograph through
+`next/image`; the 8 outstanding routes still render the woven-pattern
+placeholder art from `components/content/media.tsx`.
 
 ## 1. What "representative" means here
 
@@ -63,7 +66,24 @@ happen:
 
 | Sequence | ID | Status | Note |
 | --- | --- | --- | --- |
-| n/a | n/a | n/a | No images generated yet; nothing to record. |
+| 02 | `factory/exterior` | Rejected 2026-09-07 | Readable circular brand plaque on the building wall. Regenerate with "no signage, no plaques, no readable marks on the building" reinforced. |
+| 08 | `factory/inspection` | Rejected 2026-09-07 | Two small logo-shaped marks on the garment's chest, evoking a real outdoor-brand placement. Regenerate with an explicitly plain, unmarked garment. |
+| 17 | `products/workwear-and-uniforms` | Rejected 2026-09-07 | A clean, legible shield-crest logo appears on both garments (not the illegible placeholder shape requested). Regenerate reinforcing "no crest, no monogram, fully blank chest and sleeve." |
+| 25 | `products/textile-accessories` | Rejected 2026-09-07 | Gibberish orange stitched pseudo-text on the tote strap seam. Regenerate reinforcing "no stitched or embroidered text anywhere on the strap or body." |
+| 26 | `editorial/home-hero` | Rejected 2026-09-07 | The single most important image in the batch. Readable fabricated label text on the garment's neck tag, plus a monogram logo embroidered on the reviewer's own shirt. Regenerate reinforcing "blank neck tag, no readable label text, no logo or monogram on the reviewer's clothing." Highest priority regeneration. |
+| 29 | `editorial/quality` | Rejected 2026-09-07 | Readable fabricated brand text on the garment's neck label. Same systemic issue as 26. Regenerate with the same reinforcement. |
+| 31 | `editorial/logistics` | Rejected 2026-09-07 | Gibberish stamped text repeated across multiple carton faces (separate from the shipping labels, which rendered correctly blank/blurred). Regenerate reinforcing "no stamped or printed text on the cartons themselves." |
+| 32 | `editorial/team` | Rejected 2026-09-07 | Readable woven brand label on the garment being held, third occurrence of the neck/care-label problem. Otherwise an excellent, natural scene worth reusing as-is. Regenerate with the same label reinforcement. |
+
+Five of the eight rejections share one root cause: GPT Image 2 tends to
+render a garment's neck or care label as crisp, legible (fabricated) text
+whenever a label is visible in frame, even though the master prompt already
+says "no readable text on labels." For the next regeneration pass, add an
+explicit line to those five entries' prompts: "the garment's neck label and
+any care label are turned away from camera or folded under, showing no text
+at all." Incidental real equipment branding (a "JUKI" or "Brother" nameplate
+visible on a sewing machine in the background) was treated as acceptable
+realism, not rejected, since it does not misrepresent Textileways itself.
 
 ## 4. Rejection checklist
 
@@ -92,58 +112,58 @@ asset.
 
 ### Factory series
 
-| Seq | ID | Repository destination | Orientation | Rendered aspects | People | Used in |
+| Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 01 | `factory/hero` | `public/images/factory/hero.jpg` | Landscape | 4:3 | Yes | `/factory` |
-| 02 | `factory/exterior` | `public/images/factory/exterior.jpg` | Landscape | 4:3 | No | `/factory` |
-| 03 | `factory/production-floor` | `public/images/factory/production-floor.jpg` | Landscape | 4:3 | Yes | `/factory`, homepage, product galleries |
-| 04 | `factory/cutting` | `public/images/factory/cutting.jpg` | Landscape | 4:3 | Yes | `/factory`, homepage, product galleries |
-| 05 | `factory/sewing` | `public/images/factory/sewing.jpg` | Portrait | 4:3 | Yes | `/factory`, product galleries |
-| 06 | `factory/printing` | `public/images/factory/printing.jpg` | Landscape | 4:3 | Yes | `/factory`, product galleries |
-| 07 | `factory/embroidery` | `public/images/factory/embroidery.jpg` | Square | 4:3 | Yes | `/factory`, product galleries |
-| 08 | `factory/inspection` | `public/images/factory/inspection.jpg` | Landscape | 4:3 | Yes | `/factory`, homepage, product galleries |
-| 09 | `factory/packing` | `public/images/factory/packing.jpg` | Landscape | 4:3 | Yes | `/factory`, product galleries |
-| 10 | `factory/fabric-store` | `public/images/factory/fabric-store.jpg` | Landscape | 4:3 | No | `/factory`, product galleries |
-| 11 | `factory/laboratory` | `public/images/factory/laboratory.jpg` | Square | 4:3 | No | `/factory` |
-| 12 | `factory/sampling` | `public/images/factory/sampling.jpg` | Landscape | 4:3 | Yes | `/factory`, homepage |
+| 01 | `factory/hero` | ✅ Installed | Landscape | 4:3 | Yes | `/factory` |
+| 02 | `factory/exterior` | ⏳ Outstanding | Landscape | 4:3 | No | `/factory` |
+| 03 | `factory/production-floor` | ✅ Installed | Landscape | 4:3 | Yes | `/factory`, homepage, product galleries |
+| 04 | `factory/cutting` | ✅ Installed | Landscape | 4:3 | Yes | `/factory`, homepage, product galleries |
+| 05 | `factory/sewing` | ✅ Installed | Portrait | 4:3 | Yes | `/factory`, product galleries |
+| 06 | `factory/printing` | ✅ Installed | Landscape | 4:3 | Yes | `/factory`, product galleries |
+| 07 | `factory/embroidery` | ✅ Installed | Square | 4:3 | Yes | `/factory`, product galleries |
+| 08 | `factory/inspection` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/factory`, homepage, product galleries |
+| 09 | `factory/packing` | ✅ Installed | Landscape | 4:3 | Yes | `/factory`, product galleries |
+| 10 | `factory/fabric-store` | ✅ Installed | Landscape | 4:3 | No | `/factory`, product galleries |
+| 11 | `factory/laboratory` | ✅ Installed | Square | 4:3 | No | `/factory` |
+| 12 | `factory/sampling` | ✅ Installed | Landscape | 4:3 | Yes | `/factory`, homepage |
 
 ### Product family series
 
-| Seq | ID | Repository destination | Orientation | Rendered aspects | People | Used in |
+| Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 13 | `products/everyday-apparel` | `public/images/products/everyday-apparel.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/everyday-apparel`, hub, homepage |
-| 14 | `products/streetwear` | `public/images/products/streetwear.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/streetwear`, hub, homepage |
-| 15 | `products/sportswear-and-activewear` | `public/images/products/sportswear-and-activewear.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/sportswear-and-activewear`, hub, homepage |
-| 16 | `products/outdoor-and-performance` | `public/images/products/outdoor-and-performance.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/outdoor-and-performance`, hub, homepage |
-| 17 | `products/workwear-and-uniforms` | `public/images/products/workwear-and-uniforms.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/workwear-and-uniforms`, hub, homepage |
-| 18 | `products/underwear-sleepwear-loungewear` | `public/images/products/underwear-sleepwear-loungewear.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/underwear-sleepwear-loungewear`, hub, homepage |
-| 19 | `products/children-and-baby` | `public/images/products/children-and-baby.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/children-and-baby`, hub, homepage |
-| 20 | `products/swim-and-resort` | `public/images/products/swim-and-resort.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/swim-and-resort`, hub, homepage |
-| 21 | `products/denim-and-woven-products` | `public/images/products/denim-and-woven-products.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/denim-and-woven-products`, hub, homepage |
-| 22 | `products/modest-and-cultural-apparel` | `public/images/products/modest-and-cultural-apparel.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/modest-and-cultural-apparel`, hub, homepage |
-| 23 | `products/specialist-sports-products` | `public/images/products/specialist-sports-products.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/specialist-sports-products`, hub, homepage |
-| 24 | `products/home-textiles` | `public/images/products/home-textiles.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/home-textiles`, hub, homepage |
-| 25 | `products/textile-accessories` | `public/images/products/textile-accessories.jpg` | Landscape | 4:3, 16:11, 16:10 | No | `/products/textile-accessories`, hub, homepage |
+| 13 | `products/everyday-apparel` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/everyday-apparel`, hub, homepage |
+| 14 | `products/streetwear` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/streetwear`, hub, homepage |
+| 15 | `products/sportswear-and-activewear` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/sportswear-and-activewear`, hub, homepage |
+| 16 | `products/outdoor-and-performance` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/outdoor-and-performance`, hub, homepage |
+| 17 | `products/workwear-and-uniforms` | ⏳ Outstanding | Landscape | 4:3, 16:11, 16:10 | No | `/products/workwear-and-uniforms`, hub, homepage |
+| 18 | `products/underwear-sleepwear-loungewear` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/underwear-sleepwear-loungewear`, hub, homepage |
+| 19 | `products/children-and-baby` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/children-and-baby`, hub, homepage |
+| 20 | `products/swim-and-resort` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/swim-and-resort`, hub, homepage |
+| 21 | `products/denim-and-woven-products` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/denim-and-woven-products`, hub, homepage |
+| 22 | `products/modest-and-cultural-apparel` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/modest-and-cultural-apparel`, hub, homepage |
+| 23 | `products/specialist-sports-products` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/specialist-sports-products`, hub, homepage |
+| 24 | `products/home-textiles` | ✅ Installed | Landscape | 4:3, 16:11, 16:10 | No | `/products/home-textiles`, hub, homepage |
+| 25 | `products/textile-accessories` | ⏳ Outstanding | Landscape | 4:3, 16:11, 16:10 | No | `/products/textile-accessories`, hub, homepage |
 
 ### Editorial series
 
-| Seq | ID | Repository destination | Orientation | Rendered aspects | People | Used in |
+| Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 26 | `editorial/home-hero` | `public/images/editorial/home-hero.jpg` | Portrait | 4:3, 5:6 | Yes | Homepage hero, priority LCP image |
-| 27 | `editorial/scale` | `public/images/editorial/scale.jpg` | Landscape | 16:8 | No | Homepage markets teaser (Europe) |
-| 28 | `editorial/materials` | `public/images/editorial/materials.jpg` | Square | 4:3, 16:8 | No | `/materials`, homepage markets teaser (UK) |
-| 29 | `editorial/quality` | `public/images/editorial/quality.jpg` | Landscape | 4:3, 16:10 | Yes | `/quality`, homepage quality section |
-| 30 | `editorial/sustainability` | `public/images/editorial/sustainability.jpg` | Landscape | 4:3 | No | `/sustainability` |
-| 31 | `editorial/logistics` | `public/images/editorial/logistics.jpg` | Landscape | 4:3, 16:8 | No | `/markets`, homepage markets teaser (USA) |
-| 32 | `editorial/team` | `public/images/editorial/team.jpg` | Landscape | 4:3 | Yes | `/about` |
+| 26 | `editorial/home-hero` | ⏳ Outstanding (highest priority) | Portrait | 4:3, 5:6 | Yes | Homepage hero, priority LCP image |
+| 27 | `editorial/scale` | ✅ Installed | Landscape | 16:8 | No | Homepage markets teaser (Europe) |
+| 28 | `editorial/materials` | ✅ Installed | Square | 4:3, 16:8 | No | `/materials`, homepage markets teaser (UK) |
+| 29 | `editorial/quality` | ⏳ Outstanding | Landscape | 4:3, 16:10 | Yes | `/quality`, homepage quality section |
+| 30 | `editorial/sustainability` | ✅ Installed | Landscape | 4:3 | No | `/sustainability` |
+| 31 | `editorial/logistics` | ⏳ Outstanding | Landscape | 4:3, 16:8 | No | `/markets`, homepage markets teaser (USA) |
+| 32 | `editorial/team` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/about` |
 
 ### Article series
 
-| Seq | ID | Repository destination | Orientation | Rendered aspects | People | Used in |
+| Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 33 | `insights/understanding-moq` | `public/images/insights/understanding-moq.jpg` | Landscape | 21:9, 16:10 | No | `/insights/understanding-minimum-order-quantity`, hub, homepage |
-| 34 | `insights/choosing-decoration` | `public/images/insights/choosing-decoration.jpg` | Landscape | 21:9, 16:10 | No | `/insights/choosing-a-decoration-method`, hub, homepage |
-| 35 | `insights/tech-pack-anatomy` | `public/images/insights/tech-pack-anatomy.jpg` | Landscape | 21:9, 16:10 | No | `/insights/anatomy-of-a-tech-pack`, hub, homepage |
+| 33 | `insights/understanding-moq` | ✅ Installed | Landscape | 21:9, 16:10 | No | `/insights/understanding-minimum-order-quantity`, hub, homepage |
+| 34 | `insights/choosing-decoration` | ✅ Installed | Landscape | 21:9, 16:10 | No | `/insights/choosing-a-decoration-method`, hub, homepage |
+| 35 | `insights/tech-pack-anatomy` | ✅ Installed | Landscape | 21:9, 16:10 | No | `/insights/anatomy-of-a-tech-pack`, hub, homepage |
 
 ## 6. Alt text
 

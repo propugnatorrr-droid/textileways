@@ -369,7 +369,7 @@ export function FactorySection() {
             </DisplayHeading>
             <Lede className="mt-6">
               See the working environment behind sampling, cutting, sewing, decoration,
-              inspection and packing—and understand which production route applies to your
+              inspection and packing, and understand which production route applies to your
               product.
             </Lede>
 

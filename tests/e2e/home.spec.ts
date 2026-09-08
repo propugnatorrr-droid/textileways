@@ -77,7 +77,8 @@ test.describe("visual foundation", () => {
     await page.goto("/");
 
     const { radius, height } = await page
-      .getByRole("link", { name: /Start a Manufacturing Project/i })
+      .getByRole("link", { name: /Request a Manufacturing Quote/i })
+      .first()
       .evaluate((element) => {
         const style = window.getComputedStyle(element);
         return {
@@ -121,13 +122,12 @@ test.describe("homepage composition", () => {
     const joined = headings.join(" | ");
 
     expect(joined).toContain("Start at 50");
-    expect(joined).toContain("Thirteen product families");
-    expect(joined).toContain("Sampling flexibility");
-    expect(joined).toContain("Everything a product needs");
+    expect(joined).toContain("One partner across thirteen product families");
+    expect(joined).toContain("From product development to packed production");
     expect(joined).toContain("Where your product would be made");
     expect(joined).toContain("Eight stages from inquiry to delivery");
     expect(joined).toContain("Eight checkpoints");
-    expect(joined).toContain("Manufacturing across international markets");
+    expect(joined).toContain("Prepared for your destination market");
     expect(joined).toContain("Bring us the idea");
   });
 

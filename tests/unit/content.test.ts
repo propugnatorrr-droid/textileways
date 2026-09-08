@@ -305,8 +305,12 @@ describe("public copy rules", () => {
 });
 
 describe("media slots", () => {
-  it("declares every media slot as a documented placeholder while photography is outstanding", () => {
-    expect(outstandingMediaSlots().length).toBe(allMediaSlots().length);
+  it("has installed real photography for 27 of the 35 slots, 8 still outstanding", () => {
+    // Updated 2026-09-07 once the first generated batch was reviewed and installed.
+    // The 8 still outstanding failed the anti-artifact checklist (see
+    // docs/IMAGE_MANIFEST.md section 3) and are queued for regeneration.
+    expect(outstandingMediaSlots().length).toBe(8);
+    expect(allMediaSlots().length).toBe(35);
   });
 
   it("gives every media slot alt text and dimensions", () => {

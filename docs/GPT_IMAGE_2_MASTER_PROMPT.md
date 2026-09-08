@@ -9,11 +9,11 @@ the manifest and this document together (a unit test, `tests/unit/image-manifest
 checks the manifest against the media declarations, but it cannot check this
 document against either one, so that step is manual).
 
-**Status: image generation and installation are pending.** No files have been
-generated or installed as part of the work that produced this document. Every
-placeholder currently on the site remains a documented placeholder, exactly as
-before. See `docs/IMAGE_MANIFEST.md` for the installation checklist once files
-exist.
+**Status: the first batch has been generated and reviewed. 27 of 35 images
+passed the checklist below and are installed; 8 were rejected**, mostly for
+readable fabricated label or logo text, and remain placeholders awaiting
+regeneration. See `docs/IMAGE_MANIFEST.md` section 3 for exactly which and
+why, and its section 5 for per-asset installed status.
 
 **Truthfulness.** The images this prompt requests are temporary representative
 campaign imagery, not documentary proof of Textileways' actual facility, staff,

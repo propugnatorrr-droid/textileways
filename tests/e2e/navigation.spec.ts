@@ -22,7 +22,7 @@ test.describe("homepage", () => {
   test("shows both primary hero actions", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("link", { name: /Start a Manufacturing Project/i }),
+      page.getByRole("link", { name: /Request a Manufacturing Quote/i }).first(),
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /^Explore Products$/i })).toBeVisible();
   });
@@ -31,13 +31,12 @@ test.describe("homepage", () => {
     await page.goto("/");
     for (const heading of [
       /Start at 50\. Scale beyond 100,000\./i,
-      /Thirteen product families/i,
-      /Sampling flexibility/i,
+      /One partner across thirteen product families/i,
+      /From product development to packed production/i,
       /Eight stages from inquiry to delivery/i,
-      /Everything a product needs, in one place/i,
       /Where your product would be made/i,
       /Eight checkpoints/i,
-      /Manufacturing across international markets/i,
+      /Prepared for your destination market/i,
       /Bring us the idea/i,
     ]) {
       await expect(page.getByRole("heading", { name: heading })).toBeVisible();

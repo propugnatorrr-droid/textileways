@@ -33,9 +33,35 @@ function placeholder(input: PlaceholderInput): MediaAsset {
   };
 }
 
+interface InstalledPhotoInput {
+  id: string;
+  width: number;
+  height: number;
+  alt: string;
+  /** Short descriptive caption. Omit where the alt text already says enough. */
+  caption?: string;
+}
+
+/**
+ * A real, installed photograph, replacing a placeholder for the same slot.
+ *
+ * Generated 2026-09-07 from the batch in docs/GPT_IMAGE_2_MASTER_PROMPT.md and
+ * checked against docs/IMAGE_MANIFEST.md section 4 before being placed here.
+ * These are representative campaign images, not documentary photographs of
+ * this specific facility, staff, machinery or output. See the disclosure on
+ * `/factory` and `/about`.
+ */
+function photo(input: InstalledPhotoInput): MediaAsset {
+  return {
+    src: `/images/${input.id}.jpg`,
+    alt: input.alt,
+    width: input.width,
+    height: input.height,
+    caption: input.caption,
+  };
+}
+
 const LANDSCAPE = { width: 1600, height: 1000 } as const;
-const PORTRAIT = { width: 1000, height: 1300 } as const;
-const SQUARE = { width: 1200, height: 1200 } as const;
 const WIDE = { width: 2000, height: 1125 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -43,12 +69,12 @@ const WIDE = { width: 2000, height: 1125 } as const;
 /* -------------------------------------------------------------------------- */
 
 export const factoryMedia = {
-  hero: placeholder({
+  hero: photo({
     id: "factory/hero",
-    ...WIDE,
-    alt: "Production floor at the Textileways manufacturing facility",
-    brief:
-      "Wide shot of the production floor during a working shift. Natural light preferred. No faces in close focus unless written consent has been obtained.",
+    width: 1760,
+    height: 1328,
+    alt: "Wide view of a working production floor with sewing lines in depth",
+    caption: "The production floor during a working shift.",
   }),
   exterior: placeholder({
     id: "factory/exterior",
@@ -56,35 +82,40 @@ export const factoryMedia = {
     alt: "Exterior of the Textileways manufacturing facility",
     brief: "Building exterior in daylight, showing scale and entrance. Signage visible if the business wants the site identified.",
   }),
-  productionFloor: placeholder({
+  productionFloor: photo({
     id: "factory/production-floor",
-    ...LANDSCAPE,
-    alt: "Sewing lines running on the production floor",
-    brief: "Sewing lines from a raised angle, showing line organisation and workstation layout.",
+    width: 1760,
+    height: 1328,
+    alt: "Sewing lines running on the production floor, seen from a raised angle",
+    caption: "Sewing lines organised into workstations and bundles.",
   }),
-  cutting: placeholder({
+  cutting: photo({
     id: "factory/cutting",
-    ...LANDSCAPE,
+    width: 1760,
+    height: 1328,
     alt: "Fabric being spread and cut in the cutting room",
-    brief: "Cutting room with fabric spread on the table. Include the marker layout if legible.",
+    caption: "Fabric spread and layered on the cutting table.",
   }),
-  sewing: placeholder({
+  sewing: photo({
     id: "factory/sewing",
-    ...PORTRAIT,
-    alt: "An operator assembling a garment at a sewing machine",
-    brief: "Close shot of hands and machine at a sewing operation. Consent required if the operator is identifiable.",
+    width: 1360,
+    height: 1712,
+    alt: "An operator's hands guiding fabric through a sewing machine",
+    caption: "A sewing operation, close enough to read the stitch.",
   }),
-  printing: placeholder({
+  printing: photo({
     id: "factory/printing",
-    ...LANDSCAPE,
-    alt: "Screen printing being applied to garment panels",
-    brief: "Screen printing carousel mid run, with a printed panel visible.",
+    width: 1760,
+    height: 1328,
+    alt: "Screen printing being applied to a garment panel on a carousel",
+    caption: "A screen printing carousel mid run.",
   }),
-  embroidery: placeholder({
+  embroidery: photo({
     id: "factory/embroidery",
-    ...SQUARE,
-    alt: "Multi head embroidery machine stitching a logo",
-    brief: "Multi head embroidery machine in operation, close enough to read the stitch detail.",
+    width: 1536,
+    height: 1536,
+    alt: "Multi head embroidery machine stitching a floral design",
+    caption: "Multi head embroidery, close enough to read the stitch detail.",
   }),
   inspection: placeholder({
     id: "factory/inspection",
@@ -92,29 +123,33 @@ export const factoryMedia = {
     alt: "Finished garments being inspected against a measurement chart",
     brief: "Inspection table with a garment, measuring tape and the measurement chart in frame.",
   }),
-  packing: placeholder({
+  packing: photo({
     id: "factory/packing",
-    ...LANDSCAPE,
-    alt: "Finished garments being folded and packed into cartons",
-    brief: "Packing station showing folded goods, polybags and marked shipping cartons.",
+    width: 1760,
+    height: 1328,
+    alt: "Finished garments being folded and packed into export cartons",
+    caption: "Folded goods, polybags and cartons at the packing station.",
   }),
-  fabricStore: placeholder({
+  fabricStore: photo({
     id: "factory/fabric-store",
-    ...LANDSCAPE,
-    alt: "Rolls of fabric stored in the material warehouse",
-    brief: "Fabric roll storage showing organisation and labelling of incoming material.",
+    width: 1760,
+    height: 1328,
+    alt: "Rolls of fabric stored and labelled in the material warehouse",
+    caption: "Fabric roll storage, organised and tagged.",
   }),
-  laboratory: placeholder({
+  laboratory: photo({
     id: "factory/laboratory",
-    ...SQUARE,
-    alt: "Fabric weight and dimensional testing equipment",
-    brief: "In house testing equipment such as a GSM cutter, scale or shrinkage template.",
+    width: 1536,
+    height: 1536,
+    alt: "A GSM cutter testing a fabric sample on the bench",
+    caption: "In house fabric testing equipment.",
   }),
-  sampling: placeholder({
+  sampling: photo({
     id: "factory/sampling",
-    ...LANDSCAPE,
-    alt: "Sample room with pattern pieces and development garments",
-    brief: "Sample room bench with patterns, a partially assembled garment and a tech pack in view.",
+    width: 1760,
+    height: 1328,
+    alt: "A sample maker working with pattern pieces and a development garment",
+    caption: "The sample room, with patterns and a tech pack in view.",
   }),
 } as const;
 
@@ -126,66 +161,60 @@ function productShot(slug: string, alt: string, brief: string, ratio = LANDSCAPE
   return placeholder({ id: `products/${slug}`, ...ratio, alt, brief });
 }
 
+/** Installed product photograph. All approved shots share the same 1760x1328 frame. */
+function productPhoto(slug: string, alt: string, caption?: string): MediaAsset {
+  return photo({ id: `products/${slug}`, width: 1760, height: 1328, alt, caption });
+}
+
 export const productMedia = {
-  "everyday-apparel": productShot(
+  "everyday-apparel": productPhoto(
     "everyday-apparel",
-    "Cotton tee shirts produced for an everyday apparel programme",
-    "Flat lay or hanger shot of finished tee shirts in three colourways, showing stitch and neck construction.",
+    "Three cotton tee shirts in white, charcoal and clay, showing neck and stitch construction",
   ),
-  streetwear: productShot(
+  streetwear: productPhoto(
     "streetwear",
-    "Heavyweight hoodie produced for a streetwear brand",
-    "Heavyweight hoodie on a hanger or form, lit to show fabric weight and print texture.",
+    "A heavyweight hoodie on a hanger, showing fabric weight and rib construction",
   ),
-  "sportswear-and-activewear": productShot(
+  "sportswear-and-activewear": productPhoto(
     "sportswear-and-activewear",
-    "Sublimated performance top and shorts",
-    "Performance top and shorts, showing sublimated graphics and flatlock seams.",
+    "A sublimated performance top and shorts with flatlock seams",
   ),
-  "outdoor-and-performance": productShot(
+  "outdoor-and-performance": productPhoto(
     "outdoor-and-performance",
-    "Lightweight technical shell jacket",
-    "Technical shell jacket showing seams, zips and any taped construction.",
+    "A lightweight technical shell jacket showing seam and zip construction",
   ),
   "workwear-and-uniforms": productShot(
     "workwear-and-uniforms",
     "Corporate polo shirts and workwear with embroidered branding",
     "Uniform set including a polo shirt with embroidered logo and a work jacket.",
   ),
-  "underwear-sleepwear-loungewear": productShot(
+  "underwear-sleepwear-loungewear": productPhoto(
     "underwear-sleepwear-loungewear",
-    "Loungewear set in soft knitted fabric",
-    "Loungewear set flat laid, showing fabric drape and soft trims.",
+    "A loungewear set in soft knitted fabric, flat laid",
   ),
-  "children-and-baby": productShot(
+  "children-and-baby": productPhoto(
     "children-and-baby",
-    "Children's apparel produced to a safety conscious specification",
-    "Children's garments flat laid. No child models. Show snap fastenings and label placement.",
+    "Children's rompers and a tee flat laid, with blank neck labels and snap fastenings",
   ),
-  "swim-and-resort": productShot(
+  "swim-and-resort": productPhoto(
     "swim-and-resort",
-    "Swim shorts and resort shirt",
-    "Swim shorts and a resort shirt, showing print and trim detail. No model shot.",
+    "A printed resort shirt and swim shorts, shown flat",
   ),
-  "denim-and-woven-products": productShot(
+  "denim-and-woven-products": productPhoto(
     "denim-and-woven-products",
-    "Denim jeans showing wash and hardware detail",
-    "Denim jeans with close detail on the wash, stitching and hardware.",
+    "Denim jeans and a woven overshirt, showing wash and hardware detail",
   ),
-  "modest-and-cultural-apparel": productShot(
+  "modest-and-cultural-apparel": productPhoto(
     "modest-and-cultural-apparel",
-    "Modest apparel produced in lightweight woven fabric",
-    "Modest apparel on a hanger or form, showing drape, length and finishing.",
+    "A modest shirt dress on a hanger, showing drape and finishing",
   ),
-  "specialist-sports-products": productShot(
+  "specialist-sports-products": productPhoto(
     "specialist-sports-products",
-    "Specialist sports equipment produced from technical textiles",
-    "Specialist sports textile item such as a padded guard, kit bag or training aid.",
+    "A football shin guard showing panel construction",
   ),
-  "home-textiles": productShot(
+  "home-textiles": productPhoto(
     "home-textiles",
-    "Towels and home textile products",
-    "Home textile grouping such as towels or table linen, styled simply on a neutral ground.",
+    "A stack of terry towels in five colourways, showing weave and edge finishing",
   ),
   "textile-accessories": productShot(
     "textile-accessories",
@@ -206,17 +235,19 @@ export const editorialMedia = {
     brief:
       "The single most important photograph on the site. Fabric or a garment in a real working environment, shot horizontally with room for text on the left. Not a studio model shot.",
   }),
-  scale: placeholder({
+  scale: photo({
     id: "editorial/scale",
-    ...LANDSCAPE,
-    alt: "Bundled cut panels staged before assembly",
-    brief: "Bundled cut panels or stacked finished garments, communicating quantity without a graphic.",
+    width: 1760,
+    height: 1328,
+    alt: "Bundled, colour sorted cut fabric panels stacked before assembly",
+    caption: "Bundled cut panels, staged before assembly.",
   }),
-  materials: placeholder({
+  materials: photo({
     id: "editorial/materials",
-    ...SQUARE,
-    alt: "Fabric swatches arranged for material selection",
-    brief: "Fabric swatch stack or hanger set, shot close enough to read texture.",
+    width: 1536,
+    height: 1536,
+    alt: "A hand comparing folded fabric swatches in a coordinated colour range",
+    caption: "Fabric swatches, shown close enough to read the texture.",
   }),
   quality: placeholder({
     id: "editorial/quality",
@@ -224,11 +255,12 @@ export const editorialMedia = {
     alt: "A garment being measured during quality control",
     brief: "Measuring tape across a garment on an inspection table, with the chart visible.",
   }),
-  sustainability: placeholder({
+  sustainability: photo({
     id: "editorial/sustainability",
-    ...LANDSCAPE,
-    alt: "Fabric offcuts collected and sorted for reuse",
-    brief: "Sorted fabric offcuts or segregated waste bins on the production floor.",
+    width: 1760,
+    height: 1328,
+    alt: "Fabric offcuts sorted by colour into labelled bins on the production floor",
+    caption: "Offcuts sorted by colour, ready for reuse.",
   }),
   logistics: placeholder({
     id: "editorial/logistics",
@@ -245,23 +277,26 @@ export const editorialMedia = {
 } as const;
 
 export const articleMedia = {
-  "understanding-moq": placeholder({
+  "understanding-moq": photo({
     id: "insights/understanding-moq",
-    ...LANDSCAPE,
-    alt: "Fabric rolls staged for a production run",
-    brief: "Fabric rolls in the store, illustrating the material commitment behind a minimum order quantity.",
+    width: 2048,
+    height: 1152,
+    alt: "Five upright fabric rolls in a row at the material store",
+    caption: "Fabric committed to a production run.",
   }),
-  "choosing-decoration": placeholder({
+  "choosing-decoration": photo({
     id: "insights/choosing-decoration",
-    ...LANDSCAPE,
-    alt: "Printed and embroidered samples compared side by side",
-    brief: "Print and embroidery samples laid side by side on the same fabric for comparison.",
+    width: 2048,
+    height: 1152,
+    alt: "The same design printed and embroidered on matching swatches, side by side",
+    caption: "Print and embroidery compared on the same fabric.",
   }),
-  "tech-pack-anatomy": placeholder({
+  "tech-pack-anatomy": photo({
     id: "insights/tech-pack-anatomy",
-    ...LANDSCAPE,
-    alt: "A tech pack open beside a development sample",
-    brief: "Printed tech pack pages beside the garment they describe, on a work bench.",
+    width: 2048,
+    height: 1152,
+    alt: "An open tech pack with flat sketches and swatches beside the finished garment",
+    caption: "A tech pack open beside the garment it describes.",
   }),
 } as const;
 
