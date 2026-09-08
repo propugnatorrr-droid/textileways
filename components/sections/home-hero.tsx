@@ -5,54 +5,59 @@ import { verifiedFactValue } from "@/content/configuration/company-facts";
 import { QuoteCta } from "@/components/sections/quote-cta";
 import { WhatsappInlineLink } from "@/components/layout/whatsapp-button";
 
-/**
- * Homepage hero.
- *
- * Composed so that the heading, supporting copy, actions and the top of the
- * media frame all sit inside a typical laptop viewport. The heading is capped
- * at two lines by explicit breaks rather than left to wrap, and the statistics
- * ride on a rail over the media at desktop, dropping below it on small screens.
- */
 export function HomeHero() {
   const experience = verifiedFactValue("experience-years");
 
   const stats = [
-    { value: "From 50", label: "Minimum order", hint: "Per style, after technical review" },
-    { value: "100,000+", label: "Scaled programmes", hint: "Committed material planning" },
+    {
+      value: "From 50",
+      label: "Minimum order",
+      hint: "Per style, after technical review",
+    },
+    {
+      value: "100,000+",
+      label: "Scaled programmes",
+      hint: "Committed material planning",
+    },
     {
       value: experience ? "20+ years" : "USA and EU",
       label: experience ? "Manufacturing experience" : "Primary markets",
-      hint: experience ? "Pakistan based production" : "Documentation prepared per market",
+      hint: experience
+        ? "Pakistan-based production"
+        : "Documentation prepared per market",
     },
   ];
 
   return (
-    <section className="bg-white pb-4 pt-8 md:pt-12 lg:pt-16">
+    <section className="border-b border-line-strong bg-white">
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-16">
-          <div>
-            <p className="text-label font-semibold uppercase tracking-[0.12em] text-forest">
-              Textile and apparel manufacturing in Pakistan
-            </p>
+        <div className="grid border-x border-line-strong lg:min-h-[720px] lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)]">
+          <div className="flex flex-col justify-center border-b border-line-strong px-6 py-16 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-20 xl:px-16">
+            <div className="mb-8 flex items-center gap-4">
+              <span aria-hidden="true" className="h-[2px] w-10 bg-forest" />
+              <p className="text-label font-bold uppercase tracking-[0.14em] text-ink">
+                Textile and apparel manufacturing · Pakistan
+              </p>
+            </div>
 
-            <h1 className="mt-5 font-sans text-display-xl font-semibold text-ink">
-              Made for your first launch.
-              <span className="mt-1 block text-forest">Built for your largest.</span>
+            <h1 className="max-w-[11ch] font-sans text-display-xl font-semibold text-ink">
+              Made for the first run.
+              <span className="block text-forest">Built for scale.</span>
             </h1>
 
-            <p className="mt-6 max-w-[54ch] text-body-l text-ink-muted">
-              Custom apparel, uniforms, sportswear, home textiles and specialist products
-              manufactured in Pakistan for international brands and organisations. Start
-              from approximately 50 pieces after technical review and build toward larger
-              repeat production.
+            <p className="mt-7 max-w-[52ch] text-body-l text-ink-muted">
+              Custom apparel, uniforms, sportswear, home textiles and specialist
+              products manufactured for international brands and organisations.
+              Begin with technical validation and scale into repeat production.
             </p>
 
+            <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-4">
+              <QuoteCta location="home_hero">
+                Request a Manufacturing Quote
+              </QuoteCta>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <QuoteCta location="home_hero">Request a Manufacturing Quote</QuoteCta>
-
-              <ButtonLink href="/products" variant="secondary">
-                Explore Products
+              <ButtonLink href="/factory" variant="secondary">
+                View the Factory
               </ButtonLink>
 
               <WhatsappInlineLink
@@ -63,36 +68,40 @@ export function HomeHero() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative min-h-[430px] lg:min-h-0">
             <Media
               asset={editorialMedia.homeHero}
               priority
-              large
-              sizes="(min-width: 1024px) 46vw, calc(100vw - 40px)"
-              aspect="aspect-[4/3] lg:aspect-[5/6]"
+              sizes="(min-width: 1024px) 57vw, 100vw"
+              aspect="absolute inset-0"
+              className="h-full w-full rounded-none"
             />
+
+            <div className="absolute bottom-0 left-0 border-t-2 border-forest bg-ink px-5 py-4 text-white sm:px-6">
+              <p className="text-label font-bold uppercase tracking-[0.12em] text-white/60">
+                Production scope
+              </p>
+              <p className="mt-1 text-small text-white">
+                Development · Sourcing · Manufacturing · Quality · Export
+              </p>
+            </div>
           </div>
         </div>
 
-        {/*
-          * The rail sits below the fold on purpose. It reads as a summary of the
-          * hero claim rather than a dashboard, so it uses one surface with
-          * dividers instead of three separate cards.
-          */}
-        <dl className="mt-10 grid overflow-hidden rounded-[20px] bg-cotton sm:grid-cols-3 lg:mt-12">
+        <dl className="grid border-x border-b border-line-strong sm:grid-cols-3">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
               className={
                 index === 0
-                  ? "px-6 py-6 sm:px-7"
-                  : "border-t border-line px-6 py-6 sm:border-l sm:border-t-0 sm:px-7"
+                  ? "px-6 py-7 lg:px-10"
+                  : "border-t border-line-strong px-6 py-7 sm:border-l sm:border-t-0 lg:px-10"
               }
             >
-              <dt className="text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+              <dt className="text-label font-bold uppercase tracking-[0.11em] text-ink-subtle">
                 {stat.label}
               </dt>
-              <dd className="tw-tnum mt-2.5 font-sans text-[clamp(1.6rem,2vw,2.1rem)] font-semibold leading-none tracking-[-0.03em] text-ink">
+              <dd className="tw-tnum mt-3 font-sans text-[clamp(1.8rem,2.2vw,2.5rem)] font-semibold leading-none tracking-[-0.035em] text-ink">
                 {stat.value}
               </dd>
               <dd className="mt-2 text-small text-ink-muted">{stat.hint}</dd>
