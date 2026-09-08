@@ -1,15 +1,16 @@
-# GPT Image 2 regeneration batch: the 8 rejected images
+# GPT Image 2 regeneration batch: the rejected images
 
 Companion to `docs/GPT_IMAGE_2_MASTER_PROMPT.md` and `docs/IMAGE_MANIFEST.md`.
-These 8 prompts cover the numbers that failed review in the first batch
-(02, 08, 17, 25, 26, 29, 31, 32). All 8 (along with the other 27) are
-already installed, since the owner directed installing them as interim
-imagery pending the owner's own photography rather than leaving them as
-placeholders; these prompts are for a cleaner pass if one happens before
-then. Each is fully self-contained, so it can be submitted on its own, in
-any order, or all 8 together in one request. **Number 26 is superseded, see
-its entry below**, since the owner asked for a different scene entirely
-rather than a fix to the one first attempted.
+These prompts originally covered the 8 numbers that failed review in the
+first batch (02, 08, 17, 25, 26, 29, 31, 32). All 8 (along with the other
+27) were installed anyway, since the owner directed installing them as
+interim imagery pending the owner's own photography rather than leaving
+them as placeholders. **Number 26 is now resolved**: the owner generated a
+hands-only replacement following `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`, it
+passed review on 2026-09-08, and it is installed as the final image, not
+interim. Its entry below is kept for reference only. 7 numbers remain
+outstanding. Each is fully self-contained, so it can be submitted on its
+own, in any order, or all 7 together in one request.
 
 **Root cause of 5 of the 8 rejections.** GPT Image 2 kept rendering a
 garment's neck label, a care label, or a chest emblem as crisp, legible,
@@ -381,8 +382,9 @@ labels, or documents.
 
 Before installing any result, confirm:
 
-- [ ] 8 independent image files are returned, one per numbered entry above,
-      not a montage, contact sheet, collage, or grid
+- [ ] 7 independent image files are returned, one per outstanding numbered
+      entry above (26 is resolved, see the note at the top of this
+      document), not a montage, contact sheet, collage, or grid
 - [ ] every garment's neck label, care label, and every chest/sleeve
       surface is genuinely blank, with no text, logo, monogram, or crest
 - [ ] cartons and strap seams in 25 and 31 carry no stamped, stitched, or
@@ -395,5 +397,5 @@ Before installing any result, confirm:
 
 Run each result through this checklist and the full rejection checklist in
 `docs/IMAGE_MANIFEST.md` section 4 before sending the folder back. Send all
-8, even ones you are unsure about; a second review pass costs nothing and
+7, even ones you are unsure about; a second review pass costs nothing and
 catches anything this checklist misses.

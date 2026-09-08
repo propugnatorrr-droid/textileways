@@ -1822,10 +1822,15 @@ generating temporary representative campaign imagery for all 35 is
 27 of 35 passed outright; the other 8 failed the anti-artifact checklist
 (mostly readable fabricated label or logo text) but were installed anyway on
 2026-09-08 at the owner's explicit direction, as interim imagery pending the
-owner's own photography. Improved regeneration prompts for those 8, in case a
-cleaner pass happens first, are `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`; see
-`docs/IMAGE_MANIFEST.md` section 3 for exactly which 8 and why each one
-failed. Every installed photograph is representative campaign imagery, not
+owner's own photography. The homepage hero (id 26) was the one exception: the
+owner asked for a different scene entirely (no posed person standing in
+frame, hands only, see `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`), generated a
+replacement, and it passed review on 2026-09-08, so it is now installed as
+the final image, not interim. Improved regeneration prompts for the
+remaining 7, in case a cleaner pass happens first, are
+`docs/GPT_IMAGE_2_REGENERATION_BATCH.md`; see `docs/IMAGE_MANIFEST.md`
+section 3 for exactly which 7 and why each one failed. Every installed
+photograph is representative campaign imagery, not
 documentary proof of this specific facility, staff, machinery, customers or
 output, and the factory and about pages carry a
 standing disclosure to that effect.

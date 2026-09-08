@@ -6,12 +6,14 @@ generated photography, not a design brief: the full scene descriptions live
 in the master prompt document.
 
 **Status as of this document: all 35 slots have an installed photograph.**
-27 passed review outright. The other 8 failed the checklist in section 4 on
-first review (mostly readable fabricated label or logo text) and were
-installed anyway on 2026-09-08 at the owner's explicit direction, as interim
-imagery pending the owner's own photography. See section 3 for exactly which
-8, why each one failed, and the improved regeneration prompts ready for a
-cleaner pass if one happens before the owner's own photography is ready.
+28 have passed review, including the homepage hero (id 26), which was
+regenerated from a different brief and passed on the second attempt. 7
+still failed the checklist in section 4 on first review (mostly readable
+fabricated label or logo text) and remain installed as interim imagery
+pending the owner's own photography, at the owner's explicit 2026-09-08
+direction. See section 3 for exactly which 7, why each one failed, and the
+improved regeneration prompts ready for a cleaner pass if one happens before
+the owner's own photography is ready.
 
 ## 1. What "representative" means here
 
@@ -59,11 +61,17 @@ instead, keeping its numbered scene description unchanged.
 
 The 8 entries below were installed on 2026-09-08 despite failing review,
 at the owner's explicit direction, as interim imagery until the owner's own
-photography replaces them. **If a cleaner version of any of the 8 is
-generated in the meantime, improved, self-contained prompts are ready in
+photography replaces them. **If a cleaner version of any is generated in
+the meantime, improved, self-contained prompts are ready in
 `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`**, each with the specific fix for
 why that entry failed. Use that document for this batch rather than
 re-deriving prompts from the original master prompt.
+
+Entry 26 is resolved: the owner generated a hands-only replacement following
+`docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`, it passed review on 2026-09-08 (both
+hands anatomically correct, no readable text or logos anywhere in frame, no
+face or posed figure), and it is now installed as the final image, not
+interim. 7 of the original 8 remain outstanding.
 
 For any future rejection not already covered there, re-run the master
 prompt for the rejected number only, pasting its individual entry from
@@ -78,7 +86,7 @@ happen:
 | 08 | `factory/inspection` | Failed review 2026-09-07, installed as interim 2026-09-08 | Two small logo-shaped marks on the garment's chest, evoking a real outdoor-brand placement. Regenerate with an explicitly plain, unmarked garment. |
 | 17 | `products/workwear-and-uniforms` | Failed review 2026-09-07, installed as interim 2026-09-08 | A clean, legible shield-crest logo appears on both garments (not the illegible placeholder shape requested). Regenerate reinforcing "no crest, no monogram, fully blank chest and sleeve." |
 | 25 | `products/textile-accessories` | Failed review 2026-09-07, installed as interim 2026-09-08 | Gibberish orange stitched pseudo-text on the tote strap seam. Regenerate reinforcing "no stitched or embroidered text anywhere on the strap or body." |
-| 26 | `editorial/home-hero` | Failed review 2026-09-07, installed as interim 2026-09-08 | The single most important image in the batch. Readable fabricated label text on the garment's neck tag, plus a monogram logo embroidered on the reviewer's own shirt. Superseded 2026-09-08: the owner asked for a different scene entirely, no posed person standing in frame. Use `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`, not the label fix that would have applied to the old scene. Highest priority regeneration. |
+| 26 | `editorial/home-hero` | Resolved 2026-09-08 | Original scene failed review 2026-09-07 (readable fabricated label text, a monogram logo on the reviewer's shirt) and was superseded entirely, not patched: the owner asked for a hands-only scene with no posed person standing in frame. `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md` replaced the brief, the owner generated a new candidate, it passed the full anti-artifact checklist (both hands anatomically correct, no readable text or logos anywhere, no face or posed figure, background clean), and it is now the final installed image. |
 | 29 | `editorial/quality` | Failed review 2026-09-07, installed as interim 2026-09-08 | Readable fabricated brand text on the garment's neck label. Same systemic issue as 26. Regenerate with the same reinforcement. |
 | 31 | `editorial/logistics` | Failed review 2026-09-07, installed as interim 2026-09-08 | Gibberish stamped text repeated across multiple carton faces (separate from the shipping labels, which rendered correctly blank/blurred). Regenerate reinforcing "no stamped or printed text on the cartons themselves." |
 | 32 | `editorial/team` | Failed review 2026-09-07, installed as interim 2026-09-08 | Readable woven brand label on the garment being held, third occurrence of the neck/care-label problem. Otherwise an excellent, natural scene worth reusing as-is. Regenerate with the same label reinforcement. |
@@ -157,7 +165,7 @@ asset.
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 26 | `editorial/home-hero` | ⚠️ Installed, interim (highest priority regen, see `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`) | Portrait | 4:3, 5:6 | No (hands only) | Homepage hero, priority LCP image |
+| 26 | `editorial/home-hero` | ✅ Installed | Portrait | 4:3, 5:6 | No (hands only) | Homepage hero, priority LCP image |
 | 27 | `editorial/scale` | ✅ Installed | Landscape | 16:8 | No | Homepage markets teaser (Europe) |
 | 28 | `editorial/materials` | ✅ Installed | Square | 4:3, 16:8 | No | `/materials`, homepage markets teaser (UK) |
 | 29 | `editorial/quality` | ⚠️ Installed, interim | Landscape | 4:3, 16:10 | Yes | `/quality`, homepage quality section |

@@ -229,10 +229,10 @@ export const productMedia = {
 export const editorialMedia = {
   homeHero: photo({
     id: "editorial/home-hero",
-    width: 1360,
-    height: 1712,
-    alt: "A production specialist reviewing a finished garment in a working environment",
-    caption: "Reviewing a finished garment against the approved sample.",
+    width: 768,
+    height: 1024,
+    alt: "A pair of hands holding open the finished cuff of a garment to show the stitch construction, with a softly blurred factory floor behind",
+    caption: "Checking the stitch construction on a finished cuff.",
   }),
   scale: photo({
     id: "editorial/scale",

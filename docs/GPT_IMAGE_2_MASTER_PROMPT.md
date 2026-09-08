@@ -9,15 +9,16 @@ the manifest and this document together (a unit test, `tests/unit/image-manifest
 checks the manifest against the media declarations, but it cannot check this
 document against either one, so that step is manual).
 
-**Status: all 35 images are installed.** 27 passed the checklist below
-outright; the other 8 failed it, mostly for readable fabricated label or
-logo text, but were installed anyway on 2026-09-08 at the owner's explicit
-direction, as interim imagery pending the owner's own photography. See
-`docs/IMAGE_MANIFEST.md` section 3 for exactly which 8 and why, and its
-section 5 for per-asset status. Improved,
-self-contained regeneration prompts for those 8, each with the specific fix
-baked in, are ready in `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`; use that
-document for them rather than re-deriving prompts from this one.
+**Status: all 35 images are installed.** 28 have passed review, including
+the homepage hero (id 26), regenerated from a different brief in
+`docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`. 7 failed the checklist below,
+mostly for readable fabricated label or logo text, and remain installed
+anyway as interim imagery pending the owner's own photography, at the
+owner's explicit 2026-09-08 direction. See `docs/IMAGE_MANIFEST.md` section
+3 for exactly which 7 and why, and its section 5 for per-asset status.
+Improved, self-contained regeneration prompts for those 7, each with the
+specific fix baked in, are ready in `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`;
+use that document for them rather than re-deriving prompts from this one.
 
 **Truthfulness.** The images this prompt requests are temporary representative
 campaign imagery, not documentary proof of Textileways' actual facility, staff,

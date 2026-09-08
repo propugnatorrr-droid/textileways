@@ -60,10 +60,11 @@ describe("image manifest", () => {
   it("tracks outstanding entries against installed photography", () => {
     // Updated 2026-09-07: all 35 slots now carry an installed photograph, so
     // none remain in this list. `isPlaceholder` is no longer set on any entry.
-    // 8 of the 35 failed the anti-artifact checklist on first review and were
+    // 7 of the 35 failed the anti-artifact checklist on first review and are
     // installed anyway at the owner's explicit direction as interim imagery
     // (see docs/IMAGE_MANIFEST.md section 3), pending the owner's own
-    // photography.
+    // photography. One more (home-hero) initially failed but was regenerated
+    // from a different brief and passed on 2026-09-08.
     expect(outstandingManifestEntries().length).toBe(0);
     expect(imageManifest.length).toBe(35);
   });
