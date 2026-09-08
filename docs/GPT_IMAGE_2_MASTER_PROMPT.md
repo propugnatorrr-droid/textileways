@@ -9,11 +9,12 @@ the manifest and this document together (a unit test, `tests/unit/image-manifest
 checks the manifest against the media declarations, but it cannot check this
 document against either one, so that step is manual).
 
-**Status: the first batch has been generated and reviewed. 27 of 35 images
-passed the checklist below and are installed; 8 were rejected**, mostly for
-readable fabricated label or logo text, and remain placeholders awaiting
-regeneration. See `docs/IMAGE_MANIFEST.md` section 3 for exactly which and
-why, and its section 5 for per-asset installed status. Improved,
+**Status: all 35 images are installed.** 27 passed the checklist below
+outright; the other 8 failed it, mostly for readable fabricated label or
+logo text, but were installed anyway on 2026-09-08 at the owner's explicit
+direction, as interim imagery pending the owner's own photography. See
+`docs/IMAGE_MANIFEST.md` section 3 for exactly which 8 and why, and its
+section 5 for per-asset status. Improved,
 self-contained regeneration prompts for those 8, each with the specific fix
 baked in, are ready in `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`; use that
 document for them rather than re-deriving prompts from this one.

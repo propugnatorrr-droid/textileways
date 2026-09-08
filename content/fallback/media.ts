@@ -61,8 +61,11 @@ function photo(input: InstalledPhotoInput): MediaAsset {
   };
 }
 
+/**
+ * Kept for the next media slot that needs a placeholder before a photograph
+ * exists for it; every slot declared today already has one installed.
+ */
 const LANDSCAPE = { width: 1600, height: 1000 } as const;
-const WIDE = { width: 2000, height: 1125 } as const;
 
 /* -------------------------------------------------------------------------- */
 /* Factory and process                                                         */
@@ -76,11 +79,12 @@ export const factoryMedia = {
     alt: "Wide view of a working production floor with sewing lines in depth",
     caption: "The production floor during a working shift.",
   }),
-  exterior: placeholder({
+  exterior: photo({
     id: "factory/exterior",
-    ...LANDSCAPE,
-    alt: "Exterior of the Textileways manufacturing facility",
-    brief: "Building exterior in daylight, showing scale and entrance. Signage visible if the business wants the site identified.",
+    width: 1760,
+    height: 1328,
+    alt: "Exterior of a Pakistani export garment facility in daylight",
+    caption: "The factory exterior and loading area.",
   }),
   productionFloor: photo({
     id: "factory/production-floor",
@@ -117,11 +121,12 @@ export const factoryMedia = {
     alt: "Multi head embroidery machine stitching a floral design",
     caption: "Multi head embroidery, close enough to read the stitch detail.",
   }),
-  inspection: placeholder({
+  inspection: photo({
     id: "factory/inspection",
-    ...LANDSCAPE,
-    alt: "Finished garments being inspected against a measurement chart",
-    brief: "Inspection table with a garment, measuring tape and the measurement chart in frame.",
+    width: 1760,
+    height: 1328,
+    alt: "A garment being measured against a specification on an inspection table",
+    caption: "Quality inspection against a measurement chart.",
   }),
   packing: photo({
     id: "factory/packing",
@@ -157,10 +162,6 @@ export const factoryMedia = {
 /* Product families                                                            */
 /* -------------------------------------------------------------------------- */
 
-function productShot(slug: string, alt: string, brief: string, ratio = LANDSCAPE): MediaAsset {
-  return placeholder({ id: `products/${slug}`, ...ratio, alt, brief });
-}
-
 /** Installed product photograph. All approved shots share the same 1760x1328 frame. */
 function productPhoto(slug: string, alt: string, caption?: string): MediaAsset {
   return photo({ id: `products/${slug}`, width: 1760, height: 1328, alt, caption });
@@ -183,10 +184,9 @@ export const productMedia = {
     "outdoor-and-performance",
     "A lightweight technical shell jacket showing seam and zip construction",
   ),
-  "workwear-and-uniforms": productShot(
+  "workwear-and-uniforms": productPhoto(
     "workwear-and-uniforms",
-    "Corporate polo shirts and workwear with embroidered branding",
-    "Uniform set including a polo shirt with embroidered logo and a work jacket.",
+    "A polo shirt and work overshirt uniform set",
   ),
   "underwear-sleepwear-loungewear": productPhoto(
     "underwear-sleepwear-loungewear",
@@ -216,10 +216,9 @@ export const productMedia = {
     "home-textiles",
     "A stack of terry towels in five colourways, showing weave and edge finishing",
   ),
-  "textile-accessories": productShot(
+  "textile-accessories": productPhoto(
     "textile-accessories",
-    "Canvas tote bags and textile accessories",
-    "Canvas totes, caps and pouches grouped together, showing print and stitch detail.",
+    "Canvas tote bags, a cap and a pouch, grouped together",
   ),
 } as const satisfies Record<string, MediaAsset>;
 
@@ -228,12 +227,12 @@ export const productMedia = {
 /* -------------------------------------------------------------------------- */
 
 export const editorialMedia = {
-  homeHero: placeholder({
+  homeHero: photo({
     id: "editorial/home-hero",
-    ...WIDE,
-    alt: "Fabric being inspected on the production floor at Textileways",
-    brief:
-      "The single most important photograph on the site. Fabric or a garment in a real working environment, shot horizontally with room for text on the left. Not a studio model shot.",
+    width: 1360,
+    height: 1712,
+    alt: "A production specialist reviewing a finished garment in a working environment",
+    caption: "Reviewing a finished garment against the approved sample.",
   }),
   scale: photo({
     id: "editorial/scale",
@@ -249,11 +248,12 @@ export const editorialMedia = {
     alt: "A hand comparing folded fabric swatches in a coordinated colour range",
     caption: "Fabric swatches, shown close enough to read the texture.",
   }),
-  quality: placeholder({
+  quality: photo({
     id: "editorial/quality",
-    ...LANDSCAPE,
+    width: 1760,
+    height: 1328,
     alt: "A garment being measured during quality control",
-    brief: "Measuring tape across a garment on an inspection table, with the chart visible.",
+    caption: "Measured against the chart before it moves on.",
   }),
   sustainability: photo({
     id: "editorial/sustainability",
@@ -262,17 +262,19 @@ export const editorialMedia = {
     alt: "Fabric offcuts sorted by colour into labelled bins on the production floor",
     caption: "Offcuts sorted by colour, ready for reuse.",
   }),
-  logistics: placeholder({
+  logistics: photo({
     id: "editorial/logistics",
-    ...LANDSCAPE,
-    alt: "Marked export cartons staged for shipment",
-    brief: "Palletised and marked export cartons staged for collection.",
+    width: 1760,
+    height: 1328,
+    alt: "Palletised export cartons staged for collection at a loading area",
+    caption: "Staged for collection.",
   }),
-  team: placeholder({
+  team: photo({
     id: "editorial/team",
-    ...LANDSCAPE,
-    alt: "Production and merchandising staff reviewing a specification",
-    brief: "Two or three staff reviewing a tech pack or sample together. Written consent required.",
+    width: 1760,
+    height: 1328,
+    alt: "Merchandising, production and quality staff reviewing a sample together",
+    caption: "Reviewing a sample against the specification.",
   }),
 } as const;
 

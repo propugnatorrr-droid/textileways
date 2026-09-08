@@ -58,11 +58,13 @@ describe("image manifest", () => {
   });
 
   it("tracks outstanding entries against installed photography", () => {
-    // Updated 2026-09-07: 27 of 35 slots now carry an installed photograph;
-    // `isPlaceholder` is no longer set on those, so they drop out of this list.
-    // The remaining 8 failed the anti-artifact checklist and await regeneration
-    // (see docs/IMAGE_MANIFEST.md section 3).
-    expect(outstandingManifestEntries().length).toBe(8);
+    // Updated 2026-09-07: all 35 slots now carry an installed photograph, so
+    // none remain in this list. `isPlaceholder` is no longer set on any entry.
+    // 8 of the 35 failed the anti-artifact checklist on first review and were
+    // installed anyway at the owner's explicit direction as interim imagery
+    // (see docs/IMAGE_MANIFEST.md section 3), pending the owner's own
+    // photography.
+    expect(outstandingManifestEntries().length).toBe(0);
     expect(imageManifest.length).toBe(35);
   });
 });

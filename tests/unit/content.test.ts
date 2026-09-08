@@ -305,11 +305,14 @@ describe("public copy rules", () => {
 });
 
 describe("media slots", () => {
-  it("has installed real photography for 27 of the 35 slots, 8 still outstanding", () => {
-    // Updated 2026-09-07 once the first generated batch was reviewed and installed.
-    // The 8 still outstanding failed the anti-artifact checklist (see
-    // docs/IMAGE_MANIFEST.md section 3) and are queued for regeneration.
-    expect(outstandingMediaSlots().length).toBe(8);
+  it("has installed photography for all 35 slots", () => {
+    // Updated 2026-09-07. All 35 slots, including the 8 that failed the
+    // anti-artifact checklist in docs/IMAGE_MANIFEST.md section 3 on first
+    // review, were installed at the owner's explicit direction as interim
+    // imagery, to be replaced with the owner's own photography. See
+    // docs/GPT_IMAGE_2_REGENERATION_BATCH.md if a cleaner version of any of
+    // the 8 is generated before then.
+    expect(outstandingMediaSlots().length).toBe(0);
     expect(allMediaSlots().length).toBe(35);
   });
 
