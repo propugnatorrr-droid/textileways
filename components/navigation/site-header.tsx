@@ -176,7 +176,7 @@ export function SiteHeader() {
             aria-label={`${siteConfig.name} home`}
             onClick={() => setOpenMenu(null)}
           >
-            <Wordmark className="text-[19px] text-ink lg:text-[21px]" />
+            <Wordmark className="h-[26px] lg:h-[29px]" />
           </Link>
 
           <div ref={navRef} className="hidden flex-1 xl:flex xl:items-center xl:pl-6">

@@ -78,7 +78,7 @@ happen:
 | 08 | `factory/inspection` | Failed review 2026-09-07, installed as interim 2026-09-08 | Two small logo-shaped marks on the garment's chest, evoking a real outdoor-brand placement. Regenerate with an explicitly plain, unmarked garment. |
 | 17 | `products/workwear-and-uniforms` | Failed review 2026-09-07, installed as interim 2026-09-08 | A clean, legible shield-crest logo appears on both garments (not the illegible placeholder shape requested). Regenerate reinforcing "no crest, no monogram, fully blank chest and sleeve." |
 | 25 | `products/textile-accessories` | Failed review 2026-09-07, installed as interim 2026-09-08 | Gibberish orange stitched pseudo-text on the tote strap seam. Regenerate reinforcing "no stitched or embroidered text anywhere on the strap or body." |
-| 26 | `editorial/home-hero` | Failed review 2026-09-07, installed as interim 2026-09-08 | The single most important image in the batch. Readable fabricated label text on the garment's neck tag, plus a monogram logo embroidered on the reviewer's own shirt. Regenerate reinforcing "blank neck tag, no readable label text, no logo or monogram on the reviewer's clothing." Highest priority regeneration. |
+| 26 | `editorial/home-hero` | Failed review 2026-09-07, installed as interim 2026-09-08 | The single most important image in the batch. Readable fabricated label text on the garment's neck tag, plus a monogram logo embroidered on the reviewer's own shirt. Superseded 2026-09-08: the owner asked for a different scene entirely, no posed person standing in frame. Use `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`, not the label fix that would have applied to the old scene. Highest priority regeneration. |
 | 29 | `editorial/quality` | Failed review 2026-09-07, installed as interim 2026-09-08 | Readable fabricated brand text on the garment's neck label. Same systemic issue as 26. Regenerate with the same reinforcement. |
 | 31 | `editorial/logistics` | Failed review 2026-09-07, installed as interim 2026-09-08 | Gibberish stamped text repeated across multiple carton faces (separate from the shipping labels, which rendered correctly blank/blurred). Regenerate reinforcing "no stamped or printed text on the cartons themselves." |
 | 32 | `editorial/team` | Failed review 2026-09-07, installed as interim 2026-09-08 | Readable woven brand label on the garment being held, third occurrence of the neck/care-label problem. Otherwise an excellent, natural scene worth reusing as-is. Regenerate with the same label reinforcement. |
@@ -157,7 +157,7 @@ asset.
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 26 | `editorial/home-hero` | ⚠️ Installed, interim (highest priority regen) | Portrait | 4:3, 5:6 | Yes | Homepage hero, priority LCP image |
+| 26 | `editorial/home-hero` | ⚠️ Installed, interim (highest priority regen, see `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`) | Portrait | 4:3, 5:6 | No (hands only) | Homepage hero, priority LCP image |
 | 27 | `editorial/scale` | ✅ Installed | Landscape | 16:8 | No | Homepage markets teaser (Europe) |
 | 28 | `editorial/materials` | ✅ Installed | Square | 4:3, 16:8 | No | `/materials`, homepage markets teaser (UK) |
 | 29 | `editorial/quality` | ⚠️ Installed, interim | Landscape | 4:3, 16:10 | Yes | `/quality`, homepage quality section |

@@ -30,7 +30,7 @@ export function SiteFooter() {
         <div className="px-5 py-12 sm:px-9 lg:px-14 lg:py-16">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-16">
             <div>
-              <Wordmark className="text-[21px] text-white [&>span]:text-white/55" />
+              <Wordmark className="h-7" tone="light" />
 
               <p className="mt-7 max-w-[20ch] font-sans text-[clamp(1.35rem,1.5vw+0.6rem,1.8rem)] font-semibold leading-[1.12] tracking-[-0.032em] text-white">
                 One manufacturing partner from first sample to scaled production.

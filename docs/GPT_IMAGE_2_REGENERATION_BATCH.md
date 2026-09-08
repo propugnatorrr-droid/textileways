@@ -1,10 +1,15 @@
 # GPT Image 2 regeneration batch: the 8 rejected images
 
 Companion to `docs/GPT_IMAGE_2_MASTER_PROMPT.md` and `docs/IMAGE_MANIFEST.md`.
-These 8 prompts replace only the rejected numbers from the first batch
-(02, 08, 17, 25, 26, 29, 31, 32); the other 27 are already installed and
-should not be regenerated. Each prompt below is fully self-contained, so it
-can be submitted on its own, in any order, or all 8 together in one request.
+These 8 prompts cover the numbers that failed review in the first batch
+(02, 08, 17, 25, 26, 29, 31, 32). All 8 (along with the other 27) are
+already installed, since the owner directed installing them as interim
+imagery pending the owner's own photography rather than leaving them as
+placeholders; these prompts are for a cleaner pass if one happens before
+then. Each is fully self-contained, so it can be submitted on its own, in
+any order, or all 8 together in one request. **Number 26 is superseded, see
+its entry below**, since the owner asked for a different scene entirely
+rather than a fix to the one first attempted.
 
 **Root cause of 5 of the 8 rejections.** GPT Image 2 kept rendering a
 garment's neck label, a care label, or a chest emblem as crisp, legible,
@@ -208,60 +213,29 @@ however small, faint, or abstract it looks; any logo or brand mark.
 
 ---
 
-### 26: Homepage hero (the single most important image in the whole library)
+### 26: Homepage hero, superseded, see the dedicated document
+
+**This entry is superseded.** The owner asked for a different direction, not
+a fix to the scene below: no posed person standing in frame at all. The
+current prompt for this slot is `docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md`, a
+close, hands-only craft shot with no face and no standing figure. Use that
+document, not the scene described below, which is kept only as a record of
+what was tried and rejected twice (readable fabricated label text, a shirt
+monogram) before the direction changed.
+
+<details>
+<summary>Original scene brief (superseded, kept for reference only)</summary>
 
 Proposed filename: `editorial-home-hero.jpg` · Repository destination: `public/images/editorial/home-hero.jpg`
 
-Absolutely no readable text, wordmark, monogram, crest, emblem, logo, or
-brand mark anywhere in the frame, on any garment, label, tag, or surface,
-even a stylised, illegible-looking, or partially obscured one. Where any
-garment in frame shows a neck label or care label, render it completely
-blank, or turn it fully away from camera / fold it under so no label
-surface is visible at all. This applies to the garment being reviewed **and**
-to the reviewer's own clothing.
-
-Generate a genuine high-end commercial/documentary photograph (not CGI, not
-illustration, not a stock composite, not visibly AI-generated) inside a
-credible, modern Pakistani textile and apparel factory or sample room.
-Ultra-realistic photography style: natural colour science, restrained
-contrast, retained highlight and shadow detail, natural skin texture, fine
-textile micro-detail, subtle sensor grain.
-
-Orientation: portrait, target 2048 × 2560 (rendered at `aspect-[4/3]` on
-mobile and the taller `aspect-[5/6]` on desktop: generate genuinely portrait
-or near-square, not wide landscape, so both crops keep the subject safe).
-
 Scene: a Pakistani production or merchandising specialist reviewing a
 finished garment or physical sample, in an active factory or sample room,
-not looking directly at the camera. This is the single strongest, most
-premium image in the entire library and appears at large size at the top of
-the homepage, so the photography quality matters more here than anywhere
-else in the set.
+not looking directly at the camera. Two regeneration attempts against this
+brief still rendered a readable fabricated brand name on the garment's neck
+tag or a monogram on the reviewer's shirt, so the direction changed instead
+of a third attempt at the same fix.
 
-**CRITICAL, this is a regeneration, and the highest priority in this batch:**
-the previous attempt rendered two separate problems: (1) a readable
-fabricated brand name on the garment's neck tag, clearly legible even
-though it was invented, and (2) a small embroidered monogram-style mark on
-the reviewer's own shirt. Both must be eliminated completely this time:
-**the garment's neck tag, if visible at all, must be a plain blank tag
-turned away from the camera or folded under so no text could ever be
-rendered on it; the reviewer's own shirt must be entirely plain with no
-chest mark of any kind.** If showing the tag at all creates a risk of text
-appearing on it, compose the shot so the tag is simply not visible in frame.
-
-Crop-safe zone: keep the person's face, hands and the garment they are
-holding within the centre 60 percent of the frame both horizontally and
-vertically, with clear negative space above the head and below the hands so
-both the 4:3 and 5:6 crops keep everything essential in frame.
-
-Must include: one person, a physical garment or sample in hand, a real
-working environment visible but slightly softer focus behind the subject,
-a completely plain shirt on the reviewer, a garment tag that is either not
-visible or fully blank.
-
-Must not include: the person facing and staring at the camera; any readable
-text anywhere, on the garment tag, the reviewer's clothing, or in the
-background; any logo, monogram, or brand mark anywhere.
+</details>
 
 ---
 
