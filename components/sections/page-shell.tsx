@@ -305,7 +305,7 @@ export function PageCta({
 
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-[14px] border border-white/30 px-6 text-small font-semibold text-white transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-[10px] border border-white/30 px-6 text-small font-semibold text-white transition-[background-color,border-color,transform] duration-150 hover:border-white/60 hover:bg-white/10 active:scale-[0.98]"
                 >
                   Ask a question
                 </Link>

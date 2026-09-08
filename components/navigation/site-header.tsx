@@ -207,7 +207,7 @@ export function SiteHeader() {
                 onClick={() =>
                   track("whatsapp_click", { cta_location: "header", page: pathname })
                 }
-                className="hidden h-10 w-10 items-center justify-center rounded-[12px] border border-line-strong text-forest transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-forest/40 hover:bg-forest-soft sm:inline-flex"
+                className="hidden h-10 w-10 items-center justify-center rounded-[10px] border border-line-strong text-forest transition-[background-color,border-color,transform] duration-150 hover:border-forest/40 hover:bg-forest-soft active:scale-[0.96] sm:inline-flex"
               >
                 <span className="sr-only">Message us on WhatsApp</span>
                 <WhatsappGlyph className="h-[19px] w-[19px]" />
@@ -217,7 +217,7 @@ export function SiteHeader() {
             <Link
               href="/request-a-quote"
               onClick={() => onQuoteClick("header")}
-              className="hidden min-h-10 items-center rounded-[12px] border border-forest bg-forest px-4.5 text-[15px] font-semibold text-white transition-[background-color,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-forest-deep hover:bg-forest-deep hover:shadow-[0_12px_26px_rgba(8,122,85,0.24)] sm:inline-flex"
+              className="hidden min-h-10 items-center rounded-[10px] border border-forest bg-forest px-4.5 text-[15px] font-semibold text-white transition-[background-color,border-color,transform] duration-150 hover:border-forest-deep hover:bg-forest-deep active:scale-[0.97] sm:inline-flex"
             >
               Request a Quote
             </Link>

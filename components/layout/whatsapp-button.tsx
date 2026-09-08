@@ -181,7 +181,7 @@ export function WhatsappInlineLink({
       rel="noopener noreferrer"
       onClick={() => track("whatsapp_click", { cta_location: location, page: context.path })}
       className={cn(
-        "inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-[14px] border px-6 py-3.5 text-small font-medium transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
+        "inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-[10px] border px-6 py-3.5 text-small font-medium transition-colors duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
         styles,
         className,
       )}

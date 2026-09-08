@@ -353,16 +353,17 @@
     }
   }
 
+  /*
+   * Deliberately a smaller radius and a hairline border rather than the
+   * fully rounded, borderless dark card common to SaaS marketing sites: this
+   * should read as a fabricated panel or an equipment enclosure, not a
+   * floating card.
+   */
   .tw-panel-ink {
-    border-radius: 28px;
+    border-radius: 12px;
+    border: 1px solid rgb(255 255 255 / 0.08);
     background: var(--color-ink);
     color: var(--color-white);
-  }
-
-  @media (min-width: 1024px) {
-    .tw-panel-ink {
-      border-radius: 32px;
-    }
   }
 
   .tw-panel-pad {

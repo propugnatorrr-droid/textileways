@@ -174,7 +174,7 @@ function ProductTile({
   return (
     <Link
       href={`/products/${family.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_18px_50px_rgba(11,15,13,0.09)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[var(--shadow-raised)]"
     >
       <Media
         asset={family.hero}
@@ -312,16 +312,20 @@ export function CapabilitiesSection() {
               className="bg-white/[0.04]"
             />
 
-            <ol className="grid gap-1">
+            <ol className="border-t border-white/10">
               {highlights.map((item, index) => (
-                <Reveal key={item.title} as="li" delay={index * 50}>
+                <Reveal key={item.title} as="li" delay={index * 50} className="border-b border-white/10">
                   <Link
                     href={item.href}
-                    className="group grid grid-cols-[2.5rem_1fr_auto] items-start gap-4 rounded-[16px] px-4 py-4 transition-colors duration-200 hover:bg-white/[0.06]"
+                    className="group relative grid grid-cols-[2.75rem_1fr_auto] items-start gap-4 py-5 pl-4 pr-2 transition-colors duration-150"
                   >
                     <span
                       aria-hidden="true"
-                      className="tw-tnum pt-0.5 text-small font-semibold text-forest"
+                      className="absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 bg-forest transition-transform duration-150 ease-out group-hover:scale-y-100"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="tw-tnum pt-0.5 text-small font-semibold text-white/40"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -335,7 +339,7 @@ export function CapabilitiesSection() {
                     </span>
                     <span
                       aria-hidden="true"
-                      className="pt-1 text-white/35 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white/70"
+                      className="pt-1 text-white/30 transition-colors duration-150 group-hover:text-forest"
                     >
                       &rarr;
                     </span>
@@ -563,7 +567,7 @@ export function MarketsSection() {
             <Reveal key={market.slug} delay={(index % 2) * 80} className="h-full">
               <Link
                 href={`/markets/${market.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_18px_50px_rgba(11,15,13,0.09)]"
+                className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-line bg-white transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[var(--shadow-raised)]"
               >
                 <Media
                   asset={marketMedia[market.slug as keyof typeof marketMedia]}
