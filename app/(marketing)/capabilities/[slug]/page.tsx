@@ -192,6 +192,14 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
       {faqs.length > 0 ? (
         <SplitSection eyebrow="Questions" title="Frequently asked">
           <FaqAccordion items={faqs} />
+          {faqs.some((faq) => faq.id === "minimum-order") ? (
+            <Link
+              href="/insights/understanding-minimum-order-quantity"
+              className="tw-underline-grow mt-8 inline-block text-small font-medium text-ink"
+            >
+              What actually sets a minimum order quantity
+            </Link>
+          ) : null}
         </SplitSection>
       ) : null}
 

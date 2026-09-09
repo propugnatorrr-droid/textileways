@@ -270,12 +270,22 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
           intro="Answers relevant to this product family. The full list covers ordering, sampling, materials, decoration, compliance and logistics."
         >
           <FaqAccordion items={faqs} />
-          <Link
-            href="/faq"
-            className="tw-underline-grow mt-8 inline-block text-small font-medium text-ink"
-          >
-            All frequently asked questions
-          </Link>
+          <div className="mt-8 flex flex-col gap-3">
+            {faqs.some((faq) => faq.id === "minimum-order") ? (
+              <Link
+                href="/insights/understanding-minimum-order-quantity"
+                className="tw-underline-grow inline-block text-small font-medium text-ink"
+              >
+                What actually sets a minimum order quantity
+              </Link>
+            ) : null}
+            <Link
+              href="/faq"
+              className="tw-underline-grow inline-block text-small font-medium text-ink"
+            >
+              All frequently asked questions
+            </Link>
+          </div>
         </SplitSection>
       ) : null}
 

@@ -47,3 +47,7 @@ yarn-error.log*
 /.agents
 /.claude/skills
 /skills-lock.json
+
+# SEO audit tool output (point-in-time, regenerate with /seo audit)
+/*-audit/
+seomator.toml

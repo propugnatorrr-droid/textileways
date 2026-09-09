@@ -54,7 +54,15 @@ export function buildMetadata({
       title: fullTitle,
       description: cleanDescription,
       siteName: siteConfig.name,
-      locale: "en_GB",
+      /*
+       * The site is one English page set served to every market rather than a
+       * localised set, so this declares the primary locale and lists the other
+       * markets as alternates. `en_US` leads because the United States is one
+       * of the two largest markets by volume; it is not a statement about
+       * where the business is located.
+       */
+      locale: "en_US",
+      alternateLocale: ["en_GB", "en_AU", "en_IE"],
       images: [{ url: absoluteUrl(image), width: 1200, height: 630, alt: fullTitle }],
       ...(publishedTime ? { publishedTime } : {}),
       ...(modifiedTime ? { modifiedTime } : {}),
