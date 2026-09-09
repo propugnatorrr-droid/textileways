@@ -11,8 +11,8 @@ verified. Everything unticked needs a person, a credential or an asset.
 
 | # | Item | Status | Note |
 | --- | --- | --- | --- |
-| 1.1 | Company facts verified | Partial. **Blocker** | Five facts verified from the brief plus the WhatsApp number. Legal name, registration number, address, sales email and telephone are outstanding. See `docs/CONTENT_REQUIREMENTS.md` section 5. |
-| 1.2 | Contact details verified | Outstanding. **Blocker** | WhatsApp is live. Sales email and telephone are not published rather than being placeholders. |
+| 1.1 | Company facts verified | Partial. **Blocker** | Five facts verified from the brief plus the WhatsApp number and telephone. Legal name, registration number, address and sales email are outstanding. See `docs/CONTENT_REQUIREMENTS.md` section 5. |
+| 1.2 | Contact details verified | Partial. **Blocker** | WhatsApp and telephone are live, same number. Sales email is not published rather than being a placeholder. |
 | 1.3 | Certificates verified | Outstanding | Registry is empty and says so. Nothing false is published, so this is not a blocker unless a certification is being claimed commercially. |
 | 1.4 | Images replaced | Outstanding | 35 placeholder slots, each with a written brief, indexed in `docs/IMAGE_MANIFEST.md`. `editorial/home-hero` matters most. A paste-ready batch prompt for temporary representative campaign imagery is `docs/GPT_IMAGE_2_MASTER_PROMPT.md`; no images have been generated or installed yet. |
 | 1.4b | Australia added as a fourth market | Done | `content/fallback/markets.ts`, `/markets/australia`. Equally weighted with the USA, EU and UK; not primary, not Textileways' location. |
@@ -91,7 +91,7 @@ verified. Everything unticked needs a person, a credential or an asset.
 
 | # | Item | Status | Note |
 | --- | --- | --- | --- |
-| 5.1 | Number correct and monitored | Done, needs confirmation | +92 336 260 5238. Confirm the account is actively watched during business hours. |
+| 5.1 | Number correct and monitored | Done, needs confirmation | +92 337 391 0052. Confirm the account is actively watched during business hours. |
 | 5.2 | Prefilled message reviewed | Done | Opens with the site name, the page, an optional product name and the URL. Verified in a browser test. |
 | 5.3 | Business hours stated | Done | The floating card says replies come during Pakistan business hours. Change the wording if that is wrong. |
 | 5.4 | WhatsApp Business profile complete | Outstanding | Set the business name, description and hours in the WhatsApp Business app so the profile matches the site. |

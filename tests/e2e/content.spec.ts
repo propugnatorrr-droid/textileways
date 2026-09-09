@@ -195,7 +195,7 @@ test.describe("WhatsApp contact", () => {
     await expect(action).toBeVisible({ timeout: 10_000 });
 
     const href = await action.getAttribute("href");
-    expect(href).toContain("wa.me/923362605238");
+    expect(href).toContain("wa.me/923373910052");
     expect(decodeURIComponent(href ?? "")).toContain("Products: Streetwear");
     expect(decodeURIComponent(href ?? "")).toContain("/products/streetwear");
   });

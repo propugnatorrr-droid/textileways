@@ -58,7 +58,7 @@ describe("content integrity: verification status filtering", () => {
 
   it("reports the WhatsApp number supplied by the business", () => {
     expect(isFactPublishable("whatsapp-number")).toBe(true);
-    expect(whatsappNumber()).toBe("923362605238");
+    expect(whatsappNumber()).toBe("923373910052");
   });
 
   it("keeps every unverified fact in the outstanding list", () => {

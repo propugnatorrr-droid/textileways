@@ -35,16 +35,16 @@ publishing an unverified version would be a false statement.
 
 | Item | Description | Format | Owner | Verification | Status | Pages affected |
 | --- | --- | --- | --- | --- | --- | --- |
-| WhatsApp number | Supplied and live: +92 336 260 5238 | Text | Business | Verified 2026-09-04 | Complete | Site wide floating action, header, footer, contact |
+| WhatsApp number | Supplied and live: +92 337 391 0052 | Text | Business | Verified 2026-09-09 | Complete | Site wide floating action, header, footer, contact |
 | Sales email address | Shown in the footer and contact page, and used as the RFQ reply address. | Email | Business | Yes | Outstanding | Footer, `/contact`, structured data |
-| Sales telephone number | With country code. Left unpublished rather than publishing an unmonitored line. | Text | Business | Yes | Outstanding | Footer, `/contact` |
+| Sales telephone number | Supplied and live: +92 337 391 0052, the same number as WhatsApp. | Text | Business | Verified 2026-09-09 | Complete | Footer, `/contact` |
 | Factory address | Required before any address or map is published. If the business prefers not to disclose the site, say so and it stays absent. | Text | Business | Yes | Outstanding | Footer, `/factory`, structured data |
 | Social profiles | Only accounts the business actually owns and maintains. | URLs | Business | Yes | Optional | Footer, structured data |
 | RFQ notification recipients | Who receives new inquiries. Set as `RFQ_TO_EMAIL`. | Emails | Business | Yes | Outstanding | RFQ, contact and sample notifications |
 
-Until the email and telephone are supplied, the footer and contact page explain
-that inquiries are delivered through the forms and WhatsApp, rather than showing
-a placeholder.
+Until the email is supplied, the footer and contact page explain that inquiries
+are delivered through the forms, WhatsApp and telephone, rather than showing a
+placeholder.
 
 ---
 
@@ -168,7 +168,8 @@ or withholds a claim across the whole site.
 | Indicative minimum quantity | From approximately 50 pieces | Client brief |
 | Indicative upper scale | Beyond 100,000 pieces | Client brief |
 | Export markets | United States, European Union, United Kingdom and Australia | Client brief |
-| WhatsApp number | +92 336 260 5238 | Business owner, 2026-09-04 |
+| WhatsApp number | +92 337 391 0052 | Business owner, 2026-09-09 |
+| Sales telephone number | +92 337 391 0052 | Business owner, 2026-09-09 |
 
 ### 5.2 Outstanding
 
@@ -178,7 +179,6 @@ or withholds a claim across the whole site.
 | Company registration number | Terms page, buyer due diligence | Outstanding |
 | Factory address | Footer, factory page, structured data | Outstanding |
 | Sales email address | Footer, contact page, RFQ reply address | Outstanding |
-| Sales telephone number | Footer, contact page | Outstanding |
 | Machine list and counts | Factory page equipment section | Outstanding |
 
 ### 5.3 Withheld until measured

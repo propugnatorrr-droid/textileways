@@ -47,7 +47,7 @@ describe("email validation", () => {
 
 describe("phone validation", () => {
   it("accepts international formats", () => {
-    expect(phoneField.safeParse("+92 336 260 5238").success).toBe(true);
+    expect(phoneField.safeParse("+92 337 391 0052").success).toBe(true);
     expect(phoneField.safeParse("(212) 555-0147").success).toBe(true);
   });
 
