@@ -58,14 +58,14 @@ describe("image manifest", () => {
   });
 
   it("tracks outstanding entries against installed photography", () => {
-    // Updated 2026-09-07: all 35 slots now carry an installed photograph, so
-    // none remain in this list. `isPlaceholder` is no longer set on any entry.
-    // 7 of the 35 failed the anti-artifact checklist on first review and are
-    // installed anyway at the owner's explicit direction as interim imagery
-    // (see docs/IMAGE_MANIFEST.md section 3), pending the owner's own
-    // photography. One more (home-hero) initially failed but was regenerated
-    // from a different brief and passed on 2026-09-08.
-    expect(outstandingManifestEntries().length).toBe(0);
-    expect(imageManifest.length).toBe(35);
+    // The original 35 (see docs/GPT_IMAGE_2_MASTER_PROMPT.md) all carry an
+    // installed photograph; 7 of them failed the anti-artifact checklist on
+    // first review and are installed anyway at the owner's explicit
+    // direction as interim imagery (see docs/IMAGE_MANIFEST.md section 3).
+    // Batch 2, added 2026-09-10 (36 to 63, see
+    // docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md), is entirely outstanding:
+    // 28 new placeholders for pages that previously had no image at all.
+    expect(outstandingManifestEntries().length).toBe(28);
+    expect(imageManifest.length).toBe(63);
   });
 });

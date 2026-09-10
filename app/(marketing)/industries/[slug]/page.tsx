@@ -9,11 +9,13 @@ import {
   PageCta,
 } from "@/components/sections/page-shell";
 import { FaqAccordion } from "@/components/content/faq-accordion";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getIndustry, industrySlugs } from "@/content/fallback/industries";
 import { getProductFamiliesBySlugs } from "@/content/fallback/products";
 import { getCapabilitiesBySlugs } from "@/content/fallback/capabilities";
 import { getFaqsByIds } from "@/content/fallback/faqs";
+import { industryMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/structured-data";
 
@@ -77,6 +79,14 @@ export default async function IndustryPage(props: PageProps<"/industries/[slug]"
               All industries
             </ButtonLink>
           </>
+        }
+        aside={
+          <Media
+            asset={industryMedia[industry.slug as keyof typeof industryMedia]}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
         }
       />
 

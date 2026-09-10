@@ -6,7 +6,7 @@ import { Media } from "@/components/content/media";
 import { Reveal } from "@/components/content/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { markets } from "@/content/fallback/markets";
-import { editorialMedia } from "@/content/fallback/media";
+import { editorialMedia, marketBannerMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
@@ -56,17 +56,27 @@ export default function MarketsPage() {
               <Reveal key={market.slug} as="li" delay={index * 70} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
                   href={`/markets/${market.slug}`}
-                  className="group flex h-full flex-col p-8 transition-colors duration-300 hover:bg-cotton"
+                  className="group flex h-full flex-col transition-colors duration-300 hover:bg-cotton"
                 >
-                  <h2 className="font-sans text-h2 font-semibold tracking-[-0.045em] transition-colors duration-200 group-hover:text-forest">
-                    {market.name}
-                  </h2>
-                  <p className="mt-4 flex-1 text-small leading-relaxed text-ink-muted">
-                    {market.summary}
-                  </p>
-                  <span className="mt-8 text-label uppercase tracking-[0.09em] text-ink-subtle">
-                    Market guidance
-                  </span>
+                  <Media
+                    asset={marketBannerMedia[market.slug as keyof typeof marketBannerMedia]}
+                    aspect="aspect-[16/9]"
+                    sizes="(min-width: 768px) 46vw, 92vw"
+                    compact
+                    className="rounded-none"
+                    zoomOnHover
+                  />
+                  <div className="flex flex-1 flex-col p-8">
+                    <h2 className="font-sans text-h2 font-semibold tracking-[-0.045em] transition-colors duration-200 group-hover:text-forest">
+                      {market.name}
+                    </h2>
+                    <p className="mt-4 flex-1 text-small leading-relaxed text-ink-muted">
+                      {market.summary}
+                    </p>
+                    <span className="mt-8 text-label uppercase tracking-[0.09em] text-ink-subtle">
+                      Market guidance
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             ))}

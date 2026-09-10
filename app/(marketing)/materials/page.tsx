@@ -7,7 +7,7 @@ import { Reveal } from "@/components/content/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { materials } from "@/content/fallback/materials";
 import { materialGroupLabels, type MaterialGroup } from "@/content/types";
-import { editorialMedia } from "@/content/fallback/media";
+import { editorialMedia, materialGroupMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 import { cn } from "@/lib/utilities/cn";
@@ -129,8 +129,17 @@ export default async function MaterialsPage(props: PageProps<"/materials">) {
                 >
                   <Link
                     href={`/materials/${material.slug}`}
-                    className="group flex h-full flex-col p-6 transition-colors duration-300 hover:bg-cotton"
+                    className="group flex h-full flex-col transition-colors duration-300 hover:bg-cotton"
                   >
+                    <Media
+                      asset={materialGroupMedia[material.group]}
+                      aspect="aspect-[4/3]"
+                      sizes="(min-width: 1024px) 22vw, 92vw"
+                      compact
+                      className="rounded-none"
+                      zoomOnHover
+                    />
+                    <div className="flex flex-1 flex-col p-6">
                     <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
                       {materialGroupLabels[material.group]}
                     </p>
@@ -141,6 +150,7 @@ export default async function MaterialsPage(props: PageProps<"/materials">) {
                       {material.summary}
                     </p>
                     <p className="mt-5 text-small text-ink-subtle">{material.gsmGuidance.split(".")[0]}.</p>
+                    </div>
                   </Link>
                 </Reveal>
               ))}

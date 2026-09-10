@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Container, Section, ButtonLink } from "@/components/ui";
+import { Container, Section, ButtonLink, MarkerList } from "@/components/ui";
 import { PageHeader, PageCta } from "@/components/sections/page-shell";
 import { ProductFilters, type FilterGroup } from "@/components/product/product-filters";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { productFamilies, productTypeCount } from "@/content/fallback/products";
 import { industries } from "@/content/fallback/industries";
 import { materialGroupLabels, capabilityStatusLabels } from "@/content/types";
 import { markets } from "@/content/fallback/markets";
+import { hubMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
@@ -82,30 +84,34 @@ export default function ProductsPage() {
           </>
         }
         aside={
-          <div className="rounded-[20px] border border-line bg-cotton p-6">
-            <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
-              How to read these pages
-            </p>
-            <ul className="mt-4 space-y-3 text-small leading-relaxed text-ink-muted">
-              <li>
-                Each family carries a capability status stating whether it is produced in
-                house, through an audited partner facility, sourced against our
-                specification, or offered following technical review.
-              </li>
-              <li>
-                Weight ranges are typical rather than guaranteed. Finished weight is
-                confirmed on the approved sample.
-              </li>
-              <li>
-                No prices or universal lead times are published, because neither is true
-                across every specification.
-              </li>
-            </ul>
-          </div>
+          <Media
+            asset={hubMedia.products}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
         }
       />
 
-      <Section>
+      <Section size="tight">
+        <Container>
+          <div className="rounded-[20px] border border-line bg-cotton p-6 sm:p-7">
+            <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
+              How to read these pages
+            </p>
+            <MarkerList
+              className="mt-4"
+              items={[
+                "Each family carries a capability status stating whether it is produced in house, through an audited partner facility, sourced against our specification, or offered following technical review.",
+                "Weight ranges are typical rather than guaranteed. Finished weight is confirmed on the approved sample.",
+                "No prices or universal lead times are published, because neither is true across every specification.",
+              ]}
+            />
+          </div>
+        </Container>
+      </Section>
+
+      <Section size="tight">
         <Container>
           <Suspense
             fallback={

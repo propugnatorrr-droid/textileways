@@ -11,12 +11,14 @@ import {
   PageCta,
 } from "@/components/sections/page-shell";
 import { FaqAccordion } from "@/components/content/faq-accordion";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ViewTracker } from "@/components/content/view-tracker";
 import { getCapability, capabilitySlugs } from "@/content/fallback/capabilities";
 import { getMaterialsBySlugs } from "@/content/fallback/materials";
 import { productFamilies } from "@/content/fallback/products";
 import { getFaqsByIds } from "@/content/fallback/faqs";
+import { capabilityGroupMedia } from "@/content/fallback/media";
 import {
   capabilityGroupLabels,
   capabilityStatusExplanations,
@@ -103,6 +105,14 @@ export default async function CapabilityPage(props: PageProps<"/capabilities/[sl
               All capabilities
             </ButtonLink>
           </>
+        }
+        aside={
+          <Media
+            asset={capabilityGroupMedia[capability.group]}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
         }
       />
 

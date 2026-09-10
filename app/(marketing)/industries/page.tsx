@@ -3,8 +3,10 @@ import Link from "next/link";
 import { Container, Section, ButtonLink } from "@/components/ui";
 import { PageHeader, PageCta } from "@/components/sections/page-shell";
 import { Reveal } from "@/components/content/reveal";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { industries } from "@/content/fallback/industries";
+import { hubMedia, industryMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
@@ -38,6 +40,14 @@ export default function IndustriesPage() {
             </ButtonLink>
           </>
         }
+        aside={
+          <Media
+            asset={hubMedia.industries}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
+        }
       />
 
       <Section>
@@ -47,21 +57,27 @@ export default function IndustriesPage() {
               <Reveal key={industry.slug} as="li" delay={(index % 3) * 55} className="tw-card tw-card-interactive overflow-hidden rounded-[22px]">
                 <Link
                   href={`/industries/${industry.slug}`}
-                  className="group flex h-full flex-col p-7 transition-colors duration-300 hover:bg-cotton"
+                  className="group flex h-full flex-col transition-colors duration-300 hover:bg-cotton"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="h-px w-8 bg-clay transition-[width] duration-300 group-hover:w-14"
+                  <Media
+                    asset={industryMedia[industry.slug as keyof typeof industryMedia]}
+                    aspect="aspect-[4/3]"
+                    sizes="(min-width: 1024px) 22vw, 92vw"
+                    compact
+                    className="rounded-none"
+                    zoomOnHover
                   />
-                  <h2 className="mt-6 font-sans text-h3 font-semibold tracking-[-0.032em] transition-colors duration-200 group-hover:text-forest">
-                    {industry.name}
-                  </h2>
-                  <p className="mt-3 flex-1 text-small leading-relaxed text-ink-muted">
-                    {industry.summary}
-                  </p>
-                  <span className="mt-6 text-label uppercase tracking-[0.09em] text-ink-subtle">
-                    Buyer guidance
-                  </span>
+                  <div className="flex flex-1 flex-col p-7">
+                    <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em] transition-colors duration-200 group-hover:text-forest">
+                      {industry.name}
+                    </h2>
+                    <p className="mt-3 flex-1 text-small leading-relaxed text-ink-muted">
+                      {industry.summary}
+                    </p>
+                    <span className="mt-6 text-label uppercase tracking-[0.09em] text-ink-subtle">
+                      Buyer guidance
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             ))}

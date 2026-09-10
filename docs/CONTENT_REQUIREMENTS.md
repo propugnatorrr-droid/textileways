@@ -65,12 +65,17 @@ recomputed from the expiry date on every render.
 
 ## 4. Photography
 
-35 media slots are declared. Each renders a woven pattern panel with the brief
-for the shot printed beneath it, so nothing looks broken and nobody has to guess
+63 media slots are declared: the original 35, all installed, plus 28 banner
+slots added 2026-09-10 for the Capabilities, Materials, Industries and
+Markets hubs and their detail pages, which previously had no image at all.
+Each outstanding slot renders a woven pattern panel with the brief for the
+shot printed beneath it, so nothing looks broken and nobody has to guess
 what is needed. The full checklist, with routes, aspect ratios and crop-safe
-requirements per slot, is `docs/IMAGE_MANIFEST.md`. A paste-ready batch prompt
-for generating temporary representative campaign imagery, as a bridge until
-real photography is commissioned, is `docs/GPT_IMAGE_2_MASTER_PROMPT.md`.
+requirements per slot, is `docs/IMAGE_MANIFEST.md`. Paste-ready batch
+prompts for generating temporary representative campaign imagery, as a
+bridge until real photography is commissioned, are
+`docs/GPT_IMAGE_2_MASTER_PROMPT.md` (the original 35) and
+`docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md` (the 28 banners).
 
 **How to supply.** Save as `public/images/<id>.jpg`, then remove
 `isPlaceholder: true` from that entry in `content/fallback/media.ts`. The slot

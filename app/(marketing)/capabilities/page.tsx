@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, Section, ButtonLink, StatusTag } from "@/components/ui";
+import { Container, Section, ButtonLink, StatusTag, Notice } from "@/components/ui";
 import { PageHeader, PageCta } from "@/components/sections/page-shell";
 import { Reveal } from "@/components/content/reveal";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { capabilities, capabilitiesByGroup } from "@/content/fallback/capabilities";
+import { hubMedia, capabilityGroupMedia } from "@/content/fallback/media";
 import { capabilityGroupLabels } from "@/content/types";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
@@ -43,30 +45,39 @@ export default function CapabilitiesPage() {
           </>
         }
         aside={
-          <div className="rounded-[20px] border border-line bg-cotton p-6">
-            <p className="text-label uppercase tracking-[0.09em] text-ink-subtle">
-              Verification status
-            </p>
-            <p className="mt-4 text-small leading-relaxed text-ink-muted">
-              {pendingCount} of these {capabilities.length} capabilities are marked as pending
-              verification. That means the capability is genuinely offered and discussed, but
-              the exact equipment, partner arrangement or scope has not yet been confirmed in
-              writing by the business, so it is presented as confirmed on technical review
-              rather than as an established fact.
-            </p>
-            <p className="mt-4 text-small leading-relaxed text-ink-muted">
-              Nothing on these pages claims equipment or certification that has not been
-              evidenced.
-            </p>
-          </div>
+          <Media
+            asset={hubMedia.capabilities}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
         }
       />
+
+      <Section size="tight">
+        <Container>
+          <Notice tone="info" title="Verification status" className="max-w-[74ch]">
+            {pendingCount} of these {capabilities.length} capabilities are marked as pending
+            verification. That means the capability is genuinely offered and discussed, but the
+            exact equipment, partner arrangement or scope has not yet been confirmed in writing
+            by the business, so it is presented as confirmed on technical review rather than as
+            an established fact. Nothing on these pages claims equipment or certification that
+            has not been evidenced.
+          </Notice>
+        </Container>
+      </Section>
 
       {groups.map((group) => (
         <Section key={group.group} size="tight">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
               <div className="lg:sticky lg:top-28 lg:self-start">
+                <Media
+                  asset={capabilityGroupMedia[group.group]}
+                  aspect="aspect-[4/3]"
+                  sizes="(min-width: 1024px) 20vw, 92vw"
+                  className="mb-6"
+                />
                 <h2 className="font-sans text-h3 font-semibold tracking-[-0.032em]">{capabilityGroupLabels[group.group]}</h2>
                 <p className="mt-3 text-small text-ink-subtle">
                   {group.items.length} capabilities

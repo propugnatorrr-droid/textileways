@@ -3,6 +3,11 @@ import {
   productMedia,
   editorialMedia,
   articleMedia,
+  hubMedia,
+  capabilityGroupMedia,
+  materialGroupMedia,
+  industryMedia,
+  marketBannerMedia,
 } from "@/content/fallback/media";
 import type { MediaAsset } from "@/content/types";
 
@@ -23,7 +28,16 @@ import type { MediaAsset } from "@/content/types";
  * pass, and a unit test asserts the two stay in step.
  */
 
-export type ImageCategory = "factory" | "product" | "editorial" | "article";
+export type ImageCategory =
+  | "factory"
+  | "product"
+  | "editorial"
+  | "article"
+  | "hub"
+  | "capability-group"
+  | "material-group"
+  | "industry"
+  | "market";
 export type ImageOrientation = "landscape" | "portrait" | "square";
 
 export interface ImageManifestEntry {
@@ -448,12 +462,281 @@ const articleEntries: ImageManifestEntry[] = [
   }),
 ];
 
+/* -------------------------------------------------------------------------- *
+ * Batch 2, added 2026-09-10: hub, capability group, material group, industry
+ * and market banners, 36 to 63. See docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md
+ * for the paste-ready generation prompt covering this whole batch.
+ * -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/* Hub banners, 36 to 38                                                       */
+/* -------------------------------------------------------------------------- */
+
+const hubEntries: ImageManifestEntry[] = [
+  entry({
+    id: "hubs/products",
+    sequence: "36",
+    category: "hub",
+    subject: "Finished pieces from several different product families grouped together",
+    orientation: "landscape",
+    renderedAspects: ["aspect-[4/3]"],
+    usedIn: ["/products (hero aside)"],
+    peoplePresent: false,
+    asset: hubMedia.products,
+  }),
+  entry({
+    id: "hubs/capabilities",
+    sequence: "37",
+    category: "hub",
+    subject: "Two or three distinct manufacturing processes visible in one wide frame",
+    orientation: "landscape",
+    renderedAspects: ["aspect-[4/3]"],
+    usedIn: ["/capabilities (hero aside)"],
+    peoplePresent: true,
+    asset: hubMedia.capabilities,
+  }),
+  entry({
+    id: "hubs/industries",
+    sequence: "38",
+    category: "hub",
+    subject: "Garments representing several different buyer industries, grouped as a flat lay",
+    orientation: "landscape",
+    renderedAspects: ["aspect-[4/3]"],
+    usedIn: ["/industries (hero aside)"],
+    peoplePresent: false,
+    asset: hubMedia.industries,
+  }),
+];
+
+/* -------------------------------------------------------------------------- */
+/* Capability group banners, 39 to 44                                         */
+/* -------------------------------------------------------------------------- */
+
+function capabilityGroupEntry(
+  group: keyof typeof capabilityGroupMedia,
+  sequence: string,
+  subject: string,
+  peoplePresent: boolean,
+): ImageManifestEntry {
+  return entry({
+    id: `capability-groups/${group}`,
+    sequence,
+    category: "capability-group",
+    subject,
+    orientation: "landscape",
+    renderedAspects: ["aspect-[4/3]"],
+    usedIn: [
+      `/capabilities/[slug] (hero aside, every capability in the "${group}" group)`,
+      "/capabilities (hub, group section sticky column)",
+    ],
+    peoplePresent,
+    asset: capabilityGroupMedia[group],
+  });
+}
+
+const capabilityGroupEntries: ImageManifestEntry[] = [
+  capabilityGroupEntry(
+    "development",
+    "39",
+    "Pattern paper, tracing wheel and measuring tools on a design bench",
+    true,
+  ),
+  capabilityGroupEntry(
+    "materials",
+    "40",
+    "Yarn cones grouped beside rolled fabric samples at a sourcing desk",
+    true,
+  ),
+  capabilityGroupEntry(
+    "manufacturing",
+    "41",
+    "Close, mid distance view of a single sewing station in use",
+    true,
+  ),
+  capabilityGroupEntry(
+    "decoration",
+    "42",
+    "A heat press applying a transfer to a garment panel, steam visible",
+    true,
+  ),
+  capabilityGroupEntry(
+    "finishing",
+    "43",
+    "A finished garment being steam pressed on a finishing station",
+    true,
+  ),
+  capabilityGroupEntry(
+    "assurance",
+    "44",
+    "A quality checklist on a clipboard beside a sealed export carton",
+    false,
+  ),
+];
+
+/* -------------------------------------------------------------------------- */
+/* Material group banners, 45 to 49                                           */
+/* -------------------------------------------------------------------------- */
+
+function materialGroupEntry(
+  group: keyof typeof materialGroupMedia,
+  sequence: string,
+  subject: string,
+): ImageManifestEntry {
+  return entry({
+    id: `material-groups/${group}`,
+    sequence,
+    category: "material-group",
+    subject,
+    orientation: "square",
+    renderedAspects: ["aspect-[4/3]"],
+    usedIn: [
+      `/materials/[slug] (hero aside, every material in the "${group}" group)`,
+      "/materials (hub grid card thumbnail)",
+    ],
+    peoplePresent: false,
+    asset: materialGroupMedia[group],
+  });
+}
+
+const materialGroupEntries: ImageManifestEntry[] = [
+  materialGroupEntry("natural-fibers", "45", "Raw cotton fibre beside a plain cotton yarn cone"),
+  materialGroupEntry(
+    "synthetic-and-performance",
+    "46",
+    "A technical knit swatch being stretched by hand to show recovery",
+  ),
+  materialGroupEntry(
+    "knitted-fabrics",
+    "47",
+    "Macro detail of a knitted fabric's interlocking loop structure",
+  ),
+  materialGroupEntry(
+    "woven-fabrics",
+    "48",
+    "Macro detail of a woven fabric's grain and selvedge edge",
+  ),
+  materialGroupEntry(
+    "recycled-and-lower-impact",
+    "49",
+    "Sorted fabric offcuts beside a swatch made with recycled fibre content",
+  ),
+];
+
+/* -------------------------------------------------------------------------- */
+/* Industry banners, 50 to 59                                                 */
+/* -------------------------------------------------------------------------- */
+
+function industryEntry(
+  slug: keyof typeof industryMedia,
+  sequence: string,
+  subject: string,
+): ImageManifestEntry {
+  return entry({
+    id: `industries/${slug}`,
+    sequence,
+    category: "industry",
+    subject,
+    orientation: "landscape",
+    renderedAspects: ["aspect-[4/3]"],
+    usedIn: [`/industries/${slug} (hero aside)`, "/industries (hub grid)"],
+    peoplePresent: false,
+    asset: industryMedia[slug],
+  });
+}
+
+const industryEntries: ImageManifestEntry[] = [
+  industryEntry("fashion-brands", "50", "A small capsule of folded apparel, blank neck labels"),
+  industryEntry(
+    "streetwear-brands",
+    "51",
+    "A stacked heavyweight hoodie and tee, blank chest area",
+  ),
+  industryEntry(
+    "sports-clubs-and-teams",
+    "52",
+    "A matching team jersey set folded together, blank number area",
+  ),
+  industryEntry(
+    "corporate-uniforms",
+    "53",
+    "A folded corporate polo and shirt set, blank embroidery area",
+  ),
+  industryEntry("hospitality", "54", "Folded hotel style towels stacked with a hospitality apron"),
+  industryEntry(
+    "healthcare",
+    "55",
+    "A folded medical scrub top and trousers, neutral colour, blank pocket",
+  ),
+  industryEntry(
+    "education",
+    "56",
+    "A folded school style polo and sweatshirt, blank crest area",
+  ),
+  industryEntry(
+    "construction-and-industrial",
+    "57",
+    "A folded high visibility workwear vest, reflective tape visible",
+  ),
+  industryEntry(
+    "retail-and-wholesale",
+    "58",
+    "A stack of mixed folded garments with blank swing tags",
+  ),
+  industryEntry(
+    "promotional-products",
+    "59",
+    "A grouped flat lay of a cap, a tote bag and a small pouch",
+  ),
+];
+
+/* -------------------------------------------------------------------------- */
+/* Market banners, 60 to 63                                                   */
+/* -------------------------------------------------------------------------- */
+
+function marketEntry(
+  slug: keyof typeof marketBannerMedia,
+  sequence: string,
+  subject: string,
+): ImageManifestEntry {
+  return entry({
+    id: `markets/${slug}`,
+    sequence,
+    category: "market",
+    subject,
+    orientation: "landscape",
+    renderedAspects: ["aspect-[4/3]", "aspect-[16/9]"],
+    usedIn: [`/markets/${slug} (hero aside)`, "/markets (hub grid card)"],
+    peoplePresent: false,
+    asset: marketBannerMedia[slug],
+  });
+}
+
+const marketEntries: ImageManifestEntry[] = [
+  marketEntry("usa", "60", "Export cartons being wrapped onto a pallet for ocean freight"),
+  marketEntry(
+    "europe",
+    "61",
+    "A garment's care label held open and checked before packing",
+  ),
+  marketEntry("uk", "62", "Export documentation on a clipboard resting on a sealed carton"),
+  marketEntry(
+    "australia",
+    "63",
+    "A garment packed with cardboard and synthetic material, no wood packaging visible",
+  ),
+];
+
 /** Every image slot on the site, in GPT Image 2 batch order. */
 export const imageManifest: ImageManifestEntry[] = [
   ...factoryEntries,
   ...productEntries,
   ...editorialEntries,
   ...articleEntries,
+  ...hubEntries,
+  ...capabilityGroupEntries,
+  ...materialGroupEntries,
+  ...industryEntries,
+  ...marketEntries,
 ];
 
 export function getManifestEntry(id: string): ImageManifestEntry | undefined {

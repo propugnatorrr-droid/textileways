@@ -1,4 +1,4 @@
-import type { MediaAsset } from "@/content/types";
+import type { MediaAsset, CapabilityGroup, MaterialGroup } from "@/content/types";
 
 /**
  * Media slots.
@@ -302,6 +302,287 @@ export const articleMedia = {
   }),
 } as const;
 
+/* -------------------------------------------------------------------------- */
+/* Hub banners                                                                 */
+/*                                                                             */
+/* Added 2026-09-10. The three hub pages that had no header image at all:    */
+/* Products, Capabilities and Industries. Materials and Markets already had  */
+/* one (`editorialMedia.materials`, `editorialMedia.logistics`).             */
+/* -------------------------------------------------------------------------- */
+
+export const hubMedia = {
+  products: placeholder({
+    id: "hubs/products",
+    width: 1760,
+    height: 1328,
+    alt: "An assortment of finished products from different product families grouped on a neutral surface",
+    brief:
+      "A wide shot grouping finished pieces from several different product families together, for example a hoodie, a polo, a folded towel and a tote bag, styled simply on the same neutral ground so the range reads at a glance rather than any one family.",
+  }),
+  capabilities: placeholder({
+    id: "hubs/capabilities",
+    width: 1760,
+    height: 1328,
+    alt: "A wide view of a production floor where several distinct manufacturing processes are visible in one frame",
+    brief:
+      "A wide production floor shot composed so two or three distinct processes are visible at once, for example a cutting table in the foreground with sewing lines running behind it, communicating the range of capabilities rather than any single station.",
+  }),
+  industries: placeholder({
+    id: "hubs/industries",
+    width: 1760,
+    height: 1328,
+    alt: "Folded garments from several different use cases grouped together, including a uniform polo, workwear and a plain scrub top",
+    brief:
+      "A flat lay grouping several different garment types that represent different buyer industries side by side, for example a uniform polo, a piece of hi-vis workwear and a plain scrub top, all with blank labelling. Shows the range of use cases through the products themselves, not the institutions that would use them.",
+  }),
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/* Capability group banners                                                    */
+/*                                                                             */
+/* Added 2026-09-10. The 30 capability detail pages had no image at all. One  */
+/* image per capability group is shared across every capability in that      */
+/* group, matching how `capabilityGroupLabels` already organises them.       */
+/* -------------------------------------------------------------------------- */
+
+export const capabilityGroupMedia = {
+  development: placeholder({
+    id: "capability-groups/development",
+    width: 1760,
+    height: 1328,
+    alt: "Pattern paper, a tracing wheel and measuring tools laid out on a design bench",
+    brief:
+      "A design and pattern development bench: pattern paper, a tracing wheel, a curved ruler and a measuring tape, arranged as genuine working tools rather than staged. No finished garment in frame, this is the stage before one exists.",
+  }),
+  materials: placeholder({
+    id: "capability-groups/materials",
+    width: 1760,
+    height: 1328,
+    alt: "Yarn cones and rolled fabric samples grouped together at a sourcing desk",
+    brief:
+      "Yarn cones in a few different colours grouped beside two or three rolled fabric samples on a desk, representing sourcing and specification rather than a finished textile. Distinct from any existing swatch-comparison shot: this one includes yarn, not only fabric.",
+  }),
+  manufacturing: placeholder({
+    id: "capability-groups/manufacturing",
+    width: 1760,
+    height: 1328,
+    alt: "A close, mid distance view of a single sewing station with fabric feeding through the machine",
+    brief:
+      "A closer, mid distance view of one sewing station in use, fabric visibly feeding under the presser foot, with other machines soft focus behind it. Tighter and more intimate than a wide production floor shot.",
+  }),
+  decoration: placeholder({
+    id: "capability-groups/decoration",
+    width: 1760,
+    height: 1328,
+    alt: "A heat press applying a transfer to a folded garment panel, steam visible",
+    brief:
+      "A heat press mid cycle, applying a transfer or print to a garment panel, a wisp of steam or heat visible, hands positioning the fabric. A decoration process distinct from the existing screen printing carousel and embroidery machine photographs.",
+  }),
+  finishing: placeholder({
+    id: "capability-groups/finishing",
+    width: 1760,
+    height: 1328,
+    alt: "A finished garment being steam pressed on a finishing station",
+    brief:
+      "A garment on a steam press or finishing dummy, mid press, steam visible, hands smoothing the fabric. This is the first finishing or pressing photograph in the library.",
+  }),
+  assurance: placeholder({
+    id: "capability-groups/assurance",
+    width: 1760,
+    height: 1328,
+    alt: "A quality checklist on a clipboard beside a sealed export carton",
+    brief:
+      "A quality inspection clipboard or checklist resting beside a sealed, labelled export carton, connecting the quality and logistics side of the assurance group in one frame. Distinct from the existing inspection table shot: this one shows the paperwork and the carton, not the garment being measured.",
+  }),
+} as const satisfies Record<CapabilityGroup, MediaAsset>;
+
+/* -------------------------------------------------------------------------- */
+/* Material group banners                                                      */
+/*                                                                             */
+/* Added 2026-09-10. The 14 material detail pages had no image at all. One    */
+/* image per material group, matching `materialGroupLabels`.                  */
+/* -------------------------------------------------------------------------- */
+
+export const materialGroupMedia = {
+  "natural-fibers": placeholder({
+    id: "material-groups/natural-fibers",
+    width: 1536,
+    height: 1536,
+    alt: "Raw cotton fibre and a cotton yarn cone shown close, natural fibre texture visible",
+    brief:
+      "Raw cotton fibre, loose or in a small boll, next to a plain cotton yarn cone, close enough to see the fibre texture. A natural, unprocessed material story.",
+  }),
+  "synthetic-and-performance": placeholder({
+    id: "material-groups/synthetic-and-performance",
+    width: 1536,
+    height: 1536,
+    alt: "A performance knit fabric being stretched by hand to show its recovery",
+    brief:
+      "A technical knit fabric swatch being gently stretched by hand, showing the weave opening and its stretch behaviour, a genuinely useful and honest way to photograph a performance property rather than a static flat swatch.",
+  }),
+  "knitted-fabrics": placeholder({
+    id: "material-groups/knitted-fabrics",
+    width: 1536,
+    height: 1536,
+    alt: "Close detail of a knitted fabric structure showing interlocking loops",
+    brief:
+      "A macro, close in shot of a knitted fabric's structure, the interlocking loop construction clearly visible. Texture and construction are the subject, not colour.",
+  }),
+  "woven-fabrics": placeholder({
+    id: "material-groups/woven-fabrics",
+    width: 1536,
+    height: 1536,
+    alt: "Close detail of a woven fabric's grain and selvedge edge",
+    brief:
+      "A macro, close in shot of a woven fabric, the selvedge edge and the warp and weft grain visible. Texture and construction are the subject, not colour.",
+  }),
+  "recycled-and-lower-impact": placeholder({
+    id: "material-groups/recycled-and-lower-impact",
+    width: 1536,
+    height: 1536,
+    alt: "Sorted fabric scraps and a recycled fibre swatch grouped together for reuse",
+    brief:
+      "Sorted fabric offcuts or scraps grouped beside a swatch of fabric made with recycled fibre content, visually connecting waste reduction with the material itself. No sustainability certification mark or badge of any kind, since none is verified.",
+  }),
+} as const satisfies Record<MaterialGroup, MediaAsset>;
+
+/* -------------------------------------------------------------------------- */
+/* Industry banners                                                            */
+/*                                                                             */
+/* Added 2026-09-10. The industries hub and all ten detail pages had no image */
+/* at all. Each shows the relevant product type, not the buyer's own         */
+/* institution: Textileways photographs products, not hospitals, hotels or   */
+/* classrooms it has no connection to.                                       */
+/* -------------------------------------------------------------------------- */
+
+export const industryMedia = {
+  "fashion-brands": placeholder({
+    id: "industries/fashion-brands",
+    width: 1760,
+    height: 1328,
+    alt: "A small capsule of folded apparel with blank neck labels, styled as a brand collection",
+    brief:
+      "A small capsule collection, three or four folded pieces, styled with editorial care, blank neck labels, representing a fashion brand's product rather than the brand itself.",
+  }),
+  "streetwear-brands": placeholder({
+    id: "industries/streetwear-brands",
+    width: 1760,
+    height: 1328,
+    alt: "A stacked heavyweight hoodie and tee, blank chest area, styled with streetwear proportions",
+    brief:
+      "A heavyweight hoodie and oversized tee stacked together, blank chest and back panels, boxy streetwear proportions visible in the fold.",
+  }),
+  "sports-clubs-and-teams": placeholder({
+    id: "industries/sports-clubs-and-teams",
+    width: 1760,
+    height: 1328,
+    alt: "A matching team jersey set folded together, blank number and sponsor areas",
+    brief:
+      "A matching jersey and shorts set from one team kit, folded together, number and sponsor placement areas left blank, no real club colours or crest.",
+  }),
+  "corporate-uniforms": placeholder({
+    id: "industries/corporate-uniforms",
+    width: 1760,
+    height: 1328,
+    alt: "A folded corporate polo shirt and shirt set, blank chest embroidery area",
+    brief:
+      "A corporate polo shirt and a button shirt folded together, blank chest area where an embroidered logo would sit, neutral corporate colourway.",
+  }),
+  hospitality: placeholder({
+    id: "industries/hospitality",
+    width: 1760,
+    height: 1328,
+    alt: "Folded hotel style towels stacked with a hospitality apron",
+    brief:
+      "Stacked hotel style towels in two sizes beside a folded hospitality apron or front of house shirt, no real hotel branding.",
+  }),
+  healthcare: placeholder({
+    id: "industries/healthcare",
+    width: 1760,
+    height: 1328,
+    alt: "A folded medical scrub top and trousers in a neutral colour, blank pocket",
+    brief:
+      "A folded scrub top and trousers set in a neutral clinical colour, blank chest pocket, no real hospital branding or clinical setting in frame.",
+  }),
+  education: placeholder({
+    id: "industries/education",
+    width: 1760,
+    height: 1328,
+    alt: "A folded school style polo shirt and sweatshirt, blank crest area",
+    brief:
+      "A school style polo shirt and sweatshirt folded together, blank chest crest area, no real school name or setting in frame.",
+  }),
+  "construction-and-industrial": placeholder({
+    id: "industries/construction-and-industrial",
+    width: 1760,
+    height: 1328,
+    alt: "A folded high visibility workwear vest showing reflective tape construction",
+    brief:
+      "A high visibility workwear vest or jacket, folded or on a hanger, reflective tape construction clearly visible, no construction site in frame.",
+  }),
+  "retail-and-wholesale": placeholder({
+    id: "industries/retail-and-wholesale",
+    width: 1760,
+    height: 1328,
+    alt: "A stack of mixed folded garments with blank swing tags, ready for distribution",
+    brief:
+      "A stack of several different folded garment types with blank swing tags attached, representing an assortment ready for retail distribution rather than any one product.",
+  }),
+  "promotional-products": placeholder({
+    id: "industries/promotional-products",
+    width: 1760,
+    height: 1328,
+    alt: "A grouped flat lay of a cap, a tote bag and a small pouch, blank branding areas",
+    brief:
+      "A grouped flat lay of small promotional textile items: a cap, a canvas tote and a small pouch, blank branding areas on each, styled together as a set.",
+  }),
+} as const satisfies Record<string, MediaAsset>;
+
+/* -------------------------------------------------------------------------- */
+/* Market banners                                                              */
+/*                                                                             */
+/* Added 2026-09-10. The markets hub reused one generic logistics photograph  */
+/* for every market, and the four market detail pages had no image at all.   */
+/* Each market gets its own image now, differentiated by a genuinely         */
+/* different export or documentation detail rather than a flag, a landmark   */
+/* or anything implying an office or existing customer base in that market.  */
+/* -------------------------------------------------------------------------- */
+
+export const marketBannerMedia = {
+  usa: placeholder({
+    id: "markets/usa",
+    width: 1760,
+    height: 1328,
+    alt: "Export cartons being wrapped on a pallet ahead of ocean freight collection",
+    brief:
+      "Export cartons stacked and being shrink wrapped onto a pallet, ready for ocean freight collection. No visible country name, flag or destination text on any label.",
+  }),
+  europe: placeholder({
+    id: "markets/europe",
+    width: 1760,
+    height: 1328,
+    alt: "A folded garment with a close view of its care label being checked before packing",
+    brief:
+      "A folded garment with its sewn in care label held open and being checked by hand before it goes into the carton beside it, a detail relevant to labelling requirements. No visible country name, flag or EU symbol.",
+  }),
+  uk: placeholder({
+    id: "markets/uk",
+    width: 1760,
+    height: 1328,
+    alt: "Export documentation on a clipboard resting on a sealed carton",
+    brief:
+      "A clipboard holding export or customs paperwork, resting on top of a sealed, labelled carton, emphasising documentation. No visible country name, flag or landmark.",
+  }),
+  australia: placeholder({
+    id: "markets/australia",
+    width: 1760,
+    height: 1328,
+    alt: "A garment being packed into a carton using cardboard and synthetic packing materials, no wood in view",
+    brief:
+      "A garment being packed into an export carton using cardboard dividers and synthetic packing material, deliberately no solid wood packaging material anywhere in frame, relevant to biosecurity import requirements. No flag, no landmark, no kangaroo, nothing implying an Australian office or facility.",
+  }),
+} as const satisfies Record<string, MediaAsset>;
+
 /** Every declared media slot, used by the content requirements report. */
 export function allMediaSlots(): MediaAsset[] {
   return [
@@ -309,6 +590,11 @@ export function allMediaSlots(): MediaAsset[] {
     ...Object.values(productMedia),
     ...Object.values(editorialMedia),
     ...Object.values(articleMedia),
+    ...Object.values(hubMedia),
+    ...Object.values(capabilityGroupMedia),
+    ...Object.values(materialGroupMedia),
+    ...Object.values(industryMedia),
+    ...Object.values(marketBannerMedia),
   ];
 }
 

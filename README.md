@@ -82,10 +82,15 @@ the shot it needs, and indexed with its routes, aspect ratios and crop-safe
 requirements in `content/configuration/image-manifest.ts`. Save the image as
 `public/images/<id>.jpg`, remove `isPlaceholder: true`, and it switches to an
 optimised image automatically. Until then a woven pattern panel renders with
-the brief printed beneath it. There are 35 slots as of this document; see
-[docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) for the full checklist and
-[docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) for a
-paste-ready batch prompt covering all of them. Any installed photograph is
+the brief printed beneath it. There are 63 slots as of this document (the
+original 35, all installed, plus 28 banner slots for the Capabilities,
+Materials, Industries and Markets hubs and their detail pages, added
+2026-09-10 and awaiting generation); see
+[docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) for the full checklist,
+[docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) for
+the first batch's paste-ready prompt, and
+[docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md)
+for the second. Any installed photograph is
 representative campaign imagery, not documentary proof of this specific
 facility, staff or output, and the factory and about pages say so.
 
@@ -118,7 +123,8 @@ copy contains an em dash or en dash.
 | [docs/LAUNCH_CHECKLIST.md](docs/LAUNCH_CHECKLIST.md) | You are preparing to go live |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | You are deploying, or changing DNS |
 | [docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) | You are installing generated or commissioned photography |
-| [docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) | You are generating the photography batch |
+| [docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) | You are generating the first photography batch (factory, process, products, editorial, articles) |
+| [docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md) | You are generating the second batch: banners for the Capabilities, Materials, Industries and Markets hubs and detail pages |
 | [docs/GPT_IMAGE_2_REGENERATION_BATCH.md](docs/GPT_IMAGE_2_REGENERATION_BATCH.md) | You are regenerating a previously rejected image |
 | [docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md](docs/GPT_IMAGE_2_HOMEPAGE_HERO_V2.md) | You are generating the homepage hero specifically |
 

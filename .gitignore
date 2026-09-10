@@ -43,10 +43,17 @@ yarn-error.log*
 .vscode/*
 !.vscode/extensions.json
 
-# Agent skills installed locally, not part of the deliverable
+# Agent skills and agents installed locally, not part of the deliverable
 /.agents
 /.claude/skills
+/.claude/agents
 /skills-lock.json
+
+# Presence-work brand data: pre-verification business facts (registration
+# numbers, addresses, NTN) that should never land in a public repo's git
+# history. Only the verified subset ever reaches the public site, gated by
+# content/configuration/company-facts.ts; this file holds more than that.
+/brand
 
 # SEO audit tool output (point-in-time, regenerate with /seo audit)
 /*-audit/

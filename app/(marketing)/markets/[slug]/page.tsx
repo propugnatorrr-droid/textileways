@@ -9,10 +9,12 @@ import {
   PageCta,
 } from "@/components/sections/page-shell";
 import { FaqAccordion } from "@/components/content/faq-accordion";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ViewTracker } from "@/components/content/view-tracker";
 import { getMarket, marketSlugs, markets } from "@/content/fallback/markets";
 import { getFaqsByIds } from "@/content/fallback/faqs";
+import { marketBannerMedia } from "@/content/fallback/media";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/structured-data";
 
@@ -74,6 +76,14 @@ export default async function MarketPage(props: PageProps<"/markets/[slug]">) {
               All markets
             </ButtonLink>
           </>
+        }
+        aside={
+          <Media
+            asset={marketBannerMedia[market.slug as keyof typeof marketBannerMedia]}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
         }
       />
 

@@ -8,9 +8,11 @@ import {
   RelatedGrid,
   PageCta,
 } from "@/components/sections/page-shell";
+import { Media } from "@/components/content/media";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getMaterial, materialSlugs, materials } from "@/content/fallback/materials";
 import { getProductFamiliesBySlugs } from "@/content/fallback/products";
+import { materialGroupMedia } from "@/content/fallback/media";
 import { materialGroupLabels } from "@/content/types";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
@@ -90,6 +92,14 @@ export default async function MaterialPage(props: PageProps<"/materials/[slug]">
               All materials
             </ButtonLink>
           </>
+        }
+        aside={
+          <Media
+            asset={materialGroupMedia[material.group]}
+            aspect="aspect-[4/3]"
+            sizes="(min-width: 1024px) 42vw, 92vw"
+            priority
+          />
         }
       />
 

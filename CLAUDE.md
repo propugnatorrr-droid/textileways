@@ -1861,6 +1861,21 @@ documentary proof of this specific facility, staff, machinery, customers or
 output, and the factory and about pages carry a
 standing disclosure to that effect.
 
+**Added 2026-09-10, batch 2.** The Capabilities, Materials, Industries and
+Markets hub pages, all 30 capability pages, all 13 material pages, all 10
+industry pages and all 4 market detail pages had no banner image at all
+(the Markets hub reused one generic logistics photo for every market
+regardless of destination). 28 new slots were added to
+`content/fallback/media.ts` (ids 36 to 63 in the manifest): one banner per
+hub, one shared banner per capability group (6) and per material group (5),
+one banner per industry (10) and one per market (4), each market
+differentiated by an export or documentation detail rather than a flag or
+landmark. The paste-ready batch prompt is
+`docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md`. Industry entries photograph the
+relevant product only, never the buyer's own institution (no hospitals,
+hotels, schools or construction sites). All 28 are placeholders awaiting
+generation.
+
 ---
 
 # 30. Deployment

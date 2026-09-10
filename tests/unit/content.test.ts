@@ -305,15 +305,14 @@ describe("public copy rules", () => {
 });
 
 describe("media slots", () => {
-  it("has installed photography for all 35 slots", () => {
-    // Updated 2026-09-07. All 35 slots, including the 8 that failed the
-    // anti-artifact checklist in docs/IMAGE_MANIFEST.md section 3 on first
-    // review, were installed at the owner's explicit direction as interim
-    // imagery, to be replaced with the owner's own photography. See
-    // docs/GPT_IMAGE_2_REGENERATION_BATCH.md if a cleaner version of any of
-    // the 8 is generated before then.
-    expect(outstandingMediaSlots().length).toBe(0);
-    expect(allMediaSlots().length).toBe(35);
+  it("has 63 total slots, with the 28 added 2026-09-10 outstanding", () => {
+    // The original 35 (see docs/GPT_IMAGE_2_MASTER_PROMPT.md) are all
+    // installed. Batch 2, added 2026-09-10, declares banner images for the
+    // hub, capability group, material group, industry and market pages that
+    // previously had none: see docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md.
+    // Those 28 are placeholders awaiting generation.
+    expect(outstandingMediaSlots().length).toBe(28);
+    expect(allMediaSlots().length).toBe(63);
   });
 
   it("gives every media slot alt text and dimensions", () => {
