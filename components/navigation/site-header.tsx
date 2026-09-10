@@ -188,10 +188,10 @@ export function SiteHeader() {
                     item={item}
                     active={isActive(item.href)}
                     open={openMenu === item.label}
-                    onToggle={() =>
-                      setOpenMenu((current) => (current === item.label ? null : item.label))
+                    onOpen={() => setOpenMenu(item.label)}
+                    onClose={() =>
+                      setOpenMenu((current) => (current === item.label ? null : current))
                     }
-                    onClose={() => setOpenMenu(null)}
                   />
                 ))}
               </ul>
@@ -256,16 +256,39 @@ function DesktopNavItem({
   item,
   active,
   open,
-  onToggle,
+  onOpen,
   onClose,
 }: {
   item: NavItem;
   active: boolean;
   open: boolean;
-  onToggle: () => void;
+  onOpen: () => void;
   onClose: () => void;
 }) {
   const panelId = useId();
+  const closeTimer = useRef<number | null>(null);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  /*
+   * A short delay rather than an instant close, so moving the pointer from
+   * the trigger down into the panel (or briefly off it) does not flicker
+   * the menu shut. Cancelled by re-entering either the trigger or the panel.
+   */
+  const scheduleClose = useCallback(() => {
+    cancelClose();
+    closeTimer.current = window.setTimeout(() => {
+      closeTimer.current = null;
+      onClose();
+    }, 150);
+  }, [cancelClose, onClose]);
+
+  useEffect(() => cancelClose, [cancelClose]);
 
   if (!item.columns) {
     return (
@@ -284,12 +307,23 @@ function DesktopNavItem({
   }
 
   return (
-    <li className="static">
+    <li
+      className="static"
+      onMouseEnter={() => {
+        cancelClose();
+        onOpen();
+      }}
+      onMouseLeave={scheduleClose}
+    >
       <button
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={onToggle}
+        onClick={onOpen}
+        onFocus={() => {
+          cancelClose();
+          onOpen();
+        }}
         className={cn(
           "inline-flex min-h-[38px] items-center gap-1.5 rounded-[10px] px-3 text-[15px] font-semibold tracking-[-0.006em] transition-colors duration-200",
           active || open ? "text-forest-deep" : "text-ink hover:bg-cotton",

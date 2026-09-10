@@ -29,6 +29,7 @@ import {
 import { factoryMedia, editorialMedia } from "@/content/fallback/media";
 import { capabilityStatusLabels } from "@/content/types";
 import { formatDate } from "@/lib/utilities/format";
+import { cn } from "@/lib/utilities/cn";
 
 /* ==========================================================================
    Production scale
@@ -171,6 +172,8 @@ function ProductTile({
     row: "(min-width: 1024px) 22vw, (min-width: 640px) 46vw, 100vw",
   }[scale];
 
+  const isLead = scale === "lead";
+
   return (
     <Link
       href={`/products/${family.slug}`}
@@ -178,13 +181,20 @@ function ProductTile({
     >
       <Media
         asset={family.hero}
-        aspect={aspect}
+        /*
+         * The lead tile sits beside a two card stack that is naturally taller,
+         * and the grid stretches both columns to match. Every other scale
+         * keeps a fixed ratio; the lead tile drops it at desktop width and
+         * grows instead, so the extra height becomes a bigger hero photo
+         * rather than dead space under the text.
+         */
+        aspect={isLead ? "aspect-[16/11] lg:aspect-auto" : aspect}
         sizes={sizes}
         compact={scale === "row"}
-        className="rounded-none"
+        className={cn("rounded-none", isLead && "lg:flex-1")}
         zoomOnHover
       />
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <div className={cn("flex flex-col p-5 sm:p-6", !isLead && "flex-1")}>
         <h3
           className={
             scale === "lead"
@@ -194,7 +204,7 @@ function ProductTile({
         >
           {family.name}
         </h3>
-        <p className="mt-2 flex-1 text-small text-ink-muted">
+        <p className={cn("mt-2 text-small text-ink-muted", !isLead && "flex-1")}>
           {scale === "row" ? truncate(family.summary, 88) : family.summary}
         </p>
         <p className="mt-5 text-label font-semibold uppercase tracking-[0.08em] text-ink-subtle">
