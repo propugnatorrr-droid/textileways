@@ -175,6 +175,22 @@
     border-radius: 6px;
   }
 
+  /*
+   * On a hybrid device (a touchscreen laptop that also has a trackpad or
+   * mouse), the CSS `hover: hover` media feature is true because some
+   * connected pointer supports hovering, so a `hover:` utility still
+   * applies to a touch tap. A tap never fires the mouseleave that would
+   * clear it, so whichever element a menu happens to open under can look
+   * permanently selected. `data-input-modality` is set from real pointer
+   * events in components/navigation/site-header.tsx; this clears the look
+   * of a `.tw-hover-safe` element's hover state after a touch interaction,
+   * without touching real mouse hover for anyone else.
+   */
+  :root[data-input-modality="touch"] .tw-hover-safe:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+
   ::selection {
     background: var(--color-ink);
     color: var(--color-white);

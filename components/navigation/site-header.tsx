@@ -63,6 +63,27 @@ export function SiteHeader() {
     };
   }, []);
 
+  /*
+   * Tracks the most recent pointer type on <html data-input-modality>.
+   *
+   * On a hybrid device (a touchscreen laptop that also has a trackpad or
+   * mouse), the CSS `hover: hover` media feature reports true because SOME
+   * connected pointer supports hovering, so Tailwind still applies `hover:`
+   * styles to a touch tap. A tap never fires the mouseleave that would
+   * normally clear `:hover`, so whichever element the mega menu panel opens
+   * under can be left looking permanently highlighted. `.tw-hover-safe` in
+   * globals.css uses this attribute to suppress that specific look after a
+   * touch interaction, without disabling real mouse hover for anyone else.
+   */
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      document.documentElement.dataset.inputModality =
+        event.pointerType === "touch" ? "touch" : "mouse";
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
+
   /* Escape closes the open mega menu or the mobile panel. */
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -373,7 +394,7 @@ function DesktopNavItem({
                       <Link
                         href={column.href}
                         onClick={onClose}
-                        className="group mb-3 flex items-center gap-2 px-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle transition-colors duration-200 hover:text-forest-deep"
+                        className="tw-hover-safe group mb-3 flex items-center gap-2 px-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle transition-colors duration-200 hover:text-forest-deep"
                       >
                         <span aria-hidden="true" className="h-[7px] w-[7px] shrink-0 bg-forest" />
                         {column.title}
@@ -391,7 +412,7 @@ function DesktopNavItem({
                           <Link
                             href={link.href}
                             onClick={onClose}
-                            className="group block rounded-[10px] px-3 py-2 text-[15px] font-semibold tracking-[-0.006em] text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
+                            className="tw-hover-safe group block rounded-[10px] px-3 py-2 text-[15px] font-semibold tracking-[-0.006em] text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
                           >
                             {link.label}
                             {link.description ? (
@@ -505,7 +526,7 @@ function MobileNavigation({
                             <Link
                               href={link.href}
                               onClick={onNavigate}
-                              className="flex min-h-[48px] items-center rounded-[10px] px-3 text-[15px] text-ink-muted transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
+                              className="tw-hover-safe flex min-h-[48px] items-center rounded-[10px] px-3 text-[15px] text-ink-muted transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
                             >
                               {link.label}
                             </Link>
