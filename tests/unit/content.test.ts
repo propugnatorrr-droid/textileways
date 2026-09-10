@@ -305,13 +305,14 @@ describe("public copy rules", () => {
 });
 
 describe("media slots", () => {
-  it("has 63 total slots, with the 28 added 2026-09-10 outstanding", () => {
-    // The original 35 (see docs/GPT_IMAGE_2_MASTER_PROMPT.md) are all
-    // installed. Batch 2, added 2026-09-10, declares banner images for the
-    // hub, capability group, material group, industry and market pages that
-    // previously had none: see docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md.
-    // Those 28 are placeholders awaiting generation.
-    expect(outstandingMediaSlots().length).toBe(28);
+  it("has 63 total slots, all installed", () => {
+    // The original 35 (see docs/GPT_IMAGE_2_MASTER_PROMPT.md) were installed
+    // 2026-09-08. Batch 2 (ids 36 to 63, added 2026-09-10, see
+    // docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md) covers the hub, capability
+    // group, material group, industry and market pages that previously had
+    // no image at all. All 28 passed anti-artifact review and were installed
+    // 2026-09-10: see docs/IMAGE_MANIFEST.md section 8.
+    expect(outstandingMediaSlots().length).toBe(0);
     expect(allMediaSlots().length).toBe(63);
   });
 

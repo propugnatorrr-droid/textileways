@@ -6,19 +6,23 @@ Human readable companion to `content/configuration/image-manifest.ts`,
 the checklist for installing generated photography, not a design brief: the
 full scene descriptions live in the two master prompt documents.
 
-**Status as of this document: 63 total slots.** Batch 1 (35 slots, ids 01 to
-35) all have an installed photograph: 28 passed review outright, including
-the homepage hero (id 26), which was regenerated from a different brief and
-passed on the second attempt; 7 still failed the checklist in section 4 on
-first review (mostly readable fabricated label or logo text) and remain
-installed as interim imagery pending the owner's own photography, at the
-owner's explicit 2026-09-08 direction. See section 3 for exactly which 7,
-why each one failed, and the improved regeneration prompts ready for a
-cleaner pass if one happens before the owner's own photography is ready.
+**Status as of this document: 63 total slots, all installed.** Batch 1 (35
+slots, ids 01 to 35): 28 passed review outright, including the homepage hero
+(id 26), which was regenerated from a different brief and passed on the
+second attempt; 7 still failed the checklist in section 4 on first review
+(mostly readable fabricated label or logo text) and remain installed as
+interim imagery pending the owner's own photography, at the owner's explicit
+2026-09-08 direction. See section 3 for exactly which 7, why each one
+failed, and the improved regeneration prompts ready for a cleaner pass if
+one happens before the owner's own photography is ready.
 
-Batch 2 (28 slots, ids 36 to 63, added 2026-09-10) is entirely outstanding:
-banner images for the Capabilities, Materials, Industries and Markets hubs
-and their detail pages, none of which had any image before. See section 7.
+Batch 2 (28 slots, ids 36 to 63, added 2026-09-10) covers banner images for
+the Capabilities, Materials, Industries and Markets hubs and their detail
+pages, none of which had any image before. All 28 were generated, reviewed
+and installed 2026-09-10: every one passed the anti-artifact checklist in
+section 4 outright, including anatomical review of every hand-visible frame
+and destination-specific checks (no wood packaging for Australia, no flags
+or landmarks for any market). See section 8.
 
 ## 1. What "representative" means here
 
@@ -211,66 +215,66 @@ described in section 8, not this one.
 ## 8. Batch 2: hub, group, industry and market banners
 
 Added 2026-09-10. Sequence order matches
-`docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md`. All 28 are outstanding
-placeholders; none has been generated yet.
+`docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md`. Generated externally (GPT Image
+2 via genspark.ai), downloaded by the owner, reviewed against the section 4
+checklist and installed the same day. All 28 passed outright: no rejections,
+no interim imagery in this batch.
 
 ### Hub banners
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 36 | `hubs/products` | ⏳ Outstanding | Landscape | 4:3 | No | `/products` |
-| 37 | `hubs/capabilities` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/capabilities` |
-| 38 | `hubs/industries` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries` |
+| 36 | `hubs/products` | ✅ Installed | Landscape | 4:3 | No | `/products` |
+| 37 | `hubs/capabilities` | ✅ Installed | Landscape | 4:3 | Yes | `/capabilities` |
+| 38 | `hubs/industries` | ✅ Installed | Landscape | 4:3 | No | `/industries` |
 
 ### Capability group banners
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 39 | `capability-groups/development` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/capabilities/[slug]` (development group), `/capabilities` |
-| 40 | `capability-groups/materials` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/capabilities/[slug]` (materials group), `/capabilities` |
-| 41 | `capability-groups/manufacturing` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/capabilities/[slug]` (manufacturing group), `/capabilities` |
-| 42 | `capability-groups/decoration` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/capabilities/[slug]` (decoration group), `/capabilities` |
-| 43 | `capability-groups/finishing` | ⏳ Outstanding | Landscape | 4:3 | Yes | `/capabilities/[slug]` (finishing group), `/capabilities` |
-| 44 | `capability-groups/assurance` | ⏳ Outstanding | Landscape | 4:3 | No | `/capabilities/[slug]` (assurance group), `/capabilities` |
+| 39 | `capability-groups/development` | ✅ Installed | Landscape | 4:3 | Yes | `/capabilities/[slug]` (development group), `/capabilities` |
+| 40 | `capability-groups/materials` | ✅ Installed | Landscape | 4:3 | Yes | `/capabilities/[slug]` (materials group), `/capabilities` |
+| 41 | `capability-groups/manufacturing` | ✅ Installed | Landscape | 4:3 | Yes | `/capabilities/[slug]` (manufacturing group), `/capabilities` |
+| 42 | `capability-groups/decoration` | ✅ Installed | Landscape | 4:3 | Yes | `/capabilities/[slug]` (decoration group), `/capabilities` |
+| 43 | `capability-groups/finishing` | ✅ Installed | Landscape | 4:3 | Yes | `/capabilities/[slug]` (finishing group), `/capabilities` |
+| 44 | `capability-groups/assurance` | ✅ Installed | Landscape | 4:3 | No | `/capabilities/[slug]` (assurance group), `/capabilities` |
 
 ### Material group banners
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 45 | `material-groups/natural-fibers` | ⏳ Outstanding | Square | 4:3 | No | `/materials/[slug]` (natural fibers), `/materials` |
-| 46 | `material-groups/synthetic-and-performance` | ⏳ Outstanding | Square | 4:3 | No | `/materials/[slug]` (synthetic and performance), `/materials` |
-| 47 | `material-groups/knitted-fabrics` | ⏳ Outstanding | Square | 4:3 | No | `/materials/[slug]` (knitted fabrics), `/materials` |
-| 48 | `material-groups/woven-fabrics` | ⏳ Outstanding | Square | 4:3 | No | `/materials/[slug]` (woven fabrics), `/materials` |
-| 49 | `material-groups/recycled-and-lower-impact` | ⏳ Outstanding | Square | 4:3 | No | `/materials/[slug]` (recycled and lower impact), `/materials` |
+| 45 | `material-groups/natural-fibers` | ✅ Installed | Square | 4:3 | No | `/materials/[slug]` (natural fibers), `/materials` |
+| 46 | `material-groups/synthetic-and-performance` | ✅ Installed | Square | 4:3 | Yes | `/materials/[slug]` (synthetic and performance), `/materials` |
+| 47 | `material-groups/knitted-fabrics` | ✅ Installed | Square | 4:3 | No | `/materials/[slug]` (knitted fabrics), `/materials` |
+| 48 | `material-groups/woven-fabrics` | ✅ Installed | Square | 4:3 | No | `/materials/[slug]` (woven fabrics), `/materials` |
+| 49 | `material-groups/recycled-and-lower-impact` | ✅ Installed | Square | 4:3 | No | `/materials/[slug]` (recycled and lower impact), `/materials` |
 
 ### Industry banners
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 50 | `industries/fashion-brands` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/fashion-brands`, `/industries` |
-| 51 | `industries/streetwear-brands` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/streetwear-brands`, `/industries` |
-| 52 | `industries/sports-clubs-and-teams` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/sports-clubs-and-teams`, `/industries` |
-| 53 | `industries/corporate-uniforms` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/corporate-uniforms`, `/industries` |
-| 54 | `industries/hospitality` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/hospitality`, `/industries` |
-| 55 | `industries/healthcare` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/healthcare`, `/industries` |
-| 56 | `industries/education` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/education`, `/industries` |
-| 57 | `industries/construction-and-industrial` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/construction-and-industrial`, `/industries` |
-| 58 | `industries/retail-and-wholesale` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/retail-and-wholesale`, `/industries` |
-| 59 | `industries/promotional-products` | ⏳ Outstanding | Landscape | 4:3 | No | `/industries/promotional-products`, `/industries` |
+| 50 | `industries/fashion-brands` | ✅ Installed | Landscape | 4:3 | No | `/industries/fashion-brands`, `/industries` |
+| 51 | `industries/streetwear-brands` | ✅ Installed | Landscape | 4:3 | No | `/industries/streetwear-brands`, `/industries` |
+| 52 | `industries/sports-clubs-and-teams` | ✅ Installed | Landscape | 4:3 | No | `/industries/sports-clubs-and-teams`, `/industries` |
+| 53 | `industries/corporate-uniforms` | ✅ Installed | Landscape | 4:3 | No | `/industries/corporate-uniforms`, `/industries` |
+| 54 | `industries/hospitality` | ✅ Installed | Landscape | 4:3 | No | `/industries/hospitality`, `/industries` |
+| 55 | `industries/healthcare` | ✅ Installed | Landscape | 4:3 | No | `/industries/healthcare`, `/industries` |
+| 56 | `industries/education` | ✅ Installed | Landscape | 4:3 | No | `/industries/education`, `/industries` |
+| 57 | `industries/construction-and-industrial` | ✅ Installed | Landscape | 4:3 | No | `/industries/construction-and-industrial`, `/industries` |
+| 58 | `industries/retail-and-wholesale` | ✅ Installed | Landscape | 4:3 | No | `/industries/retail-and-wholesale`, `/industries` |
+| 59 | `industries/promotional-products` | ✅ Installed | Landscape | 4:3 | No | `/industries/promotional-products`, `/industries` |
 
 ### Market banners
 
 | Seq | ID | Status | Orientation | Rendered aspects | People | Used in |
 | --- | --- | --- | --- | --- | --- | --- |
-| 60 | `markets/usa` | ⏳ Outstanding | Landscape | 4:3, 16:9 | No | `/markets/usa`, `/markets` |
-| 61 | `markets/europe` | ⏳ Outstanding | Landscape | 4:3, 16:9 | No | `/markets/europe`, `/markets` |
-| 62 | `markets/uk` | ⏳ Outstanding | Landscape | 4:3, 16:9 | No | `/markets/uk`, `/markets` |
-| 63 | `markets/australia` | ⏳ Outstanding | Landscape | 4:3, 16:9 | No | `/markets/australia`, `/markets` |
+| 60 | `markets/usa` | ✅ Installed | Landscape | 4:3, 16:9 | Yes | `/markets/usa`, `/markets` |
+| 61 | `markets/europe` | ✅ Installed | Landscape | 4:3, 16:9 | Yes | `/markets/europe`, `/markets` |
+| 62 | `markets/uk` | ✅ Installed | Landscape | 4:3, 16:9 | No | `/markets/uk`, `/markets` |
+| 63 | `markets/australia` | ✅ Installed | Landscape | 4:3, 16:9 | Yes | `/markets/australia`, `/markets` |
 
-Installation follows the same process as section 2, with one addition: after
-placing the file and switching `placeholder()` to `photo()` in
-`content/fallback/media.ts`, also update
-`content/configuration/image-manifest.ts` if the generated shot changed
-anything the manifest states (orientation, aspect list), and update the
-outstanding-count assertions in `tests/unit/content.test.ts` and
-`tests/unit/image-manifest.test.ts` to match.
+All 28 files are installed at their `content/configuration/image-manifest.ts`
+`publicPath`, `content/fallback/media.ts` now declares every batch 2 slot with
+`photo()` rather than `placeholder()`, and the outstanding-count assertions
+in `tests/unit/content.test.ts` and `tests/unit/image-manifest.test.ts` were
+updated to 0 outstanding of 63 total.

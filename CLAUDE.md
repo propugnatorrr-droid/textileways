@@ -1873,8 +1873,9 @@ differentiated by an export or documentation detail rather than a flag or
 landmark. The paste-ready batch prompt is
 `docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md`. Industry entries photograph the
 relevant product only, never the buyer's own institution (no hospitals,
-hotels, schools or construction sites). All 28 are placeholders awaiting
-generation.
+hotels, schools or construction sites). All 28 were generated, reviewed and
+installed the same day: every one passed the anti-artifact checklist
+outright. See `docs/IMAGE_MANIFEST.md` section 8.
 
 ---
 

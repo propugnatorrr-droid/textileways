@@ -82,10 +82,10 @@ the shot it needs, and indexed with its routes, aspect ratios and crop-safe
 requirements in `content/configuration/image-manifest.ts`. Save the image as
 `public/images/<id>.jpg`, remove `isPlaceholder: true`, and it switches to an
 optimised image automatically. Until then a woven pattern panel renders with
-the brief printed beneath it. There are 63 slots as of this document (the
-original 35, all installed, plus 28 banner slots for the Capabilities,
-Materials, Industries and Markets hubs and their detail pages, added
-2026-09-10 and awaiting generation); see
+the brief printed beneath it. There are 63 slots as of this document, all
+installed (the original 35, plus 28 banner slots for the Capabilities,
+Materials, Industries and Markets hubs and their detail pages, added and
+installed 2026-09-10); see
 [docs/IMAGE_MANIFEST.md](docs/IMAGE_MANIFEST.md) for the full checklist,
 [docs/GPT_IMAGE_2_MASTER_PROMPT.md](docs/GPT_IMAGE_2_MASTER_PROMPT.md) for
 the first batch's paste-ready prompt, and

@@ -62,10 +62,10 @@ describe("image manifest", () => {
     // installed photograph; 7 of them failed the anti-artifact checklist on
     // first review and are installed anyway at the owner's explicit
     // direction as interim imagery (see docs/IMAGE_MANIFEST.md section 3).
-    // Batch 2, added 2026-09-10 (36 to 63, see
-    // docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md), is entirely outstanding:
-    // 28 new placeholders for pages that previously had no image at all.
-    expect(outstandingManifestEntries().length).toBe(28);
+    // Batch 2 (36 to 63, see docs/GPT_IMAGE_2_BATCH_2_MASTER_PROMPT.md) was
+    // reviewed and installed 2026-09-10: all 28 passed the anti-artifact
+    // checklist outright (see docs/IMAGE_MANIFEST.md section 8).
+    expect(outstandingManifestEntries().length).toBe(0);
     expect(imageManifest.length).toBe(63);
   });
 });
