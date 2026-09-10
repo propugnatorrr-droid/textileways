@@ -445,7 +445,7 @@ export const responsibilityPrinciples = [
   {
     title: "We say where a product is made",
     description:
-      "Every product family states whether it is manufactured in house, through an audited partner facility, sourced against a Textileways specification, or available following technical review.",
+      "Every product family states whether it is manufactured in house, through an audited partner facility, sourced against a TextileWays specification, or available following technical review.",
   },
   {
     title: "We separate approach from outcome",
@@ -494,7 +494,7 @@ export const whyTextilewaysReasons = [
 
 export const aboutNarrative = {
   intro: [
-    "Textileways is a textile and apparel manufacturer based in Pakistan, with more than twenty years of manufacturing experience, serving brands and organisations primarily in the United States and Europe.",
+    "TextileWays is a textile and apparel manufacturer based in Pakistan, with more than twenty years of manufacturing experience, serving brands and organisations primarily in the United States and Europe.",
     "The business exists to solve a specific problem: the gap between manufacturers who will only take large orders and those who can only handle small ones. A brand that starts at fifty pieces and grows to a hundred thousand normally has to change supplier at least twice on the way, losing fit, fabric consistency and colour standards each time.",
     "We are built to cover that whole range with the same specification discipline at each end of it.",
   ],
@@ -540,7 +540,7 @@ export const traceabilityNarrative = {
     {
       title: "Facility disclosure",
       description:
-        "Every product family on this site states how it is produced: in house, through an audited partner facility, developed and sourced by Textileways, or available following technical review.",
+        "Every product family on this site states how it is produced: in house, through an audited partner facility, developed and sourced by TextileWays, or available following technical review.",
     },
     {
       title: "Material origin",

@@ -1068,7 +1068,7 @@ function ReviewStep({
           id="field-privacyConsent"
           label={
             <>
-              I agree that Textileways may use the information I have submitted to respond to
+              I agree that TextileWays may use the information I have submitted to respond to
               this inquiry, as described in the{" "}
               <Link href="/privacy" className="tw-underline-grow font-medium text-ink">
                 privacy policy

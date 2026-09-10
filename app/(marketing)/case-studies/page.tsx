@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: studies.length > 0 ? "Case studies" : "Manufacturing project walkthrough",
     description:
       studies.length > 0
-        ? "Documented Textileways manufacturing projects, including product requirements, production decisions and verified outcomes."
+        ? "Documented TextileWays manufacturing projects, including product requirements, production decisions and verified outcomes."
         : "Follow a textile manufacturing project from the initial brief through specification, sampling, production, inspection, packing and reorder.",
     path: "/case-studies",
   }),
@@ -104,7 +104,7 @@ export default function CaseStudiesPage() {
               during a manufacturing project, from the first brief to repeat production.
             </p>
             <p className="mt-3">
-              Use it to understand what you will need to provide, what Textileways reviews
+              Use it to understand what you will need to provide, what TextileWays reviews
               and where approval is required before production moves forward.
             </p>
           </Notice>

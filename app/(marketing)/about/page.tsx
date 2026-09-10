@@ -12,9 +12,9 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Textileways",
+  title: "About TextileWays",
   description:
-    "Textileways is a Pakistan based textile and apparel manufacturer with more than 20 years of experience, producing for brands and organisations across international markets including the USA, Europe, the UK and Australia.",
+    "TextileWays is a Pakistan based textile and apparel manufacturer with more than 20 years of experience, producing for brands and organisations across international markets including the USA, Europe, the UK and Australia.",
   path: "/about",
 });
 
@@ -33,13 +33,13 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="One manufacturing partner. Every textile possibility."
-        lede="Textileways exists to close the gap between manufacturers who only take large orders and those who can only handle small ones."
+        lede="TextileWays exists to close the gap between manufacturers who only take large orders and those who can only handle small ones."
         breadcrumbs={breadcrumbs}
         actions={
           <>
             <ButtonLink href="/request-a-quote">Request a Quote</ButtonLink>
             <ButtonLink href="/why-textileways" variant="secondary">
-              Why Textileways
+              Why TextileWays
             </ButtonLink>
           </>
         }
@@ -113,7 +113,7 @@ export default function AboutPage() {
 
 
       <PageCta
-        title="See whether Textileways fits your next product"
+        title="See whether TextileWays fits your next product"
         description="Share the product, estimated quantity and destination. We will review the requirements and explain the most practical route into sampling and production."
         location="about_page"
         whatsapp={{ pageLabel: "About", path: "/about" }}

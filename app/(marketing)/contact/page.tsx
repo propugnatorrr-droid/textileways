@@ -15,7 +15,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact Textileways about a new project, an existing order, a materials question, certification and compliance, or a partnership inquiry.",
+    "Contact TextileWays about a new project, an existing order, a materials question, certification and compliance, or a partnership inquiry.",
   path: "/contact",
 });
 

@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Terms of use",
   description:
-    "Terms of use for the Textileways website, covering indicative values, quotations, compliance responsibility and intellectual property.",
+    "Terms of use for the TextileWays website, covering indicative values, quotations, compliance responsibility and intellectual property.",
   path: "/terms",
   /* Excluded from the sitemap, so it is marked noindex to match. */
   noIndex: true,

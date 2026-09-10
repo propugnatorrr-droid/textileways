@@ -12,7 +12,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Responsible material and production choices",
   description:
-    "Explore material sourcing, packaging, sampling and shipping choices that can be reviewed for a Textileways production programme.",
+    "Explore material sourcing, packaging, sampling and shipping choices that can be reviewed for a TextileWays production programme.",
   path: "/sustainability",
 });
 

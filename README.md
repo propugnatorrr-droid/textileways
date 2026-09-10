@@ -1,6 +1,6 @@
-# Textileways
+# TextileWays
 
-Production website for Textileways, a Pakistan based textile and apparel
+Production website for TextileWays, a Pakistan based textile and apparel
 manufacturer serving international buyers, including the USA, the European
 Union, the United Kingdom and Australia.
 

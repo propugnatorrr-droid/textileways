@@ -2,7 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utilities/cn";
 
 /**
- * Textileways wordmark.
+ * TextileWays wordmark.
  *
  * The real brand asset, supplied 2026-09-08 as a single ink coloured PNG
  * (`public/brand/wordmark.png`). It is dark on transparent, so the `tone`
@@ -24,7 +24,7 @@ export function Wordmark({
   return (
     <Image
       src="/brand/wordmark.png"
-      alt="Textileways"
+      alt="TextileWays"
       width={540}
       height={96}
       priority
@@ -52,7 +52,7 @@ export function BrandMark({
   return (
     <Image
       src="/brand/mark.png"
-      alt="Textileways"
+      alt="TextileWays"
       width={410}
       height={410}
       className={cn(

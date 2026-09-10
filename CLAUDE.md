@@ -1,10 +1,10 @@
-# Textileways Website Master Build Specification
+# TextileWays Website Master Build Specification
 
 ## 1. Mission
 
-Design and build a production grade B2B manufacturing website for Textileways, a Pakistan based textile and apparel manufacturer serving international buyers, including the United States, the European Union, the United Kingdom and Australia (Australia added 2026-09-07; the United States and Europe remain the two largest markets by volume, and nothing on the site should suggest otherwise).
+Design and build a production grade B2B manufacturing website for TextileWays, a Pakistan based textile and apparel manufacturer serving international buyers, including the United States, the European Union, the United Kingdom and Australia (Australia added 2026-09-07; the United States and Europe remain the two largest markets by volume, and nothing on the site should suggest otherwise).
 
-Textileways supports:
+TextileWays supports:
 
 1. Small validation orders starting from approximately 50 pieces
 2. Growing brands ordering hundreds or thousands of pieces
@@ -15,7 +15,7 @@ Textileways supports:
 7. Apparel, uniforms, home textiles, accessories, and specialist textile products
 8. International production and export support
 
-The website must position Textileways as:
+The website must position TextileWays as:
 
 > Sampling flexibility. Production discipline.
 
@@ -472,7 +472,7 @@ Support these capability labels:
 
 1. Manufactured in house
 2. Manufactured through an audited partner facility
-3. Developed and sourced by Textileways
+3. Developed and sourced by TextileWays
 4. Available following technical review
 
 Do not imply that every product is produced under one roof unless confirmed.
@@ -510,7 +510,7 @@ Use a structured mega menu for Products and Capabilities.
 
 The header should include:
 
-1. Textileways logo
+1. TextileWays logo
 2. Primary navigation
 3. Search trigger if product search is implemented
 4. Request a Quote action
@@ -975,7 +975,7 @@ Stages:
 For each stage include:
 
 1. Buyer responsibility
-2. Textileways responsibility
+2. TextileWays responsibility
 3. Required documents
 4. Typical decision points
 5. Possible delays

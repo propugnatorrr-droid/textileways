@@ -245,8 +245,8 @@ export const primaryNavigation: NavItem[] = [
       {
         title: "Company",
         links: [
-          { label: "About Textileways", href: "/about" },
-          { label: "Why Textileways", href: "/why-textileways" },
+          { label: "About TextileWays", href: "/about" },
+          { label: "Why TextileWays", href: "/why-textileways" },
           { label: "The factory", href: "/factory" },
           { label: "Contact", href: "/contact" },
         ],
@@ -351,7 +351,7 @@ export const footerNavigation: NavColumn[] = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Why Textileways", href: "/why-textileways" },
+      { label: "Why TextileWays", href: "/why-textileways" },
       { label: "Industries", href: "/industries" },
       { label: "Contact", href: "/contact" },
     ],

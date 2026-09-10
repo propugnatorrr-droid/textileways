@@ -14,7 +14,7 @@ import { breadcrumbSchema, faqSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Quality",
   description:
-    "How quality is controlled at Textileways: incoming material inspection, pre production review, inline checks, measurement verification, final inspection and packing audits.",
+    "How quality is controlled at TextileWays: incoming material inspection, pre production review, inline checks, measurement verification, final inspection and packing audits.",
   path: "/quality",
 });
 

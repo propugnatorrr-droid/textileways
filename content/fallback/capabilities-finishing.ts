@@ -429,7 +429,7 @@ export const finishingCapabilities: Capability[] = [
       "Arranging independent testing where a buyer, a market or a product category requires evidence.",
     introduction: [
       "Some claims cannot be made on the basis of inspection alone. Fibre composition, colour fastness, dimensional stability, tensile strength and restricted substance limits are established by laboratory testing.",
-      "Textileways coordinates testing with accredited laboratories rather than issuing its own test results. Reports come to you from the laboratory directly, which is what makes them useful as evidence.",
+      "TextileWays coordinates testing with accredited laboratories rather than issuing its own test results. Reports come to you from the laboratory directly, which is what makes them useful as evidence.",
     ],
     verification: "pending",
     capabilityStatus: "after-technical-review",
@@ -443,7 +443,7 @@ export const finishingCapabilities: Capability[] = [
     materialCompatibility: ["Applies across all material groups"],
     techniques: ["Composition testing", "Colour fastness testing", "Dimensional stability testing", "Restricted substance screening", "Flammability testing where the category requires it"],
     limitations: [
-      "Textileways coordinates testing and does not issue independent test results.",
+      "TextileWays coordinates testing and does not issue independent test results.",
       "Testing scope is defined by you or your buyer, since requirements vary by market and product category.",
       "Test costs and lead times are quoted per requirement.",
     ],

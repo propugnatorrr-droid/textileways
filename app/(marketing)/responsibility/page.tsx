@@ -12,7 +12,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Responsibility",
   description:
-    "What Textileways publishes about itself, what it withholds and why. Worker wellbeing, audit support, honest disclosure of where products are made, and no unevidenced claims.",
+    "What TextileWays publishes about itself, what it withholds and why. Worker wellbeing, audit support, honest disclosure of where products are made, and no unevidenced claims.",
   path: "/responsibility",
 });
 
@@ -94,7 +94,7 @@ export default function ResponsibilityPage() {
       >
         <div className="tw-prose text-body leading-relaxed text-ink-muted">
           <p>
-            Textileways holds no social compliance certification that has been supplied for
+            TextileWays holds no social compliance certification that has been supplied for
             publication, so none is claimed anywhere on this site. That is a statement about
             what has been evidenced to us for the website, not a statement that conditions are
             unacceptable.

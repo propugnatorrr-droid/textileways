@@ -25,7 +25,7 @@ export const privacyPolicy: { updated: string; sections: LegalSection[] } = {
     {
       heading: "Who this policy covers",
       paragraphs: [
-        "This policy describes how Textileways handles personal information submitted through this website. The registered legal entity name and company registration details are recorded as outstanding in the project content requirements and must be inserted here before publication.",
+        "This policy describes how TextileWays handles personal information submitted through this website. The registered legal entity name and company registration details are recorded as outstanding in the project content requirements and must be inserted here before publication.",
         "If you contact us by email or telephone rather than through this website, the same principles apply to the information you provide.",
       ],
     },
@@ -160,7 +160,7 @@ export const termsOfUse: { updated: string; sections: LegalSection[] } = {
     {
       heading: "Intellectual property",
       paragraphs: [
-        "The content, design and code of this website belong to Textileways or its licensors. You may view and print pages for your own business use in evaluating us as a supplier.",
+        "The content, design and code of this website belong to TextileWays or its licensors. You may view and print pages for your own business use in evaluating us as a supplier.",
         "Designs, artwork and specifications you submit remain yours. By submitting them you confirm you have the right to do so, and you permit us to use them for the limited purpose of quoting, sampling and producing your order.",
       ],
     },

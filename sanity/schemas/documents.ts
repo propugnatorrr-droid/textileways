@@ -79,12 +79,12 @@ const capabilityStatusField = defineField({
   type: "string",
   group: "status",
   description:
-    "Stated truthfully on the public page. Never select in house unless production genuinely runs on Textileways equipment.",
+    "Stated truthfully on the public page. Never select in house unless production genuinely runs on TextileWays equipment.",
   options: {
     list: [
       { title: "Manufactured in house", value: "in-house" },
       { title: "Manufactured through an audited partner facility", value: "audited-partner" },
-      { title: "Developed and sourced by Textileways", value: "developed-and-sourced" },
+      { title: "Developed and sourced by TextileWays", value: "developed-and-sourced" },
       { title: "Available following technical review", value: "after-technical-review" },
     ],
   },

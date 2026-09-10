@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         : "Certification requirements",
     description:
       certificates.length > 0
-        ? "Current Textileways certification records, including issuing organisation, scope, facility and validity."
+        ? "Current TextileWays certification records, including issuing organisation, scope, facility and validity."
         : "Discuss certification, testing and documentation requirements for your textile or apparel programme before development begins.",
     path: "/certifications",
   }),
@@ -159,7 +159,7 @@ export default function CertificationsPage() {
         </ul>
 
         <Notice tone="info" className="mt-10 max-w-[70ch]">
-          Textileways does not treat one certification as proof that every product, material
+          TextileWays does not treat one certification as proof that every product, material
           or production route is covered. Requirements are reviewed against the specific
           order.
         </Notice>

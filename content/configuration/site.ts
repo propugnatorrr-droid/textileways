@@ -15,14 +15,14 @@ import { verifiedFactValue } from "./company-facts";
 const FALLBACK_SITE_URL = "https://www.textileways.com";
 
 export const siteConfig = {
-  name: "Textileways",
-  legalNameFallback: "Textileways",
+  name: "TextileWays",
+  legalNameFallback: "TextileWays",
   /** Used for canonical URLs, sitemaps and absolute Open Graph image paths. */
   url: resolveSiteUrl(),
   locale: "en",
   /** Public facing one line description, reused as the default meta description. */
   description:
-    "Textileways is a Pakistan based textile and apparel manufacturer producing custom apparel, uniforms, home textiles and specialist products for international brands, including buyers across the USA, Europe, the UK and Australia.",
+    "TextileWays is a Pakistan based textile and apparel manufacturer producing custom apparel, uniforms, home textiles and specialist products for international brands, including buyers across the USA, Europe, the UK and Australia.",
   tagline: "One manufacturing partner. Every textile possibility.",
   positioning: "Sampling flexibility. Production discipline.",
   commercialMessage: "Start at 50. Scale beyond 100,000.",

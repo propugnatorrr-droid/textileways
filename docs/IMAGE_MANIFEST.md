@@ -29,7 +29,7 @@ or landmarks for any market). See section 8.
 Once a real file is installed at one of the paths below, it becomes
 representative campaign imagery: a photograph illustrating the process,
 product or environment described, generated or commissioned for this
-website. It is not a documentary photograph of this specific Textileways
+website. It is not a documentary photograph of this specific TextileWays
 facility, staff, machinery, production run, customer or certificate unless
 the business separately supplies and confirms real source photography that
 proves those specific details. `app/(marketing)/factory/page.tsx` and
@@ -108,7 +108,7 @@ explicit line to those five entries' prompts: "the garment's neck label and
 any care label are turned away from camera or folded under, showing no text
 at all." Incidental real equipment branding (a "JUKI" or "Brother" nameplate
 visible on a sewing machine in the background) was treated as acceptable
-realism, not rejected, since it does not misrepresent Textileways itself.
+realism, not rejected, since it does not misrepresent TextileWays itself.
 
 ## 4. Rejection checklist
 

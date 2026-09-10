@@ -18,7 +18,7 @@ destination. That reads as unfinished and text heavy. This batch is the fix.
 
 **Truthfulness.** Exactly the same rules as the first batch apply. These are
 temporary representative campaign images, not documentary proof of
-Textileways' actual facility, staff, machinery, customers, certifications or
+TextileWays' actual facility, staff, machinery, customers, certifications or
 of any real institution (hospital, hotel, school, sports club) referenced by
 an industry page. Nothing generated from this prompt should be captioned,
 labelled or described anywhere on the site as a verified photograph of a
@@ -55,7 +55,7 @@ what any image shows.
 ## BEGIN MASTER PROMPT
 
 Generate a complete, coherent set of 28 independent commercial photographs
-for Textileways, a Pakistan based textile and apparel manufacturing partner
+for TextileWays, a Pakistan based textile and apparel manufacturing partner
 serving international brands, organisations, sourcing teams, importers,
 distributors and bulk buyers, including buyers in the United States, the
 European Union, the United Kingdom and Australia. This is the second batch
@@ -166,7 +166,7 @@ nothing else implies the setting.
 
 One market entry (60 to 63) is for Australia specifically. The library must
 appeal to Australian buyers evaluating overseas suppliers without pretending
-the factory is in Australia or that Textileways has any Australian
+the factory is in Australia or that TextileWays has any Australian
 presence, office or existing customer there. Do not use, anywhere in this
 batch: Australian flags; kangaroos or other native Australian wildlife; the
 Sydney Opera House or any other Australian landmark; beaches as a sourcing

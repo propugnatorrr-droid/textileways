@@ -1,5 +1,5 @@
 /**
- * Centralized register of factual claims about Textileways.
+ * Centralized register of factual claims about TextileWays.
  *
  * Every statement the website makes about the company lives here so the owner
  * can review it in one place. Nothing is invented: entries the business has not

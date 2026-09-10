@@ -13,7 +13,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Markets",
   description:
-    "How Textileways supports buyers importing into the United States, the European Union, the United Kingdom and Australia, covering sizing, labelling, documentation and freight planning.",
+    "How TextileWays supports buyers importing into the United States, the European Union, the United Kingdom and Australia, covering sizing, labelling, documentation and freight planning.",
   path: "/markets",
 });
 

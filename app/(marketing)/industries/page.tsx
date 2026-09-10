@@ -13,7 +13,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Industries",
   description:
-    "How Textileways supports fashion brands, streetwear labels, sports clubs, corporate uniform programmes, hospitality, healthcare, education, industrial buyers, retailers and promotional distributors.",
+    "How TextileWays supports fashion brands, streetwear labels, sports clubs, corporate uniform programmes, hospitality, healthcare, education, industrial buyers, retailers and promotional distributors.",
   path: "/industries",
 });
 

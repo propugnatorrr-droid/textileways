@@ -16,7 +16,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Product families",
   description:
-    "Thirteen textile and apparel product families manufactured by Textileways, each with construction options, indicative weight ranges and a truthful statement of how it is produced.",
+    "Thirteen textile and apparel product families manufactured by TextileWays, each with construction options, indicative weight ranges and a truthful statement of how it is produced.",
   path: "/products",
 });
 

@@ -12,7 +12,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Traceability",
   description:
-    "How Textileways records material origin, component suppliers, certification chains and production records, and how every product family discloses where it is made.",
+    "How TextileWays records material origin, component suppliers, certification chains and production records, and how every product family discloses where it is made.",
   path: "/traceability",
 });
 

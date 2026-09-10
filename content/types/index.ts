@@ -20,17 +20,17 @@ export type CapabilityStatus =
 export const capabilityStatusLabels: Record<CapabilityStatus, string> = {
   "in-house": "Manufactured in house",
   "audited-partner": "Manufactured through an audited partner facility",
-  "developed-and-sourced": "Developed and sourced by Textileways",
+  "developed-and-sourced": "Developed and sourced by TextileWays",
   "after-technical-review": "Available following technical review",
 };
 
 export const capabilityStatusExplanations: Record<CapabilityStatus, string> = {
   "in-house":
-    "Production for this category runs on equipment operated by Textileways.",
+    "Production for this category runs on equipment operated by TextileWays.",
   "audited-partner":
-    "Production runs at a partner facility that Textileways audits and supervises.",
+    "Production runs at a partner facility that TextileWays audits and supervises.",
   "developed-and-sourced":
-    "Textileways develops the specification and sources production against it.",
+    "TextileWays develops the specification and sources production against it.",
   "after-technical-review":
     "Feasibility, material availability and construction are confirmed before this is offered.",
 };

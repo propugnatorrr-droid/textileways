@@ -88,7 +88,7 @@ export default async function OpengraphImage() {
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element -- next/og renders with satori, not next/image */}
-          <img src={wordmarkDataUrl} alt="Textileways" width={220} height={39} />
+          <img src={wordmarkDataUrl} alt="TextileWays" width={220} height={39} />
 
           <div style={{ display: "flex", fontSize: 24, color: "#7a847f" }}>
             Pakistan based manufacturing for international buyers

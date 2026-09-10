@@ -52,7 +52,7 @@ Add each variable to Production, Preview and Development unless noted.
 | `NEXT_PUBLIC_SITE_URL` | `https://www.textileways.com` | Production |
 | `NEXT_PUBLIC_SITE_URL` | The Vercel preview URL, or leave unset | Preview |
 | `RESEND_API_KEY` | From Resend | All |
-| `RFQ_FROM_EMAIL` | `Textileways <inquiries@textileways.com>` | All |
+| `RFQ_FROM_EMAIL` | `TextileWays <inquiries@textileways.com>` | All |
 | `RFQ_TO_EMAIL` | Who receives inquiries, comma separated for several | All |
 
 ### 3.2 Strongly recommended

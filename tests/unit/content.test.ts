@@ -545,7 +545,7 @@ describe("analytics sanitisation", () => {
 describe("WhatsApp deep links", () => {
   it("names the site and the page in the prefilled message", () => {
     const message = whatsappMessage({ pageLabel: "Streetwear", path: "/products/streetwear" });
-    expect(message).toContain("Textileways");
+    expect(message).toContain("TextileWays");
     expect(message).toContain("Page: Streetwear");
     expect(message).toContain("/products/streetwear");
   });

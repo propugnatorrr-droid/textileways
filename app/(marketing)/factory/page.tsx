@@ -13,7 +13,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "The factory",
   description:
-    "The working environment where Textileways products are made, covering the production floor, cutting, sewing, printing, embroidery, inspection and packing.",
+    "The working environment where TextileWays products are made, covering the production floor, cutting, sewing, printing, embroidery, inspection and packing.",
   path: "/factory",
 });
 

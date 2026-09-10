@@ -10,7 +10,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Request a sample",
   description:
-    "Request fabric swatches, a stock sample or a custom development sample from Textileways. Sample charges and courier costs are always quoted before any work begins.",
+    "Request fabric swatches, a stock sample or a custom development sample from TextileWays. Sample charges and courier costs are always quoted before any work begins.",
   path: "/request-a-sample",
 });
 

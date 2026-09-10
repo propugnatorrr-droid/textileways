@@ -3,7 +3,7 @@ import type { Market } from "@/content/types";
 /**
  * Market pages.
  *
- * These describe how Textileways supports buyers in each market. They do not
+ * These describe how TextileWays supports buyers in each market. They do not
  * make blanket legal guarantees, and they state clearly that regulatory
  * responsibility for a product sits with the brand placing it on the market.
  */
@@ -145,7 +145,7 @@ export const markets: Market[] = [
     summary:
       "Pakistan based manufacturing for Australian brands, retailers, importers and organisations, working to the sizing, labelling and packaging specification you confirm.",
     introduction: [
-      "Textileways manufactures in Pakistan. We are not an Australian company and do not operate an office or facility in Australia. What we offer Australian buyers is the same specification discipline described throughout this site, applied to a destination you confirm rather than assumed from experience with other markets.",
+      "TextileWays manufactures in Pakistan. We are not an Australian company and do not operate an office or facility in Australia. What we offer Australian buyers is the same specification discipline described throughout this site, applied to a destination you confirm rather than assumed from experience with other markets.",
       "Australian buyers typically source at a wider range of quantities than large European retail programmes, from a first validation run through to repeat wholesale orders, which suits our lower minimum quantities as much as it suits an established importer scaling an existing range.",
       "Sizing, care labelling and country of origin wording are confirmed with you before cutting starts. We apply exactly what you specify rather than assuming an Australian standard on your behalf.",
     ],

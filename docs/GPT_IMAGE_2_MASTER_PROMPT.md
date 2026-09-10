@@ -1,6 +1,6 @@
 # GPT Image 2 master prompt
 
-Paste-ready master prompt for generating the complete Textileways photography
+Paste-ready master prompt for generating the complete TextileWays photography
 library in one coherent batch. Built from the actual 35 media slots declared
 in `content/fallback/media.ts` and indexed in
 `content/configuration/image-manifest.ts`, not from an assumed or historical
@@ -21,7 +21,7 @@ specific fix baked in, are ready in `docs/GPT_IMAGE_2_REGENERATION_BATCH.md`;
 use that document for them rather than re-deriving prompts from this one.
 
 **Truthfulness.** The images this prompt requests are temporary representative
-campaign imagery, not documentary proof of Textileways' actual facility, staff,
+campaign imagery, not documentary proof of TextileWays' actual facility, staff,
 machinery, customers, production capacity or certifications. `content/fallback/media.ts`
 and every route that renders factory imagery carry a disclosure to that effect
 once real files are installed (see `app/(marketing)/factory/page.tsx` and
@@ -52,7 +52,7 @@ of this specific business. All factual claims remain governed by
 ## BEGIN MASTER PROMPT
 
 Generate a complete, coherent set of 35 independent commercial photographs for
-Textileways, a Pakistan based textile and apparel manufacturing partner
+TextileWays, a Pakistan based textile and apparel manufacturing partner
 serving international brands, organisations, sourcing teams, importers,
 distributors and bulk buyers, including buyers in the United States, the
 European Union, the United Kingdom and Australia.
@@ -159,7 +159,7 @@ readable invented text, no real brand name, and no logo.
 ### 5. Australian market relevance, without an Australian setting
 
 The library must appeal to Australian buyers evaluating overseas suppliers
-without pretending the factory is in Australia or that Textileways has any
+without pretending the factory is in Australia or that TextileWays has any
 Australian presence. Achieve this through: clean, straightforward commercial
 presentation; products suited to Australian buyers, including quality tees,
 heavyweight streetwear, activewear, club apparel, uniforms, hospitality
@@ -258,7 +258,7 @@ sitting in the extreme top 10 percent (ceiling structure can be cropped there)
 or extreme bottom 10 percent.
 Must include: multiple sewing workstations in depth, visible thread paths,
 natural and task lighting mixed, at least one worker mid-task.
-Must not include: any Textileways signage, any readable brand name, an
+Must not include: any TextileWays signage, any readable brand name, an
 impossibly vast or futuristic hall.
 
 **02: Factory exterior**
@@ -271,7 +271,7 @@ allows. Crop-safe zone: building and loading area centered, generous sky and
 ground margin so a 4:3 crop from a wider source never clips the entrance.
 Must include: a plausible single or low-rise industrial building, a loading or
 entrance area, daylight.
-Must not include: any readable "Textileways" or other brand signage, a mega
+Must not include: any readable "TextileWays" or other brand signage, a mega
 campus scale that reads as impossible, crowds posed for the camera, an
 Australian or non-Pakistani architectural style.
 

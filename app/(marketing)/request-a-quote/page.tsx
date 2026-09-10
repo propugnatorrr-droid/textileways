@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "@/lib/seo/structured-data";
 export const metadata: Metadata = buildMetadata({
   title: "Request a quote",
   description:
-    "Request a manufacturing quotation from Textileways. Share your product details, materials, decoration, quantity and delivery requirements in a structured seven step form.",
+    "Request a manufacturing quotation from TextileWays. Share your product details, materials, decoration, quantity and delivery requirements in a structured seven step form.",
   path: "/request-a-quote",
 });
 

@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Why Textileways",
+  title: "Why TextileWays",
   description:
     "Why brands choose a manufacturer that covers both a 50 piece validation run and a 100,000 piece programme, with the same specification discipline at each end.",
   path: "/why-textileways",
@@ -17,7 +17,7 @@ export const metadata: Metadata = buildMetadata({
 export default function WhyTextilewaysPage() {
   const breadcrumbs = [
     { name: "Home", path: "/" },
-    { name: "Why Textileways", path: "/why-textileways" },
+    { name: "Why TextileWays", path: "/why-textileways" },
   ];
 
   return (
@@ -25,7 +25,7 @@ export default function WhyTextilewaysPage() {
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
 
       <PageHeader
-        eyebrow="Why Textileways"
+        eyebrow="Why TextileWays"
         title="Sampling flexibility. Production discipline."
         lede="You should not have to replace your manufacturer every time you grow. Every supplier change costs a season in re establishing fit, fabric, colour and trust."
         breadcrumbs={breadcrumbs}
@@ -81,7 +81,7 @@ export default function WhyTextilewaysPage() {
         title="Already have a manufacturer?"
         description="You do not have to move an existing programme to start a conversation about one new style, one new category, or a quantity your current supplier will not quote for."
         location="why_page"
-        whatsapp={{ pageLabel: "Why Textileways", path: "/why-textileways" }}
+        whatsapp={{ pageLabel: "Why TextileWays", path: "/why-textileways" }}
       />
     </>
   );

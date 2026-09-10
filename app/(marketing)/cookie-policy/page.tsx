@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Cookie policy",
   description:
-    "How Textileways uses cookies and browser storage, what is stored without consent and what analytics only runs after you accept.",
+    "How TextileWays uses cookies and browser storage, what is stored without consent and what analytics only runs after you accept.",
   path: "/cookie-policy",
   /* Excluded from the sitemap, so it is marked noindex to match. */
   noIndex: true,

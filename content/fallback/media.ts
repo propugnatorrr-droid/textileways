@@ -441,7 +441,7 @@ export const materialGroupMedia = {
 /*                                                                             */
 /* Added 2026-09-10. The industries hub and all ten detail pages had no image */
 /* at all. Each shows the relevant product type, not the buyer's own         */
-/* institution: Textileways photographs products, not hospitals, hotels or   */
+/* institution: TextileWays photographs products, not hospitals, hotels or   */
 /* classrooms it has no connection to.                                       */
 /* -------------------------------------------------------------------------- */
 

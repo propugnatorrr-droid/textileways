@@ -10,7 +10,7 @@ test.describe("homepage", () => {
   test("loads with the expected hero and a single h1", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page).toHaveTitle(/Textileways/);
+    await expect(page).toHaveTitle(/TextileWays/);
     await expect(
       page.getByRole("heading", { level: 1, name: /Made for your first launch/i }),
     ).toBeVisible();

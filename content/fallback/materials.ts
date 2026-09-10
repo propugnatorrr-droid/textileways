@@ -49,7 +49,7 @@ export const materials: Material[] = [
     seo: {
       title: "Cotton fabric for apparel manufacturing",
       description:
-        "Typical cotton qualities, weight ranges, decoration compatibility and sampling considerations for apparel manufactured by Textileways.",
+        "Typical cotton qualities, weight ranges, decoration compatibility and sampling considerations for apparel manufactured by TextileWays.",
     },
   },
   {

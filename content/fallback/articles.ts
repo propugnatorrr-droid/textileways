@@ -6,7 +6,7 @@ import { articleMedia } from "./media";
  *
  * These explain how manufacturing decisions work rather than promoting the
  * company. They contain no customer stories, no performance statistics and no
- * claims about Textileways that are not already in the verified fact register.
+ * claims about TextileWays that are not already in the verified fact register.
  */
 export const articles: Article[] = [
   {

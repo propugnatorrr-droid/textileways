@@ -78,7 +78,7 @@ export function whatsappHref(context: WhatsappContext): string | null {
 const routeLabels: Record<string, string> = {
   "/": "Homepage",
   "/about": "About",
-  "/why-textileways": "Why Textileways",
+  "/why-textileways": "Why TextileWays",
   "/factory": "The factory",
   "/quality": "Quality",
   "/certifications": "Certifications",

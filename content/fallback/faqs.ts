@@ -24,7 +24,7 @@ export const faqs: FaqItem[] = [
     category: "Ordering",
     question: "Can the same supplier handle both a 50 piece test and a 100,000 piece programme?",
     answer:
-      "Yes. That is the reason Textileways exists in its current form. A validation run and a full scale production programme use the same specification discipline, the same approved sample and the same inspection points. The difference is material procurement, line planning and shipping method, not the standard applied to the product.",
+      "Yes. That is the reason TextileWays exists in its current form. A validation run and a full scale production programme use the same specification discipline, the same approved sample and the same inspection points. The difference is material procurement, line planning and shipping method, not the standard applied to the product.",
   },
   {
     id: "quick-estimate",

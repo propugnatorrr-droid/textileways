@@ -269,7 +269,7 @@ export function ContactForm() {
           id="field-privacyConsent"
           label={
             <>
-              I agree that Textileways may use the information I have submitted to respond to
+              I agree that TextileWays may use the information I have submitted to respond to
               this message, as described in the{" "}
               <Link href="/privacy" className="tw-underline-grow font-medium text-ink">
                 privacy policy
