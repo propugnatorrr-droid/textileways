@@ -19,6 +19,13 @@ export interface NavColumn {
   links: NavLink[];
 }
 
+export interface NavFeatured {
+  title: string;
+  description: string;
+  href: string;
+  ctaLabel: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
@@ -26,6 +33,8 @@ export interface NavItem {
   columns?: NavColumn[];
   /** Short line shown at the head of the mega menu panel. */
   intro?: string;
+  /** A single highlighted card shown alongside the columns, for the widest menus. */
+  featured?: NavFeatured;
 }
 const hasPublicCertificates = publicCertificates().length > 0;
 const hasPublishedCaseStudies = publishedCaseStudies().length > 0;
@@ -37,6 +46,13 @@ export const primaryNavigation: NavItem[] = [
     href: "/products",
     intro:
       "Explore thirteen product families with practical guidance on construction, materials, decoration and order quantities.",
+    featured: {
+      title: "Not sure where to start?",
+      description:
+        "Most buyers start with a small validation order before scaling. Answer a few questions and see where your project fits.",
+      href: "/quick-quote",
+      ctaLabel: "Check project readiness",
+    },
     columns: [
       {
         title: "Apparel",
@@ -100,6 +116,13 @@ export const primaryNavigation: NavItem[] = [
     href: "/capabilities",
     intro:
       "Product development, sourcing, sampling, manufacturing, decoration, finishing, quality control and export preparation.",
+    featured: {
+      title: "New to manufacturing overseas?",
+      description:
+        "See how a project actually moves from first brief through sampling to delivery, stage by stage.",
+      href: "/manufacturing-process",
+      ctaLabel: "See the process",
+    },
     columns: [
       ...capabilitiesByGroup()
         .slice(0, 3)
@@ -126,6 +149,13 @@ export const primaryNavigation: NavItem[] = [
   {
     label: "Manufacturing",
     href: "/manufacturing-process",
+    featured: {
+      title: "Ready to talk specifics?",
+      description:
+        "Share your product, target quantity and market for a technical and commercial review.",
+      href: "/request-a-quote",
+      ctaLabel: "Request a Quote",
+    },
     columns: [
       {
         title: "How production runs",

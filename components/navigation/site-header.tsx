@@ -338,58 +338,99 @@ function DesktopNavItem({
         hidden={!open}
         className={cn(
           "absolute left-1/2 top-full -translate-x-1/2 pt-2.5",
-          /* Width follows content. A single column menu stays narrow. */
-          item.columns.length >= 3
-            ? "w-[min(calc(100vw-32px),1180px)]"
-            : item.columns.length === 2
-              ? "w-[min(calc(100vw-32px),760px)]"
-              : "w-[min(calc(100vw-32px),420px)]",
+          /* Width follows content. A single column menu stays narrow. A featured card adds its own budget. */
+          item.featured
+            ? "w-[min(calc(100vw-32px),1320px)]"
+            : item.columns.length >= 3
+              ? "w-[min(calc(100vw-32px),1180px)]"
+              : item.columns.length === 2
+                ? "w-[min(calc(100vw-32px),760px)]"
+                : "w-[min(calc(100vw-32px),420px)]",
         )}
       >
         <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_24px_70px_rgba(11,15,13,0.13)]">
           <span aria-hidden="true" className="block h-[3px] bg-forest" />
-          <div className="p-6 lg:p-7">
-          {item.intro ? (
-            <p className="mb-6 max-w-[70ch] text-small text-ink-subtle">{item.intro}</p>
-          ) : null}
-          <div
-            className={cn(
-              "grid gap-x-8 gap-y-7",
-              item.columns.length >= 4
-                ? "lg:grid-cols-4"
-                : item.columns.length === 3
-                  ? "lg:grid-cols-3"
-                  : item.columns.length === 2
-                    ? "sm:grid-cols-2"
-                    : "grid-cols-1",
-            )}
-          >
-            {item.columns.map((column) => (
-              <div key={column.title}>
-                <p className="mb-3 px-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
-                  {column.title}
-                </p>
-                <ul className="-mx-3 space-y-0.5">
-                  {column.links.map((link) => (
-                    <li key={link.href + link.label}>
+          <div className="flex gap-8 p-6 lg:p-7">
+            <div className="min-w-0 flex-1">
+              {item.intro ? (
+                <p className="mb-6 max-w-[70ch] text-small text-ink-subtle">{item.intro}</p>
+              ) : null}
+              <div
+                className={cn(
+                  "grid gap-y-7 lg:divide-x lg:divide-line",
+                  item.columns.length >= 4
+                    ? "lg:grid-cols-4"
+                    : item.columns.length === 3
+                      ? "lg:grid-cols-3"
+                      : item.columns.length === 2
+                        ? "sm:grid-cols-2"
+                        : "grid-cols-1",
+                )}
+              >
+                {item.columns.map((column) => (
+                  <div key={column.title} className="first:pl-0 lg:pl-7">
+                    {column.href ? (
                       <Link
-                        href={link.href}
+                        href={column.href}
                         onClick={onClose}
-                        className="group block rounded-[10px] px-3 py-2 text-[15px] font-semibold tracking-[-0.006em] text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
+                        className="group mb-3 flex items-center gap-2 px-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle transition-colors duration-200 hover:text-forest-deep"
                       >
-                        {link.label}
-                        {link.description ? (
-                          <span className="mt-0.5 block text-[13.5px] font-normal leading-snug text-ink-subtle">
-                            {link.description}
-                          </span>
-                        ) : null}
+                        <span aria-hidden="true" className="h-[7px] w-[7px] shrink-0 bg-forest" />
+                        {column.title}
+                        <ArrowIcon className="h-2.5 w-2.5 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
                       </Link>
-                    </li>
-                  ))}
-                </ul>
+                    ) : (
+                      <p className="mb-3 flex items-center gap-2 px-3 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+                        <span aria-hidden="true" className="h-[7px] w-[7px] shrink-0 bg-forest/45" />
+                        {column.title}
+                      </p>
+                    )}
+                    <ul className="-mx-3 space-y-0.5">
+                      {column.links.map((link) => (
+                        <li key={link.href + link.label}>
+                          <Link
+                            href={link.href}
+                            onClick={onClose}
+                            className="group block rounded-[10px] px-3 py-2 text-[15px] font-semibold tracking-[-0.006em] text-ink transition-colors duration-200 hover:bg-cotton hover:text-forest-deep"
+                          >
+                            {link.label}
+                            {link.description ? (
+                              <span className="mt-0.5 block text-[13.5px] font-normal leading-snug text-ink-subtle">
+                                {link.description}
+                              </span>
+                            ) : null}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+
+            {item.featured ? (
+              <div className="hidden w-[252px] shrink-0 border-l border-line pl-8 lg:block">
+                <div className="flex h-full flex-col rounded-[16px] border border-line bg-forest-soft p-5">
+                  <p className="text-label font-semibold uppercase tracking-[0.1em] text-forest-deep">
+                    Featured
+                  </p>
+                  <p className="mt-3 text-[15px] font-semibold leading-snug text-ink">
+                    {item.featured.title}
+                  </p>
+                  <p className="mt-2 flex-1 text-[13.5px] leading-snug text-ink-muted">
+                    {item.featured.description}
+                  </p>
+                  <Link
+                    href={item.featured.href}
+                    onClick={onClose}
+                    className="group mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-forest-deep"
+                  >
+                    {item.featured.ctaLabel}
+                    <ArrowIcon className="h-2.5 w-2.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </Link>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -454,7 +495,8 @@ function MobileNavigation({
                 <div hidden={!open} className="pb-5">
                   {item.columns.map((column) => (
                     <div key={column.title} className="mt-4 first:mt-0">
-                      <p className="mb-2 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+                      <p className="mb-2 flex items-center gap-2 text-label font-semibold uppercase tracking-[0.1em] text-ink-subtle">
+                        <span aria-hidden="true" className="h-[7px] w-[7px] shrink-0 bg-forest/45" />
                         {column.title}
                       </p>
                       <ul className="-mx-3 space-y-0.5">
@@ -520,6 +562,19 @@ function MobileNavigation({
 /* -------------------------------------------------------------------------- */
 /* Icons, all decorative                                                       */
 /* -------------------------------------------------------------------------- */
+
+function ArrowIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" width="11" height="11" viewBox="0 0 11 11" fill="none" className={className}>
+      <path
+        d="M2.2 8.8L8.8 2.2M8.8 2.2H3.4M8.8 2.2V7.6"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="square"
+      />
+    </svg>
+  );
+}
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
