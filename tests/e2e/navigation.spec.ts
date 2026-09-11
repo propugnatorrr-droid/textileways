@@ -12,7 +12,7 @@ test.describe("homepage", () => {
 
     await expect(page).toHaveTitle(/TextileWays/);
     await expect(
-      page.getByRole("heading", { level: 1, name: /Made for your first launch/i }),
+      page.getByRole("heading", { level: 1, name: /Clothing manufacturer in Pakistan/i }),
     ).toBeVisible();
 
     const h1Count = await page.locator("h1").count();

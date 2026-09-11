@@ -10,8 +10,9 @@ import { WhatsappInlineLink } from "@/components/layout/whatsapp-button";
  *
  * Composed so that the heading, supporting copy, actions and the top of the
  * media frame all sit inside a typical laptop viewport. The heading is capped
- * at two lines by explicit breaks rather than left to wrap, and the statistics
- * ride on a rail over the media at desktop, dropping below it on small screens.
+ * at two lines by explicit breaks rather than left to wrap. The MOQ and scale
+ * statistics live inside the left column, directly under the actions, so they
+ * render above the fold rather than in a separate full width strip below it.
  */
 export function HomeHero() {
   const experience = verifiedFactValue("experience-years");
@@ -36,15 +37,15 @@ export function HomeHero() {
             </p>
 
             <h1 className="mt-5 font-sans text-display-xl font-semibold text-ink">
-              Made for your first launch.
-              <span className="mt-1 block text-forest">Built for your largest.</span>
+              Clothing manufacturer in Pakistan.
+              <span className="mt-1 block text-forest">From 50 pieces to 100,000+.</span>
             </h1>
 
             <p className="mt-6 max-w-[54ch] text-body-l text-ink-muted">
-              Custom apparel, uniforms, sportswear, home textiles and specialist products
-              manufactured in Pakistan for international brands and organisations. Start
-              from approximately 50 pieces after technical review and build toward larger
-              repeat production.
+              Custom and private label apparel, uniforms, activewear, home textiles and
+              specialist products manufactured in Pakistan for international brands and
+              organisations. Start from approximately 50 pieces after technical review and
+              build toward larger repeat production.
             </p>
 
 
@@ -61,6 +62,27 @@ export function HomeHero() {
                 variant="quiet"
               />
             </div>
+
+            <dl className="mt-8 grid overflow-hidden rounded-[16px] bg-cotton sm:grid-cols-3">
+              {stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={
+                    index === 0
+                      ? "px-5 py-5"
+                      : "border-t border-line px-5 py-5 sm:border-l sm:border-t-0"
+                  }
+                >
+                  <dt className="text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
+                    {stat.label}
+                  </dt>
+                  <dd className="tw-tnum mt-2 font-sans text-[clamp(1.35rem,1.6vw,1.7rem)] font-semibold leading-none tracking-[-0.03em] text-ink">
+                    {stat.value}
+                  </dd>
+                  <dd className="mt-1.5 text-small text-ink-muted">{stat.hint}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div className="relative">
@@ -73,32 +95,6 @@ export function HomeHero() {
             />
           </div>
         </div>
-
-        {/*
-          * The rail sits below the fold on purpose. It reads as a summary of the
-          * hero claim rather than a dashboard, so it uses one surface with
-          * dividers instead of three separate cards.
-          */}
-        <dl className="mt-10 grid overflow-hidden rounded-[20px] bg-cotton sm:grid-cols-3 lg:mt-12">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={
-                index === 0
-                  ? "px-6 py-6 sm:px-7"
-                  : "border-t border-line px-6 py-6 sm:border-l sm:border-t-0 sm:px-7"
-              }
-            >
-              <dt className="text-label font-semibold uppercase tracking-[0.09em] text-ink-subtle">
-                {stat.label}
-              </dt>
-              <dd className="tw-tnum mt-2.5 font-sans text-[clamp(1.6rem,2vw,2.1rem)] font-semibold leading-none tracking-[-0.03em] text-ink">
-                {stat.value}
-              </dd>
-              <dd className="mt-2 text-small text-ink-muted">{stat.hint}</dd>
-            </div>
-          ))}
-        </dl>
       </Container>
     </section>
   );
