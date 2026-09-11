@@ -60,6 +60,14 @@ export interface FaqItem {
 export interface SeoFields {
   title: string;
   description: string;
+  /**
+   * Overrides the page's H1 for pages that render a shared, reused `name`
+   * field (for example ProductFamily.name, which also appears in navigation
+   * and related-content cross links elsewhere and should stay a clean label
+   * there). Falls back to the page's own name/title when absent, so most
+   * content never needs to set this.
+   */
+  h1?: string;
 }
 
 export interface SpecRow {

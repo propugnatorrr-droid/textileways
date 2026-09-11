@@ -86,7 +86,7 @@ export default async function ProductFamilyPage(props: PageProps<"/products/[slu
 
       <PageHeader
         eyebrow="Product family"
-        title={family.name}
+        title={family.seo.h1 ?? family.name}
         lede={family.summary}
         breadcrumbs={breadcrumbs}
         status={{
