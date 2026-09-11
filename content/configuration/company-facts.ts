@@ -153,6 +153,20 @@ export const companyFacts = [
     status: "pending",
     note: "Needed for the factory page equipment section.",
   },
+  {
+    id: "lead-time-days",
+    label: "Typical production lead time, in days",
+    value: "",
+    status: "pending",
+    note: "Added 2026-09-10 for the homepage rewrite (target keyword \"clothing manufacturer in Pakistan\"), which wants lead time stated above the fold as a number. Needs a specific day count or range, plus what it is measured from (sample approval, deposit, PO) and whether it varies by product family or order size.",
+  },
+  {
+    id: "aql-standard",
+    label: "Inspection standard and AQL level used",
+    value: "",
+    status: "pending",
+    note: "Added 2026-09-10 for the homepage rewrite. The quality page already describes AQL as a configurable, educational explanation rather than one fixed company standard (CLAUDE.md section 12); only publish this as a headline fact if a single AQL level and inspection standard is actually applied by default, distinct from a per-order option.",
+  },
 ] as const satisfies readonly CompanyFact[];
 
 export type CompanyFactId = (typeof companyFacts)[number]["id"];

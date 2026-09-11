@@ -564,3 +564,159 @@ export const traceabilityNarrative = {
     },
   ],
 } as const;
+
+/**
+ * Added 2026-09-10 for /compliance/lksg. Legal status facts here are sourced
+ * and dated in the page's own Sources section, not restated as evergreen
+ * truths in this file, since transposition and threshold questions are
+ * actively moving. What TextileWays itself can and cannot currently support
+ * is drawn only from verified facts: no certification body is listed here
+ * because content/fallback/certificates.ts is empty and every credential in
+ * brand/entity.yml is status: unpublishable.
+ */
+export const lksgCsddNarrative = {
+  intro: [
+    "Two separate laws get discussed under this heading, on two different timelines. The German Supply Chain Due Diligence Act, LkSG, has been in force since 1 January 2023 and has applied to large employers since 1 January 2024. The EU Corporate Sustainability Due Diligence Directive, CSDDD, is a later, EU wide law with a longer runway: its Omnibus I amendment was published in the Official Journal on 26 February 2026 and entered into force on 18 March 2026, and no company is yet required to comply with it.",
+    "Neither law obligates TextileWays directly. Both obligate the buyer, the company placing goods on the German or EU market, above a size threshold. What they change for a supplier is indirect: an obligated buyer has to run due diligence on its own supply chain, and a manufacturer that cannot support that process becomes a harder company to keep buying from, whatever the manufacturer's own legal exposure is.",
+  ],
+  sections: [
+    {
+      title: "Who the law actually obligates",
+      paragraphs: [
+        "LkSG applies to companies with their registered office, principal place of business, or administrative headquarters in Germany that employ at least 1,000 people. The threshold was 3,000 employees through 2023 and dropped to 1,000 from 1 January 2024.",
+        "The amended CSDDD applies to companies with more than 5,000 employees and more than 1.5 billion euros in worldwide turnover, a scope the Omnibus I amendment narrowed down from roughly 13,000 companies under the original directive to roughly 6,000. Member States must transpose it into national law by 26 July 2028, and in scope companies must comply from 26 July 2029, with the Article 16 reporting obligation applying only from financial years starting on or after 1 January 2030.",
+        "Germany has said it intends to eventually replace LkSG with a national law implementing CSDDD, but as of this page's last review, the final text and whether it will align exactly to the CSDDD's higher employee and turnover threshold had not been confirmed. Until a replacement law is passed, LkSG's existing 1,000 employee threshold is what is actually in force.",
+        "A buyer below both thresholds is not legally obligated by either law, though a parent company, an investor or a voluntary code of conduct can still ask a supplier for the same kind of information.",
+      ],
+    },
+    {
+      title: "What a buyer in scope will actually ask for",
+      paragraphs: [
+        "In practice, an obligated buyer's own risk analysis usually reaches into its supply chain as a set of concrete requests to a manufacturer, not a certificate to produce once and forget: a supplier declaration or code of conduct acknowledgement, visibility into who actually makes the product and where, cooperation with a human rights and environmental risk questionnaire, and a way to raise and track a corrective action if the buyer's own review finds something.",
+        "None of this requires a manufacturer to hold a specific certification. It requires the manufacturer to be able to answer questions accurately and to cooperate with the buyer's process, which is a different, more basic bar than passing a named audit scheme.",
+      ],
+    },
+    {
+      title: "What TextileWays can support today, stated honestly",
+      paragraphs: [
+        "TextileWays does not currently hold a verified third party social or environmental compliance certification. No certification is published on this site because none has been supplied and confirmed; see /certifications for the current, empty registry and why it stays that way until evidence exists.",
+        "What is genuinely in place: material origin and specification records are maintained per order from development onward, not assembled after the fact, described in full on /traceability. That is the kind of record a buyer's own risk analysis process typically needs from a supplier, independent of whether a named certification scheme is also involved.",
+        "If your due diligence process requires a specific audit, such as BSCI, Sedex SMETA or a similar scheme, say so when you request a quote. We will tell you plainly whether that can be arranged for your order, rather than implying it is already in place.",
+      ],
+    },
+  ],
+  sources: [
+    {
+      label: "Council of the EU, press release on the Omnibus I Directive",
+      detail: "Published 24 February 2026, confirming Council approval of the CSDDD and CSRD amendments.",
+    },
+    {
+      label: "Official Journal of the European Union, Omnibus I Directive",
+      detail: "Published 26 February 2026; entered into force 18 March 2026.",
+    },
+    {
+      label: "Regulatory and legal commentary on the Omnibus I text",
+      detail: "Reviewed November 2025 to February 2026 sources confirming the 5,000 employee and 1.5 billion euro turnover CSDDD scope threshold, the 26 July 2028 transposition deadline, the 26 July 2029 application date, and the 1 January 2030 start for Article 16 reporting.",
+    },
+    {
+      label: "Regulatory commentary on LkSG's current scope",
+      detail: "Reviewed as of November 2025, confirming the 1,000 employee threshold in force since 1 January 2024 and that Germany's intended CSDDD implementing law, including its exact threshold, was not yet finalised.",
+    },
+  ],
+} as const;
+
+/**
+ * Added 2026-09-10 for /markets/germany. Deliberately not modelled as a fifth
+ * entry in `markets` (content/fallback/markets.ts): Germany is an EU member
+ * state already covered by /markets/europe, and giving it the identical
+ * five field template used for the USA, EU, UK and Australia pages, with
+ * only the country name changed, is exactly the doorway pattern the site
+ * owner flagged. This page instead states its relationship to /markets/europe
+ * explicitly and covers only what is genuinely additional for a German buyer:
+ * LkSG (see /compliance/lksg for the full explanation) and Germany specific
+ * language and logistics detail. It is deliberately shorter than the other
+ * four market pages, not a parallel copy of them.
+ */
+export const germanyMarketNarrative = {
+  intro: [
+    "Germany is a European Union member state, so everything on /markets/europe, sizing conventions, fibre composition labelling, restricted substance testing coordination, applies in full to a German buyer. This page does not repeat that content. It covers what is genuinely additional for Germany specifically.",
+    "The one requirement that is actually different, not just relabelled, is due diligence law. LkSG has applied to large German employers since 1 January 2024, ahead of the EU wide CSDDD, which does not apply to any company yet. A German buyer above the employee threshold may already be asking suppliers questions that a buyer elsewhere in the EU is not yet obligated to ask.",
+  ],
+  sections: [
+    {
+      title: "Due diligence: read this if your buyer has 1,000 or more employees",
+      paragraphs: [
+        "LkSG obligates the buyer, not TextileWays. If your company is in scope, your own risk analysis process is likely to ask a supplier for a declaration or code of conduct acknowledgement, visibility into who actually makes the product and where, and cooperation with a risk questionnaire and any corrective action process.",
+        "The full explanation, current thresholds with dated sources, and what TextileWays can support today, stated honestly rather than implied, is on /compliance/lksg. Read that page before your first inquiry if your company is in scope.",
+      ],
+    },
+    {
+      title: "Language and logistics specifics for Germany",
+      paragraphs: [
+        "EU textile labelling law lets each member state require its own official language on the fibre content label. For goods sold in Germany, that means German language wording, prepared to the exact text you confirm rather than a generic translation.",
+        "Hamburg and Bremerhaven are the primary container ports for ocean freight into Germany, and transit times through them are planned into the production schedule alongside the sea or air freight decision described on /markets/europe.",
+      ],
+    },
+  ],
+} as const;
+
+/**
+ * Added 2026-09-10 for /resources/finding-a-clothing-manufacturer-in-pakistan.
+ * A deliberately vendor neutral buyer's guide: general sourcing due diligence
+ * practice that applies to evaluating any manufacturer, not specific to or
+ * promoting TextileWays. The page built from this content carries no
+ * "Request a Quote" call to action and no related-products cross linking,
+ * only a small, honest disclosure that TextileWays publishes it.
+ */
+export const findingAManufacturerGuide = {
+  intro: [
+    "Pakistan is one of a handful of countries with a full, vertically capable textile and apparel export base: cotton growing and spinning, knitting and weaving, dyeing and finishing, cut and sew manufacturing, and established export logistics, concentrated mainly around Karachi, Lahore, Faisalabad and Sialkot. That base includes both genuine factories and businesses that present themselves as factories while actually subcontracting or trading. The due diligence questions below apply whichever country you are sourcing from, and they apply equally to evaluating this website's own publisher.",
+  ],
+  sections: [
+    {
+      title: "Confirm you are talking to a factory, not a trading company",
+      paragraphs: [
+        "A trading company can be a legitimate part of how you source, but you should know which one you are dealing with. Ask directly which stages of production happen on the supplier's own premises, and ask for a live video call showing the actual production floor, not stock photography or a company profile PDF. A real manufacturer answers specific questions about machine types and line capacity without hesitation, because that information is operational reality, not a trade secret.",
+        "A registered business name and a professional website do not confirm manufacturing capability by themselves. Neither does a claim of ISO or social compliance certification: ask for the certificate number and the issuing body, and verify it independently against the certification body's own registry rather than accepting a logo on a page.",
+      ],
+    },
+    {
+      title: "Get a sample before you commit to a bulk order",
+      paragraphs: [
+        "A pre production sample matched exactly to your specification, not a similar stock item, is the single most reliable signal of whether a supplier can actually produce what you have asked for. Expect to pay for the sample and its courier cost; a supplier offering a bulk order with no sample step, or offering a free sample with no clear production timeline, is a signal to slow down rather than a favour.",
+        "Compare the returned sample against your original specification line by line: fabric, construction, measurements, and any decoration. A supplier who explains a deviation and proposes a fix is behaving normally. A supplier who is defensive about a deviation, or who ships the bulk order without addressing it, is not.",
+      ],
+    },
+    {
+      title: "Get minimum order quantity and lead time in writing",
+      paragraphs: [
+        "MOQ and lead time should be quoted against your actual specification, not as a single number that applies to every product regardless of material, colour count, or decoration method. A number that never changes no matter what you ask for is usually a marketing figure rather than an operational one.",
+        "Ask what the lead time is measured from: sample approval, deposit receipt, or purchase order date all produce different real delivery dates for the same stated number of days. Get that starting point confirmed in writing alongside the number itself.",
+      ],
+    },
+    {
+      title: "Understand normal payment terms before you are asked for money",
+      paragraphs: [
+        "A deposit against the purchase order, with the balance due before or against shipping documents, is standard practice across most apparel manufacturing regions, Pakistan included. The exact split is negotiable and varies by supplier and order size. A request for full payment upfront, with no deposit and balance structure at all, is unusual enough to ask about directly before proceeding.",
+        "For a first order with a new supplier, consider whether an escrow service, a trade assurance mechanism, or a smaller validation quantity reduces your risk while you build a payment history with them, rather than accepting whatever terms are offered on the first quotation.",
+      ],
+    },
+  ],
+  checklist: [
+    "Which stages of production happen on your own premises, and which are subcontracted?",
+    "Can I see your production floor on a live video call this week?",
+    "What is the certificate number and issuing body for any certification you hold?",
+    "What does your MOQ and lead time depend on, and what changes them?",
+    "What is your lead time measured from: deposit, sample approval, or purchase order?",
+    "What is your standard deposit and balance payment structure?",
+    "What happens if the bulk shipment does not match the approved sample?",
+    "Who is my point of contact during production, and how do delays get communicated?",
+  ],
+  whereToLook: [
+    "Established B2B sourcing platforms and industry directories, cross checked against the supplier's own claims rather than taken as verification by themselves.",
+    "Trade shows and buying missions, where you can meet a supplier and, often, see samples in person before any commitment.",
+    "Referrals from other buyers in your product category, who can describe their own experience with lead time accuracy and how issues were actually handled.",
+    "Independent sourcing agents, useful for a first time buyer unfamiliar with a country's manufacturing landscape, for a fee or commission you should have quoted upfront.",
+    "Direct outreach to manufacturers whose product range and stated capability genuinely match your product, rather than a mass inquiry sent to every result on a page.",
+  ],
+} as const;

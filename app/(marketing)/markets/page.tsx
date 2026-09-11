@@ -86,6 +86,12 @@ export default function MarketsPage() {
             We ship beyond these four markets. Documentation is prepared for the destination
             you confirm, and any requirement specific to that market is raised before
             production rather than after shipping. Tell us the destination in your inquiry.
+            German buyers specifically: see{" "}
+            <Link href="/markets/germany" className="font-semibold text-forest-deep underline underline-offset-2">
+              sourcing for German brands
+            </Link>{" "}
+            for what is genuinely different about Germany within the European Union market
+            above, including due diligence law.
           </Notice>
 
           <Notice tone="info" title="What we do not do" className="mt-6 max-w-[74ch]">

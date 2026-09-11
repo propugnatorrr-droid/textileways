@@ -225,6 +225,11 @@ export const primaryNavigation: NavItem[] = [
             href: "/traceability",
             description: "Where materials and production come from.",
           },
+          {
+            label: "LkSG and EU due diligence",
+            href: "/compliance/lksg",
+            description: "What German and EU supply chain due diligence law actually requires.",
+          },
                    ...(hasPublicCertificates
             ? [
                 {
@@ -274,6 +279,11 @@ export const primaryNavigation: NavItem[] = [
             label: "Insights",
             href: "/insights",
             description: "How manufacturing decisions actually work.",
+          },
+          {
+            label: "Finding a manufacturer in Pakistan",
+            href: "/resources/finding-a-clothing-manufacturer-in-pakistan",
+            description: "A vendor neutral buyer's guide, not specific to us.",
           },
                    ...(hasPublishedCaseStudies
             ? [
@@ -342,6 +352,7 @@ export const footerNavigation: NavColumn[] = [
       { label: "Our position", href: "/responsibility" },
       { label: "Sustainability", href: "/sustainability" },
       { label: "Traceability", href: "/traceability" },
+      { label: "LkSG and EU due diligence", href: "/compliance/lksg" },
       ...(hasPublicCertificates
         ? [{ label: "Certifications", href: "/certifications" }]
         : []),
@@ -360,6 +371,10 @@ export const footerNavigation: NavColumn[] = [
     title: "Resources",
     links: [
       { label: "Insights", href: "/insights" },
+      {
+        label: "Finding a manufacturer in Pakistan",
+        href: "/resources/finding-a-clothing-manufacturer-in-pakistan",
+      },
       ...(hasPublishedCaseStudies
         ? [{ label: "Case studies", href: "/case-studies" }]
         : []),
@@ -389,13 +404,16 @@ export const staticRoutes: string[] = [
   "/responsibility",
   "/traceability",
   "/manufacturing-process",
+  "/compliance/lksg",
   "/markets",
+  "/markets/germany",
   "/industries",
   "/products",
   "/capabilities",
   "/materials",
   "/case-studies",
   "/insights",
+  "/resources/finding-a-clothing-manufacturer-in-pakistan",
   "/faq",
   "/contact",
   "/quick-quote",
