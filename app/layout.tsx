@@ -8,11 +8,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { CookieConsentProvider, AnalyticsScripts } from "@/components/layout/cookie-consent";
 import { WhatsappFloatingButton } from "@/components/layout/whatsapp-button";
 import { JsonLd } from "@/components/seo/json-ld";
-import {
-  organizationSchema,
-  manufacturerSchema,
-  websiteSchema,
-} from "@/lib/seo/structured-data";
+import { organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
 
 /**
  * One sans family across the whole site, self hosted by next/font so there is no
@@ -71,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AnalyticsScripts />
         </CookieConsentProvider>
 
-        <JsonLd data={[organizationSchema(), manufacturerSchema(), websiteSchema()]} />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>
     </html>
   );

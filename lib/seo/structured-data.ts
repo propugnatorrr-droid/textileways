@@ -16,6 +16,20 @@ type JsonLd = Record<string, unknown>;
 const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
 const WEBSITE_ID = `${siteConfig.url}/#website`;
 
+/**
+ * Single Organization node covering both the corporate entity and its
+ * manufacturing profile.
+ *
+ * A separate "#manufacturer" Organization node used to exist here, linked to
+ * this one via parentOrganization. Since both nodes carried the identical
+ * name ("TextileWays" as a "subsidiary" of "TextileWays"), that read as
+ * self-referential to entity resolution rather than adding information.
+ * Merged into one node: the manufacturing description now lives in
+ * `description`, and `knowsAbout` / `areaServed` carry the capability and
+ * market detail the second node used to hold. Uses the Organization type
+ * rather than LocalBusiness, because no verified street address or opening
+ * hours exist and LocalBusiness markup without them is misleading.
+ */
 export function organizationSchema(): JsonLd {
   const legalName = verifiedFactValue("legal-entity-name");
   const email = verifiedFactValue("contact-email");
@@ -29,8 +43,18 @@ export function organizationSchema(): JsonLd {
     "@id": ORGANIZATION_ID,
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description:
+      "Textile and apparel manufacturing including product development, material sourcing, sampling, cut and sew production, decoration, private labelling, quality assurance and export.",
     slogan: siteConfig.tagline,
+    knowsAbout: [
+      "Apparel manufacturing",
+      "Textile manufacturing",
+      "Cut and sew production",
+      "Private label manufacturing",
+      "Garment decoration",
+      "Export and logistics",
+    ],
+    areaServed: ["US", "GB", "EU", "AU"],
   };
 
   if (legalName) schema.legalName = legalName;
@@ -47,27 +71,6 @@ export function organizationSchema(): JsonLd {
   }
 
   return schema;
-}
-
-/**
- * Manufacturer profile. Uses the Organization subtype rather than LocalBusiness,
- * because no verified street address or opening hours exist and LocalBusiness
- * markup without them is misleading.
- */
-export function manufacturerSchema(): JsonLd {
-  const country = verifiedFactValue("country");
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${siteConfig.url}/#manufacturer`,
-    name: siteConfig.name,
-    url: siteConfig.url,
-    parentOrganization: { "@id": ORGANIZATION_ID },
-    description:
-      "Textile and apparel manufacturing including product development, material sourcing, sampling, cut and sew production, decoration, private labelling, quality assurance and export.",
-    ...(country ? { areaServed: ["US", "GB", "EU", "AU"], location: { "@type": "Place", address: { "@type": "PostalAddress", addressCountry: country } } } : {}),
-  };
 }
 
 export function websiteSchema(): JsonLd {
